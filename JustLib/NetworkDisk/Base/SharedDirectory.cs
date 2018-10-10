@@ -7,15 +7,15 @@ using ESPlus.FileTransceiver;
 namespace JustLib.NetworkDisk
 {
 	/// <summary>
-    /// ¹²ÏíµÄÄ¿Â¼ÄÚÈİ¡£
+    /// å…±äº«çš„ç›®å½•å†…å®¹ã€‚
 	/// </summary>
     [Serializable]
     public class SharedDirectory
     {
         /// <summary>
-        /// »ñÈ¡Ä³¸öÄ¿Â¼ÏÂµÄËùÓĞÎÄ¼şÒÔ¼°ËùÓĞ×ÓÄ¿Â¼¡£
+        /// è·å–æŸä¸ªç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶ä»¥åŠæ‰€æœ‰å­ç›®å½•ã€‚
         /// </summary>
-        /// <param name="dirPath">¸¸Ä¿Â¼Â·¾¶£¬Èç¹ûÎªnull£¬±íÊ¾»ñÈ¡¸ùÄ¿Â¼£¨Èç¡°ÎÒµÄµçÄÔ¡±£©ÏÂµÄ´ÅÅÌ»òÄ¿Â¼</param>              
+        /// <param name="dirPath">çˆ¶ç›®å½•è·¯å¾„ï¼Œå¦‚æœä¸ºnullï¼Œè¡¨ç¤ºè·å–æ ¹ç›®å½•ï¼ˆå¦‚â€œæˆ‘çš„ç”µè„‘â€ï¼‰ä¸‹çš„ç£ç›˜æˆ–ç›®å½•</param>              
         public static SharedDirectory GetSharedDirectory(string dirPath)
         {
             SharedDirectory ftpDir = new SharedDirectory();
@@ -62,7 +62,7 @@ namespace JustLib.NetworkDisk
         #region Valid
         private bool valid = true;
         /// <summary>
-        /// Valid ±íÊ¾»ñÈ¡Ä¿Â¼ĞÅÏ¢ÊÇ·ñ³É¹¦¡£Èç¹û²»³É¹¦£¬ÔòExceptionÊôĞÔÖ¸³öÁËÊ§°ÜµÄÔ­Òò¡£
+        /// Valid è¡¨ç¤ºè·å–ç›®å½•ä¿¡æ¯æ˜¯å¦æˆåŠŸã€‚å¦‚æœä¸æˆåŠŸï¼Œåˆ™Exceptionå±æ€§æŒ‡å‡ºäº†å¤±è´¥çš„åŸå› ã€‚
         /// </summary>
         public bool Valid
         {
@@ -74,7 +74,7 @@ namespace JustLib.NetworkDisk
         #region Exception
         private string exception;
         /// <summary>
-        /// Exception µ±»ñÈ¡Ä¿Â¼ĞÅÏ¢Ê§°ÜÊ±£¬¸ÃÊôĞÔÖ¸³öÁËÊ§°ÜµÄÔ­Òò¡£
+        /// Exception å½“è·å–ç›®å½•ä¿¡æ¯å¤±è´¥æ—¶ï¼Œè¯¥å±æ€§æŒ‡å‡ºäº†å¤±è´¥çš„åŸå› ã€‚
         /// </summary>
         public string Exception
         {
@@ -93,7 +93,7 @@ namespace JustLib.NetworkDisk
         #endregion
 
         #region FileList
-        private List<FileDetail> fileList = new List<FileDetail>(); //ÔªËØÎªFileDetail 
+        private List<FileDetail> fileList = new List<FileDetail>(); //å…ƒç´ ä¸ºFileDetail 
         public List<FileDetail> FileList
         {
             get
@@ -108,7 +108,7 @@ namespace JustLib.NetworkDisk
         #endregion
 
         #region SubDirectorys
-        private List<DirectoryDetail> subDirectorys = new List<DirectoryDetail>(); //ÔªËØÎªDirectoryµÄÃû³Æ
+        private List<DirectoryDetail> subDirectorys = new List<DirectoryDetail>(); //å…ƒç´ ä¸ºDirectoryçš„åç§°
         public List<DirectoryDetail> SubDirectorys
         {
             get
@@ -124,7 +124,7 @@ namespace JustLib.NetworkDisk
 
         #region GetChildPath
         /// <summary>
-        /// GetChildPath »ñÈ¡µ±Ç°Ä¿Â¼ÏÂµÄÄ³Ä¿Â¼»òÎÄ¼şµÄÂ·¾¶¡£
+        /// GetChildPath è·å–å½“å‰ç›®å½•ä¸‹çš„æŸç›®å½•æˆ–æ–‡ä»¶çš„è·¯å¾„ã€‚
         /// </summary>       
         public string GetChildPath(string name)
         {
@@ -143,7 +143,7 @@ namespace JustLib.NetworkDisk
     }
 
     /// <summary>
-    /// ÎÄ¼şµÄÏêÏ¸ĞÅÏ¢¡£
+    /// æ–‡ä»¶çš„è¯¦ç»†ä¿¡æ¯ã€‚
     /// </summary>
 	[Serializable]
 	public class FileDetail :IComparable<FileDetail>
@@ -189,7 +189,7 @@ namespace JustLib.NetworkDisk
         #region CreateTime
         private DateTime createTime = DateTime.Now;
         /// <summary>
-        /// ÎÄ¼şµÄ´´½¨Ê±¼ä
+        /// æ–‡ä»¶çš„åˆ›å»ºæ—¶é—´
         /// </summary>
         public DateTime CreateTime
         {
@@ -198,7 +198,7 @@ namespace JustLib.NetworkDisk
         } 
         #endregion
 
-        #region IComparable<FileDetail> ³ÉÔ±
+        #region IComparable<FileDetail> æˆå‘˜
 
         public int CompareTo(FileDetail other)
         {
@@ -209,7 +209,7 @@ namespace JustLib.NetworkDisk
     }
 
     /// <summary>
-    /// Ä¿Â¼µÄÏêÏ¸ĞÅÏ¢¡£
+    /// ç›®å½•çš„è¯¦ç»†ä¿¡æ¯ã€‚
     /// </summary>
     [Serializable]
     public class DirectoryDetail : IComparable<DirectoryDetail>
@@ -239,7 +239,7 @@ namespace JustLib.NetworkDisk
         #region CreateTime
         private DateTime createTime = DateTime.Now;
         /// <summary>
-        /// Ä¿Â¼µÄ´´½¨Ê±¼ä
+        /// ç›®å½•çš„åˆ›å»ºæ—¶é—´
         /// </summary>
         public DateTime CreateTime
         {
@@ -248,7 +248,7 @@ namespace JustLib.NetworkDisk
         }
         #endregion
 
-        #region IComparable<FileDetail> ³ÉÔ±
+        #region IComparable<FileDetail> æˆå‘˜
 
         public int CompareTo(DirectoryDetail other)
         {
@@ -260,7 +260,7 @@ namespace JustLib.NetworkDisk
     }
 
     /// <summary>
-    /// ´ÅÅÌ/¹âÇıµÈÉè±¸µÄÏêÏ¸ĞÅÏ¢¡£
+    /// ç£ç›˜/å…‰é©±ç­‰è®¾å¤‡çš„è¯¦ç»†ä¿¡æ¯ã€‚
     /// </summary>
     public class DiskDrive :IComparable<DiskDrive>
     {
@@ -333,7 +333,7 @@ namespace JustLib.NetworkDisk
         } 
         #endregion
 
-        #region IComparable<DiskDrive> ³ÉÔ±
+        #region IComparable<DiskDrive> æˆå‘˜
 
         public int CompareTo(DiskDrive other)
         {
