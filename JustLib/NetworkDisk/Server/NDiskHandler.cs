@@ -40,7 +40,7 @@ namespace JustLib.NetworkDisk.Server
         {
             if (informationType == this.fileDirectoryInfoTypes.CreateDirectory)
             {
-                CreateDirectoryContract contract = CompactPropertySerializer.Default.Deserialize<CreateDirectoryContract>(info,0);
+                var contract = CompactPropertySerializer.Default.Deserialize<CreateDirectoryContract>(info,0);
                 this.networkDisk.CreateDirectory(sourceUserID, contract.NetDiskID, contract.ParentDirectoryPath, contract.NewDirectoryName);
                 return;
             }    
@@ -51,8 +51,8 @@ namespace JustLib.NetworkDisk.Server
             #region ReqDirectory
             if (informationType == this.fileDirectoryInfoTypes.ReqDirectory)
             {
-                ReqDirectoryContract contract = CompactPropertySerializer.Default.Deserialize<ReqDirectoryContract>(info,0);
-                SharedDirectory dir = this.networkDisk.GetNetworkDisk(sourceUserID, contract.NetDiskID, contract.DirectoryPath);
+                var contract = CompactPropertySerializer.Default.Deserialize<ReqDirectoryContract>(info,0);
+                var dir = this.networkDisk.GetNetworkDisk(sourceUserID, contract.NetDiskID, contract.DirectoryPath);
                 return CompactPropertySerializer.Default.Serialize<ResDirectoryContract>(new ResDirectoryContract(dir));
             }
             #endregion
@@ -65,14 +65,14 @@ namespace JustLib.NetworkDisk.Server
                 {
                     netDiskID = System.Text.Encoding.UTF8.GetString(info);
                 }
-                NetworkDiskState state = this.networkDisk.GetNetworkDiskState(sourceUserID, netDiskID);
+                var state = this.networkDisk.GetNetworkDiskState(sourceUserID, netDiskID);
                 return CompactPropertySerializer.Default.Serialize<ResNetworkDiskStateContract>(new ResNetworkDiskStateContract(state));
             }
             #endregion            
 
             if (informationType == this.fileDirectoryInfoTypes.Rename)
             {
-                RenameContract contract = CompactPropertySerializer.Default.Deserialize<RenameContract>(info, 0);
+                var contract = CompactPropertySerializer.Default.Deserialize<RenameContract>(info, 0);
                 try
                 {
                     this.networkDisk.Rename(sourceUserID, contract.NetDiskID, contract.ParentDirectoryPath, contract.IsFile, contract.OldName, contract.NewName);
@@ -80,7 +80,7 @@ namespace JustLib.NetworkDisk.Server
                 }
                 catch (Exception ee)
                 {
-                    string error = "";
+                    var error = "";
                     if (ee is IOException)
                     {
                         error = string.Format("{0} 正在被使用！", Path.GetFileName(contract.OldName));
@@ -96,14 +96,14 @@ namespace JustLib.NetworkDisk.Server
             #region DownloadFile
             if (informationType == this.fileDirectoryInfoTypes.Download)
             {
-                DownloadContract contract = CompactPropertySerializer.Default.Deserialize<DownloadContract>(info, 0);
-                string fileOrDirPath = this.networkDisk.GetNetworkDiskRootPath(sourceUserID, contract.NetDiskID) + contract.SourceRemotePath;
-                string error = "";
+                var contract = CompactPropertySerializer.Default.Deserialize<DownloadContract>(info, 0);
+                var fileOrDirPath = this.networkDisk.GetNetworkDiskRootPath(sourceUserID, contract.NetDiskID) + contract.SourceRemotePath;
+                var error = "";
                 try
                 {
                     if (File.Exists(fileOrDirPath))
                     {
-                        FileStream stream = File.OpenRead(fileOrDirPath);
+                        var stream = File.OpenRead(fileOrDirPath);
                         stream.Close();
                         stream.Dispose();
                     }
@@ -145,10 +145,10 @@ namespace JustLib.NetworkDisk.Server
             #region DeleteFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Delete)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();
+                var resultContract = new OperationResultConatract();
                 try
                 {
-                    DeleteContract contract = CompactPropertySerializer.Default.Deserialize<DeleteContract>(info,0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<DeleteContract>(info,0);
                     this.networkDisk.DeleteFileOrDirectory(sourceUserID, contract.NetDiskID, contract.SourceParentDirectoryPath, contract.FilesBeDeleted, contract.DirectoriesBeDeleted);
                 }
                 catch (Exception ee)
@@ -162,10 +162,10 @@ namespace JustLib.NetworkDisk.Server
             #region CopyFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Copy)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();
+                var resultContract = new OperationResultConatract();
                 try
                 {
-                    CopyContract contract = CompactPropertySerializer.Default.Deserialize<CopyContract>(info,0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<CopyContract>(info,0);
                     this.networkDisk.Copy(sourceUserID, contract.NetDiskID, contract.SourceParentDirectoryPath, contract.FilesBeCopyed, contract.DirectoriesBeCopyed, contract.DestParentDirectoryPath);
                 }
                 catch (Exception ee)
@@ -179,10 +179,10 @@ namespace JustLib.NetworkDisk.Server
             #region MoveFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Move)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();
+                var resultContract = new OperationResultConatract();
                 try
                 {
-                    MoveContract contract = CompactPropertySerializer.Default.Deserialize<MoveContract>(info,0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<MoveContract>(info,0);
                     this.networkDisk.Move(sourceUserID, contract.NetDiskID, contract.OldParentDirectoryPath, contract.FilesBeMoved, contract.DirectoriesBeMoved, contract.NewParentDirectoryPath);
                 }
                 catch (Exception ee)

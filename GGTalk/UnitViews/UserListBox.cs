@@ -77,7 +77,7 @@ namespace GGTalk.UnitViews
             }
 
             this.AssureCatalog(this.currentUser.DefaultFriendCatalog);
-            foreach (string catalog in this.currentUser.GetFriendCatalogList())
+            foreach (var catalog in this.currentUser.GetFriendCatalogList())
             {
                 this.AssureCatalog(catalog);
             }
@@ -87,7 +87,7 @@ namespace GGTalk.UnitViews
         {
             if (!this.catelogManager.Contains(catalog))
             {
-                ChatListItem item = new ChatListItem(catalog);
+                var item = new ChatListItem(catalog);
                 this.catelogManager.Add(catalog, item);
                 this.chatListBox.Items.Add(item);
                 this.chatListBox.Items.Sort();
@@ -98,8 +98,8 @@ namespace GGTalk.UnitViews
         private ObjectManager<string, ChatListItem> catelogManager = new ObjectManager<string, ChatListItem>();
         private ChatListItem GetCatelogChatListItem(GGUser user)
         {
-            string catelog = "我的好友";
-            foreach (KeyValuePair<string, List<string>> pair in this.currentUser.FriendDicationary)
+            var catelog = "我的好友";
+            foreach (var pair in this.currentUser.FriendDicationary)
             {
                 if (pair.Value.Contains(user.ID))
                 {
@@ -114,13 +114,13 @@ namespace GGTalk.UnitViews
 
         public void AddUser(GGUser friend)
         {
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(friend.ID);
+            var items = this.chatListBox.GetSubItemsById(friend.ID);
             if (items != null && items.Length > 0)
             {
                 return;
             }
 
-            ChatListSubItem subItem = new ChatListSubItem(friend.ID, "", friend.Name, friend.Signature, this.ConvertUserStatus(friend.UserStatus), this.resourceGetter.GetHeadImage(friend));
+            var subItem = new ChatListSubItem(friend.ID, "", friend.Name, friend.Signature, this.ConvertUserStatus(friend.UserStatus), this.resourceGetter.GetHeadImage(friend));
             subItem.Tag = friend;
             this.GetCatelogChatListItem(friend).SubItems.AddAccordingToStatus(subItem);
             if (friend.ID == this.currentUser.ID)
@@ -150,7 +150,7 @@ namespace GGTalk.UnitViews
 
         public void SortAllUser()
         {
-            foreach (ChatListItem item in this.catelogManager.GetAll())
+            foreach (var item in this.catelogManager.GetAll())
             {
                 if (item.SubItems.Count > 0)
                 {
@@ -167,13 +167,13 @@ namespace GGTalk.UnitViews
 
         public bool ContainsUser(string userID)
         {
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(userID);
+            var items = this.chatListBox.GetSubItemsById(userID);
             return (items != null && items.Length > 0);
         }
 
         public void SetTwinkleState(string userID, bool twinkle)
         {
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(userID);
+            var items = this.chatListBox.GetSubItemsById(userID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -183,7 +183,7 @@ namespace GGTalk.UnitViews
 
         public void UserStatusChanged(GGUser user)
         {           
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(user.ID);
+            var items = this.chatListBox.GetSubItemsById(user.ID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -191,7 +191,7 @@ namespace GGTalk.UnitViews
 
             items[0].HeadImage = this.resourceGetter.GetHeadImage(user);
             items[0].Status = this.ConvertUserStatus(user.UserStatus);
-            ChatListItem item = this.GetCatelogChatListItem(user);
+            var item = this.GetCatelogChatListItem(user);
             if (item != null)
             {
                 item.SubItems.Sort();
@@ -201,11 +201,11 @@ namespace GGTalk.UnitViews
 
         public List<ChatListSubItem> SearchChatListSubItem(string idOrName)
         {
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsByText(idOrName);
-            List<ChatListSubItem> list = new List<ChatListSubItem>();
+            var items = this.chatListBox.GetSubItemsByText(idOrName);
+            var list = new List<ChatListSubItem>();
             if (items != null)
             {
-                foreach (ChatListSubItem item in items)
+                foreach (var item in items)
                 {
                     if (item.ID != this.currentUser.ID)
                     {
@@ -218,11 +218,11 @@ namespace GGTalk.UnitViews
 
         public void UserInfoChanged(GGUser user)
         {          
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(user.ID);
+            var items = this.chatListBox.GetSubItemsById(user.ID);
             if (items != null && items.Length > 0) //有可能部门发生了变化
             {
-                GGUser origin = (GGUser)items[0].Tag;
-                ChatListItem ownerItem = this.GetCatelogChatListItem(origin);
+                var origin = (GGUser)items[0].Tag;
+                var ownerItem = this.GetCatelogChatListItem(origin);
                 ownerItem.SubItems.Remove(items[0]);
                 this.AddUser(user); //有可能是新添加的好友
             }            
@@ -230,8 +230,8 @@ namespace GGTalk.UnitViews
 
         private void toolStripMenuItem51_Click(object sender, EventArgs e)
         {
-            ChatListSubItem item = this.chatListBox.SelectSubItem;
-            GGUser friend = (GGUser)item.Tag;
+            var item = this.chatListBox.SelectSubItem;
+            var friend = (GGUser)item.Tag;
             item.IsTwinkle = false;
 
             if (friend.ID == this.currentUser.ID)
@@ -252,7 +252,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            GGUser friend = (GGUser)this.chatListBox.SelectSubItem.Tag;
+            var friend = (GGUser)this.chatListBox.SelectSubItem.Tag;
             if (friend.ID == this.currentUser.ID)
             {
                 return;
@@ -271,7 +271,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            GGUser friend = (GGUser)this.chatListBox.SelectSubItem.Tag;
+            var friend = (GGUser)this.chatListBox.SelectSubItem.Tag;
             if (friend.ID == this.currentUser.ID)
             {
                 return;
@@ -285,8 +285,8 @@ namespace GGTalk.UnitViews
 
         private void chatListBox_DoubleClickSubItem(object sender, ChatListEventArgs e)
         {
-            ChatListSubItem item = e.SelectSubItem;
-            GGUser friend = (GGUser)item.Tag;
+            var item = e.SelectSubItem;
+            var friend = (GGUser)item.Tag;
             item.IsTwinkle = false;
             
             if (friend.ID == this.currentUser.ID)
@@ -309,18 +309,18 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            ChatListSubItem item = e.MouseOnSubItem;
+            var item = e.MouseOnSubItem;
             if (item == null)
             {
                 item = e.SelectSubItem;
             }
 
-            Point loc = this.PointToScreen(this.Location);
+            var loc = this.PointToScreen(this.Location);
 
             //int top = this.Top + this.chatListBox.Top + (item.HeadRect.Y - this.chatListBox.chatVScroll.Value);
             //int left = this.Left - 279 - 5;
-            int top = loc.Y + (item.HeadRect.Y - this.chatListBox.chatVScroll.Value) - this.Location.Y;
-            int left = loc.X - 279 - 5;
+            var top = loc.Y + (item.HeadRect.Y - this.chatListBox.chatVScroll.Value) - this.Location.Y;
+            var left = loc.X - 279 - 5;
             //int ph = Screen.GetWorkingArea(this).Height;
 
             //if (top + 181 > ph)
@@ -333,8 +333,8 @@ namespace GGTalk.UnitViews
                 left = this.Right + 5;
             }
 
-            GGUser user = (GGUser)item.Tag;
-            Form form = (Form)this.userInformationForm;            
+            var user = (GGUser)item.Tag;
+            var form = (Form)this.userInformationForm;            
             this.userInformationForm.SetUser(user);           
             form.Location = new Point(left, top);
             if (!this.firstShow)
@@ -356,7 +356,7 @@ namespace GGTalk.UnitViews
             }
 
             Thread.Sleep(100);
-            Form form = (Form)this.userInformationForm;
+            var form = (Form)this.userInformationForm;
             if (!form.Bounds.Contains(Cursor.Position))
             {
                 form.Hide();
@@ -368,7 +368,7 @@ namespace GGTalk.UnitViews
         {
             if (this.FriendCatalogMoved != null)
             {
-                GGUser user = (GGUser) e.QSubItem.Tag ;
+                var user = (GGUser) e.QSubItem.Tag ;
                 this.FriendCatalogMoved(user.ID, e.QSubItem.OwnerListItem.Text, e.HSubItem.OwnerListItem.Text);
             }
         }
@@ -422,7 +422,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            string oldName = this.chatListBox.SelectItem.Text;
+            var oldName = this.chatListBox.SelectItem.Text;
             if (this.ChangeCatalogNameClicked != null)
             {
                 this.ChangeCatalogNameClicked(oldName);
@@ -445,7 +445,7 @@ namespace GGTalk.UnitViews
                 }
             }
 
-            ChatListItem newItem = new ChatListItem(catelogName);
+            var newItem = new ChatListItem(catelogName);
             this.catelogManager.Add(catelogName, newItem);
             this.chatListBox.Items.Add(newItem);
             this.chatListBox.Items.Sort();
@@ -476,7 +476,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            string name = this.chatListBox.SelectItem.Text;
+            var name = this.chatListBox.SelectItem.Text;
             if (this.currentUser.DefaultFriendCatalog == name)
             {
                 MessageBox.Show(string.Format("分组 [{0}] 是默认分组，不能删除！", name));

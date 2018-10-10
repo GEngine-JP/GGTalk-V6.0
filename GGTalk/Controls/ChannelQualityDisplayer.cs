@@ -75,7 +75,7 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                int delt = (maxDepth - minDepth) / 5;
+                var delt = (maxDepth - minDepth) / 5;
 
                 if (maxDepth - delt <= current)
                 {

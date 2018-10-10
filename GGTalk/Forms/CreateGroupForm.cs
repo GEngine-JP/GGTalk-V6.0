@@ -48,7 +48,7 @@ namespace GGTalk
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            string groupID = this.skinTextBox_id.SkinTxt.Text.Trim();
+            var groupID = this.skinTextBox_id.SkinTxt.Text.Trim();
             if (groupID.Length == 0)
             {
                 MessageBoxEx.Show("群帐号不能为空！");
@@ -58,9 +58,9 @@ namespace GGTalk
 
             try
             {
-                CreateGroupContract contract = new CreateGroupContract(groupID, this.skinTextBox_name.SkinTxt.Text.Trim() ,this.skinTextBox_announce.SkinTxt.Text);
-                byte[] bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.CreateGroup, CompactPropertySerializer.Default.Serialize(contract));
-                CreateGroupResult res = (CreateGroupResult)BitConverter.ToInt32(bRes, 0);
+                var contract = new CreateGroupContract(groupID, this.skinTextBox_name.SkinTxt.Text.Trim() ,this.skinTextBox_announce.SkinTxt.Text);
+                var bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.CreateGroup, CompactPropertySerializer.Default.Serialize(contract));
+                var res = (CreateGroupResult)BitConverter.ToInt32(bRes, 0);
                 if (res == CreateGroupResult.GroupExisted)
                 {
                     MessageBoxEx.Show("同ID的群已经存在！");

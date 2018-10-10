@@ -18,15 +18,15 @@ namespace JustLib.NetworkDisk
         /// <param name="dirPath">父目录路径，如果为null，表示获取根目录（如“我的电脑”）下的磁盘或目录</param>              
         public static SharedDirectory GetSharedDirectory(string dirPath)
         {
-            SharedDirectory ftpDir = new SharedDirectory();
+            var ftpDir = new SharedDirectory();
             ftpDir.directoryPath = dirPath;
 
             try
             {
                 if (dirPath == null)
                 {
-                    DriveInfo[] drives = DriveInfo.GetDrives();
-                    foreach (DriveInfo drive in drives)
+                    var drives = DriveInfo.GetDrives();
+                    foreach (var drive in drives)
                     {
                         ftpDir.SubDirectorys.Add(new DirectoryDetail(drive.Name ,DateTime.Now));
                         ftpDir.DriveList.Add(new DiskDrive(drive));
@@ -34,8 +34,8 @@ namespace JustLib.NetworkDisk
                 }
                 else
                 {
-                    DirectoryInfo info = new DirectoryInfo(dirPath);
-                    foreach (FileInfo file in info.GetFiles())
+                    var info = new DirectoryInfo(dirPath);
+                    foreach (var file in info.GetFiles())
                     {
                         if (file.Extension.ToLower() != ".tmpe$")
                         {
@@ -43,7 +43,7 @@ namespace JustLib.NetworkDisk
                         }
                     }
 
-                    foreach (DirectoryInfo subInfo in info.GetDirectories())
+                    foreach (var subInfo in info.GetDirectories())
                     {
                         
                         ftpDir.SubDirectorys.Add(new DirectoryDetail(subInfo.Name ,subInfo.CreationTime));

@@ -52,7 +52,7 @@ namespace GGTalk
                 throw new Exception("连接器尚未连接到对方的摄像头！");
             }
             this.videoSize = this.dynamicCameraConnector2Friend.VideoSize;
-            Size myVideoSize = new Size(this.videoSize.Width / 3, this.videoSize.Height / 3);
+            var myVideoSize = new Size(this.videoSize.Width / 3, this.videoSize.Height / 3);
             this.myVideoRect = new Rectangle(this.videoSize.Width - myVideoSize.Width, this.videoSize.Height - myVideoSize.Height, myVideoSize.Width, myVideoSize.Height);
 
             this.videoFileMaker = new VideoFileMaker();
@@ -62,7 +62,7 @@ namespace GGTalk
             this.audioInOutMixer.Initialize(this.multimediaManager);
             this.isRecording = true;
 
-            CbGeneric cb = new CbGeneric(this.RecordThread);
+            var cb = new CbGeneric(this.RecordThread);
             cb.BeginInvoke(null, null);
         }        
         
@@ -71,14 +71,14 @@ namespace GGTalk
         {
             while (this.isRecording)
             {
-                Bitmap bmFriend = this.dynamicCameraConnector2Friend.GetCurrentImage();
+                var bmFriend = this.dynamicCameraConnector2Friend.GetCurrentImage();
                 if (bmFriend != null)
                 {
-                    Bitmap bmMyself = this.cameraConnector2Myself.GetCurrentImage();
+                    var bmMyself = this.cameraConnector2Myself.GetCurrentImage();
                     //合成图像
                     if (bmMyself != null)
                     {
-                        Graphics g = Graphics.FromImage(bmFriend);
+                        var g = Graphics.FromImage(bmFriend);
                         g.DrawImage(bmMyself ,this.myVideoRect);   
                         g.Dispose();
                     }

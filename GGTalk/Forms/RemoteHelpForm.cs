@@ -75,8 +75,8 @@ namespace GGTalk
                     this.skinComboBox_quality.Visible = true;
                     this.skinLabel_quality.Visible = true;
 
-                    int quality = this.desktopConnector1.GetVideoQuality();
-                    int index = (quality - 1) / 5;
+                    var quality = this.desktopConnector1.GetVideoQuality();
+                    var index = (quality - 1) / 5;
                     if (index < 0)
                     {
                         index = 0;
@@ -115,7 +115,7 @@ namespace GGTalk
 
         private void skinComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int quality = this.skinComboBox_quality.SelectedIndex * 5 + 1;
+            var quality = this.skinComboBox_quality.SelectedIndex * 5 + 1;
             this.desktopConnector1.ChangeOwnerDesktopEncodeQuality(quality);
         }       
     }

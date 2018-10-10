@@ -290,7 +290,7 @@ namespace GGTalk
 
         public void Save()
         {
-            byte[] data = ESBasic.Helpers.SerializeHelper.SerializeObject(this);
+            var data = ESBasic.Helpers.SerializeHelper.SerializeObject(this);
             ESBasic.Helpers.FileHelper.WriteBuffToFile(data, SystemSettingsFilePath);
         }
 
@@ -303,7 +303,7 @@ namespace GGTalk
                     return null;
                 }
 
-                byte[] data = ESBasic.Helpers.FileHelper.ReadFileReturnBytes(SystemSettingsFilePath);
+                var data = ESBasic.Helpers.FileHelper.ReadFileReturnBytes(SystemSettingsFilePath);
                 return (SystemSettings)ESBasic.Helpers.SerializeHelper.DeserializeBytes(data,0,data.Length);
             }
             catch(Exception ee)

@@ -11,25 +11,25 @@ namespace GGTalk.Controls
     {
         public static double[] FFTDb(double[] source)
         {          
-            int sourceLen = source.Length;
-            int nu = (int)(Math.Log(sourceLen) / Math.Log(2));
-            int halfSourceLen = sourceLen / 2;
-            int nu1 = nu - 1;
-            double[] xre = new double[sourceLen];
-            double[] xim = new double[sourceLen];
-            double[] decibel = new double[halfSourceLen];
+            var sourceLen = source.Length;
+            var nu = (int)(Math.Log(sourceLen) / Math.Log(2));
+            var halfSourceLen = sourceLen / 2;
+            var nu1 = nu - 1;
+            var xre = new double[sourceLen];
+            var xim = new double[sourceLen];
+            var decibel = new double[halfSourceLen];
             double tr, ti, p, arg, c, s;
-            for (int i = 0; i < sourceLen; i++)
+            for (var i = 0; i < sourceLen; i++)
             {
                 xre[i] = source[i];
                 xim[i] = 0.0f;
             }
-            int k = 0;
-            for (int l = 1; l <= nu; l++)
+            var k = 0;
+            for (var l = 1; l <= nu; l++)
             {
                 while (k < sourceLen)
                 {
-                    for (int i = 1; i <= halfSourceLen; i++)
+                    for (var i = 1; i <= halfSourceLen; i++)
                     {
                         p = BitReverse(k >> nu1, nu);
                         arg = 2 * (double)Math.PI * p / sourceLen;
@@ -65,7 +65,7 @@ namespace GGTalk.Controls
                 }
                 k++;
             }
-            for (int i = 0; i < sourceLen / 2; i++)
+            for (var i = 0; i < sourceLen / 2; i++)
             {
                 decibel[i] = 10.0 * Math.Log10((float)(Math.Sqrt((xre[i] * xre[i]) + (xim[i] * xim[i]))));
             }
@@ -76,9 +76,9 @@ namespace GGTalk.Controls
         private static int BitReverse(int j, int nu)
         {
             int j2;
-            int j1 = j;
-            int k = 0;
-            for (int i = 1; i <= nu; i++)
+            var j1 = j;
+            var k = 0;
+            for (var i = 1; i <= nu; i++)
             {
                 j2 = j1 / 2;
                 k = 2 * k + j1 - 2 * j2;

@@ -84,10 +84,10 @@ namespace GGTalk
                 }
 
                 this.catalogName = this.skinComboBox1.SelectedItem.ToString();
-                AddFriendContract contract = new AddFriendContract(this.friendID,this.catalogName);
-                byte[] info = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
-                byte[] bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.AddFriend, info);
-                AddFriendResult res = (AddFriendResult)BitConverter.ToInt32(bRes,0);
+                var contract = new AddFriendContract(this.friendID,this.catalogName);
+                var info = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
+                var bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.AddFriend, info);
+                var res = (AddFriendResult)BitConverter.ToInt32(bRes,0);
                 if (res == AddFriendResult.FriendNotExist)
                 {
                     MessageBoxEx.Show("帐号不存在！");

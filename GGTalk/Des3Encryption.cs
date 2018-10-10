@@ -15,7 +15,7 @@ namespace GGTalk
         /// </summary>        
         public static byte[] Encrypt(byte[] origin, string key)
         {
-            Des3Encryption desEncryption = new Des3Encryption(key);
+            var desEncryption = new Des3Encryption(key);
             return desEncryption.Encrypt(origin);
         }
 
@@ -24,7 +24,7 @@ namespace GGTalk
         /// </summary> 
         public static byte[] Decrypt(byte[] encrypted, string key)
         {
-            Des3Encryption desEncryption = new Des3Encryption(key);
+            var desEncryption = new Des3Encryption(key);
             return desEncryption.Decrypt(encrypted);
         }
 
@@ -33,8 +33,8 @@ namespace GGTalk
         /// </summary>  
         public static string EncryptString(string origin, string key)
         {
-            byte[] buff = System.Text.Encoding.UTF8.GetBytes(origin);
-            byte[] res = Des3Encryption.Encrypt(buff, key);
+            var buff = System.Text.Encoding.UTF8.GetBytes(origin);
+            var res = Des3Encryption.Encrypt(buff, key);
             return System.Text.Encoding.UTF8.GetString(res);
         }
 
@@ -43,8 +43,8 @@ namespace GGTalk
         /// </summary> 
         public static string DecryptString(string encrypted, string key)
         {
-            byte[] buff = System.Text.Encoding.UTF8.GetBytes(encrypted);
-            byte[] res = Des3Encryption.Decrypt(buff, key);
+            var buff = System.Text.Encoding.UTF8.GetBytes(encrypted);
+            var res = Des3Encryption.Decrypt(buff, key);
             return System.Text.Encoding.UTF8.GetString(res);
         }
         #endregion
@@ -206,16 +206,16 @@ namespace GGTalk
         //返回的结果的前4个字节为一个int，表示des加密结果的长度，后续字节为加密的真正结果。
         public byte[] Encrypt(byte[] origin)
         {
-            int originLen = origin.Length;
+            var originLen = origin.Length;
             //保证加密的字节长度是8的倍数         
-            int len = origin.Length % 8 == 0 ? origin.Length : origin.Length + 8 - origin.Length % 8;
-            byte[] bts2 = new byte[len];
+            var len = origin.Length % 8 == 0 ? origin.Length : origin.Length + 8 - origin.Length % 8;
+            var bts2 = new byte[len];
             origin.CopyTo(bts2, 0);
 
-            byte[] des_bytes = this.Des3(bts2, key, true);
+            var des_bytes = this.Des3(bts2, key, true);
 
-            byte[] result = new byte[4 + des_bytes.Length];
-            byte[] originLenBytes = BitConverter.GetBytes(originLen);
+            var result = new byte[4 + des_bytes.Length];
+            var originLenBytes = BitConverter.GetBytes(originLen);
             Buffer.BlockCopy(originLenBytes, 0, result, 0, 4);
             Buffer.BlockCopy(des_bytes, 0, result, 4, des_bytes.Length);
             return result;
@@ -225,12 +225,12 @@ namespace GGTalk
         #region Decrypt
         public byte[] Decrypt(byte[] encrypted)
         {
-            int originLen = BitConverter.ToInt32(encrypted, 0);
-            byte[] encryptedAll = new byte[encrypted.Length - 4];
+            var originLen = BitConverter.ToInt32(encrypted, 0);
+            var encryptedAll = new byte[encrypted.Length - 4];
             Buffer.BlockCopy(encrypted, 4, encryptedAll, 0, encryptedAll.Length);
 
-            byte[] enDes_bytes = this.Des3(encryptedAll, this.key, false);       
-            byte[] result = new byte[originLen];
+            var enDes_bytes = this.Des3(encryptedAll, this.key, false);       
+            var result = new byte[originLen];
             Buffer.BlockCopy(enDes_bytes, 0, result, 0, originLen);
             return result;
         }
@@ -240,12 +240,12 @@ namespace GGTalk
         #region Des
         private byte[] Des(byte[] input_data, string key, bool encrypt)// key的长度大于8个字节
         {
-            byte[] bts = System.Text.Encoding.UTF8.GetBytes(key);
-            uint[] keys = new uint[2];
+            var bts = System.Text.Encoding.UTF8.GetBytes(key);
+            var keys = new uint[2];
 
             keys[0] = BitConverter.ToUInt32(bts, 0);
             keys[1] = BitConverter.ToUInt32(bts, 4);
-            byte[] rtn_bytes = this.Des(input_data, keys, encrypt);
+            var rtn_bytes = this.Des(input_data, keys, encrypt);
 
             return rtn_bytes;
         }
@@ -253,11 +253,11 @@ namespace GGTalk
 
         private byte[] Des(byte[] data, uint[] key, bool encrypt)//input_data的长度必须是8的倍数
         {
-            uint[] in_tmp = new uint[data.Length / 4];
-            uint[] out_tmp = new uint[data.Length / 4];
-            byte[] rtn_bytes = new byte[data.Length];
+            var in_tmp = new uint[data.Length / 4];
+            var out_tmp = new uint[data.Length / 4];
+            var rtn_bytes = new byte[data.Length];
 
-            for (int i = 0; i < data.Length; i += 4)
+            for (var i = 0; i < data.Length; i += 4)
             {
                 in_tmp[i / 4] |= data[i]; in_tmp[i / 4] <<= 8;
                 in_tmp[i / 4] |= data[i + 1]; in_tmp[i / 4] <<= 8;
@@ -267,7 +267,7 @@ namespace GGTalk
 
             out_tmp = this.Des(in_tmp, key, encrypt);
 
-            for (int i = 0; i < out_tmp.Length; i++)
+            for (var i = 0; i < out_tmp.Length; i++)
             {
                 rtn_bytes[4 * i + 3] |= (byte)(out_tmp[i] & 0xff); out_tmp[i] >>= 8;
                 rtn_bytes[4 * i + 2] |= (byte)(out_tmp[i] & 0xff); out_tmp[i] >>= 8;
@@ -280,13 +280,13 @@ namespace GGTalk
 
         private uint[] Des(uint[] data, uint[] key, bool encrypt)
         {
-            uint[] rtn_data = new uint[data.Length];
-            uint[] in_dt = new uint[2];
-            uint[] out_dt = new uint[2];
+            var rtn_data = new uint[data.Length];
+            var in_dt = new uint[2];
+            var out_dt = new uint[2];
 
             this.DesCreateKeys(key);
 
-            for (int i = 0; i < data.Length; i += 2)
+            for (var i = 0; i < data.Length; i += 2)
             {
                 in_dt[0] = data[i];
                 in_dt[1] = data[i + 1];
@@ -299,14 +299,14 @@ namespace GGTalk
 
         private uint[] Des(uint[] data, uint[] key, uint[] iv, bool encrypt)
         {
-            uint[] rtn_data = new uint[data.Length];
-            uint[] in_dt = new uint[2];
-            uint[] out_dt = new uint[2];
+            var rtn_data = new uint[data.Length];
+            var in_dt = new uint[2];
+            var out_dt = new uint[2];
             uint cbc_left2 = 0, cbc_right2 = 0;
 
             this.DesCreateKeys(key);
 
-            for (int i = 0; i < data.Length; i += 2)
+            for (var i = 0; i < data.Length; i += 2)
             {
                 in_dt[0] = data[i];
                 in_dt[1] = data[i + 1];
@@ -343,7 +343,7 @@ namespace GGTalk
         #region Des3
         private byte[] Des3(byte[] input_data, string key, bool encrypt)
         {
-            for (int i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 input_data = this.Des(input_data, key, encrypt);
             }
@@ -355,7 +355,7 @@ namespace GGTalk
         private byte[] DesTwoKeys(byte[] input_data, string key1, string key2, bool encrypt)
         {
 
-            byte[] des_bytes = this.Des(input_data, key1, encrypt);
+            var des_bytes = this.Des(input_data, key1, encrypt);
             des_bytes = this.Des(des_bytes, key2, !encrypt);
             des_bytes = this.Des(des_bytes, key1, encrypt);
 
@@ -366,20 +366,20 @@ namespace GGTalk
         #region DesCBC
         private byte[] DesCBC(byte[] input_data, string key_str, string iv, bool encrypt)
         {
-            byte[] bts = System.Text.Encoding.UTF8.GetBytes(key_str);
-            uint[] keys = new uint[2];
+            var bts = System.Text.Encoding.UTF8.GetBytes(key_str);
+            var keys = new uint[2];
             keys[0] = BitConverter.ToUInt32(bts, 0);
             keys[1] = BitConverter.ToUInt32(bts, 4);
             bts = System.Text.Encoding.UTF8.GetBytes(iv);
-            uint[] cbc_iv = new uint[2];
+            var cbc_iv = new uint[2];
             cbc_iv[0] = BitConverter.ToUInt32(bts, 0);
             cbc_iv[1] = BitConverter.ToUInt32(bts, 4);
 
-            uint[] in_tmp = new uint[input_data.Length / 4];
-            uint[] out_tmp = new uint[input_data.Length / 4];
-            byte[] rtn_bytes = new byte[input_data.Length];
+            var in_tmp = new uint[input_data.Length / 4];
+            var out_tmp = new uint[input_data.Length / 4];
+            var rtn_bytes = new byte[input_data.Length];
 
-            for (int i = 0; i < input_data.Length; i += 4)
+            for (var i = 0; i < input_data.Length; i += 4)
             {
                 in_tmp[i / 4] |= input_data[i]; in_tmp[i / 4] <<= 8;
                 in_tmp[i / 4] |= input_data[i + 1]; in_tmp[i / 4] <<= 8;
@@ -389,7 +389,7 @@ namespace GGTalk
 
             out_tmp = this.Des(in_tmp, keys, cbc_iv, encrypt);
 
-            for (int i = 0; i < out_tmp.Length; i++)
+            for (var i = 0; i < out_tmp.Length; i++)
             {
                 rtn_bytes[4 * i + 3] |= (byte)(out_tmp[i] & 0xff); out_tmp[i] >>= 8;
                 rtn_bytes[4 * i + 2] |= (byte)(out_tmp[i] & 0xff); out_tmp[i] >>= 8;
@@ -407,9 +407,9 @@ namespace GGTalk
         {
             int i;
             uint tmp;
-            uint[] result_data = new uint[2];
+            var result_data = new uint[2];
             //第一次调整位数
-            uint[] newdata = this.change_data(data, this.fst_change_tb);
+            var newdata = this.change_data(data, this.fst_change_tb);
             if (encrypt)
             {
                 for (i = 0; i < 16; i++)
@@ -441,8 +441,8 @@ namespace GGTalk
         #region change_data//数据交换
         private uint[] change_data(uint[] olddata, int[] change_tb)
         {
-            uint[] newdata = new uint[2];
-            for (int i = 0; i < 64; i++)
+            var newdata = new uint[2];
+            for (var i = 0; i < 64; i++)
             {
                 if (i < 32)
                 {
@@ -476,9 +476,9 @@ namespace GGTalk
         {
             int j;
             uint[] exp = { 0, 0 };
-            byte[] rexpbuf = new byte[8];
+            var rexpbuf = new byte[8];
             uint datatmp;
-            uint oldright = data[1];
+            var oldright = data[1];
 
             //由32位扩充至48位
             for (j = 0; j < 48; j++)
@@ -583,8 +583,8 @@ namespace GGTalk
         {
             uint tmp1, tmp2;
             int j;
-            uint[] rtn_key = new uint[2];
-            int leftNum = lefttable[number];
+            var rtn_key = new uint[2];
+            var leftNum = lefttable[number];
 
             //获取高一位或者高两位
             tmp1 = in_key[0] & leftandtab[leftNum];

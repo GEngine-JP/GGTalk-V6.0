@@ -37,14 +37,14 @@ namespace GGTalk.Server
         {
             if (informationType == InformationTypes.Chat)
             {             
-                string destID = tag;
+                var destID = tag;
                 if (this.rapidServerEngine.UserManager.IsUserOnLine(destID))
                 {
                     this.rapidServerEngine.SendMessage(destID, informationType, info, sourceUserID, 2048);
                 }
                 else
                 {
-                    OfflineMessage msg = new OfflineMessage(sourceUserID, destID, informationType, info);
+                    var msg = new OfflineMessage(sourceUserID, destID, informationType, info);
                     this.globalCache.StoreOfflineMessage(msg);
                 }
                 this.globalCache.StoreChatRecord(sourceUserID, destID, info);
@@ -53,12 +53,12 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.UpdateUserInfo)
             {
-                GGUser user = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<GGUser>(info, 0);
-                GGUser old = this.globalCache.GetUser(user.UserID);               
+                var user = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<GGUser>(info, 0);
+                var old = this.globalCache.GetUser(user.UserID);               
                 this.globalCache.UpdateUser(user);
-                List<string> friendIDs = this.globalCache.GetFriends(sourceUserID);
-                byte[] subData = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize<GGUser>(user.PartialCopy); //0922   
-                foreach (string friendID in friendIDs)
+                var friendIDs = this.globalCache.GetFriends(sourceUserID);
+                var subData = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize<GGUser>(user.PartialCopy); //0922   
+                foreach (var friendID in friendIDs)
                 {
                     if (friendID != sourceUserID)
                     {
@@ -80,7 +80,7 @@ namespace GGTalk.Server
 
         void UserManager_SomeOneDisconnected(UserData data, ESFramework.Server.DisconnectedType obj2)
         {
-            GGUser user = this.globalCache.GetUser(data.UserID);
+            var user = this.globalCache.GetUser(data.UserID);
             if (user != null)
             {
                 user.UserStatus = UserStatus.OffLine;
@@ -90,12 +90,12 @@ namespace GGTalk.Server
         //发送离线消息给客户端
         public void SendOfflineMessage(string destUserID)
         {
-            List<OfflineMessage> list = this.globalCache.PickupOfflineMessage(destUserID);
+            var list = this.globalCache.PickupOfflineMessage(destUserID);
             if (list != null && list.Count > 0)
             {
-                foreach (OfflineMessage msg in list)
+                foreach (var msg in list)
                 {
-                    byte[] bMsg = CompactPropertySerializer.Default.Serialize<OfflineMessage>(msg);
+                    var bMsg = CompactPropertySerializer.Default.Serialize<OfflineMessage>(msg);
                     this.rapidServerEngine.CustomizeController.SendBlob(msg.DestUserID, InformationTypes.OfflineMessage, bMsg, 2048);
                 }
             }
@@ -108,28 +108,28 @@ namespace GGTalk.Server
         {
             if (informationType == InformationTypes.AddFriendCatalog)
             {
-                string catalogName = System.Text.Encoding.UTF8.GetString(info) ;
+                var catalogName = System.Text.Encoding.UTF8.GetString(info) ;
                 this.globalCache.AddFriendCatalog(sourceUserID, catalogName);
                 return;
             }
 
             if (informationType == InformationTypes.RemoveFriendCatalog)
             {
-                string catalogName = System.Text.Encoding.UTF8.GetString(info);
+                var catalogName = System.Text.Encoding.UTF8.GetString(info);
                 this.globalCache.RemoveFriendCatalog(sourceUserID, catalogName);
                 return;
             }
 
             if (informationType == InformationTypes.ChangeFriendCatalogName)
             {
-                ChangeCatalogContract contract = CompactPropertySerializer.Default.Deserialize<ChangeCatalogContract>(info, 0);
+                var contract = CompactPropertySerializer.Default.Deserialize<ChangeCatalogContract>(info, 0);
                 this.globalCache.ChangeFriendCatalogName(sourceUserID, contract.OldName, contract.NewName);
                 return;
             }
 
             if (informationType == InformationTypes.MoveFriendToOtherCatalog)
             {
-                MoveFriendToOtherCatalogContract contract = CompactPropertySerializer.Default.Deserialize<MoveFriendToOtherCatalogContract>(info, 0);
+                var contract = CompactPropertySerializer.Default.Deserialize<MoveFriendToOtherCatalogContract>(info, 0);
                 this.globalCache.MoveFriend(sourceUserID,contract.FriendID, contract.OldCatalog, contract.NewCatalog);
                 return;
             }
@@ -148,7 +148,7 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.QuitGroup)
             {
-                string groupID = System.Text.Encoding.UTF8.GetString(info) ;
+                var groupID = System.Text.Encoding.UTF8.GetString(info) ;
                 this.globalCache.QuitGroup(sourceUserID, groupID);
                 //通知其它组成员
                 this.rapidServerEngine.ContactsController.Broadcast(groupID, BroadcastTypes.SomeoneQuitGroup, System.Text.Encoding.UTF8.GetBytes(sourceUserID),null, ESFramework.ActionTypeOnChannelIsBusy.Continue);
@@ -158,7 +158,7 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.DeleteGroup)
             {
-                string groupID = System.Text.Encoding.UTF8.GetString(info);               
+                var groupID = System.Text.Encoding.UTF8.GetString(info);               
                 //通知其它组成员
                 this.rapidServerEngine.ContactsController.Broadcast(groupID, BroadcastTypes.GroupDeleted, System.Text.Encoding.UTF8.GetBytes(sourceUserID),null, ESFramework.ActionTypeOnChannelIsBusy.Continue);
                 this.globalCache.DeleteGroup(groupID);
@@ -167,7 +167,7 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.RemoveFriend)
             {
-                string friendID = System.Text.Encoding.UTF8.GetString(info);
+                var friendID = System.Text.Encoding.UTF8.GetString(info);
                 this.globalCache.RemoveFriend(sourceUserID, friendID);
                 //通知好友
                 this.rapidServerEngine.CustomizeController.Send(friendID, InformationTypes.FriendRemovedNotify, System.Text.Encoding.UTF8.GetBytes(sourceUserID));
@@ -176,13 +176,13 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.ChangeStatus)
             {
-                GGUser user = this.globalCache.GetUser(sourceUserID);
-                int newStatus = BitConverter.ToInt32(info, 0);
+                var user = this.globalCache.GetUser(sourceUserID);
+                var newStatus = BitConverter.ToInt32(info, 0);
                 user.UserStatus = (UserStatus)newStatus;
-                List<string> contacts = this.globalCache.GetAllContacts(sourceUserID);                          
-                UserStatusChangedContract contract = new UserStatusChangedContract(sourceUserID, newStatus);
-                byte[] msg = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
-                foreach (string friendID in contacts)
+                var contacts = this.globalCache.GetAllContacts(sourceUserID);                          
+                var contract = new UserStatusChangedContract(sourceUserID, newStatus);
+                var msg = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
+                foreach (var friendID in contacts)
                 {
                     this.rapidServerEngine.CustomizeController.Send(friendID, InformationTypes.UserStatusChanged, msg);
                 }                
@@ -191,7 +191,7 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.SystemNotify4AllOnline)
             {                
-                foreach (string userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
+                foreach (var userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
                 {
                     this.rapidServerEngine.CustomizeController.Send(userID, InformationTypes.SystemNotify4AllOnline, info);
                 }
@@ -200,11 +200,11 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.SystemNotify4Group)
             {
-                SystemNotifyContract contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
-                GGGroup group = this.globalCache.GetGroup(contract.GroupID);
+                var contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
+                var group = this.globalCache.GetGroup(contract.GroupID);
                 if (group != null)
                 {
-                    foreach (string userID in group.MemberList)
+                    foreach (var userID in group.MemberList)
                     {
                         this.rapidServerEngine.CustomizeController.Send(userID, InformationTypes.SystemNotify4Group, info);
                     }
@@ -220,14 +220,14 @@ namespace GGTalk.Server
         {
             if (informationType == InformationTypes.GetFriendIDList)
             {
-                List<string> friendIDs = this.globalCache.GetFriends(sourceUserID);
+                var friendIDs = this.globalCache.GetFriends(sourceUserID);
                 return CompactPropertySerializer.Default.Serialize<List<string>>(friendIDs);
             }
 
             if (informationType == InformationTypes.AddFriend)
             {
-                AddFriendContract contract = CompactPropertySerializer.Default.Deserialize<AddFriendContract>(info ,0);
-                bool isExist = this.globalCache.IsUserExist(contract.FriendID);
+                var contract = CompactPropertySerializer.Default.Deserialize<AddFriendContract>(info ,0);
+                var isExist = this.globalCache.IsUserExist(contract.FriendID);
                 if (!isExist)
                 {
                     return BitConverter.GetBytes((int)AddFriendResult.FriendNotExist);
@@ -235,8 +235,8 @@ namespace GGTalk.Server
                 this.globalCache.AddFriend(sourceUserID, contract.FriendID ,contract.CatalogName);
 
                 //0922
-                GGUser owner = this.globalCache.GetUser(sourceUserID);
-                byte[] ownerBuff = CompactPropertySerializer.Default.Serialize<GGUser>(owner);
+                var owner = this.globalCache.GetUser(sourceUserID);
+                var ownerBuff = CompactPropertySerializer.Default.Serialize<GGUser>(owner);
 
                 //通知对方
                 this.rapidServerEngine.CustomizeController.Send(contract.FriendID, InformationTypes.FriendAddedNotify, ownerBuff, true, ESFramework.ActionTypeOnChannelIsBusy.Continue);
@@ -245,13 +245,13 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.GetAllContacts)
             {
-                List<string> contacts = this.globalCache.GetAllContacts(sourceUserID);
-                Dictionary<string, GGUser> contactDic = new Dictionary<string, GGUser>();
-                foreach (string friendID in contacts)
+                var contacts = this.globalCache.GetAllContacts(sourceUserID);
+                var contactDic = new Dictionary<string, GGUser>();
+                foreach (var friendID in contacts)
                 {
                     if (!contactDic.ContainsKey(friendID))
                     {
-                        GGUser friend = this.globalCache.GetUser(friendID);
+                        var friend = this.globalCache.GetUser(friendID);
                         if (friend != null)
                         {
                             contactDic.Add(friendID, friend);
@@ -264,11 +264,11 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.GetSomeUsers)
             {
-                List<string> friendIDs = CompactPropertySerializer.Default.Deserialize<List<string>>(info, 0);
-                List<GGUser> friends = new List<GGUser>();
-                foreach (string friendID in friendIDs)
+                var friendIDs = CompactPropertySerializer.Default.Deserialize<List<string>>(info, 0);
+                var friends = new List<GGUser>();
+                foreach (var friendID in friendIDs)
                 {
-                    GGUser friend = this.globalCache.GetUser(friendID);
+                    var friend = this.globalCache.GetUser(friendID);
                     if (friend != null)
                     {
                         friends.Add(friend);
@@ -280,29 +280,29 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.GetContactsRTData)
             {
-                List<string> contacts = this.globalCache.GetAllContacts(sourceUserID);               
-                Dictionary<string, UserRTData> dic = new Dictionary<string, UserRTData>();
-                foreach (string friendID in contacts)
+                var contacts = this.globalCache.GetAllContacts(sourceUserID);               
+                var dic = new Dictionary<string, UserRTData>();
+                foreach (var friendID in contacts)
                 {
                     if (!dic.ContainsKey(friendID))
                     {
-                        GGUser data = this.globalCache.GetUser(friendID);
+                        var data = this.globalCache.GetUser(friendID);
                         if (data != null)
                         {
-                            UserRTData rtData = new UserRTData(data.UserStatus ,data.Version) ;
+                            var rtData = new UserRTData(data.UserStatus ,data.Version) ;
                             dic.Add(friendID, rtData);
                         }
                     }
                 }     
-                Dictionary<string, int> groupVerDic = this.globalCache.GetMyGroupVersions(sourceUserID);
-                ContactsRTDataContract contract = new ContactsRTDataContract(dic, groupVerDic);
+                var groupVerDic = this.globalCache.GetMyGroupVersions(sourceUserID);
+                var contract = new ContactsRTDataContract(dic, groupVerDic);
                 return CompactPropertySerializer.Default.Serialize(contract);
             }
 
             if (informationType == InformationTypes.GetUserInfo)
             {
-                string target = System.Text.Encoding.UTF8.GetString(info);
-                GGUser user = this.globalCache.GetUser(target);
+                var target = System.Text.Encoding.UTF8.GetString(info);
+                var user = this.globalCache.GetUser(target);
                 if (user == null)
                 {
                     return null;
@@ -316,17 +316,17 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.GetMyGroups)
             {
-                List<GGGroup> myGroups = this.globalCache.GetMyGroups(sourceUserID);
+                var myGroups = this.globalCache.GetMyGroups(sourceUserID);
                 return CompactPropertySerializer.Default.Serialize(myGroups);
             }
 
             if (informationType == InformationTypes.GetSomeGroups)
             {
-                List<string> groups = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<List<string>>(info, 0);
-                List<GGGroup> myGroups = new List<GGGroup>();
-                foreach (string groupID in groups)
+                var groups = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<List<string>>(info, 0);
+                var myGroups = new List<GGGroup>();
+                foreach (var groupID in groups)
                 {
-                    GGGroup group = this.globalCache.GetGroup(groupID);
+                    var group = this.globalCache.GetGroup(groupID);
                     if (group != null)
                     {
                         myGroups.Add(group);
@@ -338,8 +338,8 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.JoinGroup)
             {
-                string groupID = System.Text.Encoding.UTF8.GetString(info);
-                JoinGroupResult res = this.globalCache.JoinGroup(sourceUserID, groupID);
+                var groupID = System.Text.Encoding.UTF8.GetString(info);
+                var res = this.globalCache.JoinGroup(sourceUserID, groupID);
                 if (res == JoinGroupResult.Succeed)
                 {
                     //通知其它组成员
@@ -350,22 +350,22 @@ namespace GGTalk.Server
 
             if (informationType == InformationTypes.CreateGroup)
             {
-                CreateGroupContract contract = CompactPropertySerializer.Default.Deserialize<CreateGroupContract>(info, 0);
-                CreateGroupResult res = this.globalCache.CreateGroup(sourceUserID, contract.ID, contract.Name, contract.Announce);               
+                var contract = CompactPropertySerializer.Default.Deserialize<CreateGroupContract>(info, 0);
+                var res = this.globalCache.CreateGroup(sourceUserID, contract.ID, contract.Name, contract.Announce);               
                 return BitConverter.GetBytes((int)res);
             }
 
             if (informationType == InformationTypes.GetGroup)
             {
-                string groupID = System.Text.Encoding.UTF8.GetString(info);
-                GGGroup group = this.globalCache.GetGroup(groupID);
+                var groupID = System.Text.Encoding.UTF8.GetString(info);
+                var group = this.globalCache.GetGroup(groupID);
                 return CompactPropertySerializer.Default.Serialize(group);
             }
 
             if (informationType == InformationTypes.ChangePassword)
             {
-                ChangePasswordContract contract = CompactPropertySerializer.Default.Deserialize<ChangePasswordContract>(info, 0);
-                ChangePasswordResult res = this.globalCache.ChangePassword(sourceUserID, contract.OldPasswordMD5, contract.NewPasswordMD5);
+                var contract = CompactPropertySerializer.Default.Deserialize<ChangePasswordContract>(info, 0);
+                var res = this.globalCache.ChangePassword(sourceUserID, contract.OldPasswordMD5, contract.NewPasswordMD5);
                 return BitConverter.GetBytes((int)res);
             }
             return null;

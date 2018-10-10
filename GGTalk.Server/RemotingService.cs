@@ -26,9 +26,9 @@ namespace GGTalk.Server
 
         public void SendSystemNotify(string title, string content)
         {
-            SystemNotifyContract contract = new SystemNotifyContract(title, content, "", null);
-            byte[] info = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
-            foreach (string userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
+            var contract = new SystemNotifyContract(title, content, "", null);
+            var info = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(contract);
+            foreach (var userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
             {
                 this.rapidServerEngine.CustomizeController.Send(userID, InformationTypes.SystemNotify4AllOnline, info);
             }
@@ -69,7 +69,7 @@ namespace GGTalk.Server
 
         public ChatRecordPage GetGroupChatRecordPage(ChatRecordTimeScope timeScope, string groupID, int pageSize, int pageIndex)
         {
-            ChatRecordPage page = this.globalCache.GetGroupChatRecordPage(timeScope ,groupID, pageSize, pageIndex);
+            var page = this.globalCache.GetGroupChatRecordPage(timeScope ,groupID, pageSize, pageIndex);
             return page;
         }       
 

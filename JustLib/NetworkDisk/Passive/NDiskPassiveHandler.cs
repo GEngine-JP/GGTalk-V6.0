@@ -42,7 +42,7 @@ namespace JustLib.NetworkDisk.Passive
 
         void fileOutter_FileRequestReceived(string projectID, string senderID, string fileName, ulong totalSize, ResumedProjectItem resumedFileItem, string comment)
         {
-            NDiskParameters paras = Comment4NDisk.Parse(comment);
+            var paras = Comment4NDisk.Parse(comment);
             if (paras == null)
             {
                 return;
@@ -50,8 +50,8 @@ namespace JustLib.NetworkDisk.Passive
 
             //string savePath = resumedFileItem != null ? resumedFileItem.LocalSavePath : comment; 
             //上述bug，2014.11.04修复
-            string savePath = resumedFileItem != null ? resumedFileItem.LocalSavePath : paras.DirectoryPath;
-            string fullPath = this.ConstructFullPath(savePath);
+            var savePath = resumedFileItem != null ? resumedFileItem.LocalSavePath : paras.DirectoryPath;
+            var fullPath = this.ConstructFullPath(savePath);
             if (savePath != null && savePath.Length >= 2 && savePath[1] == ':') //表示为含驱动器的绝对路径。
             {
                 fullPath = savePath;
@@ -84,9 +84,9 @@ namespace JustLib.NetworkDisk.Passive
         {
             if (informationType == this.fileDirectoryInfoTypes.CreateDirectory)
             {
-                CreateDirectoryContract contract = CompactPropertySerializer.Default.Deserialize<CreateDirectoryContract>(info, 0);
-                string fullPath = this.ConstructFullPath(contract.ParentDirectoryPath);
-                DirectoryInfo dir = new DirectoryInfo(fullPath);
+                var contract = CompactPropertySerializer.Default.Deserialize<CreateDirectoryContract>(info, 0);
+                var fullPath = this.ConstructFullPath(contract.ParentDirectoryPath);
+                var dir = new DirectoryInfo(fullPath);
                 Directory.CreateDirectory(fullPath + "\\" + contract.NewDirectoryName);
                 return;
             }
@@ -97,9 +97,9 @@ namespace JustLib.NetworkDisk.Passive
             #region ReqDirectory
             if (informationType == this.fileDirectoryInfoTypes.ReqDirectory)
             {
-                ReqDirectoryContract contract = CompactPropertySerializer.Default.Deserialize<ReqDirectoryContract>(info, 0);
-                string fullPath = this.ConstructFullPath(contract.DirectoryPath);
-                SharedDirectory dir = SharedDirectory.GetSharedDirectory(fullPath);
+                var contract = CompactPropertySerializer.Default.Deserialize<ReqDirectoryContract>(info, 0);
+                var fullPath = this.ConstructFullPath(contract.DirectoryPath);
+                var dir = SharedDirectory.GetSharedDirectory(fullPath);
                 return CompactPropertySerializer.Default.Serialize<ResDirectoryContract>(new ResDirectoryContract(dir));
             }
             #endregion
@@ -107,8 +107,8 @@ namespace JustLib.NetworkDisk.Passive
             #region Rename
             if (informationType == this.fileDirectoryInfoTypes.Rename)
             {
-                RenameContract contract = CompactPropertySerializer.Default.Deserialize<RenameContract>(info, 0);
-                string fullPath = this.ConstructFullPath(contract.ParentDirectoryPath);
+                var contract = CompactPropertySerializer.Default.Deserialize<RenameContract>(info, 0);
+                var fullPath = this.ConstructFullPath(contract.ParentDirectoryPath);
                 try
                 {
                     if (contract.IsFile)
@@ -124,7 +124,7 @@ namespace JustLib.NetworkDisk.Passive
                 }
                 catch (Exception ee)
                 {
-                    string error = "";
+                    var error = "";
                     if (ee is IOException)
                     {
                         error = string.Format("{0} 正在被使用！", Path.GetFileName(contract.OldName));
@@ -141,19 +141,19 @@ namespace JustLib.NetworkDisk.Passive
             #region DownloadFile
             if (informationType == this.fileDirectoryInfoTypes.Download)
             {
-                DownloadContract contract = CompactPropertySerializer.Default.Deserialize<DownloadContract>(info, 0);
-                string fullPath = this.ConstructFullPath(contract.SourceRemotePath);
+                var contract = CompactPropertySerializer.Default.Deserialize<DownloadContract>(info, 0);
+                var fullPath = this.ConstructFullPath(contract.SourceRemotePath);
                 if (contract.IsFile)
                 {
                     try
                     {
-                        FileStream stream = File.OpenRead(fullPath);
+                        var stream = File.OpenRead(fullPath);
                         stream.Close();
                         stream.Dispose();
                     }
                     catch (Exception ee)
                     {
-                        string error = "";
+                        var error = "";
                         if (ee is FileNotFoundException)
                         {
                             error = string.Format("{0} 不存在或已经被删除！", Path.GetFileName(fullPath));
@@ -174,7 +174,7 @@ namespace JustLib.NetworkDisk.Passive
                 {
                     if (!Directory.Exists(fullPath))
                     {
-                        string error = string.Format("{0} 不存在或已经被删除！", Path.GetFileName(fullPath));
+                        var error = string.Format("{0} 不存在或已经被删除！", Path.GetFileName(fullPath));
                         return CompactPropertySerializer.Default.Serialize<OperationResultConatract>(new OperationResultConatract(error));
                     }
                 }
@@ -188,16 +188,16 @@ namespace JustLib.NetworkDisk.Passive
             #region DeleteFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Delete)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();
+                var resultContract = new OperationResultConatract();
                 try
                 {
-                    DeleteContract contract = CompactPropertySerializer.Default.Deserialize<DeleteContract>(info, 0);
-                    string fullPath = this.ConstructFullPath(contract.SourceParentDirectoryPath);
+                    var contract = CompactPropertySerializer.Default.Deserialize<DeleteContract>(info, 0);
+                    var fullPath = this.ConstructFullPath(contract.SourceParentDirectoryPath);
                     if (contract.FilesBeDeleted != null)
                     {
-                        foreach (string fileName in contract.FilesBeDeleted)
+                        foreach (var fileName in contract.FilesBeDeleted)
                         {
-                            string filePath = fullPath + fileName;
+                            var filePath = fullPath + fileName;
                             if (File.Exists(filePath))
                             {
                                 File.Delete(filePath);
@@ -207,9 +207,9 @@ namespace JustLib.NetworkDisk.Passive
 
                     if (contract.DirectoriesBeDeleted != null)
                     {
-                        foreach (string dirName in contract.DirectoriesBeDeleted)
+                        foreach (var dirName in contract.DirectoriesBeDeleted)
                         {
-                            string dirPath = fullPath + dirName + "\\";
+                            var dirPath = fullPath + dirName + "\\";
                             if (Directory.Exists(dirPath))
                             {
                                 FileHelper.DeleteDirectory(dirPath);
@@ -228,10 +228,10 @@ namespace JustLib.NetworkDisk.Passive
             #region CopyFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Copy)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();               
+                var resultContract = new OperationResultConatract();               
                 try
                 {
-                    CopyContract contract = CompactPropertySerializer.Default.Deserialize<CopyContract>(info, 0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<CopyContract>(info, 0);
                     FileHelper.Copy(this.ConstructFullPath(contract.SourceParentDirectoryPath), contract.FilesBeCopyed, contract.DirectoriesBeCopyed, this.ConstructFullPath(contract.DestParentDirectoryPath));
                 }
                 catch (Exception ee)
@@ -245,10 +245,10 @@ namespace JustLib.NetworkDisk.Passive
             #region MoveFileOrDirectory
             if (informationType == this.fileDirectoryInfoTypes.Move)
             {
-                OperationResultConatract resultContract = new OperationResultConatract();
+                var resultContract = new OperationResultConatract();
                 try
                 {
-                    MoveContract contract = CompactPropertySerializer.Default.Deserialize<MoveContract>(info, 0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<MoveContract>(info, 0);
                     FileHelper.Move(this.ConstructFullPath(contract.OldParentDirectoryPath), contract.FilesBeMoved, contract.DirectoriesBeMoved, this.ConstructFullPath(contract.NewParentDirectoryPath));
                 }
                 catch (Exception ee)

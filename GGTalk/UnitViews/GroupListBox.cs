@@ -35,7 +35,7 @@ namespace GGTalk.UnitViews
 
         public void AddGroup(IGroup group)
         {
-            ChatListSubItem subItem = new ChatListSubItem(group.ID, "", group.Name, string.Format("{0}人", group.MemberList.Count), ChatListSubItem.UserStatus.Online, this.imageList1.Images[0]);
+            var subItem = new ChatListSubItem(group.ID, "", group.Name, string.Format("{0}人", group.MemberList.Count), ChatListSubItem.UserStatus.Online, this.imageList1.Images[0]);
             subItem.Tag = group;
 #if !Org
             this.chatListBox_group.Items[0].SubItems.Add(subItem);
@@ -59,7 +59,7 @@ namespace GGTalk.UnitViews
 
         public void SetTwinkleState(string groupID, bool twinkle)
         {
-            ChatListSubItem[] items = this.chatListBox_group.GetSubItemsById(groupID);
+            var items = this.chatListBox_group.GetSubItemsById(groupID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -69,7 +69,7 @@ namespace GGTalk.UnitViews
 
         public void GroupInfoChanged(IGroup group, GroupChangedType type, string userID)
         {
-            ChatListSubItem[] subItems = this.chatListBox_group.GetSubItemsById(group.ID);
+            var subItems = this.chatListBox_group.GetSubItemsById(group.ID);
             if (type == GroupChangedType.GroupDeleted)
             {
                 if (subItems == null || subItems.Length == 0)
@@ -83,7 +83,7 @@ namespace GGTalk.UnitViews
 
             if (subItems == null || subItems.Length == 0)
             {
-                ChatListSubItem subItem = new ChatListSubItem(group.ID, "", group.Name, string.Format("{0}人", group.MemberList.Count), ChatListSubItem.UserStatus.Online, this.imageList1.Images[0]);
+                var subItem = new ChatListSubItem(group.ID, "", group.Name, string.Format("{0}人", group.MemberList.Count), ChatListSubItem.UserStatus.Online, this.imageList1.Images[0]);
                 subItem.Tag = group;
 #if !Org
                 this.chatListBox_group.Items[0].SubItems.Add(subItem);
@@ -114,7 +114,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            IGroup group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
+            var group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
             if (this.ChatRecordClicked != null)
             {
                 this.ChatRecordClicked(group);
@@ -129,7 +129,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            IGroup group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
+            var group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
             if (this.QuitGroupClicked != null)
             {
                 this.QuitGroupClicked(group);
@@ -143,7 +143,7 @@ namespace GGTalk.UnitViews
                 return;
             }
 
-            IGroup group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
+            var group = (IGroup)this.chatListBox_group.SelectSubItem.Tag;
             if (this.DismissGroupClicked != null)
             {
                 this.DismissGroupClicked(group);
@@ -152,8 +152,8 @@ namespace GGTalk.UnitViews
 
         private void chatListBox_group_DoubleClickSubItem(object sender, ChatListEventArgs e)
         {
-            ChatListSubItem item = e.SelectSubItem;
-            IGroup group = (IGroup)item.Tag;
+            var item = e.SelectSubItem;
+            var group = (IGroup)item.Tag;
             item.IsTwinkle = false;
 
             if (this.GroupDoubleClicked != null)

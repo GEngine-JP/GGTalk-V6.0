@@ -30,7 +30,7 @@ namespace GGTalk
         private void FrmInformation_Load(object sender, EventArgs e)
         {
             //初始化窗口出现位置
-            Point p = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
+            var p = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
             this.PointToScreen(p);
             this.Location = p;
             NativeMethods.AnimateWindow(this.Handle, 130, AW.AW_SLIDE + AW.AW_VER_NEGATIVE);//开始窗体动画

@@ -19,8 +19,8 @@ namespace GGTalk.Controls
         public static GraphicsPath CreatePath(
             Rectangle rect, int radius, RoundStyle style, bool correction)
         {
-            GraphicsPath path = new GraphicsPath();
-            int radiusCorrection = correction ? 1 : 0;
+            var path = new GraphicsPath();
+            var radiusCorrection = correction ? 1 : 0;
             switch (style)
             {
                 case RoundStyle.None:

@@ -52,7 +52,7 @@ namespace GGTalk.Controls
         public void Initialize(IList<Image> _imageList)
         {
             this.imageList = _imageList;
-            int count = (int)Math.Sqrt(this.imageList.Count);
+            var count = (int)Math.Sqrt(this.imageList.Count);
             if (count < 10)
             {
                 count = 10;
@@ -62,7 +62,7 @@ namespace GGTalk.Controls
                 count += 2;
             }
             this.countPerLine = count;
-            int countPerCol = this.imageList.Count / this.countPerLine;
+            var countPerCol = this.imageList.Count / this.countPerLine;
             countPerCol += (this.imageList.Count % this.countPerLine == 0) ? 0 : 1;
             this.validRegion = new Rectangle(new Point(0, 0), new Size(this.countPerLine * (this.span + this.imageLength), countPerCol * (this.span + this.imageLength)));
             this.Height = this.validRegion.Height + this.span/2;
@@ -75,26 +75,26 @@ namespace GGTalk.Controls
         {
             base.OnPaint(e);
 
-            int countPerCol = this.imageList.Count / this.countPerLine;
+            var countPerCol = this.imageList.Count / this.countPerLine;
             countPerCol += (this.imageList.Count % this.countPerLine == 0) ? 0 : 1;
 
-            Pen pen = new Pen(Color.LightGray ,1);
-            for (int i = 0; i <= this.countPerLine; i++)
+            var pen = new Pen(Color.LightGray ,1);
+            for (var i = 0; i <= this.countPerLine; i++)
             {
                 e.Graphics.DrawLine(pen, new Point(i * (this.imageLength + this.span), 2), new Point(i * (this.imageLength + this.span), countPerCol * (this.imageLength + this.span)));
             }
 
-            for (int i = 0; i <= countPerCol; i++)
+            for (var i = 0; i <= countPerCol; i++)
             {
                 e.Graphics.DrawLine(pen, new Point(0, i * (this.imageLength + this.span) + 2), new Point((this.imageLength + this.span) * this.countPerLine, i * (this.imageLength + this.span) + 2));
             }
 
-            for (int i = 0; i < this.imageList.Count; i++)
+            for (var i = 0; i < this.imageList.Count; i++)
             {
-                int y = i / this.countPerLine;
-                int x = i % this.countPerLine;
+                var y = i / this.countPerLine;
+                var x = i % this.countPerLine;
 
-                Point start =new Point(x * (this.imageLength + this.span) + this.span-2, y * (this.imageLength + this.span) + this.span) ;
+                var start =new Point(x * (this.imageLength + this.span) + this.span-2, y * (this.imageLength + this.span) + this.span) ;
                 e.Graphics.DrawImage(this.imageList[i],new Rectangle(start,new Size(this.imageLength,this.imageLength))) ;
                     //new Point(x * (this.imageLength + this.span) + this.span-2, y * (this.imageLength + this.span) + this.span));
             }
@@ -104,7 +104,7 @@ namespace GGTalk.Controls
         #region FaceEmotionBoard_MouseClick
         private void FaceEmotionBoard_MouseClick(object sender, MouseEventArgs e)
         {
-            int index = this.GetEmotionIndex(e.Location);
+            var index = this.GetEmotionIndex(e.Location);
             if (index >= 0 && index < this.imageList.Count)
             {
                 this.EmotionClicked(index ,this.imageList[index]);
@@ -118,8 +118,8 @@ namespace GGTalk.Controls
                 return -1;
             }
 
-            int col = (pt.X - this.span) / (this.imageLength + this.span);
-            int line = (pt.Y - this.span) / (this.imageLength + this.span);
+            var col = (pt.X - this.span) / (this.imageLength + this.span);
+            var line = (pt.Y - this.span) / (this.imageLength + this.span);
             return line * this.countPerLine + col;
         } 
         #endregion      

@@ -25,7 +25,7 @@ namespace JustLib.NetworkDisk.Server
 
         void fileController_FileRequestReceived(string fileID, string senderID, string fileName, ulong fileLength, ResumedProjectItem resumedFileItem, string comment)
         {
-            NDiskParameters paras = Comment4NDisk.Parse(comment);
+            var paras = Comment4NDisk.Parse(comment);
             if (paras == null)
             {
                 return;
@@ -37,7 +37,7 @@ namespace JustLib.NetworkDisk.Server
                 return;
             }
 
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(senderID, paras.NetDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(senderID, paras.NetDiskID);
             this.fileController.BeginReceiveFile(fileID, rootPath + paras.DirectoryPath);
         }           
 
@@ -52,14 +52,14 @@ namespace JustLib.NetworkDisk.Server
         #region GetNetworkDisk
         public SharedDirectory GetNetworkDisk(string clientUserID, string netDiskID, string dirPath)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             if (rootPath == null)
             {
                 return null;
             }
 
-            string iniDirName = this.networkDiskPathManager.GetNetworkDiskIniDirName(clientUserID, netDiskID);
-            string diskRpotDir = rootPath + "\\" + iniDirName + "\\";
+            var iniDirName = this.networkDiskPathManager.GetNetworkDiskIniDirName(clientUserID, netDiskID);
+            var diskRpotDir = rootPath + "\\" + iniDirName + "\\";
             if (!Directory.Exists(diskRpotDir))
             {
                 Directory.CreateDirectory(diskRpotDir);
@@ -67,8 +67,8 @@ namespace JustLib.NetworkDisk.Server
 
             if (dirPath == null)
             {
-                SharedDirectory dir = new SharedDirectory();
-                DiskDrive disk = new DiskDrive();
+                var dir = new SharedDirectory();
+                var disk = new DiskDrive();
                 disk.Name = iniDirName;
                 disk.TotalSize = this.networkDiskPathManager.GetNetworkDiskTotalSize(clientUserID, netDiskID);
                 disk.AvailableFreeSpace = disk.TotalSize - this.networkDiskPathManager.GetNetworkDiskSizeUsed(clientUserID, netDiskID);
@@ -84,8 +84,8 @@ namespace JustLib.NetworkDisk.Server
         #region GetNetworkDiskState
         public NetworkDiskState GetNetworkDiskState(string clientUserID, string netDiskID)
         {
-            ulong total = this.networkDiskPathManager.GetNetworkDiskTotalSize(clientUserID, netDiskID);
-            ulong used = this.networkDiskPathManager.GetNetworkDiskSizeUsed(clientUserID, netDiskID);
+            var total = this.networkDiskPathManager.GetNetworkDiskTotalSize(clientUserID, netDiskID);
+            var used = this.networkDiskPathManager.GetNetworkDiskSizeUsed(clientUserID, netDiskID);
 
             return new NetworkDiskState(total, used);
         }
@@ -94,7 +94,7 @@ namespace JustLib.NetworkDisk.Server
         #region CreateDirectory
         public void CreateDirectory(string clientUserID, string netDiskID, string parentDirectoryPath, string newDirName)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             Directory.CreateDirectory(rootPath + parentDirectoryPath + newDirName);
         }
         #endregion
@@ -102,12 +102,12 @@ namespace JustLib.NetworkDisk.Server
         #region DeleteFileOrDirectory
         public void DeleteFileOrDirectory(string clientUserID, string netDiskID, string sourceParentDirectoryPath, IList<string> filesBeDeleted, IList<string> directoriesBeDeleted)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             if (filesBeDeleted != null)
             {
-                foreach (string fileName in filesBeDeleted)
+                foreach (var fileName in filesBeDeleted)
                 {
-                    string filePath = rootPath + sourceParentDirectoryPath + fileName;
+                    var filePath = rootPath + sourceParentDirectoryPath + fileName;
                     if (File.Exists(filePath))
                     {
                         File.Delete(filePath);
@@ -117,9 +117,9 @@ namespace JustLib.NetworkDisk.Server
 
             if (directoriesBeDeleted != null)
             {
-                foreach (string dirName in directoriesBeDeleted)
+                foreach (var dirName in directoriesBeDeleted)
                 {
-                    string dirPath = rootPath + sourceParentDirectoryPath + dirName + "\\";
+                    var dirPath = rootPath + sourceParentDirectoryPath + dirName + "\\";
                     if (Directory.Exists(dirPath))
                     {
                         FileHelper.DeleteDirectory(dirPath);
@@ -132,7 +132,7 @@ namespace JustLib.NetworkDisk.Server
         #region Rename
         public void Rename(string clientUserID, string netDiskID, string parentDirectoryPath, bool isFile, string oldName, string newName)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             if (isFile)
             {
                 File.Move(rootPath + parentDirectoryPath + oldName, rootPath + parentDirectoryPath + newName);
@@ -147,7 +147,7 @@ namespace JustLib.NetworkDisk.Server
         #region Move
         public void Move(string clientUserID, string netDiskID, string oldParentDirectoryPath, IEnumerable<string> filesBeMoved, IEnumerable<string> directoriesBeMoved, string newParentDirectoryPath)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             FileHelper.Move(rootPath + oldParentDirectoryPath, filesBeMoved, directoriesBeMoved, rootPath + newParentDirectoryPath);
         }
         #endregion
@@ -155,7 +155,7 @@ namespace JustLib.NetworkDisk.Server
         #region Copy
         public void Copy(string clientUserID, string netDiskID, string sourceParentDirectoryPath, IEnumerable<string> filesBeCopyed, IEnumerable<string> directoriesCopyed, string destParentDirectoryPath)
         {
-            string rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
+            var rootPath = this.networkDiskPathManager.GetNetworkDiskRootPath(clientUserID, netDiskID);
             FileHelper.Copy(rootPath + sourceParentDirectoryPath, filesBeCopyed, directoriesCopyed, rootPath + destParentDirectoryPath);
         }
         #endregion 

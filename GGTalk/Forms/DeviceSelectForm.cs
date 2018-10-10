@@ -155,7 +155,7 @@ namespace GGTalk
                     this.label_error3.Text = "声卡没有安装";
                 }
 
-                bool reIni = this.multimediaManager.CameraDeviceIndex != this.comboBox_camera.SelectedIndex ||
+                var reIni = this.multimediaManager.CameraDeviceIndex != this.comboBox_camera.SelectedIndex ||
                              this.multimediaManager.MicrophoneDeviceIndex != this.comboBox_mic.SelectedIndex ||
                              this.multimediaManager.SpeakerIndex != this.comboBox_speaker.SelectedIndex;
                      

@@ -19,7 +19,7 @@ namespace GGTalk.Controls
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            byte[] data = this.queue.Dequeue();
+            var data = this.queue.Dequeue();
             this.DoDisplayAudioData(data);
         }
 
@@ -100,17 +100,17 @@ namespace GGTalk.Controls
                 return;
             }
 
-            double[] wave = new double[data.Length / 2];
-            int h = 0;
-            for (int i = 0; i < wave.Length; i += 2)
+            var wave = new double[data.Length / 2];
+            var h = 0;
+            for (var i = 0; i < wave.Length; i += 2)
             {
                 wave[h] = (double)BitConverter.ToInt16(data, i); //采样位数为16bit
                 ++h;
             }
 
-            double[] res = FourierTransformer.FFTDb(wave);
+            var res = FourierTransformer.FFTDb(wave);
             double kk = 0;
-            foreach (double dd in res)
+            foreach (var dd in res)
             {
                 kk += dd;
             }
@@ -118,7 +118,7 @@ namespace GGTalk.Controls
             {
                 kk = 0;
             }
-            double rs = kk / res.Length;
+            var rs = kk / res.Length;
             this.showResult(rs);
         }
 
@@ -129,13 +129,13 @@ namespace GGTalk.Controls
                 return;
             }
 
-            double tmp = rs;
+            var tmp = rs;
             if (tmp > int.MaxValue || tmp < int.MinValue)
             {
                 tmp = 0;
             }
 
-            int val = (int)(tmp - 20) * 2;
+            var val = (int)(tmp - 20) * 2;
             if (val < 0)
             {
                 val = 0;

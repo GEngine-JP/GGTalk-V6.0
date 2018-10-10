@@ -12,7 +12,7 @@ using ESPlus.FileTransceiver;
 namespace GGTalk.Controls
 {
     /// <summary>
-    /// ÓÃÓÚÏÔÊ¾µ¥¸öÎÄ¼ş´«ËÍµÄ½ø¶È×´Ì¬¡£
+    /// ç”¨äºæ˜¾ç¤ºå•ä¸ªæ–‡ä»¶ä¼ é€çš„è¿›åº¦çŠ¶æ€ã€‚
     /// </summary>
     public partial class FileTransferItem : UserControl
     {
@@ -32,15 +32,15 @@ namespace GGTalk.Controls
         }
    
         /// <summary>
-        /// FileCanceled µ±µã»÷¡°È¡Ïû¡±°´Å¥Ê±£¬½«´¥·¢´ËÊÂ¼ş¡£
+        /// FileCanceled å½“ç‚¹å‡»â€œå–æ¶ˆâ€æŒ‰é’®æ—¶ï¼Œå°†è§¦å‘æ­¤äº‹ä»¶ã€‚
         /// </summary>
         public event CbFileCanceled FileCanceled;
         /// <summary>
-        /// µ± µã»÷ ¡°½ÓÊÕ¡±°´Å¥ Ê±£¬´¥·¢
+        /// å½“ ç‚¹å‡» â€œæ¥æ”¶â€æŒ‰é’® æ—¶ï¼Œè§¦å‘
         /// </summary>
         public event CbFileReceived FileReceived;
         /// <summary>
-        /// µ±µã»÷¡°¾Ü¾ø¡±°´Å¥Ê±£¬´¥·¢
+        /// å½“ç‚¹å‡»â€œæ‹’ç»â€æŒ‰é’®æ—¶ï¼Œè§¦å‘
         /// </summary>
         public event CbFileRejected FileRejected;
 
@@ -84,19 +84,19 @@ namespace GGTalk.Controls
                 this.skinLabel_receive.Enabled = true;
                 this.skinLabel_cancel.Visible = true;
                 this.skinLabel_cancel.Enabled = true;
-                this.skinLabel_cancel.Text = "¾Ü¾ø";
+                this.skinLabel_cancel.Text = "æ‹’ç»";
 
                 if (doneAgreed)
                 {
                     this.skinLabel_receive.Enabled = false;
                     this.skinLabel_receive.Visible = false;
-                    this.skinLabel_cancel.Text = "È¡Ïû";
+                    this.skinLabel_cancel.Text = "å–æ¶ˆ";
                 }
             }         
             this.label_speed.Visible = false;
             this.skinLabel_speedTitle.Visible = false;
 
-            string sizeStr = PublicHelper.GetSizeString((ulong)this.transmittingFileInfo.TotalSize);
+            var sizeStr = PublicHelper.GetSizeString((ulong)this.transmittingFileInfo.TotalSize);
             this.label_fileSize.Text = sizeStr;
         }
         private void ShowIcon(string fileName ,bool isFolder)
@@ -108,16 +108,16 @@ namespace GGTalk.Controls
             }
             else
             {
-                string[] ary = fileName.Split('.');
+                var ary = fileName.Split('.');
                 if (ary.Length == 1)
                 {
-                    Icon icon = WindowsHelper.GetSystemIconByFileType(".txt", true);
+                    var icon = WindowsHelper.GetSystemIconByFileType(".txt", true);
                     bmp = icon.ToBitmap();
                 }
                 else
                 {
-                    string extendName = "." + ary[ary.Length - 1].ToLower();
-                    Icon icon = WindowsHelper.GetSystemIconByFileType(extendName, true);
+                    var extendName = "." + ary[ary.Length - 1].ToLower();
+                    var icon = WindowsHelper.GetSystemIconByFileType(extendName, true);
                     bmp = icon.ToBitmap();
                 }
             }
@@ -132,7 +132,7 @@ namespace GGTalk.Controls
 
         public void CheckZeroSpeed()
         {
-            TimeSpan span = DateTime.Now - this.lastDisplaySpeedTime;
+            var span = DateTime.Now - this.lastDisplaySpeedTime;
 
             if (span.TotalSeconds >= 1)
             {
@@ -143,7 +143,7 @@ namespace GGTalk.Controls
         private DateTime lastSetTime = DateTime.Now;
         public void SetProgress(ulong total, ulong transmitted)
         {
-            TimeSpan span = DateTime.Now - this.lastSetTime;
+            var span = DateTime.Now - this.lastSetTime;
             if (span.TotalSeconds < 0.2)
             {
                 return;
@@ -154,8 +154,8 @@ namespace GGTalk.Controls
         }
 
         private ulong lastSpeed = 0;
-        private bool firstSecond = true; //½â¾öĞø´«Ê±£¬³õÊ¼ËÙ¶È·Ç³£´óµÄbug
-        private ulong totalSize = 1; //½â¾ö0ËÙ¶ÈµÄÎÊÌâ
+        private bool firstSecond = true; //è§£å†³ç»­ä¼ æ—¶ï¼Œåˆå§‹é€Ÿåº¦éå¸¸å¤§çš„bug
+        private ulong totalSize = 1; //è§£å†³0é€Ÿåº¦çš„é—®é¢˜
         private ulong lastTransmitted = 0;
         private void SetProgress2(ulong total, ulong transmitted)
         {            
@@ -175,8 +175,8 @@ namespace GGTalk.Controls
 
                 this.skinProgressBar2.Value = (int)(transmitted * 1000 / total);               
 
-                DateTime now = DateTime.Now;
-                TimeSpan span = now - this.lastDisplaySpeedTime;
+                var now = DateTime.Now;
+                var span = now - this.lastDisplaySpeedTime;
 
                 if (span.TotalSeconds >= 1)
                 {
@@ -187,7 +187,7 @@ namespace GGTalk.Controls
                             lastSpeed = (ulong)((transmitted - this.lastTransmittedPreSecond) / span.TotalSeconds); ;
                         }    
 
-                        ulong transferSpeed = (ulong)((transmitted - this.lastTransmittedPreSecond) / span.TotalSeconds);
+                        var transferSpeed = (ulong)((transmitted - this.lastTransmittedPreSecond) / span.TotalSeconds);
                         //transferSpeed = (transferSpeed + 7 * this.lastSpeed) / 8;
                         this.lastSpeed = transferSpeed;
                         byte littleNum = 0;
@@ -196,10 +196,10 @@ namespace GGTalk.Controls
                             littleNum = 1;
                         }
                         this.label_speed.Text = PublicHelper.GetSizeString((ulong)transferSpeed, littleNum) + "/s";
-                        int leftSecs = transferSpeed == 0 ? 10000 : (int)((total - transmitted) / transferSpeed);
-                        int hour = leftSecs / 3600;
-                        int min = (leftSecs % 3600) / 60;
-                        int sec = ((leftSecs % 3600) % 60) % 60;                       
+                        var leftSecs = transferSpeed == 0 ? 10000 : (int)((total - transmitted) / transferSpeed);
+                        var hour = leftSecs / 3600;
+                        var min = (leftSecs % 3600) / 60;
+                        var sec = ((leftSecs % 3600) % 60) % 60;                       
                         this.lastDisplaySpeedTime = now;
                     }
 
@@ -225,19 +225,19 @@ namespace GGTalk.Controls
         {
             try
             {
-                string savePath = ESBasic.Helpers.FileHelper.GetPathToSave("±£´æ", this.transmittingFileInfo.ProjectName, null);
+                var savePath = ESBasic.Helpers.FileHelper.GetPathToSave("ä¿å­˜", this.transmittingFileInfo.ProjectName, null);
                 if (!string.IsNullOrEmpty(savePath))
                 {
                     //if (ESBasic.Helpers.MachineHelper.GetDiskFreeSpace(savePath.Substring(0, 3)) < (ulong)transmittingFileInfo.TotalSize)
                     //{
-                    //    MessageBox.Show("´ÅÅÌ¿Õ¼ä²»×ã", "GGTalk.Controls");
+                    //    MessageBox.Show("ç£ç›˜ç©ºé—´ä¸è¶³", "GGTalk.Controls");
                     //    return;
                     //}
                     if (this.FileReceived != null)
                     {
                         this.skinLabel_receive.Enabled = false;
                         this.skinLabel_receive.Visible = false;
-                        this.skinLabel_cancel.Text = "È¡Ïû";
+                        this.skinLabel_cancel.Text = "å–æ¶ˆ";
                         this.FileReceived(this, this.transmittingFileInfo.ProjectID, this.transmittingFileInfo.IsSender, savePath);
                     }
                 }
@@ -256,7 +256,7 @@ namespace GGTalk.Controls
         {
             try
             {
-                if (this.skinLabel_cancel.Text == "¾Ü¾ø")
+                if (this.skinLabel_cancel.Text == "æ‹’ç»")
                 {
                     if (this.FileRejected != null)
                     {

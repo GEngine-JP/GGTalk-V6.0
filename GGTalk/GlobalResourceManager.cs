@@ -25,21 +25,21 @@ namespace GGTalk
             try
             {
                 #region Log
-                string logFilePath = SystemSettings.SystemSettingsDir + "AppLog.txt";
+                var logFilePath = SystemSettings.SystemSettingsDir + "AppLog.txt";
                 GlobalResourceManager.logger = new FileAgileLogger(logFilePath);
                 #endregion
 
                 GlobalResourceManager.softwareName = ConfigurationManager.AppSettings["softwareName"];
-                string resourceDir = AppDomain.CurrentDomain.BaseDirectory + "Resource\\";
+                var resourceDir = AppDomain.CurrentDomain.BaseDirectory + "Resource\\";
                 GlobalResourceManager.noneIcon64 = global::GGTalk.Properties.Resources.None64;
                 GlobalResourceManager.groupIcon = ImageHelper.ConvertToIcon(global::GGTalk.Properties.Resources.normal_group_40, 64);
 
                 #region HeadImage
-                List<string> list = ESBasic.Helpers.FileHelper.GetOffspringFiles(AppDomain.CurrentDomain.BaseDirectory + "Head\\");
-                List<string> picList = new List<string>();
-                foreach (string file in list)
+                var list = ESBasic.Helpers.FileHelper.GetOffspringFiles(AppDomain.CurrentDomain.BaseDirectory + "Head\\");
+                var picList = new List<string>();
+                foreach (var file in list)
                 {
-                    string name = file.ToLower();
+                    var name = file.ToLower();
                     if (name.EndsWith(".bmp") || name.EndsWith(".jpg") || name.EndsWith(".jpeg") || name.EndsWith(".png"))
                     {
                         picList.Add(name);
@@ -47,32 +47,32 @@ namespace GGTalk
                 }
                 picList.Sort();
                 GlobalResourceManager.headImages = new Image[picList.Count];
-                for (int i = 0; i < picList.Count; i++)
+                for (var i = 0; i < picList.Count; i++)
                 {
                     GlobalResourceManager.headImages[i] = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "head\\" + list[i]);
                 }
 
                 GlobalResourceManager.headImagesGrey = new Image[picList.Count];
-                for (int i = 0; i < GlobalResourceManager.headImagesGrey.Length; i++)
+                for (var i = 0; i < GlobalResourceManager.headImagesGrey.Length; i++)
                 {
                     GlobalResourceManager.headImagesGrey[i] = ESBasic.Helpers.ImageHelper.ConvertToGrey(GlobalResourceManager.headImages[i]);
                 }
                 #endregion
 
                 #region Emotion
-                List<string> tempList = ESBasic.Helpers.FileHelper.GetOffspringFiles(AppDomain.CurrentDomain.BaseDirectory + "Emotion\\");
-                List<string> emotionFileList = new List<string>();
-                foreach (string file in tempList)
+                var tempList = ESBasic.Helpers.FileHelper.GetOffspringFiles(AppDomain.CurrentDomain.BaseDirectory + "Emotion\\");
+                var emotionFileList = new List<string>();
+                foreach (var file in tempList)
                 {
-                    string name = file.ToLower();
+                    var name = file.ToLower();
                     if (name.EndsWith(".bmp") || name.EndsWith(".jpg") || name.EndsWith(".jpeg") || name.EndsWith(".png") || name.EndsWith(".gif"))
                     {
                         emotionFileList.Add(name);
                     }
                 }
                 emotionFileList.Sort(new Comparison<string>(CompareEmotionName));
-                List<Image> emotionList = new List<Image>();
-                for (int i = 0; i < emotionFileList.Count; i++)
+                var emotionList = new List<Image>();
+                for (var i = 0; i < emotionFileList.Count; i++)
                 {
                     emotionList.Add(Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "Emotion\\" + emotionFileList[i]));
                 }
@@ -80,7 +80,7 @@ namespace GGTalk
 
                 GlobalResourceManager.audioFilePath = resourceDir + "ring.wav";
 
-                int registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
+                var registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
                 GlobalResourceManager.remotingService = (IRemotingService)Activator.GetObject(typeof(IRemotingService), string.Format("tcp://{0}:{1}/RemotingService", ConfigurationManager.AppSettings["ServerIP"], registerPort));
 
                 GlobalResourceManager.png64 = Image.FromFile(resourceDir + "64.png");
@@ -196,10 +196,10 @@ namespace GGTalk
 
         private static Icon CombineStateImage(Image img, Image stateImage)
         {
-            Bitmap bm = new Bitmap(img);
-            using (Graphics g = Graphics.FromImage(bm))
+            var bm = new Bitmap(img);
+            using (var g = Graphics.FromImage(bm))
             {
-                int len = (int)(img.Width * 0.45);
+                var len = (int)(img.Width * 0.45);
                 g.DrawImage(stateImage, new Rectangle(len, len, img.Width - len, img.Height - len), new Rectangle(0, 0, stateImage.Width, stateImage.Height), GraphicsUnit.Pixel);
             }
 
@@ -357,14 +357,14 @@ namespace GGTalk
                 return;
             }
 
-            CbGeneric<string, int> cbPlayAudio = new CbGeneric<string, int>(PlayAudio);
+            var cbPlayAudio = new CbGeneric<string, int>(PlayAudio);
             cbPlayAudio.BeginInvoke(audioFilePath, 1, null, null);
         }
 
         private static string audioFilePath = "";
         private static void PlayAudio(string audioPath, int playTimes)
         {
-            System.Media.SoundPlayer sndPlayer = new System.Media.SoundPlayer(audioPath);
+            var sndPlayer = new System.Media.SoundPlayer(audioPath);
             sndPlayer.Play();
             if (playTimes > 1)
             {
@@ -401,7 +401,7 @@ namespace GGTalk
         {
             if (user.HeadImageIndex >= 0)
             {
-                Image[] ary = (mine ? !user.OnlineOrHide : user.OfflineOrHide) ? GlobalResourceManager.headImagesGrey : GlobalResourceManager.headImages;
+                var ary = (mine ? !user.OnlineOrHide : user.OfflineOrHide) ? GlobalResourceManager.headImagesGrey : GlobalResourceManager.headImages;
                 if (user.HeadImageIndex < GlobalResourceManager.headImages.Length)
                 {
                     return ary[user.HeadImageIndex];

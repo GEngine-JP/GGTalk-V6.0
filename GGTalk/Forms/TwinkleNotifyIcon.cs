@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
-using ESBasic.ObjectManagement;
-using ESBasic;
-using System.Windows.Forms;
 using System.Drawing;
-using ESBasic.ObjectManagement.Forms;
+using System.Windows.Forms;
+using ESBasic;
 using JustLib;
-
 
 namespace GGTalk
 {
     #region support
+
     public enum UnhandleMessageType
     {
         Friend = 0,
@@ -48,7 +44,8 @@ namespace GGTalk
     {
         void HandleReceivedMessage(List<Parameter<string, int, byte[]>> MessageList);
         void HandleReceivedMessage(string broadcasterID, int broadcastType, byte[] content);
-    } 
+    }
+
     #endregion
 
     /// <summary>
@@ -61,15 +58,18 @@ namespace GGTalk
         private List<UnhandleFriendMessageBox> friendQueue = new List<UnhandleFriendMessageBox>();
         private List<UnhandleGroupMessageBox> groupQueue = new List<UnhandleGroupMessageBox>();
         private ITwinkleNotifySupporter twinkleNotifySupporter;
-        private System.Windows.Forms.Timer timer = new Timer();
+        private Timer timer = new Timer();
+
         /// <summary>
         /// 当出现未处理的聊天消息时，在后台线程中触发此事件。
         /// </summary>
         public event CbGeneric<UnhandleMessageType, string> UnhandleMessageOccured;
+
         /// <summary>
         /// 当聊天消息已经被提取时，在后台线程中触发此事件。
         /// </summary>
         public event CbGeneric<UnhandleMessageType, string> UnhandleMessageGone;
+
         public event MouseEventHandler MouseClick;
 
         public TwinkleNotifyIcon(IContainer container)
@@ -100,7 +100,8 @@ namespace GGTalk
             {
                 if (start)
                 {
-                    this.timer.Start(); ;
+                    this.timer.Start();
+                    ;
                 }
                 else
                 {
@@ -115,6 +116,7 @@ namespace GGTalk
 
         private Icon twinkleIcon = null;
         private Icon normalIcon;
+
         public void ChangeMyStatus(UserStatus status)
         {
             this.normalIcon = this.twinkleNotifySupporter.GetStatusIcon(status);
@@ -125,6 +127,7 @@ namespace GGTalk
         }
 
         private string normalText = null;
+
         public void ChangeText(string text)
         {
             this.normalText = text;
@@ -147,9 +150,9 @@ namespace GGTalk
                 {
                     if (this.friendQueue.Count > 0)
                     {
-                        UnhandleFriendMessageBox cache = this.friendQueue[0];
+                        var cache = this.friendQueue[0];
                         this.friendQueue.RemoveAt(0);
-                        IChatForm form = this.twinkleNotifySupporter.GetChatForm(cache.User);
+                        var form = this.twinkleNotifySupporter.GetChatForm(cache.User);
                         if (form != null) //如果为null,表示刚删除好友
                         {
                             form.HandleReceivedMessage(cache.MessageList);
@@ -161,14 +164,15 @@ namespace GGTalk
                         {
                             this.UnhandleMessageGone(UnhandleMessageType.Friend, cache.User);
                         }
+
                         return;
                     }
 
                     if (this.groupQueue.Count > 0)
                     {
-                        UnhandleGroupMessageBox cache = this.groupQueue[0];
+                        var cache = this.groupQueue[0];
                         this.groupQueue.RemoveAt(0);
-                        IGroupChatForm form = this.twinkleNotifySupporter.GetGroupChatForm(cache.Group);
+                        var form = this.twinkleNotifySupporter.GetGroupChatForm(cache.Group);
                         form.HandleReceivedMessage(cache.MessageList);
 
                         this.DetectUnhandleMessage();
@@ -177,6 +181,7 @@ namespace GGTalk
                         {
                             this.UnhandleMessageGone(UnhandleMessageType.Group, cache.Group);
                         }
+
                         return;
                     }
                 }
@@ -211,41 +216,32 @@ namespace GGTalk
         }
 
         #region Property
+
         public ContextMenuStrip ContextMenuStrip
         {
-            get
-            {
-                return this.notifyIcon1.ContextMenuStrip;
-            }
-            set
-            {
-                this.notifyIcon1.ContextMenuStrip = value;
-            }
+            get { return this.notifyIcon1.ContextMenuStrip; }
+            set { this.notifyIcon1.ContextMenuStrip = value; }
         }
 
         public bool Visible
         {
-            get
-            {
-                return this.notifyIcon1.Visible;
-            }
-            set
-            {
-                this.notifyIcon1.Visible = value;
-            }
+            get { return this.notifyIcon1.Visible; }
+            set { this.notifyIcon1.Visible = value; }
         }
+
         #endregion
 
         #region PushFriendMessage
+
         public void PushFriendMessage(string userID, int informationType, byte[] info, object tag)
-        {           
+        {
             lock (this.locker)
             {
                 try
                 {
                     this.twinkleNotifySupporter.PlayAudioAsyn(); //播放消息提示音
                     //首先查看是否已经存在对应的聊天窗口
-                    IChatForm form = this.twinkleNotifySupporter.GetExistedChatForm(userID); 
+                    var form = this.twinkleNotifySupporter.GetExistedChatForm(userID);
                     if (form != null)
                     {
                         form.HandleReceivedMessage(informationType, info, tag);
@@ -257,7 +253,7 @@ namespace GGTalk
                     lock (this.locker)
                     {
                         //先查看queue中目标好友对应的Cache是否存在
-                        for (int i = 0; i < this.friendQueue.Count; i++) 
+                        for (var i = 0; i < this.friendQueue.Count; i++)
                         {
                             if (this.friendQueue[i].User == userID)
                             {
@@ -273,15 +269,16 @@ namespace GGTalk
                             //触发UnhandleMessageOccured事件
                             if (this.UnhandleMessageOccured != null)
                             {
-                                this.UnhandleMessageOccured(UnhandleMessageType.Friend, userID); 
+                                this.UnhandleMessageOccured(UnhandleMessageType.Friend, userID);
                             }
                         }
 
                         cache.MessageList.Add(new Parameter<int, byte[], object>(informationType, info, tag));
                     }
 
-                    string userName = this.twinkleNotifySupporter.GetFriendName(userID);
-                    this.notifyIcon1.Text = string.Format("{0}({1})  {2}条消息", userName, userID, cache.MessageList.Count);
+                    var userName = this.twinkleNotifySupporter.GetFriendName(userID);
+                    this.notifyIcon1.Text =
+                        string.Format("{0}({1})  {2}条消息", userName, userID, cache.MessageList.Count);
                     //获取好友的头像，将其作为托盘图标
                     this.twinkleIcon = this.twinkleNotifySupporter.GetHeadIcon(userID);
                     this.ControlTimer(true); //启动闪烁
@@ -292,15 +289,17 @@ namespace GGTalk
                 }
             }
         }
+
         #endregion
 
         #region PushGroupMessage
+
         public void PushGroupMessage(string broadcasterID, string groupID, int broadcastType, byte[] content)
-        {           
+        {
             lock (this.locker)
             {
-                this.twinkleNotifySupporter.PlayAudioAsyn(); 
-                IGroupChatForm form = this.twinkleNotifySupporter.GetExistedGroupChatForm(groupID);
+                this.twinkleNotifySupporter.PlayAudioAsyn();
+                var form = this.twinkleNotifySupporter.GetExistedGroupChatForm(groupID);
                 if (form != null)
                 {
                     form.HandleReceivedMessage(broadcasterID, broadcastType, content);
@@ -310,7 +309,7 @@ namespace GGTalk
                 UnhandleGroupMessageBox cache = null;
                 lock (this.locker)
                 {
-                    for (int i = 0; i < this.groupQueue.Count; i++)
+                    for (var i = 0; i < this.groupQueue.Count; i++)
                     {
                         if (this.groupQueue[i].Group == groupID)
                         {
@@ -331,22 +330,25 @@ namespace GGTalk
 
                     cache.MessageList.Add(new Parameter<string, int, byte[]>(broadcasterID, broadcastType, content));
                 }
-                string groupName = this.twinkleNotifySupporter.GetGroupName(groupID);
+
+                var groupName = this.twinkleNotifySupporter.GetGroupName(groupID);
                 this.notifyIcon1.Text = string.Format("{0}({1})  {2}条消息", groupName, groupID, cache.MessageList.Count);
                 this.twinkleIcon = this.twinkleNotifySupporter.GroupIcon;
                 this.ControlTimer(true);
             }
         }
+
         #endregion
 
         #region PickoutFriendMessageCache
+
         public UnhandleFriendMessageBox PickoutFriendMessageCache(string userID)
         {
             lock (this.locker)
             {
-                for (int i = 0; i < this.friendQueue.Count; i++)
+                for (var i = 0; i < this.friendQueue.Count; i++)
                 {
-                    UnhandleFriendMessageBox tmp = this.friendQueue[i];
+                    var tmp = this.friendQueue[i];
                     if (tmp.User == userID)
                     {
                         this.friendQueue.RemoveAt(i);
@@ -355,6 +357,7 @@ namespace GGTalk
                         {
                             this.UnhandleMessageGone(UnhandleMessageType.Friend, userID);
                         }
+
                         return tmp;
                     }
                 }
@@ -362,16 +365,18 @@ namespace GGTalk
 
             return null;
         }
+
         #endregion
 
         #region PickoutGroupMessageCache
+
         public UnhandleGroupMessageBox PickoutGroupMessageCache(string groupID)
         {
             lock (this.locker)
             {
-                for (int i = 0; i < this.groupQueue.Count; i++)
+                for (var i = 0; i < this.groupQueue.Count; i++)
                 {
-                    UnhandleGroupMessageBox tmp = this.groupQueue[i];
+                    var tmp = this.groupQueue[i];
                     if (tmp.Group == groupID)
                     {
                         this.groupQueue.RemoveAt(i);
@@ -380,6 +385,7 @@ namespace GGTalk
                         {
                             this.UnhandleMessageGone(UnhandleMessageType.Group, groupID);
                         }
+
                         return tmp;
                     }
                 }
@@ -387,9 +393,11 @@ namespace GGTalk
 
             return null;
         }
+
         #endregion
 
         #region DetectUnhandleMessage
+
         private void DetectUnhandleMessage()
         {
             if (this.friendQueue.Count == 0 && this.groupQueue.Count == 0)
@@ -398,23 +406,27 @@ namespace GGTalk
             }
             else if (this.friendQueue.Count > 0)
             {
-                UnhandleFriendMessageBox cache = this.friendQueue[0];
-                string userName = this.twinkleNotifySupporter.GetFriendName(cache.User);
-                this.notifyIcon1.Text = string.Format("{0}({1})  {2}条消息", cache.User, userName, cache.MessageList.Count);
+                var cache = this.friendQueue[0];
+                var userName = this.twinkleNotifySupporter.GetFriendName(cache.User);
+                this.notifyIcon1.Text =
+                    string.Format("{0}({1})  {2}条消息", cache.User, userName, cache.MessageList.Count);
                 this.twinkleIcon = this.twinkleNotifySupporter.GetHeadIcon(cache.User);
             }
             else
             {
-                UnhandleGroupMessageBox cache = this.groupQueue[0];
-                string groupName = this.twinkleNotifySupporter.GetGroupName(cache.Group);
-                this.notifyIcon1.Text = string.Format("{0}({1})  {2}条消息", groupName, cache.Group, cache.MessageList.Count);
+                var cache = this.groupQueue[0];
+                var groupName = this.twinkleNotifySupporter.GetGroupName(cache.Group);
+                this.notifyIcon1.Text =
+                    string.Format("{0}({1})  {2}条消息", groupName, cache.Group, cache.MessageList.Count);
                 this.twinkleIcon = this.twinkleNotifySupporter.GroupIcon;
             }
         }
+
         #endregion
     }
 
     #region UnhandleFriendMessageBox
+
     public class UnhandleFriendMessageBox
     {
         public UnhandleFriendMessageBox(string user)
@@ -423,12 +435,15 @@ namespace GGTalk
         }
 
         public string User { get; set; }
+
         //object 用于存放解析后的数据
         public List<Parameter<int, byte[], object>> MessageList = new List<Parameter<int, byte[], object>>();
-    } 
+    }
+
     #endregion
 
     #region UnhandleGroupMessageBox
+
     public class UnhandleGroupMessageBox
     {
         public UnhandleGroupMessageBox(string group)
@@ -439,5 +454,6 @@ namespace GGTalk
         public string Group { get; set; }
         public List<Parameter<string, int, byte[]>> MessageList = new List<Parameter<string, int, byte[]>>();
     }
+
     #endregion
 }

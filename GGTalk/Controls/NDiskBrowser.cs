@@ -62,7 +62,7 @@ namespace GGTalk.Controls
         {
             if (this.fileOutter != null)
             {
-                foreach (string projectID in this.fileTransferingViewer1.GetTransferingProjectIDsInCurrentViewer())
+                foreach (var projectID in this.fileTransferingViewer1.GetTransferingProjectIDsInCurrentViewer())
                 {
                     this.fileOutter.CancelTransfering(projectID);
                 }
@@ -72,13 +72,13 @@ namespace GGTalk.Controls
         void fileTransferingViewer1_FileResumedTransStarted(string fileName, bool isSending)
         {
             this.toolStripButton_state.Image = this.imageList2.Images[0];
-            string info = string.Format("{0}： {1} {2}，启动断点续传！", DateTime.Now.ToString(), fileName, isSending ? "上传" : "下载");
+            var info = string.Format("{0}： {1} {2}，启动断点续传！", DateTime.Now.ToString(), fileName, isSending ? "上传" : "下载");
             this.toolStripLabel_msg.Text = info;
         }
 
         void listView_fileDirectory_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            Cursor old = Cursor.Current;
+            var old = Cursor.Current;
             try
             {
                 //输入为空
@@ -88,9 +88,9 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                ListViewItem item = this.listView_fileDirectory.Items[e.Item];
-                string oldName = item.Text;
-                string newName = e.Label;
+                var item = this.listView_fileDirectory.Items[e.Item];
+                var oldName = item.Text;
+                var newName = e.Label;
 
                 foreach (ListViewItem target in this.listView_fileDirectory.Items)
                 {
@@ -108,7 +108,7 @@ namespace GGTalk.Controls
                     this.cutOrCopyAction = null;
                 }
 
-                OperationResult result = this.fileDirectoryOutter.Rename(this.ownerID,this.netDiskID, this.currentDirPath, ((FileOrDirectoryTag)item.Tag).IsFile, oldName, newName);
+                var result = this.fileDirectoryOutter.Rename(this.ownerID,this.netDiskID, this.currentDirPath, ((FileOrDirectoryTag)item.Tag).IsFile, oldName, newName);
                 if (!result.Succeed)
                 {
                     e.CancelEdit = true;
@@ -135,7 +135,7 @@ namespace GGTalk.Controls
 
         void fileTransferingViewer1_FileTransDisruptted(string fileName, bool isSending, FileTransDisrupttedType disrupttedType)
         {
-            string info = string.Format("{0} {1}中断！", fileName, isSending ? "上传" : "下载");
+            var info = string.Format("{0} {1}中断！", fileName, isSending ? "上传" : "下载");
             if (disrupttedType == FileTransDisrupttedType.ActiveCancel)
             {
                 info += "原因：您取消了文件传送。";
@@ -175,7 +175,7 @@ namespace GGTalk.Controls
         void fileTransferingViewer1_FileTransCompleted(string fileName, bool isSending, string comment, bool isFolder)
         {
             this.toolStripButton_state.Image = this.imageList2.Images[0];
-            string info = string.Format("{0} {1}完成！", fileName, isSending ? "上传" : "下载");
+            var info = string.Format("{0} {1}完成！", fileName, isSending ? "上传" : "下载");
             this.toolStripLabel_msg.Text = string.Format("{0}： {1}", DateTime.Now.ToString(), info);
 
             if (isSending)
@@ -195,7 +195,7 @@ namespace GGTalk.Controls
             this.fileTransferingViewer1.Visible = true;
 
             this.toolStripButton_state.Image = this.imageList2.Images[0];
-            string info = string.Format("{0} {1}开始！", fileName, isSending ? "上传" : "下载");
+            var info = string.Format("{0} {1}开始！", fileName, isSending ? "上传" : "下载");
             this.toolStripLabel_msg.Text = string.Format("{0}： {1}", DateTime.Now.ToString(), info);
         }
 
@@ -212,7 +212,7 @@ namespace GGTalk.Controls
                 return;
             }
 
-            ListViewHitTestInfo info = this.listView_fileDirectory.HitTest(e.Location);
+            var info = this.listView_fileDirectory.HitTest(e.Location);
             if (info.Item == null)
             {
                 return;
@@ -220,7 +220,7 @@ namespace GGTalk.Controls
 
             if (!((FileOrDirectoryTag)info.Item.Tag).IsFile) //目录
             {
-                string tempPath = this.currentDirPath;
+                var tempPath = this.currentDirPath;
                 if (tempPath == null)
                 {
                     tempPath = info.Item.Text;
@@ -240,14 +240,14 @@ namespace GGTalk.Controls
 
         private void Download(string fileOrDirName, bool isFile)
         {
-            string tip = "下载文件！请选择保存路径";
+            var tip = "下载文件！请选择保存路径";
 
             if (!isFile)
             {
                 tip = "下载文件夹！请选择保存路径";
             }
 
-            string savePath = FileHelper.GetPathToSave(tip, fileOrDirName, null);
+            var savePath = FileHelper.GetPathToSave(tip, fileOrDirName, null);
             if (savePath == null)
             {
                 return;
@@ -261,7 +261,7 @@ namespace GGTalk.Controls
                 }
             }
 
-            OperationResult operationResult = this.fileDirectoryOutter.Download(this.ownerID, this.netDiskID, this.currentDirPath + fileOrDirName, savePath, isFile);
+            var operationResult = this.fileDirectoryOutter.Download(this.ownerID, this.netDiskID, this.currentDirPath + fileOrDirName, savePath, isFile);
             if (!operationResult.Succeed)
             {
                 MessageBox.Show(operationResult.ErrorMessage);
@@ -288,7 +288,7 @@ namespace GGTalk.Controls
 
         private bool FilterTransferingProject(TransferingProject pro)
         {
-            NDiskParameters para = Comment4NDisk.Parse(pro.Comment);
+            var para = Comment4NDisk.Parse(pro.Comment);
             if (para == null)
             {
                 return false;
@@ -415,12 +415,12 @@ namespace GGTalk.Controls
                 return;
             }
 
-            Cursor old = Cursor.Current;
+            var old = Cursor.Current;
             Cursor.Current = Cursors.WaitCursor;
 
             try
             {
-                SharedDirectory sharedDirectory = this.fileDirectoryOutter.GetSharedDirectory(this.ownerID, this.netDiskID , path);
+                var sharedDirectory = this.fileDirectoryOutter.GetSharedDirectory(this.ownerID, this.netDiskID , path);
                 if (sharedDirectory == null)
                 {
                     MessageBox.Show("网络硬盘未开放！");
@@ -441,9 +441,9 @@ namespace GGTalk.Controls
                     if (sharedDirectory.DirectoryPath == null)
                     {
                         sharedDirectory.DriveList.Sort();
-                        foreach (DiskDrive drive in sharedDirectory.DriveList)
+                        foreach (var drive in sharedDirectory.DriveList)
                         {
-                            int imageIndex = 2;
+                            var imageIndex = 2;
                             if (drive.DriveType == DriveType.CDRom)
                             {
                                 imageIndex = 3;
@@ -452,9 +452,9 @@ namespace GGTalk.Controls
                             {
                                 imageIndex = 4;
                             }
-                            ListViewItem item = new ListViewItem(new string[] { drive.Name, "", "" }, imageIndex);
+                            var item = new ListViewItem(new string[] { drive.Name, "", "" }, imageIndex);
                             item.Tag = new FileOrDirectoryTag(drive.Name, 0, DateTime.Now, false);
-                            string name = drive.VolumeLabel;
+                            var name = drive.VolumeLabel;
                             if (name == null || name.Length == 0)
                             {
                                 name = drive.Name;
@@ -465,17 +465,17 @@ namespace GGTalk.Controls
                     }
                     else
                     {
-                        foreach (DirectoryDetail dirDetail in sharedDirectory.SubDirectorys)
+                        foreach (var dirDetail in sharedDirectory.SubDirectorys)
                         {
-                            ListViewItem item = new ListViewItem(new string[] { dirDetail.Name, dirDetail.CreateTime.ToString(), "" }, 0);
+                            var item = new ListViewItem(new string[] { dirDetail.Name, dirDetail.CreateTime.ToString(), "" }, 0);
                             //ListViewItem item = this.listView_fileDirectory.Items.Add(dirName, 0);
                             item.Tag = new FileOrDirectoryTag(dirDetail.Name, 0, dirDetail.CreateTime, false);
                             this.listView_fileDirectory.Items.Add(item);
                         }
 
-                        foreach (FileDetail file in sharedDirectory.FileList)
+                        foreach (var file in sharedDirectory.FileList)
                         {
-                            ListViewItem item = new ListViewItem(new string[] { file.Name, file.CreateTime.ToString(), PublicHelper.GetSizeString((uint)file.Size) }, this.GetIconIndex(file.Name));
+                            var item = new ListViewItem(new string[] { file.Name, file.CreateTime.ToString(), PublicHelper.GetSizeString((uint)file.Size) }, this.GetIconIndex(file.Name));
                             //ListViewItem item = this.listView_fileDirectory.Items.Add(file.Name, this.GetIconIndex(file.Name));
                             item.Tag = new FileOrDirectoryTag(file.Name, file.Size, file.CreateTime, true);
                             item.ToolTipText = string.Format("大    小：{0}\n创建日期：{1}", PublicHelper.GetSizeString((uint)file.Size), file.CreateTime);
@@ -493,7 +493,7 @@ namespace GGTalk.Controls
                         this.currentDirPath += "\\";
                     }
 
-                    string displayPath = this.IsNetworkDisk ? "网络硬盘" : "共享磁盘" ;
+                    var displayPath = this.IsNetworkDisk ? "网络硬盘" : "共享磁盘" ;
                     if (this.currentDirPath != null && this.currentDirPath != sharedDirectory.DirectoryPath)
                     {
                         displayPath += "\\" + this.currentDirPath; 
@@ -520,7 +520,7 @@ namespace GGTalk.Controls
         private Dictionary<string, int> iconIndexDic = new Dictionary<string, int>();// ".txt" - 3
         private int GetIconIndex(string fileName)
         {
-            string[] ary = fileName.Split('.');
+            var ary = fileName.Split('.');
             if (ary.Length == 1)
             {
                 return 1;
@@ -528,11 +528,11 @@ namespace GGTalk.Controls
 
             try
             {
-                string extendName = "." + ary[ary.Length - 1].ToLower();
+                var extendName = "." + ary[ary.Length - 1].ToLower();
                 if (!this.iconIndexDic.ContainsKey(extendName))
                 {
-                    int index = 1;
-                    Icon icon = WindowsHelper.GetSystemIconByFileType(extendName, true);
+                    var index = 1;
+                    var icon = WindowsHelper.GetSystemIconByFileType(extendName, true);
                     if (icon != null)
                     {
                         this.imageList1.Images.Add(icon);
@@ -578,8 +578,8 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                DirectoryInfo directoryInfo = new DirectoryInfo(this.currentDirPath);
-                string temp = this.currentDirPath.Substring(0, this.currentDirPath.Length - 1);
+                var directoryInfo = new DirectoryInfo(this.currentDirPath);
+                var temp = this.currentDirPath.Substring(0, this.currentDirPath.Length - 1);
                 if (directoryInfo.Parent == null || !temp.Contains("\\"))
                 {
                     this.LoadDirectory(null, true);
@@ -597,8 +597,8 @@ namespace GGTalk.Controls
                 //    this.LoadDirectory(directoryInfo.Parent.FullName, true);
                 //}
 
-                int pos = temp.LastIndexOf('\\');
-                string relativeDir = temp.Substring(0, pos) + "\\";
+                var pos = temp.LastIndexOf('\\');
+                var relativeDir = temp.Substring(0, pos) + "\\";
                 this.LoadDirectory(relativeDir, true);
             }
             catch (Exception ee)
@@ -620,7 +620,7 @@ namespace GGTalk.Controls
 
         private void DirectoryBrowser_SizeChanged(object sender, EventArgs e)
         {
-            int newWidth = this.Width - this.spaceWidth;
+            var newWidth = this.Width - this.spaceWidth;
             if (newWidth < 10)
             {
                 newWidth = 10;
@@ -636,17 +636,17 @@ namespace GGTalk.Controls
         {
             try
             {
-                string dirPath = FileHelper.GetFolderToOpen(false);
+                var dirPath = FileHelper.GetFolderToOpen(false);
                 if (dirPath == null)
                 {
                     return;
                 }
 
-                ulong dirSize = FileHelper.GetDirectorySize(dirPath);
+                var dirSize = FileHelper.GetDirectorySize(dirPath);
                 if (this.IsNetworkDisk)
                 {
-                    NetworkDiskState state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
-                    ulong available = state.TotalSize - state.SizeUsed;
+                    var state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
+                    var available = state.TotalSize - state.SizeUsed;
                     if (available < dirSize)
                     {
                         MessageBox.Show(string.Format("空间不足！网络硬盘剩余空间为{0}，所需空间为{1}！", PublicHelper.GetSizeString(available), PublicHelper.GetSizeString(dirSize)));
@@ -654,9 +654,9 @@ namespace GGTalk.Controls
                     }
                 }
 
-                string containerPath = this.currentDirPath;
-                string[] names = dirPath.Split('\\');
-                string dirName = names[names.Length - 1];
+                var containerPath = this.currentDirPath;
+                var names = dirPath.Split('\\');
+                var dirName = names[names.Length - 1];
                 this.fileDirectoryOutter.Upload(this.ownerID, this.netDiskID, dirPath, containerPath + dirName);
             }
             catch (Exception ee)
@@ -669,13 +669,13 @@ namespace GGTalk.Controls
         {
             try
             {
-                string filePath = FileHelper.GetFileToOpen("请选择要上传的文件");
+                var filePath = FileHelper.GetFileToOpen("请选择要上传的文件");
                 if (filePath == null)
                 {
                     return;
                 }
 
-                string fileName = FileHelper.GetFileNameNoPath(filePath);
+                var fileName = FileHelper.GetFileNameNoPath(filePath);
                 foreach (ListViewItem item in this.listView_fileDirectory.Items)
                 {
                     if (((FileOrDirectoryTag)item.Tag).IsFile && item.Text.ToLower() == fileName.ToLower())
@@ -689,9 +689,9 @@ namespace GGTalk.Controls
 
                 if (this.IsNetworkDisk)
                 {
-                    ulong fileSize = FileHelper.GetFileSize(filePath);
-                    NetworkDiskState state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
-                    ulong available = state.TotalSize - state.SizeUsed;
+                    var fileSize = FileHelper.GetFileSize(filePath);
+                    var state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
+                    var available = state.TotalSize - state.SizeUsed;
                     if (available < fileSize)
                     {
                         MessageBox.Show(string.Format("网络硬盘剩余空间为{0}，无法上传大小为{1}的文件！", PublicHelper.GetSizeString(available), PublicHelper.GetSizeString(fileSize)));
@@ -722,7 +722,7 @@ namespace GGTalk.Controls
                 return;
             }
 
-            ListViewItem item = this.listView_fileDirectory.SelectedItems[0];
+            var item = this.listView_fileDirectory.SelectedItems[0];
 
             if (!WindowsHelper.ShowQuery(string.Format("您确定要删除{0} {1} 吗？", ((FileOrDirectoryTag)item.Tag).IsFile ? "文件" : "文件夹", item.Text)))
             {
@@ -734,8 +734,8 @@ namespace GGTalk.Controls
                 this.cutOrCopyAction = null;
             }
 
-            List<string> files = new List<string>();
-            List<string> dirs = new List<string>();
+            var files = new List<string>();
+            var dirs = new List<string>();
             if (((FileOrDirectoryTag)item.Tag).IsFile)
             {
                 files.Add(item.Text);
@@ -745,7 +745,7 @@ namespace GGTalk.Controls
                 dirs.Add(item.Text);
             }
 
-            OperationResult result = this.fileDirectoryOutter.Delete(this.ownerID, this.netDiskID, this.currentDirPath, files, dirs);
+            var result = this.fileDirectoryOutter.Delete(this.ownerID, this.netDiskID, this.currentDirPath, files, dirs);
             if (!result.Succeed)
             {
                 MessageBox.Show(result.ErrorMessage);
@@ -790,7 +790,7 @@ namespace GGTalk.Controls
                 }
                 else
                 {
-                    ListViewHitTestInfo info = this.listView_fileDirectory.HitTest(e.Location);
+                    var info = this.listView_fileDirectory.HitTest(e.Location);
                     this.listView_fileDirectory.ContextMenuStrip = (info.Item == null ? this.contextMenuStrip_blank : this.contextMenuStrip1);
                     this.toolStripMenuItem_uploadFolder.Visible = this.allowUploadFolder;
                     if (info.Item != null)
@@ -806,7 +806,7 @@ namespace GGTalk.Controls
 
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                TimeSpan span = DateTime.Now - this.lastTimeMouseLeftButtonDown;
+                var span = DateTime.Now - this.lastTimeMouseLeftButtonDown;
                 this.lastTimeMouseLeftButtonDown = DateTime.Now;
                 if (span.TotalMilliseconds < 300)
                 {
@@ -819,7 +819,7 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                ListViewHitTestInfo info = this.listView_fileDirectory.HitTest(e.Location);
+                var info = this.listView_fileDirectory.HitTest(e.Location);
                 if (info.Item == null)
                 {
                     return;
@@ -836,7 +836,7 @@ namespace GGTalk.Controls
                 return;
             }
 
-            ListViewItem item = this.listView_fileDirectory.SelectedItems[0];
+            var item = this.listView_fileDirectory.SelectedItems[0];
 
             this.Download(item.Text, ((FileOrDirectoryTag)item.Tag).IsFile);
         }
@@ -848,12 +848,12 @@ namespace GGTalk.Controls
 
         private void 新建文件夹ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Cursor old = Cursor.Current;
+            var old = Cursor.Current;
             try
             {
-                string name = "新建文件夹";
-                bool found = true;
-                int i = 1;
+                var name = "新建文件夹";
+                var found = true;
+                var i = 1;
                 while (found)
                 {
                     found = false;
@@ -875,7 +875,7 @@ namespace GGTalk.Controls
                 Cursor.Current = Cursors.WaitCursor;
                 this.fileDirectoryOutter.CreateDirectory(this.ownerID, this.netDiskID, this.currentDirPath, name);
 
-                ListViewItem item = new ListViewItem(new string[] { name, DateTime.Now.ToString(), "" }, 0);
+                var item = new ListViewItem(new string[] { name, DateTime.Now.ToString(), "" }, 0);
                 item.Tag = new FileOrDirectoryTag(name, 0, DateTime.Now, false);
                 this.listView_fileDirectory.Items.Add(item);
                 item.BeginEdit();
@@ -911,8 +911,8 @@ namespace GGTalk.Controls
             }
             else
             {
-                ListViewItem target = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
-                ListViewHitTestInfo info = this.listView_fileDirectory.HitTest(this.PointToClient(new Point(e.X, e.Y)));
+                var target = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+                var info = this.listView_fileDirectory.HitTest(this.PointToClient(new Point(e.X, e.Y)));
                 if (info.Item != null && !((FileOrDirectoryTag)info.Item.Tag).IsFile)
                 {
                     info.Item.Selected = true;
@@ -957,14 +957,14 @@ namespace GGTalk.Controls
 
             try
             {
-                string containerPath = this.currentDirPath;
-                ListViewHitTestInfo containerInfo = this.listView_fileDirectory.HitTest(this.PointToClient(new Point(e.X, e.Y)));
+                var containerPath = this.currentDirPath;
+                var containerInfo = this.listView_fileDirectory.HitTest(this.PointToClient(new Point(e.X, e.Y)));
                 if (containerInfo.Item != null && !((FileOrDirectoryTag)containerInfo.Item.Tag).IsFile)
                 {
                     containerPath += containerInfo.Item.Text + "\\";
                 }
 
-                ListViewItem targetItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+                var targetItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
                 if (targetItem != null)
                 {
                     #region 内部拖动
@@ -982,8 +982,8 @@ namespace GGTalk.Controls
                         }
                     }
 
-                    List<string> fileNames = new List<string>();
-                    List<string> dirNames = new List<string>();
+                    var fileNames = new List<string>();
+                    var dirNames = new List<string>();
                     if (((FileOrDirectoryTag)targetItem.Tag).IsFile)
                     {
                         fileNames.Add(targetItem.Text);
@@ -1021,10 +1021,10 @@ namespace GGTalk.Controls
                 if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
                     #region 从外部拖入
-                    string[] fileOrDirs = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    var fileOrDirs = (string[])e.Data.GetData(DataFormats.FileDrop);
                     if (!this.allowUploadFolder)
                     {
-                        foreach (string fileOrDirPath in fileOrDirs)
+                        foreach (var fileOrDirPath in fileOrDirs)
                         {
                             if (Directory.Exists(fileOrDirPath))
                             {
@@ -1035,7 +1035,7 @@ namespace GGTalk.Controls
                     }
 
                     ulong fileSize = 0;
-                    foreach (string fileOrDirPath in fileOrDirs)
+                    foreach (var fileOrDirPath in fileOrDirs)
                     {
                         if (File.Exists(fileOrDirPath))
                         {
@@ -1047,7 +1047,7 @@ namespace GGTalk.Controls
                             fileSize += FileHelper.GetDirectorySize(fileOrDirPath);
                         }
 
-                        string fileOrDirName = FileHelper.GetFileNameNoPath(fileOrDirPath);
+                        var fileOrDirName = FileHelper.GetFileNameNoPath(fileOrDirPath);
 
                         if (this.ExistSameNameItem(containerPath, fileOrDirName))
                         {
@@ -1058,8 +1058,8 @@ namespace GGTalk.Controls
 
                     if (this.IsNetworkDisk)
                     {
-                        NetworkDiskState state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
-                        ulong available = state.TotalSize - state.SizeUsed;
+                        var state = this.fileDirectoryOutter.GetNetworkDiskState(this.netDiskID);
+                        var available = state.TotalSize - state.SizeUsed;
                         if (available < fileSize)
                         {
                             MessageBox.Show(string.Format("空间不足！网络硬盘剩余空间为{0}，所需空间为{1}！", PublicHelper.GetSizeString(available), PublicHelper.GetSizeString(fileSize)));
@@ -1067,18 +1067,18 @@ namespace GGTalk.Controls
                         }
                     }
 
-                    foreach (string fileOrDirPath in fileOrDirs)
+                    foreach (var fileOrDirPath in fileOrDirs)
                     {
                         if (File.Exists(fileOrDirPath))
                         {
-                            string fileName = FileHelper.GetFileNameNoPath(fileOrDirPath);
+                            var fileName = FileHelper.GetFileNameNoPath(fileOrDirPath);
                             this.fileDirectoryOutter.Upload(this.ownerID, this.netDiskID, fileOrDirPath, containerPath + fileName);
                         }
 
                         if (Directory.Exists(fileOrDirPath))
                         {
-                            string[] names = fileOrDirPath.Split('\\');
-                            string dirName = names[names.Length - 1];
+                            var names = fileOrDirPath.Split('\\');
+                            var dirName = names[names.Length - 1];
                             this.fileDirectoryOutter.Upload(this.ownerID, this.netDiskID, fileOrDirPath, containerPath + dirName);
                             //this.UploadDirectory(filePath, containerPath);
                         }
@@ -1110,8 +1110,8 @@ namespace GGTalk.Controls
             }
             else
             {
-                SharedDirectory containerDirectory = this.fileDirectoryOutter.GetSharedDirectory(this.ownerID, this.netDiskID, dirPath);
-                foreach (FileDetail fileDetail in containerDirectory.FileList)
+                var containerDirectory = this.fileDirectoryOutter.GetSharedDirectory(this.ownerID, this.netDiskID, dirPath);
+                foreach (var fileDetail in containerDirectory.FileList)
                 {
                     if (fileDetail.Name.ToLower() == itemName.ToLower())
                     {
@@ -1119,7 +1119,7 @@ namespace GGTalk.Controls
                     }
                 }
 
-                foreach (DirectoryDetail dirDetail in containerDirectory.SubDirectorys)
+                foreach (var dirDetail in containerDirectory.SubDirectorys)
                 {
                     if (dirDetail.Name.ToLower() == itemName.ToLower())
                     {
@@ -1169,8 +1169,8 @@ namespace GGTalk.Controls
                 return;
             }
 
-            List<string> fileNames = new List<string>();
-            List<string> dirNames = new List<string>();
+            var fileNames = new List<string>();
+            var dirNames = new List<string>();
             if (this.cutOrCopyAction.IsFile)
             {
                 fileNames.Add(this.cutOrCopyAction.ItemNameOfCuttedOrCopyed);
@@ -1221,28 +1221,28 @@ namespace GGTalk.Controls
         private int columnIndexToSort = 0;
         public int Compare(object x, object y)
         {
-            FileOrDirectoryTag xTag = (FileOrDirectoryTag)((ListViewItem)x).Tag;
-            FileOrDirectoryTag yTag = (FileOrDirectoryTag)((ListViewItem)y).Tag;
+            var xTag = (FileOrDirectoryTag)((ListViewItem)x).Tag;
+            var yTag = (FileOrDirectoryTag)((ListViewItem)y).Tag;
 
             if (xTag.IsFile == !yTag.IsFile)
             {
-                int res = xTag.IsFile ? 1 : -1;
+                var res = xTag.IsFile ? 1 : -1;
                 return asendingOrder ? res : -res;
             }
 
             if (this.columnIndexToSort == 0)
             {
-                int restult = xTag.Name.CompareTo(yTag.Name);
+                var restult = xTag.Name.CompareTo(yTag.Name);
                 return asendingOrder ? restult : -restult;
             }
 
             if (this.columnIndexToSort == 1)
             {
-                int restult2 = xTag.CreatTime.CompareTo(yTag.CreatTime);
+                var restult2 = xTag.CreatTime.CompareTo(yTag.CreatTime);
                 return asendingOrder ? restult2 : -restult2;
             }
 
-            int restult1 = (int)(xTag.Size - yTag.Size);
+            var restult1 = (int)(xTag.Size - yTag.Size);
             return asendingOrder ? restult1 : -restult1;
         }
 

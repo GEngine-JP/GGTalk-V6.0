@@ -12,7 +12,7 @@ namespace GGTalk.Controls
     {
         public static void DrawCheckedFlag(Graphics graphics, Rectangle rect, Color color)
         {
-            PointF[] points = new PointF[3];
+            var points = new PointF[3];
             points[0] = new PointF(
                 rect.X + rect.Width / 4.5f,
                 rect.Y + rect.Height / 2.5f);
@@ -22,7 +22,7 @@ namespace GGTalk.Controls
             points[2] = new PointF(
                 rect.Right - rect.Width / 4.0f,
                 rect.Y + rect.Height / 4.5f);
-            using (Pen pen = new Pen(color, 2F))
+            using (var pen = new Pen(color, 2F))
             {
                 graphics.DrawLines(pen, points);
             }
@@ -41,10 +41,10 @@ namespace GGTalk.Controls
             int alphaCenter,
             int alphaSurround)
         {
-            using (GraphicsPath path = new GraphicsPath())
+            using (var path = new GraphicsPath())
             {
                 path.AddEllipse(glassRect);
-                using (PathGradientBrush brush = new PathGradientBrush(path))
+                using (var brush = new PathGradientBrush(path))
                 {
                     brush.CenterColor = Color.FromArgb(alphaCenter, glassColor);
                     brush.SurroundColors = new Color[] { 
@@ -112,11 +112,11 @@ namespace GGTalk.Controls
             }
             if (backgroundImageLayout == ImageLayout.Tile)
             {
-                using (TextureBrush brush = new TextureBrush(backgroundImage, WrapMode.Tile))
+                using (var brush = new TextureBrush(backgroundImage, WrapMode.Tile))
                 {
                     if (scrollOffset != Point.Empty)
                     {
-                        Matrix transform = brush.Transform;
+                        var transform = brush.Transform;
                         transform.Translate((float)scrollOffset.X, (float)scrollOffset.Y);
                         brush.Transform = transform;
                     }
@@ -124,7 +124,7 @@ namespace GGTalk.Controls
                     return;
                 }
             }
-            Rectangle rect = CalculateBackgroundImageRectangle(
+            var rect = CalculateBackgroundImageRectangle(
                 bounds,
                 backgroundImage,
                 backgroundImageLayout);
@@ -133,7 +133,7 @@ namespace GGTalk.Controls
             {
                 rect.X += clipRect.Width - rect.Width;
             }
-            using (SolidBrush brush2 = new SolidBrush(backColor))
+            using (var brush2 = new SolidBrush(backColor))
             {
                 g.FillRectangle(brush2, clipRect);
             }
@@ -148,9 +148,9 @@ namespace GGTalk.Controls
                 else if (backgroundImageLayout == ImageLayout.None)
                 {
                     rect.Offset(clipRect.Location);
-                    Rectangle destRect = rect;
+                    var destRect = rect;
                     destRect.Intersect(clipRect);
-                    Rectangle rectangle3 = new Rectangle(Point.Empty, destRect.Size);
+                    var rectangle3 = new Rectangle(Point.Empty, destRect.Size);
                     g.DrawImage(
                         backgroundImage,
                         destRect,
@@ -162,9 +162,9 @@ namespace GGTalk.Controls
                 }
                 else
                 {
-                    Rectangle rectangle4 = rect;
+                    var rectangle4 = rect;
                     rectangle4.Intersect(clipRect);
-                    Rectangle rectangle5 = new Rectangle(
+                    var rectangle5 = new Rectangle(
                         new Point(rectangle4.X - rect.X, rectangle4.Y - rect.Y),
                         rectangle4.Size);
                     g.DrawImage(
@@ -179,7 +179,7 @@ namespace GGTalk.Controls
             }
             else
             {
-                ImageAttributes imageAttr = new ImageAttributes();
+                var imageAttr = new ImageAttributes();
                 imageAttr.SetWrapMode(WrapMode.TileFlipXY);
                 g.DrawImage(
                     backgroundImage,
@@ -199,7 +199,7 @@ namespace GGTalk.Controls
             Image backgroundImage,
             ImageLayout imageLayout)
         {
-            Rectangle rectangle = bounds;
+            var rectangle = bounds;
             if (backgroundImage != null)
             {
                 switch (imageLayout)
@@ -214,7 +214,7 @@ namespace GGTalk.Controls
                     case ImageLayout.Center:
                         {
                             rectangle.Size = backgroundImage.Size;
-                            Size size = bounds.Size;
+                            var size = bounds.Size;
                             if (size.Width > rectangle.Width)
                             {
                                 rectangle.X = (size.Width - rectangle.Width) / 2;
@@ -231,9 +231,9 @@ namespace GGTalk.Controls
 
                     case ImageLayout.Zoom:
                         {
-                            Size size2 = backgroundImage.Size;
-                            float num = ((float)bounds.Width) / ((float)size2.Width);
-                            float num2 = ((float)bounds.Height) / ((float)size2.Height);
+                            var size2 = backgroundImage.Size;
+                            var num = ((float)bounds.Width) / ((float)size2.Width);
+                            var num2 = ((float)bounds.Height) / ((float)size2.Height);
                             if (num >= num2)
                             {
                                 rectangle.Height = bounds.Height;

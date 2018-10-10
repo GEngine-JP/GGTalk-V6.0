@@ -55,12 +55,12 @@ namespace GGTalk.Controls
             this.chatGroup.SomeoneJoin += new ESBasic.CbGeneric<IChatUnit>(chatGroup_SomeoneJoin);
             this.chatGroup.SomeoneExit += new CbGeneric<string>(chatGroup_SomeoneExit);
 
-            SpeakerPanel myselfPanel = new SpeakerPanel();
+            var myselfPanel = new SpeakerPanel();
             myselfPanel.Initialize(this.multimediaManager.CurrentUserID);
             this.flowLayoutPanel1.Controls.Add(myselfPanel);
-            foreach (IChatUnit unit in this.chatGroup.GetOtherMembers())
+            foreach (var unit in this.chatGroup.GetOtherMembers())
             {
-                SpeakerPanel panel = new SpeakerPanel();
+                var panel = new SpeakerPanel();
                 panel.Initialize(unit);
                 this.flowLayoutPanel1.Controls.Add(panel);
             }
@@ -107,7 +107,7 @@ namespace GGTalk.Controls
             }
             else
             {
-                SpeakerPanel panel = new SpeakerPanel();
+                var panel = new SpeakerPanel();
                 panel.Width = this.flowLayoutPanel1.Width - 2;
                 panel.Initialize(unit);
                 this.flowLayoutPanel1.Controls.Add(panel);

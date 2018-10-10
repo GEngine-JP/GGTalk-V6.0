@@ -81,12 +81,12 @@ namespace GGTalk.Controls
                     }
                     else if (Image.Width > this.Width)
                     {
-                        int newImgHeight = this.Width * this._image.Height / this._image.Width; ;
+                        var newImgHeight = this.Width * this._image.Height / this._image.Width; ;
                         _imageRectangle = new Rectangle(0, 0, this.Width, newImgHeight);
                     }
                     else
                     {
-                        int newImgWidth = this.Height * this._image.Width / this._image.Height;
+                        var newImgWidth = this.Height * this._image.Width / this._image.Height;
                         _imageRectangle = new Rectangle(0, 0, newImgWidth, this.Height);
                     }
 

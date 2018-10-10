@@ -170,7 +170,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnButtonDrawStyleClick(EventArgs e)
         {
-            EventHandler handler =
+            var handler =
                base.Events[EventButtonDrawStyleClick] as EventHandler;
             if (handler != null)
             {
@@ -180,7 +180,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnButtonRedoClick(EventArgs e)
         {
-            EventHandler handler = 
+            var handler = 
                 base.Events[EventButtonRedoClick] as EventHandler;
             if(handler != null)
             {
@@ -190,7 +190,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnButtonSaveClick(EventArgs e)
         {
-            EventHandler handler =
+            var handler =
                 base.Events[EventButtonSaveClick] as EventHandler;
             if (handler != null)
             {
@@ -200,7 +200,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnButtonExitClick(EventArgs e)
         {
-            EventHandler handler =
+            var handler =
                 base.Events[EventButtonExitClick] as EventHandler;
             if (handler != null)
             {
@@ -210,7 +210,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnButtonAcceptClick(EventArgs e)
         {
-            EventHandler handler =
+            var handler =
                 base.Events[EventButtonAcceptClick] as EventHandler;
             if (handler != null)
             {
@@ -240,21 +240,21 @@ namespace GGTalk.Controls
         {
             base.OnPaint(e);
 
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
-            using (GraphicsPath path = GraphicsPathHelper.CreatePath(
+            using (var path = GraphicsPathHelper.CreatePath(
                ClientRectangle, 8, RoundStyle.All, false))
             {
-                using (SolidBrush brush = new SolidBrush(ColorTable.BackColorNormal))
+                using (var brush = new SolidBrush(ColorTable.BackColorNormal))
                 {
                     g.FillPath(brush, path);
                 }
-                using (Pen pen = new Pen(ColorTable.BorderColor))
+                using (var pen = new Pen(ColorTable.BorderColor))
                 {
                     g.DrawPath(pen, path);
 
-                    using (GraphicsPath innerPath = GraphicsPathHelper.CreatePath(
+                    using (var innerPath = GraphicsPathHelper.CreatePath(
                         ClientRectangle, 8, RoundStyle.All, true))
                     {
                         g.DrawPath(pen, innerPath);
@@ -269,7 +269,7 @@ namespace GGTalk.Controls
 
         private void SetRegion()
         {
-            using (GraphicsPath path = GraphicsPathHelper.CreatePath(
+            using (var path = GraphicsPathHelper.CreatePath(
                 ClientRectangle, 8, RoundStyle.All, false))
             {
                 if (base.Region != null)

@@ -80,18 +80,18 @@ namespace GGTalk
             this.emotionForm.Visible = false;
             this.emotionForm.LostFocus += new EventHandler(emotionForm_LostFocus);
 
-            foreach (string memberID in this.currentGroup.MemberList)
+            foreach (var memberID in this.currentGroup.MemberList)
             {
-                GGUser friend = this.globalUserCache.GetUser(memberID);
+                var friend = this.globalUserCache.GetUser(memberID);
                 this.AddUserItem(friend);              
             }
 
             if (SystemSettings.Singleton.LoadLastWordsWhenChatFormOpened)
             {
-                LastWordsRecord record = this.currentGroup.Tag as LastWordsRecord;
+                var record = this.currentGroup.Tag as LastWordsRecord;
                 if (record != null)
                 {
-                    string talker = string.Format("{0}({1})", record.SpeakerName, record.SpeakerID);
+                    var talker = string.Format("{0}({1})", record.SpeakerName, record.SpeakerID);
                     this.AppendChatBoxContent(talker, record.SpeakTime, record.ChatBoxContent, Color.Blue);
                 }
             }
@@ -104,7 +104,7 @@ namespace GGTalk
 
         private void AddUserItem(GGUser friend)
         {
-            ChatListSubItem subItem = new ChatListSubItem(friend.UserID, friend.UserID, friend.Name, friend.Signature, GlobalResourceManager.ConvertUserStatus(friend.UserStatus), GlobalResourceManager.GetHeadImage(friend));
+            var subItem = new ChatListSubItem(friend.UserID, friend.UserID, friend.Name, friend.Signature, GlobalResourceManager.ConvertUserStatus(friend.UserStatus), GlobalResourceManager.GetHeadImage(friend));
             subItem.Tag = friend;           
             this.chatListBox1.Items[0].SubItems.AddAccordingToStatus(subItem);
         }
@@ -135,7 +135,7 @@ namespace GGTalk
 
         public void GroupmateStateChanged(string userID, UserStatus newStatus)
         {     
-            ChatListSubItem[] items = this.chatListBox1.GetSubItemsByNicName(userID);
+            var items = this.chatListBox1.GetSubItemsByNicName(userID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -157,14 +157,14 @@ namespace GGTalk
 
             if (type == GroupChangedType.MemberInfoChanged)
             {
-                GGUser user = this.globalUserCache.GetUser(userID);
+                var user = this.globalUserCache.GetUser(userID);
                 this.OnUserInfoChanged(user);
                 return;
             }
 
             if (type == GroupChangedType.SomeoneJoin)
             {
-                GGUser user = this.globalUserCache.GetUser(userID);
+                var user = this.globalUserCache.GetUser(userID);
                 this.AddUserItem(user);
                 this.AppendSysMessage(string.Format("{0}({1})加入了该群！", user.Name, user.UserID));
                 return;
@@ -172,13 +172,13 @@ namespace GGTalk
 
             if (type == GroupChangedType.SomeoneQuit)
             {
-                GGUser user = this.globalUserCache.GetUser(userID);
-                ChatListSubItem[] items = this.chatListBox1.GetSubItemsByNicName(userID);
+                var user = this.globalUserCache.GetUser(userID);
+                var items = this.chatListBox1.GetSubItemsByNicName(userID);
                 if (items == null || items.Length == 0)
                 {
                     return;
                 }
-                ChatListSubItem item = items[0];
+                var item = items[0];
                 this.chatListBox1.Items[0].SubItems.Remove(item);
                 this.chatListBox1.Invalidate();
                 this.AppendSysMessage(string.Format("{0}({1})退出了该群！", user.Name, user.UserID));
@@ -189,7 +189,7 @@ namespace GGTalk
         #region OnUserInfoChanged
         public void OnUserInfoChanged(GGUser user)
         {
-            ChatListSubItem[] items = this.chatListBox1.GetSubItemsByNicName(user.UserID);
+            var items = this.chatListBox1.GetSubItemsByNicName(user.UserID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -211,9 +211,9 @@ namespace GGTalk
         {
             if (this.WindowState == FormWindowState.Minimized)
             {
-                int MyTimes = 4;
-                int MyTime = 500;
-                for (int MyCount = 0; MyCount < MyTimes; MyCount++)
+                var MyTimes = 4;
+                var MyTime = 500;
+                for (var MyCount = 0; MyCount < MyTimes; MyCount++)
                 {
                     FlashWindow(this.Handle, true);
                     System.Threading.Thread.Sleep(MyTime);
@@ -231,7 +231,7 @@ namespace GGTalk
         //发送
         private void btnSend_Click(object sender, EventArgs e)
         {
-            ChatBoxContent content = this.chatBoxSend.GetContent();
+            var content = this.chatBoxSend.GetContent();
             if (content.IsEmpty())
             {
                 return;
@@ -239,8 +239,8 @@ namespace GGTalk
 
             try
             {
-                byte[] buff = CompactPropertySerializer.Default.Serialize(content);
-                byte[] encrypted = buff;
+                var buff = CompactPropertySerializer.Default.Serialize(content);
+                var encrypted = buff;
                 if (GlobalResourceManager.Des3Encryption != null)
                 {
                     encrypted = GlobalResourceManager.Des3Encryption.Encrypt(buff);
@@ -248,11 +248,11 @@ namespace GGTalk
 
                 ++this.sendingCount;
                 this.gifBox_wait.Visible = true;
-                UIResultHandler handler = new UIResultHandler(this, this.HandleSentResult);
+                var handler = new UIResultHandler(this, this.HandleSentResult);
                 this.rapidPassiveEngine.ContactsOutter.BroadcastBlob(this.currentGroup.GroupID, BroadcastTypes.BroadcastChat, encrypted, null, 2048, handler.Create(), null );
                
                 this.AppendChatBoxContent(string.Format("{0}({1})", this.mine.Name, this.mine.UserID),null, content, Color.Green);
-                ChatMessageRecord record = new ChatMessageRecord(this.mine.UserID, this.currentGroup.GroupID, buff, true);
+                var record = new ChatMessageRecord(this.mine.UserID, this.currentGroup.GroupID, buff, true);
                 GlobalResourceManager.ChatMessageRecordPersister.InsertChatMessageRecord(record);
 
                 //清空输入框
@@ -261,7 +261,7 @@ namespace GGTalk
 
                 if (this.LastWordChanged != null)
                 {
-                    LastWordsRecord lastWordsRecord = new LastWordsRecord(this.mine.ID, this.mine.Name, true, content);
+                    var lastWordsRecord = new LastWordsRecord(this.mine.ID, this.mine.Name, true, content);
                     this.LastWordChanged(true, this.currentGroup.GroupID, lastWordsRecord);
                 }
             }
@@ -292,7 +292,7 @@ namespace GGTalk
         #region AppendMessage
         private void AppendChatBoxContent(string userName,DateTime? speakTime , ChatBoxContent content, Color color)
         {
-            string showTime = speakTime == null ? DateTime.Now.ToLongTimeString() : speakTime.ToString();
+            var showTime = speakTime == null ? DateTime.Now.ToLongTimeString() : speakTime.ToString();
             this.chatBox_history.AppendRichText(string.Format("{0}  {1}\n", userName, showTime), new Font(this.Font, FontStyle.Regular), color);
             this.chatBox_history.AppendText("    ");
             this.chatBox_history.AppendChatBoxContent(content);
@@ -304,7 +304,7 @@ namespace GGTalk
 
         private void AppendMessage(string userName, Color color, string msg)
         {
-            DateTime showTime = DateTime.Now;
+            var showTime = DateTime.Now;
             this.chatBox_history.AppendRichText(string.Format("{0}  {1}\n", userName, showTime.ToLongTimeString()), new Font(this.Font, FontStyle.Regular), color);
             this.chatBox_history.AppendText("    ");
 
@@ -337,7 +337,7 @@ namespace GGTalk
 
         public void HandleReceivedMessage(List<Parameter<string, int, byte[]>> messageList)
         {
-            foreach (Parameter<string, int, byte[]> para in messageList)
+            foreach (var para in messageList)
             {
                 this.HandleReceivedMessage2(para.Arg1 ,para.Arg2, para.Arg3 ,false);
             }
@@ -365,9 +365,9 @@ namespace GGTalk
         {
             if (broadcastType == BroadcastTypes.BroadcastChat)
             {
-                ChatBoxContent chatBoxContent = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(content, 0);
-                GGUser user = this.globalUserCache.GetUser(broadcasterID);
-                string talker = string.Format("{0}({1})", broadcasterID, broadcasterID);
+                var chatBoxContent = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(content, 0);
+                var user = this.globalUserCache.GetUser(broadcasterID);
+                var talker = string.Format("{0}({1})", broadcasterID, broadcasterID);
                 if (user != null)
                 {
                     talker = string.Format("{0}({1})", user.Name, user.UserID);
@@ -376,7 +376,7 @@ namespace GGTalk
                 this.FlashChatWindow(flash);
                 if (this.LastWordChanged != null)
                 {
-                    LastWordsRecord lastWordsRecord = new LastWordsRecord(broadcasterID ,user == null ? broadcasterID : user.Name, false, chatBoxContent);
+                    var lastWordsRecord = new LastWordsRecord(broadcasterID ,user == null ? broadcasterID : user.Name, false, chatBoxContent);
                     this.LastWordChanged(true, this.currentGroup.GroupID, lastWordsRecord);
                 }
                 return;
@@ -401,8 +401,8 @@ namespace GGTalk
         //渐变层
         private void FrmChat_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            SolidBrush sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
+            var g = e.Graphics;
+            var sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
             g.FillRectangle(sb, new Rectangle(new Point(1, this.chatListBox1.Location.Y), new Size(Width - 2, Height - this.chatListBox1.Location.Y))); //91
         }             
         #endregion      
@@ -425,7 +425,7 @@ namespace GGTalk
         #region 截图
         private void buttonCapture_Click(object sender, EventArgs e)
         {
-            ScreenCapturer imageCapturer = new ScreenCapturer();
+            var imageCapturer = new ScreenCapturer();
             if (imageCapturer.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.chatBoxSend.InsertImage(imageCapturer.Image);
@@ -438,11 +438,11 @@ namespace GGTalk
         #region 手写板
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            PaintForm form = new PaintForm();
+            var form = new PaintForm();
             form.Location = new Point(this.Left + 20, this.Top + skToolMenu.Top - form.Height);
             if (DialogResult.OK == form.ShowDialog())
             {
-                Bitmap bitmap = form.CurrentImage;
+                var bitmap = form.CurrentImage;
                 if (bitmap != null)
                 {
                     this.chatBoxSend.InsertImage(bitmap);
@@ -455,7 +455,7 @@ namespace GGTalk
        
         private void toolStripButtonEmotion_MouseUp(object sender, MouseEventArgs e)
         {
-            Point pos = new Point((this.Left + 30) - (this.emotionForm.Width / 2), this.Top + skToolMenu.Top - this.emotionForm.Height);
+            var pos = new Point((this.Left + 30) - (this.emotionForm.Width / 2), this.Top + skToolMenu.Top - this.emotionForm.Height);
             if (pos.X < 10)
             {
                 pos = new Point(10, pos.Y);
@@ -466,22 +466,22 @@ namespace GGTalk
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            ChatRecordForm form = new ChatRecordForm(GlobalResourceManager.RemotingService,GlobalResourceManager.ChatMessageRecordPersister, this.currentGroup.GetIDName() ,this.mine.GetIDName() ,this.globalUserCache);
+            var form = new ChatRecordForm(GlobalResourceManager.RemotingService,GlobalResourceManager.ChatMessageRecordPersister, this.currentGroup.GetIDName() ,this.mine.GetIDName() ,this.globalUserCache);
             form.Show();
         }
 
         private void chatListBox1_DoubleClickSubItem(object sender, ChatListEventArgs e)
         {
-            ChatListSubItem item = e.SelectSubItem;
+            var item = e.SelectSubItem;
             item.IsTwinkle = false;
 
-            string friendID = item.ID;
+            var friendID = item.ID;
             if (friendID == this.rapidPassiveEngine.CurrentUserID)
             {
                 return;
             }           
 
-            ChatForm form = this.ggSupporter.GetChatForm(friendID);
+            var form = this.ggSupporter.GetChatForm(friendID);
             form.Show();
             form.Focus();
         }
@@ -490,13 +490,13 @@ namespace GGTalk
         {
             try
             {
-                string file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
+                var file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
                 if (file == null)
                 {
                     return;
                 }
 
-                Image img = Image.FromFile(file);
+                var img = Image.FromFile(file);
                 this.chatBoxSend.InsertImage(img);
             }
             catch (Exception ee)
@@ -509,8 +509,8 @@ namespace GGTalk
         {
             try
             {
-                Bitmap capturedBitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-                Graphics graphics4CapturedBitmap = Graphics.FromImage(capturedBitmap);
+                var capturedBitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                var graphics4CapturedBitmap = Graphics.FromImage(capturedBitmap);
                 graphics4CapturedBitmap.CopyFromScreen(new Point(0, 0), new Point(0, 0), Screen.PrimaryScreen.Bounds.Size);
                 graphics4CapturedBitmap.Dispose();
                 this.chatBoxSend.InsertImage(capturedBitmap);
@@ -525,13 +525,13 @@ namespace GGTalk
         {
             try
             {
-                string file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
+                var file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
                 if (file == null)
                 {
                     return;
                 }
 
-                Image img = Image.FromFile(file);
+                var img = Image.FromFile(file);
                 this.chatBoxSend.InsertImage(img);
             }
             catch (Exception ee)

@@ -35,10 +35,10 @@ namespace GGTalk.UnitViews
 
         public void AddRecentUnit(IUnit unit, int insertIndex)
         {
-            string recentID = RecentListBox.ConstructRecentID(unit);
-            UserStatus status = unit.IsGroup ? UserStatus.Online : ((GGUser)unit).UserStatus;
-            Image img = unit.IsGroup ? this.imageList1.Images[0] : this.resourceGetter.GetHeadImage((GGUser)unit);
-            ChatListSubItem subItem = new ChatListSubItem(recentID, "", unit.Name, "", this.ConvertUserStatus(status), img);
+            var recentID = RecentListBox.ConstructRecentID(unit);
+            var status = unit.IsGroup ? UserStatus.Online : ((GGUser)unit).UserStatus;
+            var img = unit.IsGroup ? this.imageList1.Images[0] : this.resourceGetter.GetHeadImage((GGUser)unit);
+            var subItem = new ChatListSubItem(recentID, "", unit.Name, "", this.ConvertUserStatus(status), img);
             subItem.Tag = unit;
             subItem.LastWords = unit.LastWords;
             this.chatListBox.Items[0].SubItems.Insert(insertIndex, subItem);
@@ -47,11 +47,11 @@ namespace GGTalk.UnitViews
 
         public void LastWordChanged(IUnit unit)
         {
-            string recentID = RecentListBox.ConstructRecentID(unit);
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(recentID);
+            var recentID = RecentListBox.ConstructRecentID(unit);
+            var items = this.chatListBox.GetSubItemsById(recentID);
             if (items != null && items.Length > 0)
             {
-                ChatListSubItem item = items[0];
+                var item = items[0];
                 item.LastWords = unit.LastWords;
                 item.OwnerListItem.SubItems.Remove(item);
                 item.OwnerListItem.SubItems.Insert(0, item);
@@ -65,22 +65,22 @@ namespace GGTalk.UnitViews
 
         public void RemoveUser(string userID)
         {
-            string recentID = RecentListBox.ConstructRecentID4User(userID);
+            var recentID = RecentListBox.ConstructRecentID4User(userID);
             this.chatListBox.RemoveSubItemsById(recentID);
             this.chatListBox.Invalidate();
         }
 
         public void RemoveUnit(IUnit unit)
         {
-            string recentID = RecentListBox.ConstructRecentID(unit);
+            var recentID = RecentListBox.ConstructRecentID(unit);
             this.chatListBox.RemoveSubItemsById(recentID);
             this.chatListBox.Invalidate();
         }
 
         public void UserStatusChanged(GGUser user)
         {
-            string recentID = RecentListBox.ConstructRecentID(user);
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(recentID);
+            var recentID = RecentListBox.ConstructRecentID(user);
+            var items = this.chatListBox.GetSubItemsById(recentID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -94,8 +94,8 @@ namespace GGTalk.UnitViews
 
         public List<string> GetRecentUserList(int maxCount)
         {
-            List<string> recentList = new List<string>();
-            int count = 0;
+            var recentList = new List<string>();
+            var count = 0;
             foreach (ChatListSubItem item in this.chatListBox.Items[0].SubItems)
             {
                 recentList.Add(item.ID);
@@ -110,8 +110,8 @@ namespace GGTalk.UnitViews
 
         public void SetTwinkleState(string id, bool isGroup, bool twinkle)
         {
-            string recentID = isGroup ? RecentListBox.ConstructRecentID4Group(id) : RecentListBox.ConstructRecentID4User(id);
-            ChatListSubItem[] items = this.chatListBox.GetSubItemsById(recentID);
+            var recentID = isGroup ? RecentListBox.ConstructRecentID4Group(id) : RecentListBox.ConstructRecentID4User(id);
+            var items = this.chatListBox.GetSubItemsById(recentID);
             if (items == null || items.Length == 0)
             {
                 return;
@@ -125,7 +125,7 @@ namespace GGTalk.UnitViews
             {
                 foreach (ChatListSubItem sub in item.SubItems)
                 {
-                    IUnit unit = (IUnit)sub.Tag;
+                    var unit = (IUnit)sub.Tag;
                     if (!unit.IsGroup)
                     {
                         sub.Status = ChatListSubItem.UserStatus.OffLine;
@@ -138,10 +138,10 @@ namespace GGTalk.UnitViews
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            ChatListSubItem item = this.chatListBox.SelectSubItem;          
+            var item = this.chatListBox.SelectSubItem;          
             item.IsTwinkle = false;
 
-            Parameter<string, bool> para = RecentListBox.ParseIDFromRecentID(item.ID);
+            var para = RecentListBox.ParseIDFromRecentID(item.ID);
             if (this.UnitDoubleClicked != null)
             {
                 this.UnitDoubleClicked(para.Arg1, para.Arg2);
@@ -150,8 +150,8 @@ namespace GGTalk.UnitViews
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            ChatListSubItem item = this.chatListBox.SelectSubItem;
-            Parameter<string, bool> para = RecentListBox.ParseIDFromRecentID(item.ID);
+            var item = this.chatListBox.SelectSubItem;
+            var para = RecentListBox.ParseIDFromRecentID(item.ID);
 
             if (this.ChatRecordClicked != null)
             {
@@ -166,7 +166,7 @@ namespace GGTalk.UnitViews
 
         private void chatListBox_DoubleClickSubItem(object sender, ChatListEventArgs e)
         {
-            Parameter<string, bool> para = RecentListBox.ParseIDFromRecentID(e.SelectSubItem.ID);
+            var para = RecentListBox.ParseIDFromRecentID(e.SelectSubItem.ID);
 
             if (this.UnitDoubleClicked != null)
             {
@@ -192,8 +192,8 @@ namespace GGTalk.UnitViews
 
         public static Parameter<string, bool> ParseIDFromRecentID(string recentID)
         {
-            string id = recentID.Substring(2);
-            bool isGroup = recentID.StartsWith("G_");
+            var id = recentID.Substring(2);
+            var isGroup = recentID.StartsWith("G_");
             return new Parameter<string, bool>(id, isGroup);
         }
         #endregion

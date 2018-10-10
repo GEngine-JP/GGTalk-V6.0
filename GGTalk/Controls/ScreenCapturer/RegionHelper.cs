@@ -11,7 +11,7 @@ namespace GGTalk.Controls
     {
         public static void CreateRegion(Control control, Rectangle rect)
         {
-            using (GraphicsPath path =
+            using (var path =
                 GraphicsPathHelper.CreatePath(rect, 8, RoundStyle.All, false))
             {
                 if (control.Region != null)

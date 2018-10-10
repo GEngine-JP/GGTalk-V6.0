@@ -38,7 +38,7 @@ namespace GGTalk.Controls
             Color color,
             object data)
         {
-            OperateObject obj = new OperateObject(
+            var obj = new OperateObject(
                 operateType, color, data);
             if (OperateList.Count > MaxOperateCount)
             {

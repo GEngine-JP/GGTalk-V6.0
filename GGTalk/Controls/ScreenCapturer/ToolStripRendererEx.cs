@@ -40,29 +40,29 @@ namespace GGTalk.Controls
         protected override void OnRenderToolStripBackground(
             ToolStripRenderEventArgs e)
         {
-            Color baseColor = ColorTable.BackColorNormal;
-            ToolStrip toolStrip = e.ToolStrip;
-            Graphics g = e.Graphics;
+            var baseColor = ColorTable.BackColorNormal;
+            var toolStrip = e.ToolStrip;
+            var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             if (toolStrip is ToolStripDropDown)
             {
                 RegionHelper.CreateRegion(e.ToolStrip, e.AffectedBounds);
 
-                Rectangle rect = e.AffectedBounds;
+                var rect = e.AffectedBounds;
 
-                using (GraphicsPath path = GraphicsPathHelper.CreatePath(
+                using (var path = GraphicsPathHelper.CreatePath(
                     rect, 8, RoundStyle.All, false))
                 {
-                    using (SolidBrush brush = new SolidBrush(ColorTable.BackColorNormal))
+                    using (var brush = new SolidBrush(ColorTable.BackColorNormal))
                     {
                         g.FillPath(brush, path);
                     }
-                    using (Pen pen = new Pen(ColorTable.BorderColor))
+                    using (var pen = new Pen(ColorTable.BorderColor))
                     {
                         g.DrawPath(pen, path);
 
-                        using (GraphicsPath innerPath = GraphicsPathHelper.CreatePath(
+                        using (var innerPath = GraphicsPathHelper.CreatePath(
                             rect, 8, RoundStyle.All, true))
                         {
                             g.DrawPath(pen, innerPath);
@@ -72,7 +72,7 @@ namespace GGTalk.Controls
             }
             else
             {
-                LinearGradientMode mode =
+                var mode =
                         e.ToolStrip.Orientation == Orientation.Horizontal ?
                         LinearGradientMode.Vertical : LinearGradientMode.Horizontal;
                 RenderBackgroundInternal(
@@ -91,19 +91,19 @@ namespace GGTalk.Controls
         protected override void OnRenderButtonBackground(
             ToolStripItemRenderEventArgs e)
         {
-            ToolStripButton item = e.Item as ToolStripButton;
+            var item = e.Item as ToolStripButton;
             if (item != null)
             {
-                LinearGradientMode mode =
+                var mode =
                     e.ToolStrip.Orientation == Orientation.Horizontal ?
                     LinearGradientMode.Vertical : LinearGradientMode.Horizontal;
-                Graphics g = e.Graphics;
+                var g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                Rectangle bounds = new Rectangle(Point.Empty, item.Size);
+                var bounds = new Rectangle(Point.Empty, item.Size);
 
                 if (item.BackgroundImage != null)
                 {
-                    Rectangle clipRect = item.Selected ? item.ContentRectangle : bounds;
+                    var clipRect = item.Selected ? item.ContentRectangle : bounds;
                     ControlPaintEx.DrawBackgroundImage(
                         g,
                         item.BackgroundImage,
@@ -117,7 +117,7 @@ namespace GGTalk.Controls
                 {
                     if (item.Selected)
                     {
-                        Color color = ColorTable.BackColorHover;
+                        var color = ColorTable.BackColorHover;
                         if (item.Pressed)
                         {
                             color = ColorTable.BackColorPressed;
@@ -148,7 +148,7 @@ namespace GGTalk.Controls
                 }
                 else
                 {
-                    Color color = ControlPaint.Light(ColorTable.BackColorHover);
+                    var color = ControlPaint.Light(ColorTable.BackColorHover);
                     if (item.Selected)
                     {
                         color = ColorTable.BackColorHover;
@@ -177,7 +177,7 @@ namespace GGTalk.Controls
         protected override void OnRenderSeparator(
             ToolStripSeparatorRenderEventArgs e)
         {
-            Rectangle rect = e.Item.ContentRectangle;
+            var rect = e.Item.ContentRectangle;
             if (e.ToolStrip is ToolStripDropDown)
             {
                 if (e.Item.RightToLeft == RightToLeft.Yes)
@@ -207,8 +207,8 @@ namespace GGTalk.Controls
                 return;
             }
 
-            Graphics g = e.Graphics;
-            Rectangle rect = new Rectangle(Point.Empty, e.Item.Size);
+            var g = e.Graphics;
+            var rect = new Rectangle(Point.Empty, e.Item.Size);
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             if (e.Item.RightToLeft == RightToLeft.Yes)
@@ -246,8 +246,8 @@ namespace GGTalk.Controls
         {
             if (e.ToolStrip is ToolStripDropDownMenu)
             {
-                Rectangle rect = e.AffectedBounds;
-                Graphics g = e.Graphics;
+                var rect = e.AffectedBounds;
+                var g = e.Graphics;
                 rect.Width = OffsetMargin;
                 if (e.ToolStrip.RightToLeft == RightToLeft.Yes)
                 {
@@ -260,19 +260,19 @@ namespace GGTalk.Controls
                 rect.Y += 1;
                 rect.Height -= 2;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                using (LinearGradientBrush brush = new LinearGradientBrush(
+                using (var brush = new LinearGradientBrush(
                     rect,
                     ColorTable.BackColorHover,
                     Color.White,
                     90f))
                 {
-                    Blend blend = new Blend();
+                    var blend = new Blend();
                     blend.Positions = new float[] { 0f, .2f, 1f };
                     blend.Factors = new float[] { 0f, 0.1f, .9f };
                     brush.Blend = blend;
                     rect.Y += 1;
                     rect.Height -= 2;
-                    using (GraphicsPath path =
+                    using (var path =
                         GraphicsPathHelper.CreatePath(rect, 8, RoundStyle.All, false))
                     {
                         g.FillPath(brush, path);
@@ -280,8 +280,8 @@ namespace GGTalk.Controls
                 }
 
                 g.TextRenderingHint = TextRenderingHint.AntiAlias;
-                StringFormat sf = new StringFormat(StringFormatFlags.NoWrap);
-                Font font = new Font(
+                var sf = new StringFormat(StringFormatFlags.NoWrap);
+                var font = new Font(
                     e.ToolStrip.Font.FontFamily, 11, FontStyle.Bold);
                 sf.Alignment = StringAlignment.Near;
                 sf.LineAlignment = StringAlignment.Center;
@@ -292,7 +292,7 @@ namespace GGTalk.Controls
 
                 if (!string.IsNullOrEmpty(MenuLogoString))
                 {
-                    Rectangle newRect = new Rectangle(
+                    var newRect = new Rectangle(
                         rect.X, rect.Y, rect.Height, rect.Width);
 
                     using (Brush brush = new SolidBrush(ColorTable.ForeColor))
@@ -316,17 +316,17 @@ namespace GGTalk.Controls
         protected override void OnRenderItemImage(
             ToolStripItemImageRenderEventArgs e)
         {
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
             g.InterpolationMode = InterpolationMode.HighQualityBilinear;
 
             if (e.Item is ToolStripMenuItem)
             {
-                ToolStripMenuItem item = (ToolStripMenuItem)e.Item;
+                var item = (ToolStripMenuItem)e.Item;
                 if (item.Checked)
                 {
                     return;
                 }
-                Rectangle rect = e.ImageRectangle;
+                var rect = e.ImageRectangle;
                 if (e.Item.RightToLeft == RightToLeft.Yes)
                 {
                     rect.X -= OffsetMargin + 2;
@@ -335,7 +335,7 @@ namespace GGTalk.Controls
                 {
                     rect.X += OffsetMargin + 2;
                 }
-                ToolStripItemImageRenderEventArgs ne = 
+                var ne = 
                     new ToolStripItemImageRenderEventArgs(
                     e.Graphics, e.Item, e.Image, rect);
                 base.OnRenderItemImage(ne);
@@ -352,7 +352,7 @@ namespace GGTalk.Controls
 
             if (!(e.ToolStrip is MenuStrip) && (e.Item is ToolStripMenuItem))
             {
-                Rectangle rect = e.TextRectangle;
+                var rect = e.TextRectangle;
                 if (e.Item.RightToLeft == RightToLeft.Yes)
                 {
                     rect.X -= 16;
@@ -436,22 +436,22 @@ namespace GGTalk.Controls
                 rect.Height--;
             }
 
-            using (LinearGradientBrush brush = new LinearGradientBrush(
+            using (var brush = new LinearGradientBrush(
                 rect, Color.Transparent, Color.Transparent, mode))
             {
-                Color[] colors = new Color[4];
+                var colors = new Color[4];
                 colors[0] = GetColor(baseColor, 0, 35, 24, 9);
                 colors[1] = GetColor(baseColor, 0, 13, 8, 3);
                 colors[2] = baseColor;
                 colors[3] = GetColor(baseColor, 0, 68, 69, 54);
 
-                ColorBlend blend = new ColorBlend();
+                var blend = new ColorBlend();
                 blend.Positions = new float[] { 0.0f, basePosition, basePosition + 0.05f, 1.0f };
                 blend.Colors = colors;
                 brush.InterpolationColors = blend;
                 if (style != RoundStyle.None)
                 {
-                    using (GraphicsPath path =
+                    using (var path =
                         GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                     {
                         g.FillPath(brush, path);
@@ -459,7 +459,7 @@ namespace GGTalk.Controls
 
                     if (baseColor.A > 80)
                     {
-                        Rectangle rectTop = rect;
+                        var rectTop = rect;
 
                         if (mode == LinearGradientMode.Vertical)
                         {
@@ -469,10 +469,10 @@ namespace GGTalk.Controls
                         {
                             rectTop.Width = (int)(rect.Width * basePosition);
                         }
-                        using (GraphicsPath pathTop = GraphicsPathHelper.CreatePath(
+                        using (var pathTop = GraphicsPathHelper.CreatePath(
                             rectTop, roundWidth, RoundStyle.Top, false))
                         {
-                            using (SolidBrush brushAlpha =
+                            using (var brushAlpha =
                                 new SolidBrush(Color.FromArgb(80, 255, 255, 255)))
                             {
                                 g.FillPath(brushAlpha, pathTop);
@@ -498,20 +498,20 @@ namespace GGTalk.Controls
 
                     if (drawBorder)
                     {
-                        using (GraphicsPath path =
+                        using (var path =
                             GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                         {
-                            using (Pen pen = new Pen(borderColor))
+                            using (var pen = new Pen(borderColor))
                             {
                                 g.DrawPath(pen, path);
                             }
                         }
 
                         rect.Inflate(-1, -1);
-                        using (GraphicsPath path =
+                        using (var path =
                             GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                         {
-                            using (Pen pen = new Pen(innerBorderColor))
+                            using (var pen = new Pen(innerBorderColor))
                             {
                                 g.DrawPath(pen, path);
                             }
@@ -523,7 +523,7 @@ namespace GGTalk.Controls
                     g.FillRectangle(brush, rect);
                     if (baseColor.A > 80)
                     {
-                        Rectangle rectTop = rect;
+                        var rectTop = rect;
                         if (mode == LinearGradientMode.Vertical)
                         {
                             rectTop.Height = (int)(rectTop.Height * basePosition);
@@ -532,7 +532,7 @@ namespace GGTalk.Controls
                         {
                             rectTop.Width = (int)(rect.Width * basePosition);
                         }
-                        using (SolidBrush brushAlpha =
+                        using (var brushAlpha =
                             new SolidBrush(Color.FromArgb(80, 255, 255, 255)))
                         {
                             g.FillRectangle(brushAlpha, rectTop);
@@ -557,13 +557,13 @@ namespace GGTalk.Controls
 
                     if (drawBorder)
                     {
-                        using (Pen pen = new Pen(borderColor))
+                        using (var pen = new Pen(borderColor))
                         {
                             g.DrawRectangle(pen, rect);
                         }
 
                         rect.Inflate(-1, -1);
-                        using (Pen pen = new Pen(innerBorderColor))
+                        using (var pen = new Pen(innerBorderColor))
                         {
                             g.DrawRectangle(pen, rect);
                         }
@@ -589,17 +589,17 @@ namespace GGTalk.Controls
             {
                 angle = 180F;
             }
-            using (LinearGradientBrush brush = new LinearGradientBrush(
+            using (var brush = new LinearGradientBrush(
                     rect,
                     baseColor,
                     backColor,
                     angle))
             {
-                Blend blend = new Blend();
+                var blend = new Blend();
                 blend.Positions = new float[] { 0f, .3f, .5f, .7f, 1f };
                 blend.Factors = new float[] { 1f, .3f, 0f, .3f, 1f };
                 brush.Blend = blend;
-                using (Pen pen = new Pen(brush))
+                using (var pen = new Pen(brush))
                 {
                     if (vertical)
                     {

@@ -74,7 +74,7 @@ namespace GGTalk
         #region Ctor
         private bool FilterTransferingProject(TransferingProject pro)
         {
-            NDiskParameters para = Comment4NDisk.Parse(pro.Comment);
+            var para = Comment4NDisk.Parse(pro.Comment);
             if (para != null)
             {
                 return false;
@@ -82,7 +82,7 @@ namespace GGTalk
 
             if (ESFramework.NetServer.IsServerUser(pro.DestUserID))
             {
-                string offlineFileSenderID = Comment4OfflineFile.ParseUserID(pro.Comment);
+                var offlineFileSenderID = Comment4OfflineFile.ParseUserID(pro.Comment);
                 return offlineFileSenderID == this.currentFriend.ID;
             }
 
@@ -147,7 +147,7 @@ namespace GGTalk
             this.inputingTimer.Tick += new EventHandler(timer_Tick);
             this.inputingTimer.Start();
 
-            Icon icon = this.currentFriend.GetHeadIcon(GlobalResourceManager.HeadImages);
+            var icon = this.currentFriend.GetHeadIcon(GlobalResourceManager.HeadImages);
             if (icon != null)
             {
                 this.UseCustomIcon = true;
@@ -156,7 +156,7 @@ namespace GGTalk
 
             if (SystemSettings.Singleton.LoadLastWordsWhenChatFormOpened)
             {
-                LastWordsRecord record = this.currentFriend.Tag as LastWordsRecord ;
+                var record = this.currentFriend.Tag as LastWordsRecord ;
                 if(record != null)
                 {
                     this.AppendChatBoxContent(record.IsMe ? this.mine.Name : this.currentFriend.Name, record.SpeakTime, record.ChatBoxContent, record.IsMe ? Color.SeaGreen : Color.Blue, false,false);
@@ -209,10 +209,10 @@ namespace GGTalk
         }
         void chatBoxSend_FileOrFolderDragDrop(string[] fileOrDirs)
         {
-            foreach (string fileOrDirPath in fileOrDirs)
+            foreach (var fileOrDirPath in fileOrDirs)
             {
                 string projectID;
-                SendingFileParas sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
+                var sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
                 this.rapidPassiveEngine.FileOutter.BeginSendFile(this.currentFriend.UserID, fileOrDirPath, null, sendingFileParas, out projectID);
                 this.FileRequestReceived(projectID);             
             }             
@@ -268,7 +268,7 @@ namespace GGTalk
         #region HandleReceivedMessage
         public void HandleReceivedMessage(List<Parameter<int, byte[], object>> messageList)
         {
-            foreach (Parameter<int, byte[], object> para in messageList)
+            foreach (var para in messageList)
             {
                 this.HandleReceivedMessage2(para.Arg1, para.Arg2, para.Arg3, false);
             }
@@ -296,7 +296,7 @@ namespace GGTalk
         {
             if (informationType == InformationTypes.Chat)
             {
-                ChatBoxContent content = (ChatBoxContent)tag;
+                var content = (ChatBoxContent)tag;
                 this.OnReceivedMsg(content, null);
                 this.FlashChatWindow(flash);
                 return;
@@ -310,7 +310,7 @@ namespace GGTalk
 
             if (informationType == InformationTypes.OfflineMessage)
             {
-                Parameter<ChatBoxContent, DateTime> para = (Parameter<ChatBoxContent, DateTime>)tag;
+                var para = (Parameter<ChatBoxContent, DateTime>)tag;
                 this.OnReceivedMsg(para.Arg1, para.Arg2);
                 this.FlashChatWindow(flash);
                 return;
@@ -318,7 +318,7 @@ namespace GGTalk
 
             if (informationType == InformationTypes.OfflineFileResultNotify)
             {
-                OfflineFileResultNotifyContract contract = CompactPropertySerializer.Default.Deserialize<OfflineFileResultNotifyContract>(info, 0);
+                var contract = CompactPropertySerializer.Default.Deserialize<OfflineFileResultNotifyContract>(info, 0);
                 this.OnReceivedOfflineFileResultNotify(contract.FileName, contract.Accept);
                 this.FlashChatWindow(flash);
                 return;
@@ -381,7 +381,7 @@ namespace GGTalk
 
             if (informationType == InformationTypes.RemoteHelpRequest)
             {
-                RemoteHelpStyle style = (RemoteHelpStyle)BitConverter.ToInt32(info, 0);
+                var style = (RemoteHelpStyle)BitConverter.ToInt32(info, 0);
                 this.OnRemoteHelpRequestReceived(style);
                 this.FlashChatWindow(flash);
                 return;
@@ -463,7 +463,7 @@ namespace GGTalk
 
         private void do_ShowP2PState()
         {
-            P2PChannelState state = this.rapidPassiveEngine.P2PController.GetP2PChannelState(this.currentFriend.UserID);
+            var state = this.rapidPassiveEngine.P2PController.GetP2PChannelState(this.currentFriend.UserID);
             if (state != null)
             {
                 this.Text = string.Format("与 {0} 对话中...【P2P直连/{1}】", this.currentFriend.Name, state.ProtocolType);
@@ -512,7 +512,7 @@ namespace GGTalk
             if (this.videoForm != null)
             {
                 this.videoForm.OnHungUpVideo();
-                string msg = string.Format("{0}已经掉线，与对方的视频会话中止。" ,myself? "自己" : "对方");
+                var msg = string.Format("{0}已经掉线，与对方的视频会话中止。" ,myself? "自己" : "对方");
                 this.AppendSysMessage(msg);
             }
 
@@ -538,12 +538,12 @@ namespace GGTalk
             {
                 if (this.audioHandlePanel.IsWorking)
                 {
-                    string msg = string.Format("{0}已经掉线，与对方的语音对话中止。", myself ? "自己" : "对方");
+                    var msg = string.Format("{0}已经掉线，与对方的语音对话中止。", myself ? "自己" : "对方");
                     this.AppendSysMessage(msg);
                 }
                 else
                 {
-                    string msg = string.Format("{0}已经掉线!", myself ? "自己" : "对方");
+                    var msg = string.Format("{0}已经掉线!", myself ? "自己" : "对方");
                     this.AppendSysMessage(msg);
                 }
 
@@ -558,7 +558,7 @@ namespace GGTalk
         #region TabControlContains
         private bool TabControlContains(string text)
         {
-            for (int i = 0; i < this.skinTabControl1.TabPages.Count; i++)
+            for (var i = 0; i < this.skinTabControl1.TabPages.Count; i++)
             {
                 if (this.skinTabControl1.TabPages[i].Text == text)
                 {
@@ -572,7 +572,7 @@ namespace GGTalk
         #region GetSelectIndex
         private int GetSelectIndex(string text)
         {
-            for (int i = 0; i < this.skinTabControl1.TabPages.Count; i++)
+            for (var i = 0; i < this.skinTabControl1.TabPages.Count; i++)
             {
                 if (this.skinTabControl1.TabPages[i].Text == text)
                 {
@@ -609,14 +609,14 @@ namespace GGTalk
                     return;
                 }
 
-                int filePackageSize = 2048;
-                P2PChannelState state = this.rapidPassiveEngine.P2PController.GetP2PChannelState(this.currentFriend.UserID);
+                var filePackageSize = 2048;
+                var state = this.rapidPassiveEngine.P2PController.GetP2PChannelState(this.currentFriend.UserID);
                 if (state != null && state.InSameLAN)
                 {
                     filePackageSize = 20480;
                 }
                 string projectID;
-                SendingFileParas sendingFileParas = new SendingFileParas(filePackageSize, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
+                var sendingFileParas = new SendingFileParas(filePackageSize, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
 
                 this.rapidPassiveEngine.FileOutter.BeginSendFile(this.currentFriend.UserID, fileOrFolderPath, null, sendingFileParas, out projectID);
                 this.FileRequestReceived(projectID);
@@ -647,9 +647,9 @@ namespace GGTalk
         {
             if (!this.TabControlContains(this.Title_FileTransfer))
             {               
-                TabPage page = new TabPage(this.Title_FileTransfer);
+                var page = new TabPage(this.Title_FileTransfer);
                 page.BackColor = System.Drawing.Color.White;
-                Panel pannel = new Panel();               
+                var pannel = new Panel();               
                 page.Controls.Add(pannel);
                 pannel.BackColor = Color.Transparent;
                 pannel.Dock = DockStyle.Fill;
@@ -659,10 +659,10 @@ namespace GGTalk
                 this.skinTabControl1.SelectedIndex = this.GetSelectIndex(this.Title_FileTransfer);
                 this.ResetTabControVisible();
             }
-            TransferingProject pro = this.rapidPassiveEngine.FileOutter.GetTransferingProject(projectID);
+            var pro = this.rapidPassiveEngine.FileOutter.GetTransferingProject(projectID);
             if (offlineFile)
             {
-                string strFile = pro.IsFolder ? "离线文件夹" : "离线文件";
+                var strFile = pro.IsFolder ? "离线文件夹" : "离线文件";
                 this.AppendSysMessage(string.Format("对方给您发送了{0}'{1}'，大小：{2}", strFile, pro.ProjectName, ESBasic.Helpers.PublicHelper.GetSizeString(pro.TotalSize)));
             }
              
@@ -684,7 +684,7 @@ namespace GGTalk
         /// <param name="fileTransDisrupttedType">失败原因</param>
         private void fileTransferingViewer1_FileTransDisruptted(string projectName, bool isSender, FileTransDisrupttedType fileTransDisrupttedType)
         {          
-            string showText = "";
+            var showText = "";
             switch (fileTransDisrupttedType)
             {
                 case FileTransDisrupttedType.RejectAccepting:
@@ -764,7 +764,7 @@ namespace GGTalk
         /// <param name="isSender">接收者，还是发送者</param>
         private void fileTransferingViewer1_FileResumedTransStarted(string projectName, bool isSender)
         {
-            string showText = string.Format("正在续传文件 '{0}'...", projectName);
+            var showText = string.Format("正在续传文件 '{0}'...", projectName);
             this.AppendSysMessage(showText);            
         }
         #endregion
@@ -777,12 +777,12 @@ namespace GGTalk
         /// <param name="isSender">接收者，还是发送者</param>
         private void fileTransferingViewer1_FileTransCompleted(string projectName, bool isSender, string comment ,bool isFolder)
         {
-            string offlineFile = (Comment4OfflineFile.ParseUserID(comment) == null) ? "" : "离线文件";
+            var offlineFile = (Comment4OfflineFile.ParseUserID(comment) == null) ? "" : "离线文件";
             if (isFolder && !string.IsNullOrEmpty(offlineFile))
             {
                 offlineFile += "夹";
             }
-            string showText = offlineFile + string.Format("'{0}' {1}完成！", projectName, isSender ? "发送" :"接收");
+            var showText = offlineFile + string.Format("'{0}' {1}完成！", projectName, isSender ? "发送" :"接收");
             this.AppendSysMessage(showText);                   
         }
         #endregion
@@ -797,7 +797,7 @@ namespace GGTalk
         {
             if (!followingWords)
             {
-                string showTime = DateTime.Now.ToLongTimeString();
+                var showTime = DateTime.Now.ToLongTimeString();
                 if (!offlineMessage && originTime != null)
                 {
                     showTime = originTime.Value.ToString();
@@ -826,7 +826,7 @@ namespace GGTalk
        
         private void AppendMessage(string userName, Color color, string msg)
         {
-            DateTime showTime = DateTime.Now;
+            var showTime = DateTime.Now;
             this.chatBox_history.AppendRichText(string.Format("{0}  {1}\n", userName, showTime.ToLongTimeString()), new Font(this.messageFont, FontStyle.Regular), color);
             this.chatBox_history.AppendText("    ");
 
@@ -865,14 +865,14 @@ namespace GGTalk
                     return;
                 }
 
-                ChatBoxContent content = this.chatBoxSend.GetContent();
+                var content = this.chatBoxSend.GetContent();
                 if (content.IsEmpty())
                 {
                     return;
                 }
 
-                byte[] buff = CompactPropertySerializer.Default.Serialize(content);
-                byte[] encrypted = buff;
+                var buff = CompactPropertySerializer.Default.Serialize(content);
+                var encrypted = buff;
                 if (GlobalResourceManager.Des3Encryption != null)
                 {
                     encrypted = GlobalResourceManager.Des3Encryption.Encrypt(buff);
@@ -880,17 +880,17 @@ namespace GGTalk
 
                 ++this.sendingCount;
                 this.gifBox_wait.Visible = true;
-                UIResultHandler handler = new UIResultHandler(this, this.HandleSentResult);
+                var handler = new UIResultHandler(this, this.HandleSentResult);
                 this.rapidPassiveEngine.SendMessage(null, InformationTypes.Chat, encrypted, this.currentFriend.UserID, 2048, handler.Create(), null);
 
-                bool followingWords = false;
+                var followingWords = false;
                 if (this.lastWordsRecord != null && this.lastWordsRecord.IsMe)
                 {
                     followingWords = (DateTime.Now - this.lastWordsRecord.SpeakTime).TotalSeconds <= 30;
                 }
 
                 this.AppendChatBoxContent(this.mine.Name, null, content, Color.SeaGreen, followingWords);
-                ChatMessageRecord record = new ChatMessageRecord(this.mine.UserID, this.currentFriend.UserID, buff, false);
+                var record = new ChatMessageRecord(this.mine.UserID, this.currentFriend.UserID, buff, false);
                 GlobalResourceManager.ChatMessageRecordPersister.InsertChatMessageRecord(record);
 
                 //清空输入框
@@ -949,24 +949,24 @@ namespace GGTalk
         //震动方法
         private void Vibration()
         {
-            Point pOld = this.Location;//原来的位置
-            int radius = 3;//半径
-            for (int n = 0; n < 3; n++) //旋转圈数
+            var pOld = this.Location;//原来的位置
+            var radius = 3;//半径
+            for (var n = 0; n < 3; n++) //旋转圈数
             {
                 //右半圆逆时针
-                for (int i = -radius; i <= radius; i++)
+                for (var i = -radius; i <= radius; i++)
                 {
-                    int x = Convert.ToInt32(Math.Sqrt(radius * radius - i * i));
-                    int y = -i;
+                    var x = Convert.ToInt32(Math.Sqrt(radius * radius - i * i));
+                    var y = -i;
 
                     this.Location = new Point(pOld.X + x, pOld.Y + y);
                     Thread.Sleep(10);
                 }
                 //左半圆逆时针
-                for (int j = radius; j >= -radius; j--)
+                for (var j = radius; j >= -radius; j--)
                 {
-                    int x = -Convert.ToInt32(Math.Sqrt(radius * radius - j * j));
-                    int y = -j;
+                    var x = -Convert.ToInt32(Math.Sqrt(radius * radius - j * j));
+                    var y = -j;
 
                     this.Location = new Point(pOld.X + x, pOld.Y + y);
                     Thread.Sleep(10);
@@ -996,7 +996,7 @@ namespace GGTalk
         private void OnReceivedMsg(ChatBoxContent content, DateTime? originTime)
         {
             this.skinLabel_inputing.Visible = false;
-            bool followingWords = false;
+            var followingWords = false;
             if (this.lastWordsRecord != null && !this.lastWordsRecord.IsMe)
             {
                 followingWords = (DateTime.Now - this.lastWordsRecord.SpeakTime).TotalSeconds <= 30;
@@ -1011,13 +1011,13 @@ namespace GGTalk
 
         private void OnReceivedOfflineFileResultNotify(string fileName, bool accept)
         {
-            string msg = string.Format("对方{0}了您发送的离线文件'{1}'", accept ? "已成功接收" : "拒绝", fileName);
+            var msg = string.Format("对方{0}了您发送的离线文件'{1}'", accept ? "已成功接收" : "拒绝", fileName);
             this.AppendSysMessage(msg);
         }
 
         private void OnViberation()
         {
-            string msg = this.currentFriend.Name + "给您发送了抖动提醒。\n";
+            var msg = this.currentFriend.Name + "给您发送了抖动提醒。\n";
             this.AppendMessage(this.currentFriend.Name, Color.Blue, msg);
 
             if (this.TopMost)
@@ -1038,8 +1038,8 @@ namespace GGTalk
         //渐变层
         private void FrmChat_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            SolidBrush sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
+            var g = e.Graphics;
+            var sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
             g.FillRectangle(sb, new Rectangle(new Point(1, 91), new Size(Width - 2, Height - 91)));
         }        
         #endregion      
@@ -1106,7 +1106,7 @@ namespace GGTalk
         #region 截图
         private void buttonCapture_Click(object sender, EventArgs e)
         {
-            ScreenCapturer imageCapturer = new ScreenCapturer();
+            var imageCapturer = new ScreenCapturer();
             if (imageCapturer.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.chatBoxSend.InsertImage(imageCapturer.Image);
@@ -1119,11 +1119,11 @@ namespace GGTalk
         #region 手写板
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            PaintForm form = new PaintForm();
+            var form = new PaintForm();
             form.Location = new Point(this.Left + 20, this.Top +skToolMenu.Top - form.Height);
             if (DialogResult.OK == form.ShowDialog())
             {
-                Bitmap bitmap = form.CurrentImage;
+                var bitmap = form.CurrentImage;
                 if (bitmap != null)
                 {
                     this.chatBoxSend.InsertImage(bitmap);
@@ -1168,15 +1168,15 @@ namespace GGTalk
             }
 
             Program.MultimediaManager.OutputAudio = true;
-            string msg = "请求与对方进行语音对话，正在等待对方回应...";
+            var msg = "请求与对方进行语音对话，正在等待对方回应...";
             this.AppendSysMessage(msg);
 
             this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, InformationTypes.AudioRequest,null);
 
             this.audioHandlePanel.IsSender = true;
-            TabPage page = new TabPage(this.Title_Audio);
+            var page = new TabPage(this.Title_Audio);
             page.BackColor = Color.White;// System.Drawing.Color.White;
-            Panel pannel = new Panel();
+            var pannel = new Panel();
             page.Controls.Add(pannel);
             pannel.BackColor = Color.Transparent;
             pannel.Dock = DockStyle.Fill;
@@ -1196,9 +1196,9 @@ namespace GGTalk
             {
                 this.audioHandlePanel.IsSender = false;
 
-                TabPage page = new TabPage(this.Title_Audio);
+                var page = new TabPage(this.Title_Audio);
                 page.BackColor = System.Drawing.Color.White;
-                Panel pannel = new Panel();
+                var pannel = new Panel();
                 page.Controls.Add(pannel);
                 pannel.BackColor = Color.Transparent;
                 pannel.Dock = DockStyle.Fill;
@@ -1259,7 +1259,7 @@ namespace GGTalk
         //自己挂断
         void audioHandlePanel_AudioTerminated()
         {
-            string showText = this.audioHandlePanel.IsWorking ? "您挂断了语音对话。" : "您取消了语音对话请求。";
+            var showText = this.audioHandlePanel.IsWorking ? "您挂断了语音对话。" : "您取消了语音对话请求。";
 
             if (this.audioHandlePanel.IsWorking)
             {
@@ -1277,10 +1277,10 @@ namespace GGTalk
         /// </summary>       
         private void OnAudioHungUpReceived()
         {   
-            int tabIndex = this.GetSelectIndex(this.Title_Audio);
+            var tabIndex = this.GetSelectIndex(this.Title_Audio);
             if (tabIndex >= 0)
             {
-                string showText = this.audioHandlePanel.IsWorking ? "对方挂断了语音对话。" : "对方取消了语音对话请求。";
+                var showText = this.audioHandlePanel.IsWorking ? "对方挂断了语音对话。" : "对方取消了语音对话请求。";
                 this.AppendSysMessage(showText);
                 this.audioHandlePanel.OnTerminate();
                 this.skinTabControl1.TabPages.RemoveAt(tabIndex);
@@ -1335,9 +1335,9 @@ namespace GGTalk
         {
             if (!this.TabControlContains(this.Title_Video))
             {
-                TabPage page = new TabPage(this.Title_Video);
+                var page = new TabPage(this.Title_Video);
                 page.BackColor = System.Drawing.Color.White;
-                Panel pannel = new Panel();
+                var pannel = new Panel();
                 page.Controls.Add(pannel);
                 pannel.BackColor = Color.Transparent;
                 pannel.Dock = DockStyle.Fill;
@@ -1384,7 +1384,7 @@ namespace GGTalk
                 return;
             }
 
-            int tabIndex = this.GetSelectIndex(this.Title_Video);
+            var tabIndex = this.GetSelectIndex(this.Title_Video);
             if (tabIndex >= 0)
             {
                 this.skinTabControl1.TabPages.RemoveAt(tabIndex);
@@ -1477,7 +1477,7 @@ namespace GGTalk
             }
 
             this.AppendSysMessage("对方同意了您的磁盘访问请求.");
-            NDiskForm form = new NDiskForm(this.currentFriend.UserID, this.currentFriend.Name, this.rapidPassiveEngine.FileOutter, this.nDiskOutter);
+            var form = new NDiskForm(this.currentFriend.UserID, this.currentFriend.Name, this.rapidPassiveEngine.FileOutter, this.nDiskOutter);
             form.Show();
         }
        
@@ -1488,9 +1488,9 @@ namespace GGTalk
         {
             if (!this.TabControlContains(this.Title_Disk))
             {
-                TabPage page = new TabPage(this.Title_Disk);
+                var page = new TabPage(this.Title_Disk);
                 page.BackColor = System.Drawing.Color.White;
-                Panel pannel = new Panel();
+                var pannel = new Panel();
                 page.Controls.Add(pannel);
                 pannel.BackColor = Color.Transparent;
                 pannel.Dock = DockStyle.Fill;
@@ -1513,7 +1513,7 @@ namespace GGTalk
 
             this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, agree ? InformationTypes.AgreeDisk : InformationTypes.RejectDisk, null);
 
-            string showText = string.Format("您{0}了对方的磁盘访问请求。", agree ? "同意" : "拒绝");
+            var showText = string.Format("您{0}了对方的磁盘访问请求。", agree ? "同意" : "拒绝");
             this.AppendSysMessage(showText);
         }
         #endregion    
@@ -1541,7 +1541,7 @@ namespace GGTalk
                 return;
             }
          
-            ESBasic.Widget.CaptureScreenForm form = new ESBasic.Widget.CaptureScreenForm("按住左键选择桌面共享区域");          
+            var form = new ESBasic.Widget.CaptureScreenForm("按住左键选择桌面共享区域");          
             if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
             {                
                 return;
@@ -1552,7 +1552,7 @@ namespace GGTalk
 
         private void PrepairRemoteHelp(Rectangle? regionSelected , RemoteHelpStyle style)
         {            
-            string msg = "请求对方远程协助自己，正在等待对方回应...";
+            var msg = "请求对方远程协助自己，正在等待对方回应...";
             if (regionSelected != null)
             {
                 msg = string.Format("已经指定桌面区域{0}，", regionSelected.Value) + msg;
@@ -1567,9 +1567,9 @@ namespace GGTalk
             Program.MultimediaManager.DesktopRegion = regionSelected; //设为null，表示共享整个屏幕
             this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, InformationTypes.RemoteHelpRequest, BitConverter.GetBytes((int)style));            
           
-            TabPage page = new TabPage(this.Title_RemoteHelpHandle);
+            var page = new TabPage(this.Title_RemoteHelpHandle);
             page.BackColor = Color.White;// System.Drawing.Color.White;
-            Panel pannel = new Panel();
+            var pannel = new Panel();
             page.Controls.Add(pannel);
             pannel.BackColor = Color.Transparent;
             pannel.Dock = DockStyle.Fill;
@@ -1606,9 +1606,9 @@ namespace GGTalk
             this.remoteHelpRequestPanel.SetRemoteDesktopStyle(style);
             if (!this.TabControlContains(this.Title_RemoteHelp))
             {
-                TabPage page = new TabPage(this.Title_RemoteHelp);
+                var page = new TabPage(this.Title_RemoteHelp);
                 page.BackColor = System.Drawing.Color.White;
-                Panel pannel = new Panel();
+                var pannel = new Panel();
                 page.Controls.Add(pannel);
                 pannel.BackColor = Color.Transparent;
                 pannel.Dock = DockStyle.Fill;
@@ -1659,7 +1659,7 @@ namespace GGTalk
             {
                 this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, InformationTypes.CloseRemoteHelp, null);
             }
-            string showText = ownerTerminateClose ?  "对方终止了远程协助。" : "您终止了给对方的远程协助。";            
+            var showText = ownerTerminateClose ?  "对方终止了远程协助。" : "您终止了给对方的远程协助。";            
             this.AppendSysMessage(showText);
             this.remoteHelpForm = null;
         }
@@ -1673,7 +1673,7 @@ namespace GGTalk
             this.skinTabControl1.SelectedIndex = this.skinTabControl1.TabPages.Count - 1;
             this.ResetTabControVisible();
             this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, InformationTypes.TerminateRemoteHelp, null);
-            string showText = this.remoteHelpHandlePanel.IsWorking ? "您终止了远程协助。" : "您取消了远程协助请求。";
+            var showText = this.remoteHelpHandlePanel.IsWorking ? "您终止了远程协助。" : "您取消了远程协助请求。";
             this.AppendSysMessage(showText);
         }
 
@@ -1697,7 +1697,7 @@ namespace GGTalk
             }
             this.rapidPassiveEngine.CustomizeOutter.Send(this.currentFriend.UserID, agree ? InformationTypes.AgreeRemoteHelp : InformationTypes.RejectRemoteHelp, null);
 
-            string showText = string.Format("您{0}了对方的远程协助请求。", agree ? "同意" : "拒绝");
+            var showText = string.Format("您{0}了对方的远程协助请求。", agree ? "同意" : "拒绝");
             this.AppendSysMessage(showText);
 
             if (agree)
@@ -1719,13 +1719,13 @@ namespace GGTalk
 
             try
             {
-                string filePath = ESBasic.Helpers.FileHelper.GetFileToOpen("请选择要发送的离线文件");
+                var filePath = ESBasic.Helpers.FileHelper.GetFileToOpen("请选择要发送的离线文件");
                 if (filePath == null)
                 {
                     return;
                 }
                 string projectID;
-                SendingFileParas sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
+                var sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
 
                 // BeginSendFile方法
                 //（1）accepterID传入null，表示文件的接收者就是服务端
@@ -1748,13 +1748,13 @@ namespace GGTalk
 
             try
             {
-                string folderPath = ESBasic.Helpers.FileHelper.GetFolderToOpen(false);
+                var folderPath = ESBasic.Helpers.FileHelper.GetFolderToOpen(false);
                 if (folderPath == null)
                 {
                     return;
                 }
                 string projectID;
-                SendingFileParas sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
+                var sendingFileParas = new SendingFileParas(2048, 0);//文件数据包大小，可以根据网络状况设定，局网内可以设为204800，传输速度可以达到30M/s以上；公网建议设定为2048或4096或8192
 
                 // BeginSendFile方法
                 //（1）accepterID传入null，表示文件的接收者就是服务端
@@ -1776,7 +1776,7 @@ namespace GGTalk
                 return;
             }
 
-            ChatRecordForm form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, this.mine.GetIDName(), this.currentFriend.GetIDName());
+            var form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, this.mine.GetIDName(), this.currentFriend.GetIDName());
             form.Show();
         }
 
@@ -1787,7 +1787,7 @@ namespace GGTalk
        
         private void toolStripButtonEmotion_MouseUp(object sender, MouseEventArgs e)
         {
-            Point pos = new Point((this.Left + 30) - (this.emotionForm.Width / 2), this.Top + skToolMenu.Top - this.emotionForm.Height);
+            var pos = new Point((this.Left + 30) - (this.emotionForm.Width / 2), this.Top + skToolMenu.Top - this.emotionForm.Height);
             if (pos.X < 10)
             {
                 pos = new Point(10, pos.Y);
@@ -1829,13 +1829,13 @@ namespace GGTalk
         {
             try
             {
-                string file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
+                var file = ESBasic.Helpers.FileHelper.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
                 if (file == null)
                 {
                     return;
                 }
 
-                Image img = Image.FromFile(file);
+                var img = Image.FromFile(file);
                 this.chatBoxSend.InsertImage(img);
             }
             catch (Exception ee)
@@ -1858,7 +1858,7 @@ namespace GGTalk
 
         private void 语音视频设备测试ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DeviceSelectForm form = new DeviceSelectForm();
+            var form = new DeviceSelectForm();
             form.DeviceSelected += new CbGeneric<DeviceSelectForm>(form_DeviceSelected);
             form.ShowDialog();
         }

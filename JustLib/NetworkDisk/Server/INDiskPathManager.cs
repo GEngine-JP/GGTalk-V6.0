@@ -120,7 +120,7 @@ namespace JustLib.NetworkDisk.Server
             ulong size = 0;
             try
             {
-                string path = string.Format("{0}{1}\\", this.GetNetworkDiskRootPath(clientUserID, netDiskID), this.GetNetworkDiskIniDirName(clientUserID, netDiskID));
+                var path = string.Format("{0}{1}\\", this.GetNetworkDiskRootPath(clientUserID, netDiskID), this.GetNetworkDiskIniDirName(clientUserID, netDiskID));
                 this.GetDirectorySize(path, ref size);
             }
             catch{ }
@@ -130,8 +130,8 @@ namespace JustLib.NetworkDisk.Server
 
         private void GetDirectorySize(string dirPath ,ref ulong size)
         {
-            string[] entries = System.IO.Directory.GetFileSystemEntries(dirPath);
-            foreach (string entry in entries)
+            var entries = System.IO.Directory.GetFileSystemEntries(dirPath);
+            foreach (var entry in entries)
             {
                 if (Directory.Exists(entry))
                 {
@@ -141,7 +141,7 @@ namespace JustLib.NetworkDisk.Server
                 {
                     if (!entry.EndsWith(".tmpe$"))
                     {
-                        FileInfo fileInfo = new FileInfo(entry);
+                        var fileInfo = new FileInfo(entry);
                         size += (ulong)fileInfo.Length;
                     }
                 }

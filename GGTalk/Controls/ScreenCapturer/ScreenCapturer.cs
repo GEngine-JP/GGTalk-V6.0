@@ -70,8 +70,8 @@ namespace GGTalk.Controls
 
         private void SetControlColorTable()
         {
-            CaptureImageToolColorTable colorTable = ColorTable;
-            ToolStripRendererEx renderer = new ToolStripRendererEx(colorTable);
+            var colorTable = ColorTable;
+            var renderer = new ToolStripRendererEx(colorTable);
             contextMenuStrip.Renderer = renderer;
             drawToolsControl.ColorTable = colorTable;
             colorSelector.ColorTable = colorTable;
@@ -196,18 +196,18 @@ namespace GGTalk.Controls
                 if (SelectImageRect.Contains(e.Location) ||
                     e.Button == MouseButtons.Left)
                 {
-                    string text = textBox.Text;
-                    Font font = textBox.Font;
-                    Color color = textBox.ForeColor;
+                    var text = textBox.Text;
+                    var font = textBox.Font;
+                    var color = textBox.ForeColor;
 
                     HideTextBox();
                     if (OperateManager.OperateCount > 0)
                     {
-                        OperateObject obj =
+                        var obj =
                             OperateManager.OperateList[OperateManager.OperateCount - 1];
                         if (obj.OperateType == OperateType.DrawText)
                         {
-                            DrawTextData textData = obj.Data as DrawTextData;
+                            var textData = obj.Data as DrawTextData;
                             if (!textData.Completed)
                             {
                                 if (string.IsNullOrEmpty(text))
@@ -385,7 +385,7 @@ namespace GGTalk.Controls
         {
             base.OnMouseDoubleClick(e);
 
-            bool contains = SelectImageRect.Contains(e.Location);
+            var contains = SelectImageRect.Contains(e.Location);
             if (e.Button == MouseButtons.Left)
             {
                 if (contains)
@@ -407,18 +407,18 @@ namespace GGTalk.Controls
         {
             base.OnPaint(e);
 
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             if (SelectImageRect.Width != 0 && SelectImageRect.Height != 0 )
             {
-                Rectangle rect = SelectImageRect;
-                CaptureImageToolColorTable colorTable = ColorTable;
+                var rect = SelectImageRect;
+                var colorTable = ColorTable;
                 if (_mouseDown)
                 {
                     if (!SelectedImage || SizeGrip != SizeGrip.None)
                     {
-                        using (SolidBrush brush = new SolidBrush(
+                        using (var brush = new SolidBrush(
                             Color.FromArgb(90, colorTable.BackColorNormal)))
                         {
                             g.FillRectangle(brush, rect);
@@ -428,13 +428,13 @@ namespace GGTalk.Controls
                     }
                 }
 
-                using (Pen pen = new Pen(colorTable.BorderColor))
+                using (var pen = new Pen(colorTable.BorderColor))
                 {
                     g.DrawRectangle(pen, rect);
 
-                    using (SolidBrush brush = new SolidBrush(colorTable.BackColorPressed))
+                    using (var brush = new SolidBrush(colorTable.BackColorPressed))
                     {
-                        foreach (Rectangle sizeGripRect in SizeGripRectList.Values)
+                        foreach (var sizeGripRect in SizeGripRectList.Values)
                         {
                             g.FillRectangle(
                                 brush,
@@ -490,14 +490,14 @@ namespace GGTalk.Controls
 
         private void DrawImageSizeInfo(Graphics g, Rectangle rect)
         {
-            string text = string.Format(
+            var text = string.Format(
                             "{0}x{1}",
                             rect.Width,
                             rect.Height);
-            Size textSize = TextRenderer.MeasureText(text, TextFont);
-            Rectangle screenBounds = Screen.GetBounds(this);
-            int x = 0;
-            int y = 0;
+            var textSize = TextRenderer.MeasureText(text, TextFont);
+            var screenBounds = Screen.GetBounds(this);
+            var x = 0;
+            var y = 0;
             if (rect.X + textSize.Width > screenBounds.Right - 3)
             {
                 x = screenBounds.Right - textSize.Width - 3;
@@ -516,7 +516,7 @@ namespace GGTalk.Controls
                 y = rect.Y - textSize.Height - 2;
             }
 
-            Rectangle textRect = new Rectangle(
+            var textRect = new Rectangle(
                 x, y, textSize.Width, textSize.Height);
             g.FillRectangle(Brushes.Black, textRect);
             TextRenderer.DrawText(
@@ -534,12 +534,12 @@ namespace GGTalk.Controls
                 return;
             }
 
-            Color color = SelectedColor;
+            var color = SelectedColor;
 
             switch (DrawStyle)
             {
                 case DrawStyle.Rectangle:
-                    using (Pen pen = new Pen(color))
+                    using (var pen = new Pen(color))
                     {
                         g.DrawRectangle(
                             pen,
@@ -551,7 +551,7 @@ namespace GGTalk.Controls
                     }
                     break;
                 case DrawStyle.Ellipse:
-                    using (Pen pen = new Pen(color))
+                    using (var pen = new Pen(color))
                     {
                         g.DrawEllipse(
                             pen,
@@ -563,7 +563,7 @@ namespace GGTalk.Controls
                     }
                     break;
                 case DrawStyle.Arrow:
-                    using (Pen pen = new Pen(color))
+                    using (var pen = new Pen(color))
                     {
                         pen.EndCap = LineCap.ArrowAnchor;
                         pen.EndCap = LineCap.Custom;
@@ -572,7 +572,7 @@ namespace GGTalk.Controls
                     }
                     break;
                 case DrawStyle.Text:
-                    using (Pen pen = new Pen(color))
+                    using (var pen = new Pen(color))
                     {
                         pen.DashStyle = DashStyle.DashDot;
                         pen.DashCap = DashCap.Round;
@@ -593,9 +593,9 @@ namespace GGTalk.Controls
                         return;
                     }
 
-                    Point[] points = LinePointList.ToArray();
+                    var points = LinePointList.ToArray();
 
-                    using (Pen pen = new Pen(color))
+                    using (var pen = new Pen(color))
                     {
                         g.DrawLines(
                            pen,
@@ -607,12 +607,12 @@ namespace GGTalk.Controls
 
         private void DrawOperate(Graphics g)
         {
-            foreach (OperateObject obj in OperateManager.OperateList)
+            foreach (var obj in OperateManager.OperateList)
             {
                 switch (obj.OperateType)
                 {
                     case OperateType.DrawRectangle:
-                        using (Pen pen = new Pen(obj.Color))
+                        using (var pen = new Pen(obj.Color))
                         {
                             g.DrawRectangle(
                                 pen,
@@ -620,7 +620,7 @@ namespace GGTalk.Controls
                         }
                         break;
                     case OperateType.DrawEllipse:
-                        using (Pen pen = new Pen(obj.Color))
+                        using (var pen = new Pen(obj.Color))
                         {
                             g.DrawEllipse(
                                 pen,
@@ -628,8 +628,8 @@ namespace GGTalk.Controls
                         }
                         break;
                     case OperateType.DrawArrow:
-                        Point[] points = obj.Data as Point[];
-                        using (Pen pen = new Pen(obj.Color))
+                        var points = obj.Data as Point[];
+                        using (var pen = new Pen(obj.Color))
                         {
                             pen.EndCap = LineCap.Custom;
                             pen.CustomEndCap = new AdjustableArrowCap(4, 4, true);
@@ -637,11 +637,11 @@ namespace GGTalk.Controls
                         }
                         break;
                     case OperateType.DrawText:
-                        DrawTextData textdata = obj.Data as DrawTextData;
+                        var textdata = obj.Data as DrawTextData;
 
                         if (string.IsNullOrEmpty(textdata.Text))
                         {
-                            using (Pen pen = new Pen(obj.Color))
+                            using (var pen = new Pen(obj.Color))
                             {
                                 pen.DashStyle = DashStyle.DashDot;
                                 pen.DashCap = DashCap.Round;
@@ -653,7 +653,7 @@ namespace GGTalk.Controls
                         }
                         else
                         {
-                            using (SolidBrush brush = new SolidBrush(obj.Color))
+                            using (var brush = new SolidBrush(obj.Color))
                             {
                                 g.DrawString(
                                     textdata.Text,
@@ -664,7 +664,7 @@ namespace GGTalk.Controls
                         }
                         break;
                     case OperateType.DrawLine:
-                        using (Pen pen = new Pen(obj.Color))
+                        using (var pen = new Pen(obj.Color))
                         {
                             g.DrawLines(pen, obj.Data as Point[]);
                         }
@@ -675,10 +675,10 @@ namespace GGTalk.Controls
 
         private void DrawLastImage()
         {
-            using (Bitmap allBmp = new Bitmap(
+            using (var allBmp = new Bitmap(
                 Width, Height, PixelFormat.Format32bppArgb))
             {
-                using (Graphics allGraphics = Graphics.FromImage(allBmp))
+                using (var allGraphics = Graphics.FromImage(allBmp))
                 {
                     allGraphics.InterpolationMode = 
                         InterpolationMode.HighQualityBicubic;
@@ -689,11 +689,11 @@ namespace GGTalk.Controls
                     DrawOperate(allGraphics);
                     allGraphics.Flush();
 
-                    Bitmap bmp = new Bitmap(
+                    var bmp = new Bitmap(
                        SelectImageRect.Width,
                        SelectImageRect.Height,
                        PixelFormat.Format32bppArgb);
-                    Graphics g = Graphics.FromImage(bmp);
+                    var g = Graphics.FromImage(bmp);
                     g.DrawImage(
                         allBmp,
                         0,
@@ -773,13 +773,13 @@ namespace GGTalk.Controls
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     DrawLastImage();
-                    string fileName = saveFileDialog.FileName;
-                    int index = fileName.LastIndexOf('.');
-                    string extion = fileName.Substring(
+                    var fileName = saveFileDialog.FileName;
+                    var index = fileName.LastIndexOf('.');
+                    var extion = fileName.Substring(
                         index + 1, fileName.Length - index - 1);
                     extion = extion.ToLower();
 
-                    ImageFormat imageFormat = ImageFormat.Bmp;
+                    var imageFormat = ImageFormat.Bmp;
 
                     switch (extion)
                     {
@@ -833,18 +833,18 @@ namespace GGTalk.Controls
         {
             if (textBox.Visible)
             {
-                string text = textBox.Text;
-                Font font = textBox.Font;
-                Color color = textBox.ForeColor;
+                var text = textBox.Text;
+                var font = textBox.Font;
+                var color = textBox.ForeColor;
 
                 HideTextBox();
                 if (OperateManager.OperateCount > 0)
                 {
-                    OperateObject obj =
+                    var obj =
                         OperateManager.OperateList[OperateManager.OperateCount - 1];
                     if (obj.OperateType == OperateType.DrawText)
                     {
-                        DrawTextData textData = obj.Data as DrawTextData;
+                        var textData = obj.Data as DrawTextData;
                         if (!textData.Completed)
                         {
                             if (string.IsNullOrEmpty(text))
@@ -918,15 +918,15 @@ namespace GGTalk.Controls
 
         private Image GetDestopImage()
         {
-            Rectangle rect = Screen.GetBounds(this);
-            Bitmap bmp = new Bitmap(
+            var rect = Screen.GetBounds(this);
+            var bmp = new Bitmap(
                 rect.Width, rect.Height, PixelFormat.Format32bppArgb);
-            Graphics g = Graphics.FromImage(bmp);
+            var g = Graphics.FromImage(bmp);
 
-            IntPtr gHdc = g.GetHdc();
-            IntPtr deskHandle = NativeMethods.GetDesktopWindow();
+            var gHdc = g.GetHdc();
+            var deskHandle = NativeMethods.GetDesktopWindow();
 
-            IntPtr dHdc = NativeMethods.GetDC(deskHandle);
+            var dHdc = NativeMethods.GetDC(deskHandle);
             NativeMethods.BitBlt(
                 gHdc,
                 0,
@@ -955,14 +955,14 @@ namespace GGTalk.Controls
 
         private void CalCulateSizeGripRect()
         {
-            Rectangle rect = SelectImageRect;
+            var rect = SelectImageRect;
 
-            int x = rect.X;
-            int y = rect.Y;
-            int centerX = x + rect.Width / 2;
-            int centerY = y + rect.Height / 2;
+            var x = rect.X;
+            var y = rect.Y;
+            var centerX = x + rect.Width / 2;
+            var centerY = y + rect.Height / 2;
 
-            Dictionary<SizeGrip,Rectangle> list = SizeGripRectList;
+            var list = SizeGripRectList;
             list.Clear();
 
             list.Add(
@@ -994,7 +994,7 @@ namespace GGTalk.Controls
         private void SetSizeGrip(Point point)
         {
             SizeGrip = SizeGrip.None;
-            foreach (SizeGrip sizeGrip in SizeGripRectList.Keys)
+            foreach (var sizeGrip in SizeGripRectList.Keys)
             {
                 if (SizeGripRectList[sizeGrip].Contains(point))
                 {
@@ -1040,12 +1040,12 @@ namespace GGTalk.Controls
 
         private void ChangeSelctImageRect(Point point)
         {
-            Rectangle rect = _selectImageBounds;
-            int left = rect.Left;
-            int top = rect.Top;
-            int right = rect.Right;
-            int bottom = rect.Bottom;
-            bool sizeGripAll = false;
+            var rect = _selectImageBounds;
+            var left = rect.Left;
+            var top = rect.Top;
+            var right = rect.Right;
+            var bottom = rect.Bottom;
+            var sizeGripAll = false;
 
             switch (SizeGrip)
             {
@@ -1099,9 +1099,9 @@ namespace GGTalk.Controls
 
         private Rectangle ImageBoundsToRect(Rectangle bounds)
         {
-            Rectangle rect = bounds;
-            int x = 0;
-            int y = 0;
+            var rect = bounds;
+            var x = 0;
+            var y = 0;
 
             x = Math.Min(rect.X, rect.Right);
             y = Math.Min(rect.Y, rect.Bottom);
@@ -1131,11 +1131,11 @@ namespace GGTalk.Controls
 
         private void ShowDrawToolsControl()
         {
-            Rectangle rect = SelectImageRect;
-            Rectangle screenBounds = Screen.GetBounds(this);
-            int x = rect.Right - drawToolsControl.Width - 2;
-            int y = 0;
-            DrawToolsDockStyle dockStyle = DrawToolsDockStyle.None;
+            var rect = SelectImageRect;
+            var screenBounds = Screen.GetBounds(this);
+            var x = rect.Right - drawToolsControl.Width - 2;
+            var y = 0;
+            var dockStyle = DrawToolsDockStyle.None;
 
             if (rect.Bottom + drawToolsControl.Height + 2 <= screenBounds.Bottom)
             {
@@ -1168,11 +1168,11 @@ namespace GGTalk.Controls
 
         private void ShowColorSelector()
         {
-            int x = 0;
-            int y = 0;
+            var x = 0;
+            var y = 0;
 
-            Rectangle rect = drawToolsControl.Bounds;
-            Rectangle screenBounds = Screen.GetBounds(this);
+            var rect = drawToolsControl.Bounds;
+            var screenBounds = Screen.GetBounds(this);
 
             switch (drawToolsControl.DrawToolsDockStyle)
             {
@@ -1204,7 +1204,7 @@ namespace GGTalk.Controls
         {
             if (SelectImageRect.Contains(_mouseDownPoint))
             {
-                Rectangle bounds = ImageBoundsToRect(
+                var bounds = ImageBoundsToRect(
                     Rectangle.FromLTRB(
                     _mouseDownPoint.X,
                     _mouseDownPoint.Y,
@@ -1236,7 +1236,7 @@ namespace GGTalk.Controls
                 return;
             }
 
-            Color color = SelectedColor;
+            var color = SelectedColor;
             switch (DrawStyle)
             {
                 case DrawStyle.Rectangle:
@@ -1260,7 +1260,7 @@ namespace GGTalk.Controls
                        point.Y)));
                     break;
                 case DrawStyle.Arrow:
-                    Point[] points = new Point[] { _mouseDownPoint, point };
+                    var points = new Point[] { _mouseDownPoint, point };
                     OperateManager.AddOperate(
                         OperateType.DrawArrow,
                         color,
@@ -1268,12 +1268,12 @@ namespace GGTalk.Controls
                     break;
                 case DrawStyle.Text:
                     ShowTextBox();
-                    Rectangle textRect = ImageBoundsToRect(Rectangle.FromLTRB(
+                    var textRect = ImageBoundsToRect(Rectangle.FromLTRB(
                        _mouseDownPoint.X,
                        _mouseDownPoint.Y,
                        point.X,
                        point.Y));
-                    DrawTextData textData = new DrawTextData(
+                    var textData = new DrawTextData(
                         string.Empty,
                         base.Font,
                         textRect);
@@ -1309,7 +1309,7 @@ namespace GGTalk.Controls
                 rect = SelectImageRect;
             }
 
-            NativeMethods.RECT nativeRect = new NativeMethods.RECT(rect);
+            var nativeRect = new NativeMethods.RECT(rect);
             NativeMethods.ClipCursor(ref nativeRect);
         }
 

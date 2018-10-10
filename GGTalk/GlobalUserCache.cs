@@ -47,7 +47,7 @@ namespace GGTalk
        public GlobalUserCache(IRapidPassiveEngine engine)
        {
            this.rapidPassiveEngine = engine;
-           string persistenceFilePath = SystemSettings.SystemSettingsDir + engine.CurrentUserID + ".dat";
+           var persistenceFilePath = SystemSettings.SystemSettingsDir + engine.CurrentUserID + ".dat";
            this.Initialize(this.rapidPassiveEngine.CurrentUserID, persistenceFilePath, GlobalConsts.CompanyGroupID, GlobalResourceManager.Logger);
        }
 
@@ -71,7 +71,7 @@ namespace GGTalk
            this.originUserLocalPersistence = UserLocalPersistence.Load(this.persistenceFilePath);//返回null，表示该登录帐号还没有任何缓存
            if (this.originUserLocalPersistence != null && this.originUserLocalPersistence.FriendList != null)
            {
-               foreach (GGUser user in this.originUserLocalPersistence.FriendList)
+               foreach (var user in this.originUserLocalPersistence.FriendList)
                {
                    if (user.ID == null)
                    {
@@ -84,7 +84,7 @@ namespace GGTalk
                    }
                }
 
-               foreach (GGGroup group in this.originUserLocalPersistence.GroupList)
+               foreach (var group in this.originUserLocalPersistence.GroupList)
                {
                    if (this.currentUser.GroupList.Contains(group.ID))
                    {
@@ -104,7 +104,7 @@ namespace GGTalk
         #region private methods
         private GGUser DoGetUser(string userID)
         {
-            byte[] bUser = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetUserInfo, System.Text.Encoding.UTF8.GetBytes(userID));
+            var bUser = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetUserInfo, System.Text.Encoding.UTF8.GetBytes(userID));
             if (bUser == null)
             {
                 return null;
@@ -114,33 +114,33 @@ namespace GGTalk
 
         private GGGroup DoGetGroup(string groupID)
         {
-            byte[] bGroup = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetGroup, System.Text.Encoding.UTF8.GetBytes(groupID));
+            var bGroup = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetGroup, System.Text.Encoding.UTF8.GetBytes(groupID));
             return CompactPropertySerializer.Default.Deserialize<GGGroup>(bGroup, 0);
         }
         private List<GGGroup> DoGetMyGroups()
         {
-            byte[] bMyGroups = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetMyGroups, null);
+            var bMyGroups = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetMyGroups, null);
             return CompactPropertySerializer.Default.Deserialize<List<GGGroup>>(bMyGroups, 0);
         }
         private List<GGGroup> DoGetSomeGroups(List<string> groupIDList)
         {
-            byte[] bMyGroups = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetSomeGroups, CompactPropertySerializer.Default.Serialize(groupIDList));
+            var bMyGroups = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetSomeGroups, CompactPropertySerializer.Default.Serialize(groupIDList));
             return CompactPropertySerializer.Default.Deserialize<List<GGGroup>>(bMyGroups, 0);
         }
         private ContactRTDatas DoGetContactsRTDatas()
         {
-            byte[] res = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetContactsRTData, null);
+            var res = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetContactsRTData, null);
             return ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<ContactsRTDataContract>(res, 0);
         }
         private List<GGUser> DoGetSomeUsers(List<string> userIDList)
         {
-            byte[] bFriends = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetSomeUsers, CompactPropertySerializer.Default.Serialize(userIDList));
+            var bFriends = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetSomeUsers, CompactPropertySerializer.Default.Serialize(userIDList));
             return CompactPropertySerializer.Default.Deserialize<List<GGUser>>(bFriends, 0);
         }
 
         private List<GGUser> DoGetAllContacts() //好友，包括组友 
         {
-            byte[] bFriends = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetAllContacts, null);
+            var bFriends = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.GetAllContacts, null);
             return CompactPropertySerializer.Default.Deserialize<List<GGUser>>(bFriends, 0);
         } 
         #endregion
@@ -179,7 +179,7 @@ namespace GGTalk
                 }
             }
 
-            UserLocalPersistence cache = new UserLocalPersistence(this.userManager.GetAllReadonly(), this.groupManager.GetAll(), recentList);
+            var cache = new UserLocalPersistence(this.userManager.GetAllReadonly(), this.groupManager.GetAll(), recentList);
             cache.Save(this.persistenceFilePath);
         }
         #endregion
@@ -213,18 +213,18 @@ namespace GGTalk
         {
             try
             {
-                List<string> tmpFriendList = this.currentUser.GetAllFriendList();
-                ESBasic.Collections.SortedArray<string> allContacts = new ESBasic.Collections.SortedArray<string>(tmpFriendList);
-                List<GGGroup> myGroups = this.DoGetMyGroups(); //如果开启的Org，则会有公司群，其包含了所有组织内用户
-                foreach (GGGroup group in myGroups)
+                var tmpFriendList = this.currentUser.GetAllFriendList();
+                var allContacts = new ESBasic.Collections.SortedArray<string>(tmpFriendList);
+                var myGroups = this.DoGetMyGroups(); //如果开启的Org，则会有公司群，其包含了所有组织内用户
+                foreach (var group in myGroups)
                 {
                     this.groupManager.Add(group.ID, group);
                     allContacts.Add(group.MemberList, true); //加入组友
                 }
 
-                List<string> allContactList = allContacts.GetAllReadonly(); //所有联系人，包括好友、组友
-                int pageCount = allContactList.Count / this.pageSize4LoadFriends;
-                int lastPageSize = allContactList.Count % this.pageSize4LoadFriends;
+                var allContactList = allContacts.GetAllReadonly(); //所有联系人，包括好友、组友
+                var pageCount = allContactList.Count / this.pageSize4LoadFriends;
+                var lastPageSize = allContactList.Count % this.pageSize4LoadFriends;
                 if (lastPageSize > 0)
                 {
                     pageCount += 1;
@@ -237,8 +237,8 @@ namespace GGTalk
                 if (pageCount == 1)
                 {
                     //好友，包括组友                   
-                    List<GGUser> friends = this.DoGetAllContacts();
-                    foreach (GGUser friend in friends)
+                    var friends = this.DoGetAllContacts();
+                    foreach (var friend in friends)
                     {
                         if (friend.ID != this.currentUser.ID)
                         {
@@ -249,13 +249,13 @@ namespace GGTalk
                 }
                 else
                 {
-                    for (int i = 0; i < pageCount; i++)
+                    for (var i = 0; i < pageCount; i++)
                     {
-                        string[] ary = (i == pageCount - 1) ? new string[lastPageSize] : new string[this.pageSize4LoadFriends];
+                        var ary = (i == pageCount - 1) ? new string[lastPageSize] : new string[this.pageSize4LoadFriends];
                         allContactList.CopyTo(i * this.pageSize4LoadFriends, ary, 0, ary.Length);
-                        List<string> tmp = new List<string>(ary);
-                        List<GGUser> friends = this.DoGetSomeUsers(tmp);
-                        foreach (GGUser friend in friends)
+                        var tmp = new List<string>(ary);
+                        var friends = this.DoGetSomeUsers(tmp);
+                        foreach (var friend in friends)
                         {
                             if (friend.ID != this.currentUser.ID)
                             {
@@ -266,7 +266,7 @@ namespace GGTalk
                     }
                 }
 
-                foreach (GGGroup group in myGroups)
+                foreach (var group in myGroups)
                 {
                     this.GroupChanged(group, GroupChangedType.MemberInfoChanged, null);
                 }
@@ -285,8 +285,8 @@ namespace GGTalk
         {
             try
             {
-                ContactRTDatas contract = this.DoGetContactsRTDatas();
-                foreach (string userID in this.userManager.GetKeyList())
+                var contract = this.DoGetContactsRTDatas();
+                foreach (var userID in this.userManager.GetKeyList())
                 {
                     if (userID != this.currentUser.ID && !contract.UserStatusDictionary.ContainsKey(userID)) //最新的联系人中不包含缓存用户，则将之从缓存中删除。
                     {
@@ -298,17 +298,17 @@ namespace GGTalk
                     }
                 }
 
-                foreach (KeyValuePair<string, UserRTData> pair in contract.UserStatusDictionary)
+                foreach (var pair in contract.UserStatusDictionary)
                 {
                     if (pair.Key == this.currentUser.ID)
                     {
                         continue;
                     }
 
-                    GGUser origin = this.userManager.Get(pair.Key);
+                    var origin = this.userManager.Get(pair.Key);
                     if (origin == null) //不存在于本地缓存中
                     {
-                        GGUser user = this.DoGetUser(pair.Key);
+                        var user = this.DoGetUser(pair.Key);
                         this.userManager.Add(user.ID, user);
                         if (this.FriendInfoChanged != null)
                         {
@@ -320,7 +320,7 @@ namespace GGTalk
                         //资料变化
                         if (pair.Value.Version != origin.Version)
                         {
-                            GGUser user = this.DoGetUser(pair.Key);
+                            var user = this.DoGetUser(pair.Key);
                             if (this.FriendInfoChanged != null)
                             {
                                 this.FriendInfoChanged(user);
@@ -343,10 +343,10 @@ namespace GGTalk
                     }
                 }
 
-                List<string> updateGroupList = new List<string>();
-                foreach (string groupID in this.currentUser.GroupList)
+                var updateGroupList = new List<string>();
+                foreach (var groupID in this.currentUser.GroupList)
                 {
-                    GGGroup group = this.groupManager.Get(groupID);
+                    var group = this.groupManager.Get(groupID);
                     if (group == null)
                     {
                         updateGroupList.Add(groupID);
@@ -366,8 +366,8 @@ namespace GGTalk
                 if (updateGroupList.Count > 0)
                 {
                     //加载组
-                    List<GGGroup> newGroups = this.DoGetSomeGroups(updateGroupList);
-                    foreach (GGGroup group in newGroups)
+                    var newGroups = this.DoGetSomeGroups(updateGroupList);
+                    foreach (var group in newGroups)
                     {
                         this.groupManager.Add(group.ID, group);
                         if (this.GroupChanged != null)
@@ -404,7 +404,7 @@ namespace GGTalk
         #region GetUserName
         public string GetUserName(string userID)
         {
-            GGUser user = this.GetUser(userID);
+            var user = this.GetUser(userID);
             if (user == null)
             {
                 return null;
@@ -416,7 +416,7 @@ namespace GGTalk
 
         public GGUser GetUser(string userID)
         {
-            GGUser user = this.userManager.Get(userID);
+            var user = this.userManager.Get(userID);
             if (user == null)
             {
                 user = this.DoGetUser(userID);
@@ -430,7 +430,7 @@ namespace GGTalk
 
         public void ChangeUserStatus(string userID, UserStatus status)
         {
-            GGUser user = this.userManager.Get(userID);
+            var user = this.userManager.Get(userID);
             if (user != null)
             {
                 user.UserStatus = status;
@@ -455,7 +455,7 @@ namespace GGTalk
 
         public void AddOrUpdateUser(GGUser user)
         {
-            bool isNew = !this.userManager.Contains(user.ID);
+            var isNew = !this.userManager.Contains(user.ID);
             this.userManager.Add(user.ID, user);
             if (this.FriendInfoChanged != null)
             {
@@ -482,8 +482,8 @@ namespace GGTalk
 
         public void RemovedFriend(string friendID)
         {
-            bool inGroup = false;
-            foreach (GGGroup group in this.groupManager.GetAll())
+            var inGroup = false;
+            foreach (var group in this.groupManager.GetAll())
             {
                 if (group.MemberList.Contains(friendID))
                 {
@@ -520,7 +520,7 @@ namespace GGTalk
 
         public GGGroup GetGroup(string groupID)
         {
-            GGGroup group = this.groupManager.Get(groupID);
+            var group = this.groupManager.Get(groupID);
             if (group == null)
             {
                 group = this.DoGetGroup(groupID);
@@ -540,7 +540,7 @@ namespace GGTalk
 
         public void OnGroupInfoChanged(string groupID)
         {
-            GGGroup group = this.groupManager.Get(groupID);
+            var group = this.groupManager.Get(groupID);
             if (group == null)
             {
                 return;
@@ -556,7 +556,7 @@ namespace GGTalk
                 return;
             }
 
-            GGGroup group = this.groupManager.Get(groupID);
+            var group = this.groupManager.Get(groupID);
             if (group == null)
             {
                 return;
@@ -567,7 +567,7 @@ namespace GGTalk
 
         public void OnSomeoneJoinGroup(string groupID, string userID)
         {
-            GGGroup group = this.groupManager.Get(groupID);
+            var group = this.groupManager.Get(groupID);
             if (group == null || group.MemberList.Contains(userID))
             {
                 return;
@@ -582,7 +582,7 @@ namespace GGTalk
 
         public void OnSomeoneQuitGroup(string groupID, string userID)
         {
-            GGGroup group = this.groupManager.Get(groupID);
+            var group = this.groupManager.Get(groupID);
             if (group == null || !group.MemberList.Contains(userID))
             {
                 return;

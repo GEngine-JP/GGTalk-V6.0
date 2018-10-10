@@ -21,7 +21,7 @@ namespace GGTalk
                     return null;
                 }
 
-                byte[] data = ESBasic.Helpers.FileHelper.ReadFileReturnBytes(filePath);
+                var data = ESBasic.Helpers.FileHelper.ReadFileReturnBytes(filePath);
                 return (UserLocalPersistence)ESBasic.Helpers.SerializeHelper.DeserializeBytes(data, 0, data.Length);
             }
             catch
@@ -32,7 +32,7 @@ namespace GGTalk
 
         public void Save(string filePath)
         {
-            byte[] data = ESBasic.Helpers.SerializeHelper.SerializeObject(this);
+            var data = ESBasic.Helpers.SerializeHelper.SerializeObject(this);
             ESBasic.Helpers.FileHelper.WriteBuffToFile(data, filePath);
         } 
         #endregion

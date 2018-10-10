@@ -62,13 +62,13 @@ namespace GGTalk
 
         private void skinButton2_Click(object sender, EventArgs e)
         {
-            string file = ESBasic.Helpers.FileHelper.GetFileToOpen("请选择要使用的图片");
+            var file = ESBasic.Helpers.FileHelper.GetFileToOpen("请选择要使用的图片");
             if (file == null)
             {
                 return;
             }
 
-            Image img = Image.FromFile(file) ;
+            var img = Image.FromFile(file) ;
             this.imagePartSelecter1.SetSourceImage(img);
             this.DialogResult = System.Windows.Forms.DialogResult.None;
         }

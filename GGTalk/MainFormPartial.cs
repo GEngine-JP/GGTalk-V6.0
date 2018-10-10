@@ -27,21 +27,21 @@ namespace GGTalk
             if (informationType == InformationTypes.Chat)
             {
                 sourceUserID = tag;
-                byte[] bChatBoxContent = info;
+                var bChatBoxContent = info;
                 if (bChatBoxContent != null)
                 {
-                    ChatMessageRecord record = new ChatMessageRecord(sourceUserID, this.rapidPassiveEngine.CurrentUserID, bChatBoxContent, false);
+                    var record = new ChatMessageRecord(sourceUserID, this.rapidPassiveEngine.CurrentUserID, bChatBoxContent, false);
                     GlobalResourceManager.ChatMessageRecordPersister.InsertChatMessageRecord(record);
                 }
 
-                byte[] decrypted = info;
+                var decrypted = info;
                 if (GlobalResourceManager.Des3Encryption != null)
                 {
                     decrypted = GlobalResourceManager.Des3Encryption.Decrypt(info);
                 }
 
-                ChatBoxContent content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
-                GGUser user = this.globalUserCache.GetUser(sourceUserID);
+                var content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
+                var user = this.globalUserCache.GetUser(sourceUserID);
                 this.notifyIcon.PushFriendMessage(sourceUserID, informationType, info, content);
                 return;
             }
@@ -68,7 +68,7 @@ namespace GGTalk
             {                
                 if (informationType == InformationTypes.FriendAddedNotify)
                 { 
-                    GGUser owner = CompactPropertySerializer.Default.Deserialize<GGUser>(info ,0); // 0922
+                    var owner = CompactPropertySerializer.Default.Deserialize<GGUser>(info ,0); // 0922
                     this.globalUserCache.CurrentUser.AddFriend(owner.ID, this.globalUserCache.CurrentUser.DefaultFriendCatalog);
                     this.globalUserCache.OnFriendAdded(owner); //自然会添加 好友条目
                     sourceUserID = owner.UserID;
@@ -78,31 +78,31 @@ namespace GGTalk
                 if (informationType == InformationTypes.OfflineMessage)
                 {
                     byte[] bChatBoxContent = null;
-                    OfflineMessage msg = CompactPropertySerializer.Default.Deserialize<OfflineMessage>(info, 0);
+                    var msg = CompactPropertySerializer.Default.Deserialize<OfflineMessage>(info, 0);
                     if (msg.InformationType == InformationTypes.Chat) //目前只处理离线的聊天消息
                     {
                         sourceUserID = msg.SourceUserID;
                         bChatBoxContent = msg.Information;
-                        byte[] decrypted = bChatBoxContent;
+                        var decrypted = bChatBoxContent;
                         if (GlobalResourceManager.Des3Encryption != null)
                         {
                             decrypted = GlobalResourceManager.Des3Encryption.Decrypt(bChatBoxContent);
                         }
                         
-                        ChatMessageRecord record = new ChatMessageRecord(sourceUserID, this.rapidPassiveEngine.CurrentUserID, decrypted, false);
+                        var record = new ChatMessageRecord(sourceUserID, this.rapidPassiveEngine.CurrentUserID, decrypted, false);
                         GlobalResourceManager.ChatMessageRecordPersister.InsertChatMessageRecord(record);
-                        ChatBoxContent content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
+                        var content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
                         tag = new Parameter<ChatBoxContent, DateTime>(content, msg.Time);
                     }
                 }
 
                 if (informationType == InformationTypes.OfflineFileResultNotify)
                 {
-                    OfflineFileResultNotifyContract contract = CompactPropertySerializer.Default.Deserialize<OfflineFileResultNotifyContract>(info, 0);
+                    var contract = CompactPropertySerializer.Default.Deserialize<OfflineFileResultNotifyContract>(info, 0);
                     sourceUserID = contract.AccepterID;
                 }
 
-                GGUser user = this.globalUserCache.GetUser(sourceUserID);
+                var user = this.globalUserCache.GetUser(sourceUserID);
                 this.notifyIcon.PushFriendMessage(sourceUserID, informationType, info, tag);
                 return;
             }
@@ -118,7 +118,7 @@ namespace GGTalk
                 {
                     if (informationType == InformationTypes.InputingNotify)
                     {
-                        ChatForm form = this.chatFormManager.GetForm(sourceUserID);
+                        var form = this.chatFormManager.GetForm(sourceUserID);
                         if (form != null)
                         {
                             form.OnInptingNotify();
@@ -128,36 +128,36 @@ namespace GGTalk
 
                     if (informationType == InformationTypes.FriendRemovedNotify)
                     {
-                        string friendID = System.Text.Encoding.UTF8.GetString(info);
+                        var friendID = System.Text.Encoding.UTF8.GetString(info);
                         this.globalUserCache.RemovedFriend(friendID);
                         return;
                     }
 
                     if (informationType == InformationTypes.UserInforChanged)
                     {
-                        GGUser user = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<GGUser>(info, 0);
+                        var user = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<GGUser>(info, 0);
                         this.globalUserCache.AddOrUpdateUser(user);
                         return;
                     }
 
                     if (informationType == InformationTypes.UserStatusChanged)
                     {
-                        UserStatusChangedContract contract = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<UserStatusChangedContract>(info, 0);
+                        var contract = ESPlus.Serialization.CompactPropertySerializer.Default.Deserialize<UserStatusChangedContract>(info, 0);
                         this.globalUserCache.ChangeUserStatus(contract.UserID, (UserStatus)contract.NewStatus);
                     }
 
                     if (informationType == InformationTypes.SystemNotify4AllOnline)
                     {
-                        SystemNotifyContract contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
-                        SystemNotifyForm form = new SystemNotifyForm(contract.Title, contract.Content);
+                        var contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
+                        var form = new SystemNotifyForm(contract.Title, contract.Content);
                         form.Show();
                         return;
                     }
 
                     if (informationType == InformationTypes.SystemNotify4Group)
                     {
-                        SystemNotifyContract contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
-                        SystemNotifyForm form = new SystemNotifyForm(contract.Title, contract.Content);
+                        var contract = CompactPropertySerializer.Default.Deserialize<SystemNotifyContract>(info, 0);
+                        var form = new SystemNotifyForm(contract.Title, contract.Content);
                         form.Show();
                         return;
                     }
@@ -199,37 +199,37 @@ namespace GGTalk
                 {
                     if (broadcastType == BroadcastTypes.BroadcastChat)
                     {
-                        GGGroup group = this.globalUserCache.GetGroup(groupID);
+                        var group = this.globalUserCache.GetGroup(groupID);
 
-                        byte[] decrypted = content;
+                        var decrypted = content;
                         if (GlobalResourceManager.Des3Encryption != null)
                         {
                             decrypted = GlobalResourceManager.Des3Encryption.Decrypt(content);
                         }
 
                         this.notifyIcon.PushGroupMessage(broadcasterID, groupID, broadcastType, decrypted);
-                        ChatMessageRecord record = new ChatMessageRecord(broadcasterID, groupID, decrypted, true);
+                        var record = new ChatMessageRecord(broadcasterID, groupID, decrypted, true);
                         GlobalResourceManager.ChatMessageRecordPersister.InsertChatMessageRecord(record);
                         return;
                     }
 
                     if (broadcastType == BroadcastTypes.SomeoneJoinGroup)
                     {
-                        string userID = System.Text.Encoding.UTF8.GetString(content);
+                        var userID = System.Text.Encoding.UTF8.GetString(content);
                         this.globalUserCache.OnSomeoneJoinGroup(groupID, userID);
                         return;
                     }
 
                     if (broadcastType == BroadcastTypes.SomeoneQuitGroup)
                     {
-                        string userID = System.Text.Encoding.UTF8.GetString(content);
+                        var userID = System.Text.Encoding.UTF8.GetString(content);
                         this.globalUserCache.OnSomeoneQuitGroup(groupID, userID);
                         return;
                     }
 
                     if (broadcastType == BroadcastTypes.GroupDeleted)
                     {
-                        string userID = System.Text.Encoding.UTF8.GetString(content);
+                        var userID = System.Text.Encoding.UTF8.GetString(content);
                         this.globalUserCache.OnGroupDeleted(groupID, userID);
                         return;
                     }

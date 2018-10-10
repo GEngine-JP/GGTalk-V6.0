@@ -37,7 +37,7 @@ namespace GGTalk
 
             this.rapidPassiveEngine = engine;
             this.currentUser = user ;
-            int registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
+            var registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
             this.ggService = (IRemotingService)Activator.GetObject(typeof(IRemotingService), string.Format("tcp://{0}:{1}/RemotingService", ConfigurationManager.AppSettings["ServerIP"], registerPort)); ;
            
             this.skinLabel_ID.Text = user.UserID;
@@ -87,8 +87,8 @@ namespace GGTalk
 
                 //0923
                 this.Cursor = Cursors.WaitCursor;
-                UIResultHandler handler = new UIResultHandler(this, this.UpdateCallback);
-                byte[] data = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(this.currentUser);
+                var handler = new UIResultHandler(this, this.UpdateCallback);
+                var data = ESPlus.Serialization.CompactPropertySerializer.Default.Serialize(this.currentUser);
                 //回复异步调用，避免阻塞UI线程
                 this.rapidPassiveEngine.SendMessage(null, InformationTypes.UpdateUserInfo, data, null, 2048, handler.Create(), null); //0924               
             }
@@ -129,7 +129,7 @@ namespace GGTalk
         private bool selfPhoto = false;
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PhotoForm form = new PhotoForm();
+            var form = new PhotoForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 this.pnlImgTx.BackgroundImage = form.CurrentImage;
@@ -139,7 +139,7 @@ namespace GGTalk
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            HeadImageForm form = new HeadImageForm(); 
+            var form = new HeadImageForm(); 
             if (form.ShowDialog() == DialogResult.OK)
             {
                 this.pnlImgTx.BackgroundImage = form.CurrentImage;

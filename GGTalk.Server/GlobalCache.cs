@@ -16,22 +16,22 @@ namespace GGTalk.Server
     /// </summary>
     internal class GlobalCache 
     {
-        private IDBPersister dbPersister ;
+        private IDbPersister dbPersister ;
         private ObjectManager<string, GGUser> userCache = new ObjectManager<string, GGUser>(); // key:用户ID 。 Value：用户信息
         private ObjectManager<string, GGGroup> groupCache = new ObjectManager<string, GGGroup>();  // key:组ID 。 Value：Group信息
         private ObjectManager<string, List<OfflineMessage>> offlineMessageTable = new ObjectManager<string, List<OfflineMessage>>();//key:用户ID 。 
         private ObjectManager<string, List<OfflineFileItem>> offlineFileTable = new ObjectManager<string, List<OfflineFileItem>>();//key:用户ID 。 
 
-        public GlobalCache(IDBPersister persister)
+        public GlobalCache(IDbPersister persister)
         {
             this.dbPersister = persister;
 
-            foreach (GGUser user in this.dbPersister.GetAllUser())
+            foreach (var user in this.dbPersister.GetAllUser())
             {
                 this.userCache.Add(user.UserID, user);
             }
 
-            foreach (GGGroup group in this.dbPersister.GetAllGroup())
+            foreach (var group in this.dbPersister.GetAllGroup())
             {
                 this.groupCache.Add(group.GroupID, group);
             }       
@@ -44,8 +44,8 @@ namespace GGTalk.Server
         /// </summary>   
         public List<GGUser> SearchUser(string idOrName)
         {
-            List<GGUser> list = new List<GGUser>();
-            foreach (GGUser user in this.userCache.GetAllReadonly())
+            var list = new List<GGUser>();
+            foreach (var user in this.userCache.GetAllReadonly())
             {
                 if (user.ID == idOrName || user.Name == idOrName)
                 {
@@ -66,7 +66,7 @@ namespace GGTalk.Server
 
         public void UpdateUser(GGUser user)
         {
-            GGUser old = this.userCache.Get(user.UserID);
+            var old = this.userCache.Get(user.UserID);
             if (old == null)
             {
                 return;
@@ -97,7 +97,7 @@ namespace GGTalk.Server
 
         public ChangePasswordResult ChangePassword(string userID, string oldPasswordMD5, string newPasswordMD5)
         {
-            GGUser user = this.userCache.Get(userID);
+            var user = this.userCache.Get(userID);
             if (user == null)
             {
                 return ChangePasswordResult.UserNotExist;
@@ -119,7 +119,7 @@ namespace GGTalk.Server
         /// </summary>      
         public List<string> GetFriends(string userID)
         {
-            GGUser user = this.userCache.Get(userID);
+            var user = this.userCache.Get(userID);
             if (user == null)
             {
                 return new List<string>();
@@ -133,8 +133,8 @@ namespace GGTalk.Server
         /// </summary>  
         public void AddFriend(string ownerID, string friendID, string catalogName)
         {
-            GGUser user1 = this.userCache.Get(ownerID);
-            GGUser user2 = this.userCache.Get(friendID);
+            var user1 = this.userCache.Get(ownerID);
+            var user2 = this.userCache.Get(friendID);
             if (user1 == null || user2 == null)
             {
                 return;
@@ -151,14 +151,14 @@ namespace GGTalk.Server
         /// </summary>  
         public void RemoveFriend(string ownerID, string friendID)
         {
-            GGUser user1 = this.userCache.Get(ownerID);
+            var user1 = this.userCache.Get(ownerID);
             if (user1 != null)
             {
                 user1.RemoveFriend(friendID);
                 this.dbPersister.UpdateUserFriends(user1);
             }
 
-            GGUser user2 = this.userCache.Get(friendID);
+            var user2 = this.userCache.Get(friendID);
             if (user2 != null)
             {
                 user2.RemoveFriend(ownerID);
@@ -168,7 +168,7 @@ namespace GGTalk.Server
 
         public void ChangeFriendCatalogName(string ownerID, string oldName, string newName)
         {
-            GGUser user = this.userCache.Get(ownerID);
+            var user = this.userCache.Get(ownerID);
             if (user == null)
             {
                 return ;
@@ -180,7 +180,7 @@ namespace GGTalk.Server
 
         public void AddFriendCatalog(string ownerID, string catalogName)
         {
-            GGUser user = this.userCache.Get(ownerID);
+            var user = this.userCache.Get(ownerID);
             if (user == null)
             {
                 return;
@@ -192,7 +192,7 @@ namespace GGTalk.Server
 
         public void RemoveFriendCatalog(string ownerID, string catalogName)
         {
-            GGUser user = this.userCache.Get(ownerID);
+            var user = this.userCache.Get(ownerID);
             if (user == null)
             {
                 return;
@@ -203,7 +203,7 @@ namespace GGTalk.Server
 
         public void MoveFriend(string ownerID, string friendID, string oldCatalog, string newCatalog)
         {
-            GGUser user = this.userCache.Get(ownerID);
+            var user = this.userCache.Get(ownerID);
             if (user == null)
             {
                 return;
@@ -221,16 +221,16 @@ namespace GGTalk.Server
         /// </summary>       
         public List<GGGroup> GetMyGroups(string userID)
         {
-            List<GGGroup> groups = new List<GGGroup>();
-            GGUser user = this.userCache.Get(userID);
+            var groups = new List<GGGroup>();
+            var user = this.userCache.Get(userID);
             if (user == null)
             {
                 return groups;
             }
 
-            foreach (string groupID in user.GroupList)
+            foreach (var groupID in user.GroupList)
             {
-                GGGroup g = this.groupCache.Get(groupID);
+                var g = this.groupCache.Get(groupID);
                 if (g != null)
                 {
                     groups.Add(g);
@@ -241,16 +241,16 @@ namespace GGTalk.Server
 
         public Dictionary<string, int> GetMyGroupVersions(string userID)
         {
-            Dictionary<string, int> dic = new Dictionary<string, int>();
-            GGUser user = this.userCache.Get(userID);
+            var dic = new Dictionary<string, int>();
+            var user = this.userCache.Get(userID);
             if (user == null)
             {
                 return dic;
             }
            
-            foreach (string groupID in user.GroupList)
+            foreach (var groupID in user.GroupList)
             {
-                GGGroup g = this.groupCache.Get(groupID);
+                var g = this.groupCache.Get(groupID);
                 if (g != null)
                 {
                     dic.Add(groupID,g.Version);
@@ -277,11 +277,11 @@ namespace GGTalk.Server
                 return CreateGroupResult.GroupExisted;
             }
 
-            GGGroup group = new GGGroup(groupID, groupName, creatorID, announce, creatorID);            
+            var group = new GGGroup(groupID, groupName, creatorID, announce, creatorID);            
             this.groupCache.Add(groupID, group);
             this.dbPersister.InsertGroup(group);
 
-            GGUser user = this.userCache.Get(creatorID);          
+            var user = this.userCache.Get(creatorID);          
             user.JoinGroup(groupID);
             this.dbPersister.ChangeUserGroups(user.UserID, user.Groups);
             return CreateGroupResult.Succeed;
@@ -292,28 +292,28 @@ namespace GGTalk.Server
         /// </summary>       
         public void QuitGroup(string userID, string groupID)
         {
-            GGGroup group = this.groupCache.Get(groupID);
+            var group = this.groupCache.Get(groupID);
             if (group != null)
             {
                 group.RemoveMember(userID);                
             }
             this.dbPersister.UpdateGroup(group);
 
-            GGUser user = this.userCache.Get(userID);           
+            var user = this.userCache.Get(userID);           
             user.QuitGroup(groupID);           
             this.dbPersister.ChangeUserGroups(user.UserID, user.Groups);         
         }
 
         public void DeleteGroup(string groupID)
         {
-            GGGroup group = this.groupCache.Get(groupID);
+            var group = this.groupCache.Get(groupID);
             if (group == null)
             {
                 return;
             }
-            foreach (string userID in group.MemberList)
+            foreach (var userID in group.MemberList)
             {
-                GGUser user = this.userCache.Get(userID);
+                var user = this.userCache.Get(userID);
                 if (user != null)
                 {
                     user.QuitGroup(groupID);
@@ -328,13 +328,13 @@ namespace GGTalk.Server
         /// </summary>        
         public JoinGroupResult JoinGroup(string userID, string groupID)
         {
-            GGGroup group = this.groupCache.Get(groupID);
+            var group = this.groupCache.Get(groupID);
             if (group == null)
             {
                 return JoinGroupResult.GroupNotExist;
             }
 
-            GGUser user = this.userCache.Get(userID);
+            var user = this.userCache.Get(userID);
             if (!user.GroupList.Contains(groupID))
             {
                 user.JoinGroup(groupID);
@@ -356,20 +356,20 @@ namespace GGTalk.Server
         /// </summary>        
         public List<string> GetAllContacts(string userID)
         {
-            List<string> contacts = new List<string>();
-            GGUser user = this.userCache.Get(userID);
+            var contacts = new List<string>();
+            var user = this.userCache.Get(userID);
             if (user == null)
             {
                 return contacts;
             }
 
             contacts = user.GetAllFriendList();
-            foreach (string groupID in user.GroupList)
+            foreach (var groupID in user.GroupList)
             {
-                GGGroup g = this.groupCache.Get(groupID);
+                var g = this.groupCache.Get(groupID);
                 if (g != null)
                 {
-                    foreach (string memberID in g.MemberList)
+                    foreach (var memberID in g.MemberList)
                     {
                         if (memberID != userID && !contacts.Contains(memberID))
                         {
@@ -410,7 +410,7 @@ namespace GGTalk.Server
                 return new List<OfflineMessage>();
             }
 
-            List<OfflineMessage> list = this.offlineMessageTable.Get(destUserID);
+            var list = this.offlineMessageTable.Get(destUserID);
             this.offlineMessageTable.Remove(destUserID);
             return list;
         }
@@ -440,7 +440,7 @@ namespace GGTalk.Server
                 return new List<OfflineFileItem>();
             }
 
-            List<OfflineFileItem> list = this.offlineFileTable.Get(accepterID);
+            var list = this.offlineFileTable.Get(accepterID);
             this.offlineFileTable.Remove(accepterID);
             return list;
         }

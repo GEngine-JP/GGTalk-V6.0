@@ -65,9 +65,9 @@ namespace GGTalk.Controls
         {
             base.OnPaint(e);
 
-            Graphics g = e.Graphics;
-            Rectangle rect = ClientRectangle;
-            using (SolidBrush brush = new SolidBrush(base.BackColor))
+            var g = e.Graphics;
+            var rect = ClientRectangle;
+            using (var brush = new SolidBrush(base.BackColor))
             {
                 g.FillRectangle(
                     brush,

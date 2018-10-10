@@ -89,12 +89,12 @@ namespace GGTalk.Controls
 
         private GifBox HitTest(Point pt ,bool selectTarget)
         {
-            int index = this.GetCharIndexFromPosition(pt);
-            Point origin = this.GetPositionFromCharIndex(index);
+            var index = this.GetCharIndexFromPosition(pt);
+            var origin = this.GetPositionFromCharIndex(index);
             GifBox box = null;
-            bool backOne = false;
-            List<REOBJECT> list = this.RichEditOle.GetAllREOBJECT();
-            for (int i = 0; i < list.Count; i++)
+            var backOne = false;
+            var list = this.RichEditOle.GetAllREOBJECT();
+            for (var i = 0; i < list.Count; i++)
             {
                 if (list[i].posistion == index || list[i].posistion + 1 == index)
                 {
@@ -113,7 +113,7 @@ namespace GGTalk.Controls
                 return null;
             }
 
-            Rectangle rect = new Rectangle(origin.X, origin.Y, box.Width, box.Height);
+            var rect = new Rectangle(origin.X, origin.Y, box.Width, box.Height);
             if (!rect.Contains(pt))
             {               
                 return null;
@@ -147,7 +147,7 @@ namespace GGTalk.Controls
                 return;
             }            
         
-            GifBox box = this.HitTest(e.Location ,true);           
+            var box = this.HitTest(e.Location ,true);           
             if (box == null)
             {
                 if (!string.IsNullOrEmpty(this.SelectedText))
@@ -176,7 +176,7 @@ namespace GGTalk.Controls
             {
                 if (Clipboard.ContainsImage())
                 {
-                    Image img = Clipboard.GetImage();
+                    var img = Clipboard.GetImage();
                     if (img != null)
                     {
                         this.InsertImage(img);
@@ -196,10 +196,10 @@ namespace GGTalk.Controls
                 return;
             }
 
-            List<REOBJECT> list = this.RichEditOle.GetAllREOBJECT();
-            for (int i = 0; i < list.Count; i++)
+            var list = this.RichEditOle.GetAllREOBJECT();
+            for (var i = 0; i < list.Count; i++)
             {
-                GifBox box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
+                var box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
                 box.Size = this.ComputeGifBoxSize(box.Image.Size);
             }
         } 
@@ -215,19 +215,19 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                MouseEventArgs e = arg as MouseEventArgs;
+                var e = arg as MouseEventArgs;
                 if (e == null)
                 {
                     return;
                 }
 
-                GifBox box = this.HitTest(e.Location, true);
+                var box = this.HitTest(e.Location, true);
                 if (box == null)
                 {
                     return;
                 }
 
-                ImageForm form = new ImageForm(box.Image);
+                var form = new ImageForm(box.Image);
                 form.Show();
             }
             catch (Exception ee)
@@ -238,8 +238,8 @@ namespace GGTalk.Controls
 
         private string GetPathToSave(string title, string defaultName, string iniDir)
         {
-            string extendName = Path.GetExtension(defaultName);
-            SaveFileDialog saveDlg = new SaveFileDialog();
+            var extendName = Path.GetExtension(defaultName);
+            var saveDlg = new SaveFileDialog();
             saveDlg.Filter = string.Format("The Files (*{0})|*{0}", extendName);
             saveDlg.FileName = defaultName;
             saveDlg.InitialDirectory = iniDir;
@@ -249,7 +249,7 @@ namespace GGTalk.Controls
                 saveDlg.Title = title;
             }
 
-            DialogResult res = saveDlg.ShowDialog();
+            var res = saveDlg.ShowDialog();
             if (res == DialogResult.OK)
             {
                 return saveDlg.FileName;
@@ -278,7 +278,7 @@ namespace GGTalk.Controls
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                string[] fileOrDirs = (string[])e.Data.GetData(DataFormats.FileDrop);
+                var fileOrDirs = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if (fileOrDirs == null || fileOrDirs.Length == 0)
                 {
                     return;
@@ -333,8 +333,8 @@ namespace GGTalk.Controls
         {
             try
             {
-                Image image = this.defaultEmotionDictionary[emotionID];
-                GifBox gif = new GifBox();
+                var image = this.defaultEmotionDictionary[emotionID];
+                var gif = new GifBox();
                 gif.Cursor = Cursors.Hand;
                 gif.BackColor = base.BackColor;
                 gif.Size = this.ComputeGifBoxSize(image.Size);
@@ -361,7 +361,7 @@ namespace GGTalk.Controls
         {
             try
             {
-                GifBox gif = new GifBox();
+                var gif = new GifBox();
                 gif.Cursor = Cursors.Hand;
                 gif.BackColor = base.BackColor;
                 gif.Size = this.ComputeGifBoxSize(image.Size);
@@ -376,14 +376,14 @@ namespace GGTalk.Controls
 
         private Size ComputeGifBoxSize(Size imgSize)
         {
-            int maxWidth = this.Width - 20;
+            var maxWidth = this.Width - 20;
 
             if (imgSize.Width <= maxWidth)
             {
                 return imgSize;
             }
 
-            int newImgHeight = maxWidth * imgSize.Height / imgSize.Width; ;
+            var newImgHeight = maxWidth * imgSize.Height / imgSize.Width; ;
             return new Size(maxWidth, newImgHeight);
         }
         #endregion
@@ -413,11 +413,11 @@ namespace GGTalk.Controls
         /// <returns>key为位置，val为图片的ID</returns>
         public ChatBoxContent GetContent()
         {
-            ChatBoxContent content = new ChatBoxContent(this.Text ,this.Font,this.ForeColor);            
-            List<REOBJECT> list = this.RichEditOle.GetAllREOBJECT();
-            for (int i = 0; i < list.Count; i++)
+            var content = new ChatBoxContent(this.Text ,this.Font,this.ForeColor);            
+            var list = this.RichEditOle.GetAllREOBJECT();
+            for (var i = 0; i < list.Count; i++)
             {
-                uint pos = (uint)list[i].posistion ;
+                var pos = (uint)list[i].posistion ;
                 content.PicturePositions.Add(pos) ;
                 if (list[i].dwUser != 10000)
                 {
@@ -425,7 +425,7 @@ namespace GGTalk.Controls
                 }
                 else
                 {
-                    GifBox box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
+                    var box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
                     content.AddForeignImage(pos, box.Image);
                 }
             }
@@ -442,7 +442,7 @@ namespace GGTalk.Controls
         {
             try
             {
-                int count = this.Text.Length;
+                var count = this.Text.Length;
                 this.AppendText(textContent);
 
                 this.Select(count, textContent.Length);
@@ -472,29 +472,29 @@ namespace GGTalk.Controls
                     return;
                 }
 
-                int count = this.Text.Length;
+                var count = this.Text.Length;
                 if (content.EmotionDictionary != null)
                 {
-                    string pureText = content.Text;
+                    var pureText = content.Text;
                     //去掉表情和图片的占位符
-                    List<uint> emotionPosList = new List<uint>(content.EmotionDictionary.Keys);
-                    List<uint> tempList = new List<uint>();
+                    var emotionPosList = new List<uint>(content.EmotionDictionary.Keys);
+                    var tempList = new List<uint>();
                     tempList.AddRange(emotionPosList);
-                    foreach (uint key in content.ForeignImageDictionary.Keys)
+                    foreach (var key in content.ForeignImageDictionary.Keys)
                     {
                         tempList.Add(key);
                     }
                     tempList.Sort();
 
-                    for (int i = tempList.Count - 1; i >= 0; i--)
+                    for (var i = tempList.Count - 1; i >= 0; i--)
                     {
                         pureText = pureText.Remove((int)tempList[i], 1);
                     }
                     this.AppendText(pureText);
                     //插入表情
-                    for (int i = 0; i < tempList.Count; i++)
+                    for (var i = 0; i < tempList.Count; i++)
                     {
-                        uint position = tempList[i];
+                        var position = tempList[i];
                         if (emotionPosList.Contains(position))
                         {
                             this.InsertDefaultEmotion(content.EmotionDictionary[position], (int)(count + position));
@@ -532,12 +532,12 @@ namespace GGTalk.Controls
         {
             try
             {
-                List<REOBJECT> list = this.RichEditOle.GetAllREOBJECT();
-                for (int i = 0; i < list.Count; i++)
+                var list = this.RichEditOle.GetAllREOBJECT();
+                for (var i = 0; i < list.Count; i++)
                 {
                     if (list[i].dwUser == 10000)
                     {
-                        GifBox box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
+                        var box = (GifBox)Marshal.GetObjectForIUnknown(list[i].poleobj);
                         box.Dispose();
                     }
                 }
@@ -700,7 +700,7 @@ namespace GGTalk.Controls
         {
             try
             {              
-                ImageForm form = new ImageForm(this.imageOnRightClick);
+                var form = new ImageForm(this.imageOnRightClick);
                 form.Show();
             }
             catch (Exception ee)
@@ -715,15 +715,15 @@ namespace GGTalk.Controls
             try
             {
                 
-                bool gif = ImageHelper.IsGif(this.imageOnRightClick);
-                string postfix = gif ? "gif" : "jpg";
+                var gif = ImageHelper.IsGif(this.imageOnRightClick);
+                var postfix = gif ? "gif" : "jpg";
 
-                string path = this.GetPathToSave("请选择保存路径", "image." + postfix, null);
+                var path = this.GetPathToSave("请选择保存路径", "image." + postfix, null);
                 if (path == null)
                 {
                     return;
                 }
-                ImageFormat format = gif ? ImageFormat.Gif : ImageFormat.Jpeg;
+                var format = gif ? ImageFormat.Gif : ImageFormat.Jpeg;
 
                 ImageHelper.Save(this.imageOnRightClick, path, format);
                 MessageBox.Show("成功保存图片。");
@@ -753,7 +753,7 @@ namespace GGTalk.Controls
             {
                 if (Clipboard.ContainsImage())
                 {
-                    Image img = Clipboard.GetImage();
+                    var img = Clipboard.GetImage();
                     if (img != null)
                     {
                         this.InsertImage(img);
@@ -773,13 +773,13 @@ namespace GGTalk.Controls
         {
             try
             {
-                string file = this.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
+                var file = this.GetFileToOpen2("请选择图片", null, ".jpg", ".bmp", ".png", ".gif");
                 if (file == null)
                 {
                     return;
                 }
 
-                Image img = Image.FromFile(file);
+                var img = Image.FromFile(file);
                 this.InsertImage(img);
             }
             catch (Exception ee)
@@ -790,8 +790,8 @@ namespace GGTalk.Controls
 
         private string GetFileToOpen2(string title, string iniDir, params string[] extendNames)
         {
-            StringBuilder filterBuilder = new StringBuilder("(");
-            for (int i = 0; i < extendNames.Length; i++)
+            var filterBuilder = new StringBuilder("(");
+            for (var i = 0; i < extendNames.Length; i++)
             {
                 filterBuilder.Append("*");
                 filterBuilder.Append(extendNames[i]);
@@ -805,7 +805,7 @@ namespace GGTalk.Controls
                 }
             }
             filterBuilder.Append("|");
-            for (int i = 0; i < extendNames.Length; i++)
+            for (var i = 0; i < extendNames.Length; i++)
             {
                 filterBuilder.Append("*");
                 filterBuilder.Append(extendNames[i]);
@@ -815,7 +815,7 @@ namespace GGTalk.Controls
                 }
             }
 
-            OpenFileDialog openDlg = new OpenFileDialog();
+            var openDlg = new OpenFileDialog();
             openDlg.Filter = filterBuilder.ToString();
             openDlg.FileName = "";
             openDlg.InitialDirectory = iniDir;
@@ -827,7 +827,7 @@ namespace GGTalk.Controls
             openDlg.CheckFileExists = true;
             openDlg.CheckPathExists = true;
 
-            DialogResult res = openDlg.ShowDialog();
+            var res = openDlg.ShowDialog();
             if (res == DialogResult.OK)
             {
                 return openDlg.FileName;

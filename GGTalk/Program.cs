@@ -30,12 +30,12 @@ namespace GGTalk
                 ESPlus.GlobalUtil.SetMaxLengthOfUserID(20);
                 ESPlus.GlobalUtil.SetMaxLengthOfMessage(1024 * 1024 * 10);
                 OMCS.GlobalUtil.SetMaxLengthOfUserID(20);
-                MainForm mainForm = new MainForm();
-                IRapidPassiveEngine passiveEngine = RapidEngineFactory.CreatePassiveEngine();
+                var mainForm = new MainForm();
+                var passiveEngine = RapidEngineFactory.CreatePassiveEngine();
 
-                NDiskPassiveHandler nDiskPassiveHandler = new NDiskPassiveHandler(); //V 2.0
-                ComplexCustomizeHandler complexHandler = new ComplexCustomizeHandler(nDiskPassiveHandler, mainForm);//V 2.0
-                LoginForm loginForm = new LoginForm(passiveEngine, complexHandler);
+                var nDiskPassiveHandler = new NDiskPassiveHandler(); //V 2.0
+                var complexHandler = new ComplexCustomizeHandler(nDiskPassiveHandler, mainForm);//V 2.0
+                var loginForm = new LoginForm(passiveEngine, complexHandler);
 
                 if (loginForm.ShowDialog() != DialogResult.OK)
                 {
@@ -46,7 +46,7 @@ namespace GGTalk
                 Program.MultimediaManager = MultimediaManagerFactory.GetSingleton();                
                 Program.MultimediaManager.CameraDeviceIndex = SystemSettings.Singleton.WebcamIndex;
                 Program.MultimediaManager.MicrophoneDeviceIndex = SystemSettings.Singleton.MicrophoneIndex;
-                Size? okSize = OMCS.Tools.Camera.MatchCameraVideoSize(SystemSettings.Singleton.WebcamIndex, GlobalConsts.CommonQualityVideo);
+                var okSize = OMCS.Tools.Camera.MatchCameraVideoSize(SystemSettings.Singleton.WebcamIndex, GlobalConsts.CommonQualityVideo);
                 Program.MultimediaManager.CameraVideoSize = okSize == null ? new Size(320, 240) : okSize.Value;
                 Program.MultimediaManager.OmcsLogger = GlobalResourceManager.Logger;
                 Program.MultimediaManager.Advanced.VideoQualityEnhanced = true;

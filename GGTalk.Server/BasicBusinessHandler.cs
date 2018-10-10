@@ -7,7 +7,7 @@ using ESPlus.Application.Basic.Server;
 namespace GGTalk.Server
 {
     /// <summary>
-    /// »ù´¡´¦ÀíÆ÷£¬ÓÃÓÚÑéÖ¤µÇÂ½µÄÓÃ»§¡£
+    /// åŸºç¡€å¤„ç†å™¨ï¼Œç”¨äºéªŒè¯ç™»é™†çš„ç”¨æˆ·ã€‚
     /// </summary>
     internal class BasicHandler : IBasicHandler
     {
@@ -18,21 +18,21 @@ namespace GGTalk.Server
         }
 
         /// <summary>
-        /// ´Ë´¦ÑéÖ¤ÓÃ»§µÄÕËºÅºÍÃÜÂë¡£·µ»Øtrue±íÊ¾Í¨¹ıÑéÖ¤¡£
+        /// æ­¤å¤„éªŒè¯ç”¨æˆ·çš„è´¦å·å’Œå¯†ç ã€‚è¿”å›trueè¡¨ç¤ºé€šè¿‡éªŒè¯ã€‚
         /// </summary>  
         public bool VerifyUser(string systemToken, string userID, string password, out string failureCause)
         {
             failureCause = "";          
-            GGUser user = this.globalCache.GetUser(userID);
+            var user = this.globalCache.GetUser(userID);
             if (user == null)
             {
-                failureCause = "ÓÃ»§²»´æÔÚ£¡";
+                failureCause = "ç”¨æˆ·ä¸å­˜åœ¨ï¼";
                 return false;
             }
 
             if (user.PasswordMD5 != password)
             {
-                failureCause = "ÃÜÂë´íÎó£¡";
+                failureCause = "å¯†ç é”™è¯¯ï¼";
                 return false;
             }
 

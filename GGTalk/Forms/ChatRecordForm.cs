@@ -136,8 +136,8 @@ namespace GGTalk
             this.Cursor = Cursors.WaitCursor;
             try
             {
-                ChatRecordTimeScope timeScope = ChatRecordTimeScope.All;
-                DateTime now = DateTime.Now ;
+                var timeScope = ChatRecordTimeScope.All;
+                var now = DateTime.Now ;
                 if (this.skinComboBox1.SelectedIndex == 0) //一周
                 {
                     timeScope = ChatRecordTimeScope.RecentWeek;
@@ -174,10 +174,10 @@ namespace GGTalk
 
                 this.currentPageIndex = page.PageIndex;
                 this.toolStripTextBox_pageIndex.Text = (this.currentPageIndex + 1).ToString();
-                for (int i = 0; i < page.Content.Count; i++)
+                for (var i = 0; i < page.Content.Count; i++)
                 {
-                    ChatMessageRecord record = page.Content[i];
-                    byte[] decrypted = record.Content;
+                    var record = page.Content[i];
+                    var decrypted = record.Content;
                     if (this.skinRadioButton_Server.Checked)
                     {
                         if (GlobalResourceManager.Des3Encryption != null)
@@ -186,7 +186,7 @@ namespace GGTalk
                         }
                     }
 
-                    ChatBoxContent content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
+                    var content = CompactPropertySerializer.Default.Deserialize<ChatBoxContent>(decrypted, 0);
 
                     if (this.isGroupChat)
                     {
@@ -196,7 +196,7 @@ namespace GGTalk
                         }
                         else
                         {
-                            string name = this.userNameGetter.GetUserName(record.SpeakerID) ?? record.SpeakerID;                            
+                            var name = this.userNameGetter.GetUserName(record.SpeakerID) ?? record.SpeakerID;                            
                             this.AppendChatBoxContent(record.OccureTime, string.Format("{0}({1})", name, record.SpeakerID), content, Color.Blue);
                         }
                     }
@@ -217,7 +217,7 @@ namespace GGTalk
                 this.chatBox_history.SelectionStart = 0;
                 this.chatBox_history.ScrollToCaret();
 
-                int pageCount = page.TotalCount / this.pageSize;
+                var pageCount = page.TotalCount / this.pageSize;
                 if (page.TotalCount % this.pageSize > 0)
                 {
                     ++pageCount;

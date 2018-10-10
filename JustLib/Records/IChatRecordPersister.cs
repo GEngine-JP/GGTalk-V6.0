@@ -221,9 +221,9 @@ namespace JustLib.Records
                 return;
             }
 
-            using (TransactionScope scope = this.transactionScopeFactory.NewTransactionScope())
+            using (var scope = this.transactionScopeFactory.NewTransactionScope())
             {
-                IOrmAccesser<ChatMessageRecord> accesser = scope.NewOrmAccesser<ChatMessageRecord>();
+                var accesser = scope.NewOrmAccesser<ChatMessageRecord>();
                 accesser.Insert(record);
                 scope.Commit();
             }
@@ -244,7 +244,7 @@ namespace JustLib.Records
             }
 
             DateTimeScope timeScope = null;
-            DateTime now = DateTime.Now;
+            var now = DateTime.Now;
             if (chatRecordTimeScope == ChatRecordTimeScope.RecentWeek) //一周
             {
                 timeScope = new DateTimeScope(now.AddDays(-7), now);
@@ -261,26 +261,26 @@ namespace JustLib.Records
             {
             }
 
-            List<Filter> filterList = new List<Filter>();
+            var filterList = new List<Filter>();
             filterList.Add(new Filter(ChatMessageRecord._AudienceID, groupID));
             filterList.Add(new Filter(ChatMessageRecord._IsGroupChat, true));
             if (timeScope != null)
             {
                 filterList.Add(new Filter(ChatMessageRecord._OccureTime, new DateTime[] { timeScope.StartDate, timeScope.EndDate }, ComparisonOperators.BetweenAnd));
             }
-            SimpleFilterTree tree = new SimpleFilterTree(filterList);
+            var tree = new SimpleFilterTree(filterList);
 
             //最后一页
             if (pageIndex == int.MaxValue)
             {
-                int total = 0;
-                using (TransactionScope scope = this.transactionScopeFactory.NewTransactionScope())
+                var total = 0;
+                using (var scope = this.transactionScopeFactory.NewTransactionScope())
                 {
-                    IOrmAccesser<ChatMessageRecord> accesser = scope.NewOrmAccesser<ChatMessageRecord>();
+                    var accesser = scope.NewOrmAccesser<ChatMessageRecord>();
                     total = (int)accesser.GetCount(tree);
                     scope.Commit();
                 }
-                int pageCount = total / pageSize;
+                var pageCount = total / pageSize;
                 if (total % pageSize > 0)
                 {
                     pageCount += 1;
@@ -288,11 +288,11 @@ namespace JustLib.Records
                 pageIndex = pageCount - 1;
             }
 
-            int totalCount = 0;
+            var totalCount = 0;
             ChatMessageRecord[] page = null;
-            using (TransactionScope scope = this.transactionScopeFactory.NewTransactionScope())
+            using (var scope = this.transactionScopeFactory.NewTransactionScope())
             {
-                IOrmAccesser<ChatMessageRecord> accesser = scope.NewOrmAccesser<ChatMessageRecord>();
+                var accesser = scope.NewOrmAccesser<ChatMessageRecord>();
                 page = accesser.GetPage(tree, pageSize, pageIndex, ChatMessageRecord._AutoID, true, out totalCount);
                 scope.Commit();
             }
@@ -315,7 +315,7 @@ namespace JustLib.Records
             }
 
             DateTimeScope timeScope = null;
-            DateTime now = DateTime.Now;
+            var now = DateTime.Now;
             if (chatRecordTimeScope == ChatRecordTimeScope.RecentWeek) //一周
             {
                 timeScope = new DateTimeScope(now.AddDays(-7), now);
@@ -342,14 +342,14 @@ namespace JustLib.Records
             //最后一页
             if (pageIndex == int.MaxValue)
             {
-                int total = 0;
-                using (TransactionScope scope = this.transactionScopeFactory.NewTransactionScope())
+                var total = 0;
+                using (var scope = this.transactionScopeFactory.NewTransactionScope())
                 {
-                    IOrmAccesser<ChatMessageRecord> accesser = scope.NewOrmAccesser<ChatMessageRecord>();
+                    var accesser = scope.NewOrmAccesser<ChatMessageRecord>();
                     total = (int)accesser.GetCount(tree);
                     scope.Commit();
                 }
-                int pageCount = total / pageSize;
+                var pageCount = total / pageSize;
                 if (total % pageSize > 0)
                 {
                     pageCount += 1;
@@ -357,11 +357,11 @@ namespace JustLib.Records
                 pageIndex = pageCount - 1;
             }
 
-            int totalCount = 0;
+            var totalCount = 0;
             ChatMessageRecord[] page = null;
-            using (TransactionScope scope = this.transactionScopeFactory.NewTransactionScope())
+            using (var scope = this.transactionScopeFactory.NewTransactionScope())
             {
-                IOrmAccesser<ChatMessageRecord> accesser = scope.NewOrmAccesser<ChatMessageRecord>();
+                var accesser = scope.NewOrmAccesser<ChatMessageRecord>();
                 page = accesser.GetPage(tree, pageSize, pageIndex, ChatMessageRecord._AutoID, true, out totalCount);
                 scope.Commit();
             }
@@ -380,9 +380,9 @@ namespace JustLib.Records
         {
             try
             {
-                bool isNew = !File.Exists(sqlitePath);
+                var isNew = !File.Exists(sqlitePath);
                 //2014.11.27
-                string dirName = Path.GetDirectoryName(sqlitePath);
+                var dirName = Path.GetDirectoryName(sqlitePath);
                 if (!Directory.Exists(dirName))
                 {
                     Directory.CreateDirectory(dirName);
@@ -391,17 +391,17 @@ namespace JustLib.Records
 
                 //初始化Sqlite数据库
                 DataConfiguration config = new SqliteDataConfiguration(sqlitePath);
-                TransactionScopeFactory transactionScopeFactory = new TransactionScopeFactory(config);
+                var transactionScopeFactory = new TransactionScopeFactory(config);
                 transactionScopeFactory.Initialize();
 
                 if (isNew)
                 {
-                    string sql = "CREATE TABLE ChatMessageRecord (AutoID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, SpeakerID VARCHAR( 0, 20 ) NOT NULL, AudienceID VARCHAR( 0, 20 ) NOT NULL, IsGroupChat BOOLEAN NOT NULL, Content BLOB NOT NULL, OccureTime DATETIME NOT NULL ); "
+                    var sql = "CREATE TABLE ChatMessageRecord (AutoID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, SpeakerID VARCHAR( 0, 20 ) NOT NULL, AudienceID VARCHAR( 0, 20 ) NOT NULL, IsGroupChat BOOLEAN NOT NULL, Content BLOB NOT NULL, OccureTime DATETIME NOT NULL ); "
                                + "CREATE INDEX idx_ChatMessageRecord ON ChatMessageRecord ( SpeakerID, AudienceID, OccureTime DESC );"
                                + "CREATE INDEX idx2_ChatMessageRecord ON ChatMessageRecord ( AudienceID, IsGroupChat, OccureTime );";
-                    using (TransactionScope scope = transactionScopeFactory.NewTransactionScope())
+                    using (var scope = transactionScopeFactory.NewTransactionScope())
                     {
-                        IRelationAccesser accesser = scope.NewRelationAccesser();
+                        var accesser = scope.NewRelationAccesser();
                         accesser.DoCommand(sql);
                         scope.Commit();
                     }

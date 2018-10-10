@@ -18,7 +18,7 @@ namespace GGTalk.Controls
                 return;
             }
 
-            int maxLen = img.Width > img.Height ? img.Width : img.Height;
+            var maxLen = img.Width > img.Height ? img.Width : img.Height;
             maxLen += 40;
             if (maxLen > Screen.PrimaryScreen.Bounds.Width || maxLen > Screen.PrimaryScreen.Bounds.Height)
             {
@@ -54,7 +54,7 @@ namespace GGTalk.Controls
         {
             if (this.moving)
             {
-                int delt = Math.Abs(e.Location.X - this.originMouseLocation.X) + Math.Abs(e.Location.Y - this.originMouseLocation.Y);               
+                var delt = Math.Abs(e.Location.X - this.originMouseLocation.X) + Math.Abs(e.Location.Y - this.originMouseLocation.Y);               
                 if (delt >= 4)
                 {
                     this.Location = new Point(this.Location.X + e.Location.X - this.originMouseLocation.X, this.Location.Y + e.Location.Y - this.originMouseLocation.Y);  

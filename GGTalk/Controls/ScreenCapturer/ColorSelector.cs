@@ -113,7 +113,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnColorChanged(EventArgs e)
         {
-            EventHandler handler = base.Events[EventColorChanged] as EventHandler;
+            var handler = base.Events[EventColorChanged] as EventHandler;
             if (handler != null)
             {
                 handler(this, e);
@@ -122,7 +122,7 @@ namespace GGTalk.Controls
 
         protected virtual void OnFontSizeChanged(EventArgs e)
         {
-            EventHandler handler = base.Events[EventFontSizeChanged] as EventHandler;
+            var handler = base.Events[EventFontSizeChanged] as EventHandler;
             if (handler != null)
             {
                 handler(this, e);
@@ -145,7 +145,7 @@ namespace GGTalk.Controls
         {
             base.OnPaint(e);
 
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             RenderBackgroundInternal(
@@ -233,22 +233,22 @@ namespace GGTalk.Controls
                 rect.Height--;
             }
 
-            using (LinearGradientBrush brush = new LinearGradientBrush(
+            using (var brush = new LinearGradientBrush(
                 rect, Color.Transparent, Color.Transparent, mode))
             {
-                Color[] colors = new Color[4];
+                var colors = new Color[4];
                 colors[0] = GetColor(baseColor, 0, 35, 24, 9);
                 colors[1] = GetColor(baseColor, 0, 13, 8, 3);
                 colors[2] = baseColor;
                 colors[3] = GetColor(baseColor, 0, 68, 69, 54);
 
-                ColorBlend blend = new ColorBlend();
+                var blend = new ColorBlend();
                 blend.Positions = new float[] { 0.0f, basePosition, basePosition + 0.05f, 1.0f };
                 blend.Colors = colors;
                 brush.InterpolationColors = blend;
                 if (style != RoundStyle.None)
                 {
-                    using (GraphicsPath path =
+                    using (var path =
                         GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                     {
                         g.FillPath(brush, path);
@@ -256,7 +256,7 @@ namespace GGTalk.Controls
 
                     if (baseColor.A > 80)
                     {
-                        Rectangle rectTop = rect;
+                        var rectTop = rect;
 
                         if (mode == LinearGradientMode.Vertical)
                         {
@@ -266,10 +266,10 @@ namespace GGTalk.Controls
                         {
                             rectTop.Width = (int)(rect.Width * basePosition);
                         }
-                        using (GraphicsPath pathTop = GraphicsPathHelper.CreatePath(
+                        using (var pathTop = GraphicsPathHelper.CreatePath(
                             rectTop, roundWidth, RoundStyle.Top, false))
                         {
-                            using (SolidBrush brushAlpha =
+                            using (var brushAlpha =
                                 new SolidBrush(Color.FromArgb(80, 255, 255, 255)))
                             {
                                 g.FillPath(brushAlpha, pathTop);
@@ -295,20 +295,20 @@ namespace GGTalk.Controls
 
                     if (drawBorder)
                     {
-                        using (GraphicsPath path =
+                        using (var path =
                             GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                         {
-                            using (Pen pen = new Pen(borderColor))
+                            using (var pen = new Pen(borderColor))
                             {
                                 g.DrawPath(pen, path);
                             }
                         }
 
                         rect.Inflate(-1, -1);
-                        using (GraphicsPath path =
+                        using (var path =
                             GraphicsPathHelper.CreatePath(rect, roundWidth, style, false))
                         {
-                            using (Pen pen = new Pen(innerBorderColor))
+                            using (var pen = new Pen(innerBorderColor))
                             {
                                 g.DrawPath(pen, path);
                             }
@@ -320,7 +320,7 @@ namespace GGTalk.Controls
                     g.FillRectangle(brush, rect);
                     if (baseColor.A > 80)
                     {
-                        Rectangle rectTop = rect;
+                        var rectTop = rect;
                         if (mode == LinearGradientMode.Vertical)
                         {
                             rectTop.Height = (int)(rectTop.Height * basePosition);
@@ -329,7 +329,7 @@ namespace GGTalk.Controls
                         {
                             rectTop.Width = (int)(rect.Width * basePosition);
                         }
-                        using (SolidBrush brushAlpha =
+                        using (var brushAlpha =
                             new SolidBrush(Color.FromArgb(80, 255, 255, 255)))
                         {
                             g.FillRectangle(brushAlpha, rectTop);
@@ -354,13 +354,13 @@ namespace GGTalk.Controls
 
                     if (drawBorder)
                     {
-                        using (Pen pen = new Pen(borderColor))
+                        using (var pen = new Pen(borderColor))
                         {
                             g.DrawRectangle(pen, rect);
                         }
 
                         rect.Inflate(-1, -1);
-                        using (Pen pen = new Pen(innerBorderColor))
+                        using (var pen = new Pen(innerBorderColor))
                         {
                             g.DrawRectangle(pen, rect);
                         }
@@ -375,7 +375,7 @@ namespace GGTalk.Controls
 
         private void SetRegion()
         {
-            using (GraphicsPath path = GraphicsPathHelper.CreatePath(
+            using (var path = GraphicsPathHelper.CreatePath(
                 ClientRectangle, 8, RoundStyle.All, false))
             {
                 if (base.Region != null)
@@ -442,7 +442,7 @@ namespace GGTalk.Controls
 
         private void ColorLabelClick(object sender, EventArgs e)
         {
-            Control control = sender as Control;
+            var control = sender as Control;
             colorLabelSelected.BackColor = control.BackColor;
             OnColorChanged(e);
         }

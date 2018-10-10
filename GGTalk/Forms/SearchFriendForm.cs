@@ -34,17 +34,17 @@ namespace GGTalk
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.chatListBox.Items.Clear();
-            List<GGUser> users = GlobalResourceManager.RemotingService.SearchUser(this.skinTextBox_id.SkinTxt.Text.Trim());
-            bool hasResult = users.Count > 0;
+            var users = GlobalResourceManager.RemotingService.SearchUser(this.skinTextBox_id.SkinTxt.Text.Trim());
+            var hasResult = users.Count > 0;
             this.skinLabel_noResult.Visible = !hasResult;
             if (hasResult)
             {
                 this.chatListBox.Items.Add(new ChatListItem("查找结果"));
                 this.chatListBox.Items[0].IsOpen = true;
-                foreach (GGUser user in users)
+                foreach (var user in users)
                 {                   
-                    Image headImage = this.mainForm.GetHeadImage(user);
-                    ChatListSubItem subItem = new ChatListSubItem(user.ID, user.ID, user.Name, user.Signature, ChatListSubItem.UserStatus.Online, headImage);
+                    var headImage = this.mainForm.GetHeadImage(user);
+                    var subItem = new ChatListSubItem(user.ID, user.ID, user.Name, user.Signature, ChatListSubItem.UserStatus.Online, headImage);
                     subItem.Tag = user;
                     this.chatListBox.Items[0].SubItems.Add(subItem);
                 }
@@ -53,7 +53,7 @@ namespace GGTalk
 
         private void chatListBox_DoubleClickSubItem(object sender, ChatListEventArgs e)
         {
-            string userID = e.SelectSubItem.ID;
+            var userID = e.SelectSubItem.ID;
             if (userID == this.currentUser.ID)
             {
                 return;
@@ -61,7 +61,7 @@ namespace GGTalk
 
             if (this.mainForm.IsFriend(userID))
             {
-                ChatForm form = (ChatForm)this.mainForm.GetChatForm(userID);
+                var form = (ChatForm)this.mainForm.GetChatForm(userID);
                 form.Show();
             }
             else

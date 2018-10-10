@@ -46,9 +46,9 @@ namespace GGTalk
 
             try
             {
-                ChangePasswordContract contract = new ChangePasswordContract(ESBasic.Security.SecurityHelper.MD5String2(this.skinTextBox_old.SkinTxt.Text.Trim()), ESBasic.Security.SecurityHelper.MD5String2(this.skinTextBox_new.SkinTxt.Text));
-                byte[] bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.ChangePassword, CompactPropertySerializer.Default.Serialize(contract));
-                ChangePasswordResult res = (ChangePasswordResult)BitConverter.ToInt32(bRes, 0);
+                var contract = new ChangePasswordContract(ESBasic.Security.SecurityHelper.MD5String2(this.skinTextBox_old.SkinTxt.Text.Trim()), ESBasic.Security.SecurityHelper.MD5String2(this.skinTextBox_new.SkinTxt.Text));
+                var bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.ChangePassword, CompactPropertySerializer.Default.Serialize(contract));
+                var res = (ChangePasswordResult)BitConverter.ToInt32(bRes, 0);
                 if (res == ChangePasswordResult.OldPasswordWrong)
                 {
                     MessageBoxEx.Show("旧密码不正确！");

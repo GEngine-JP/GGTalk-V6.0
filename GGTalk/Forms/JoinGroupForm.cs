@@ -28,7 +28,7 @@ namespace GGTalk
             this.rapidPassiveEngine = engine;
             this.ggSupporter = supporter;
 
-            int registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);           
+            var registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);           
         }
 
         #region GroupID
@@ -67,8 +67,8 @@ namespace GGTalk
                     return;
                 }
 
-                byte[] bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.JoinGroup, System.Text.Encoding.UTF8.GetBytes(groupID));
-                JoinGroupResult res = (JoinGroupResult)BitConverter.ToInt32(bRes, 0);
+                var bRes = this.rapidPassiveEngine.CustomizeOutter.Query(InformationTypes.JoinGroup, System.Text.Encoding.UTF8.GetBytes(groupID));
+                var res = (JoinGroupResult)BitConverter.ToInt32(bRes, 0);
                 if (res == JoinGroupResult.GroupNotExist)
                 {
                     MessageBoxEx.Show("群不存在！");

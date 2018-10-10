@@ -40,8 +40,8 @@ namespace GGTalk
         //窗体重绘时
         private void FrmUserInformation_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            SolidBrush sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
+            var g = e.Graphics;
+            var sb = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
             g.FillRectangle(sb, new Rectangle(new Point(1, Height - 103), new Size(Width - 2, 80)));
         }
 

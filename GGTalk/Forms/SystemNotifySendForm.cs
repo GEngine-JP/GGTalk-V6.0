@@ -33,9 +33,9 @@ namespace GGTalk
         {
             try
             {
-                SystemNotifyContract contract = new SystemNotifyContract(this.skinTextBox_id.SkinTxt.Text, this.richTextBox1.Text, this.rapidPassiveEngine.CurrentUserID, this.skinTextBox_groupID.SkinTxt.Text);
-                byte[] data = CompactPropertySerializer.Default.Serialize(contract);
-                int infoType = this.skinRadioButton_group.Checked ? InformationTypes.SystemNotify4Group : InformationTypes.SystemNotify4AllOnline;
+                var contract = new SystemNotifyContract(this.skinTextBox_id.SkinTxt.Text, this.richTextBox1.Text, this.rapidPassiveEngine.CurrentUserID, this.skinTextBox_groupID.SkinTxt.Text);
+                var data = CompactPropertySerializer.Default.Serialize(contract);
+                var infoType = this.skinRadioButton_group.Checked ? InformationTypes.SystemNotify4Group : InformationTypes.SystemNotify4AllOnline;
                 this.rapidPassiveEngine.CustomizeOutter.Send(infoType, data);
                 MessageBox.Show("发送成功！");
                 this.Close();

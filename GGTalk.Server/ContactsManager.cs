@@ -18,7 +18,7 @@ namespace GGTalk.Server
 
         public List<string> GetGroupMemberList(string groupID)
         {
-            GGGroup group =  this.globalCache.GetGroup(groupID);
+            var group =  this.globalCache.GetGroup(groupID);
             if (group == null)
             {
                 return new List<string>();

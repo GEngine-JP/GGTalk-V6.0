@@ -239,9 +239,9 @@ namespace GGTalk
                     {
                         this.skinCheckBox_HighR.Visible = true;                      
 
-                        int sum = this.dynamicCameraConnector1.VideoSize.Width + this.dynamicCameraConnector1.VideoSize.Height;
-                        int delt1 = Math.Abs(sum - GlobalConsts.CommonQualityVideo);
-                        int delt2 = Math.Abs(sum - GlobalConsts.HighQualityVideo);
+                        var sum = this.dynamicCameraConnector1.VideoSize.Width + this.dynamicCameraConnector1.VideoSize.Height;
+                        var delt1 = Math.Abs(sum - GlobalConsts.CommonQualityVideo);
+                        var delt2 = Math.Abs(sum - GlobalConsts.HighQualityVideo);
 
                         this.skinCheckBox_HighR.CheckState = delt2 < delt1 ? CheckState.Checked : CheckState.Unchecked;
 
@@ -334,7 +334,7 @@ namespace GGTalk
         {
             this.switchCameraSzieCallbackTimer.AddCallback(10, new CbGeneric<Size>(this.dynamicCameraConnector1_OwnerCameraVideoSizeChanged), new Size(0, 0));
             this.Cursor = Cursors.WaitCursor;
-            int videoSizeSum = this.skinCheckBox_HighR.Checked ? GlobalConsts.HighQualityVideo : GlobalConsts.CommonQualityVideo;
+            var videoSizeSum = this.skinCheckBox_HighR.Checked ? GlobalConsts.HighQualityVideo : GlobalConsts.CommonQualityVideo;
             this.dynamicCameraConnector1.ChangeOwnerCameraVideoSize(videoSizeSum);                   
         }
 
@@ -356,8 +356,8 @@ namespace GGTalk
 
             if (!this.skinCheckBox_autoAdjustQulity.Checked)
             {
-                int quality = this.dynamicCameraConnector1.GetVideoQuality();
-                int index = (quality - 2) / 5;
+                var quality = this.dynamicCameraConnector1.GetVideoQuality();
+                var index = (quality - 2) / 5;
                 if (index < 0)
                 {
                     index = 0;
@@ -376,7 +376,7 @@ namespace GGTalk
         {
             if (!this.skinCheckBox_autoAdjustQulity.Checked)
             {
-                int quality = this.skinComboBox_quality.SelectedIndex * 5 + 2;
+                var quality = this.skinComboBox_quality.SelectedIndex * 5 + 2;
                 this.dynamicCameraConnector1.ChangeOwnerCameraEncodeQuality(quality);
             }
         }

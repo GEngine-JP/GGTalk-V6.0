@@ -56,7 +56,7 @@ namespace GGTalk
             this.查找好友ToolStripMenuItem.Visible = true;
             this.头像显示ToolStripMenuItem.Visible = true;
 
-            UiSafeInvoker invoker = new UiSafeInvoker(this, true,true, GlobalResourceManager.Logger);
+            var invoker = new UiSafeInvoker(this, true,true, GlobalResourceManager.Logger);
             GlobalResourceManager.SetUiSafeInvoker(invoker);
 
             this.toolstripButton_mainMenu.Image = GlobalResourceManager.Png64;
@@ -80,7 +80,7 @@ namespace GGTalk
 
         void friendListBox1_AddCatalogClicked()
         {
-            EditCatelogNameForm form = new EditCatelogNameForm();
+            var form = new EditCatelogNameForm();
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.friendListBox1.AddCatalog(form.NewName);
@@ -89,7 +89,7 @@ namespace GGTalk
 
         void friendListBox1_ChangeCatalogNameClicked(string catalogName)
         {
-            EditCatelogNameForm form = new EditCatelogNameForm(catalogName);
+            var form = new EditCatelogNameForm(catalogName);
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.friendListBox1.ChangeCatelogName(catalogName, form.NewName);
@@ -99,7 +99,7 @@ namespace GGTalk
 
         void groupListBox_ChatRecordClicked(IGroup group)
         {
-            ChatRecordForm form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, group.GetIDName(), this.globalUserCache.CurrentUser.GetIDName(), this.globalUserCache);
+            var form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, group.GetIDName(), this.globalUserCache.CurrentUser.GetIDName(), this.globalUserCache);
             form.Show();
         }
 
@@ -116,7 +116,7 @@ namespace GGTalk
                 this.rapidPassiveEngine.CustomizeOutter.SendCertainly(null, InformationTypes.QuitGroup, System.Text.Encoding.UTF8.GetBytes(group.ID));
                 this.groupListBox.RemoveGroup(group.ID);
                 this.recentListBox1.RemoveUnit(group);
-                GroupChatForm form = this.groupChatFormManager.GetForm(group.ID);
+                var form = this.groupChatFormManager.GetForm(group.ID);
                 if (form != null)
                 {
                     form.Close();
@@ -149,7 +149,7 @@ namespace GGTalk
                 this.rapidPassiveEngine.CustomizeOutter.SendCertainly(null, InformationTypes.DeleteGroup, System.Text.Encoding.UTF8.GetBytes(group.ID));
                 this.groupListBox.RemoveGroup(group.ID) ;
                 this.recentListBox1.RemoveUnit(group);
-                GroupChatForm form = this.groupChatFormManager.GetForm(group.ID);
+                var form = this.groupChatFormManager.GetForm(group.ID);
                 if (form != null)
                 {
                     form.Close();
@@ -168,7 +168,7 @@ namespace GGTalk
         {
             try
             {               
-                GroupChatForm form = this.GetGroupChatForm(group.ID);
+                var form = this.GetGroupChatForm(group.ID);
                 form.Show();
                 form.Focus();
             }
@@ -183,13 +183,13 @@ namespace GGTalk
             ChatRecordForm form = null;
             if (isGroup)
             {
-                GGGroup group = this.globalUserCache.GetGroup(unitID);
+                var group = this.globalUserCache.GetGroup(unitID);
                 form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, group.GetIDName(), this.globalUserCache.CurrentUser.GetIDName(), this.globalUserCache);
                 form.Show();
             }
             else
             {
-                GGUser friend = this.globalUserCache.GetUser(unitID);
+                var friend = this.globalUserCache.GetUser(unitID);
                 form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, this.globalUserCache.CurrentUser.GetIDName(), friend.GetIDName());
             }
             form.Show();
@@ -213,8 +213,8 @@ namespace GGTalk
         void friendListBox1_FriendCatalogMoved(string friendID, string oldCatalog, string newCatalog)
         {
             this.globalUserCache.CurrentUser.MoveFriend(friendID, oldCatalog, newCatalog);
-            MoveFriendToOtherCatalogContract contract = new MoveFriendToOtherCatalogContract(friendID, oldCatalog, newCatalog);
-            byte[] info = CompactPropertySerializer.Default.Serialize(contract);
+            var contract = new MoveFriendToOtherCatalogContract(friendID, oldCatalog, newCatalog);
+            var info = CompactPropertySerializer.Default.Serialize(contract);
             this.rapidPassiveEngine.CustomizeOutter.Send(InformationTypes.MoveFriendToOtherCatalog, info);
         }
 
@@ -228,8 +228,8 @@ namespace GGTalk
         {
             this.globalUserCache.CurrentUser.ChangeFriendCatalogName(oldName, newName);
 
-            ChangeCatalogContract contract = new ChangeCatalogContract(oldName, newName);
-            byte[] info = CompactPropertySerializer.Default.Serialize(contract);            
+            var contract = new ChangeCatalogContract(oldName, newName);
+            var info = CompactPropertySerializer.Default.Serialize(contract);            
             this.rapidPassiveEngine.CustomizeOutter.Send(InformationTypes.ChangeFriendCatalogName, info);
         }
 
@@ -241,7 +241,7 @@ namespace GGTalk
 
         void friendListBox1_ChatRecordClicked(GGUser friend)
         {
-            ChatRecordForm form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, this.globalUserCache.CurrentUser.GetIDName(), friend.GetIDName());
+            var form = new ChatRecordForm(GlobalResourceManager.RemotingService, GlobalResourceManager.ChatMessageRecordPersister, this.globalUserCache.CurrentUser.GetIDName(), friend.GetIDName());
             form.Show();
         }
 
@@ -278,7 +278,7 @@ namespace GGTalk
 
                 // 从recent中删除
                 this.recentListBox1.RemoveUnit(friend);
-                ChatForm chatForm = this.chatFormManager.GetForm(friend.ID);
+                var chatForm = this.chatFormManager.GetForm(friend.ID);
                 if (chatForm != null)
                 {
                     chatForm.Close();
@@ -432,7 +432,7 @@ namespace GGTalk
             this.friendListBox1.RemoveUser(friendID); 
             this.recentListBox1.RemoveUser(friendID);   
 
-            ChatForm chatForm = this.chatFormManager.GetForm(friendID);
+            var chatForm = this.chatFormManager.GetForm(friendID);
             if (chatForm != null)
             {
                 chatForm.OnRemovedFromFriend();
@@ -452,7 +452,7 @@ namespace GGTalk
             
             if (type == GroupChangedType.GroupDeleted)
             {
-                GroupChatForm form = this.groupChatFormManager.GetForm(group.ID);
+                var form = this.groupChatFormManager.GetForm(group.ID);
                 if (form != null)
                 {
                     form.Close();
@@ -465,7 +465,7 @@ namespace GGTalk
                 return;
             }
 
-            GroupChatForm form2 = this.groupChatFormManager.GetForm(group.ID);
+            var form2 = this.groupChatFormManager.GetForm(group.ID);
             if (form2 != null)
             {
                 form2.OnGroupInfoChanged(type, userID);
@@ -489,7 +489,7 @@ namespace GGTalk
             //正式通知好友，自己上线
             this.rapidPassiveEngine.CustomizeOutter.Send(InformationTypes.ChangeStatus, BitConverter.GetBytes((int)this.globalUserCache.CurrentUser.UserStatus));
 
-            GGUser mine = this.globalUserCache.GetUser(this.rapidPassiveEngine.CurrentUserID);            
+            var mine = this.globalUserCache.GetUser(this.rapidPassiveEngine.CurrentUserID);            
             this.InitializeFinished();
         }
 
@@ -518,13 +518,13 @@ namespace GGTalk
             this.friendListBox1.UserStatusChanged(friend);
             this.recentListBox1.UserStatusChanged(friend);      
 
-            ChatForm form = this.chatFormManager.GetForm(friend.UserID);
+            var form = this.chatFormManager.GetForm(friend.UserID);
             if (form != null)
             {
                 form.FriendStateChanged(friend.UserStatus);
             }
 
-            foreach (GroupChatForm groupForm in this.groupChatFormManager.GetAllForms())
+            foreach (var groupForm in this.groupChatFormManager.GetAllForms())
             {
                 if (groupForm != null)
                 {
@@ -546,13 +546,13 @@ namespace GGTalk
             this.friendListBox1.UserInfoChanged(user);
             this.recentListBox1.UserStatusChanged(user);           
 
-            ChatForm form = this.chatFormManager.GetForm(user.UserID);
+            var form = this.chatFormManager.GetForm(user.UserID);
             if (form != null)
             {
                 form.OnFriendInfoChanged(user);
             }
 
-            foreach (GroupChatForm groupForm in this.groupChatFormManager.GetAllForms())
+            foreach (var groupForm in this.groupChatFormManager.GetAllForms())
             {
                 groupForm.OnUserInfoChanged(user);
             }
@@ -571,14 +571,14 @@ namespace GGTalk
                 }
 
                 //我的好友
-                foreach (string friendID in this.globalUserCache.CurrentUser.GetAllFriendList())
+                foreach (var friendID in this.globalUserCache.CurrentUser.GetAllFriendList())
                 {
                     if (friendID == this.globalUserCache.CurrentUser.UserID)
                     {
                         continue;
                     }
 
-                    GGUser friend = this.globalUserCache.GetUser(friendID);
+                    var friend = this.globalUserCache.GetUser(friendID);
                     if (friend != null)
                     {
                         this.friendListBox1.AddUser(friend);                       
@@ -587,17 +587,17 @@ namespace GGTalk
                 this.friendListBox1.SortAllUser();
                 this.friendListBox1.ExpandRoot();
 
-                foreach (GGGroup group in this.globalUserCache.GetAllGroups()) //初期不包含 固定群
+                foreach (var group in this.globalUserCache.GetAllGroups()) //初期不包含 固定群
                 {
                     this.groupListBox.AddGroup(group);
                 }
 
                 //加载最近联系人
-                int insertIndex = 0;
-                foreach (string recentID in this.globalUserCache.GetRecentList())
+                var insertIndex = 0;
+                foreach (var recentID in this.globalUserCache.GetRecentList())
                 {
-                    Parameter<string, bool> para = RecentListBox.ParseIDFromRecentID(recentID);
-                    IUnit unit = this.globalUserCache.GetUnit(para.Arg1,para.Arg2);
+                    var para = RecentListBox.ParseIDFromRecentID(recentID);
+                    var unit = this.globalUserCache.GetUnit(para.Arg1,para.Arg2);
                     if (unit == null)
                     {
                         continue;
@@ -619,7 +619,7 @@ namespace GGTalk
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.globalUserCache.StartRefreshFriendInfo();
-            InformationForm frm = new InformationForm(this.rapidPassiveEngine.CurrentUserID, this.globalUserCache.CurrentUser.Name, GlobalResourceManager.GetHeadImage(this.globalUserCache.CurrentUser));
+            var frm = new InformationForm(this.rapidPassiveEngine.CurrentUserID, this.globalUserCache.CurrentUser.Name, GlobalResourceManager.GetHeadImage(this.globalUserCache.CurrentUser));
             frm.Show();
         } 
         #endregion
@@ -632,7 +632,7 @@ namespace GGTalk
 
         public bool IsInGroup(string groupID)
         {
-            foreach (string gid in this.globalUserCache.CurrentUser.GroupList)
+            foreach (var gid in this.globalUserCache.CurrentUser.GroupList)
             {
                 if (groupID == gid)
                 {
@@ -687,19 +687,19 @@ namespace GGTalk
             this.notifyIcon.ChangeText(String.Format("{0}：{1}（{2}）\n状态：离线，正在重连 . . .", GlobalResourceManager.SoftwareName, this.globalUserCache.CurrentUser.Name, this.globalUserCache.CurrentUser.UserID));
             this.notifyIcon.ChangeMyStatus(UserStatus.OffLine);
 
-            foreach (GGUser friend in this.globalUserCache.GetAllUser())
+            foreach (var friend in this.globalUserCache.GetAllUser())
             {
                 friend.UserStatus = UserStatus.OffLine;               
             }
             this.friendListBox1.SetAllUserOffline();            
             this.recentListBox1.SetAllUserOffline();          
 
-            foreach (ChatForm form in this.chatFormManager.GetAllForms())
+            foreach (var form in this.chatFormManager.GetAllForms())
             {
                 form.MyselfOffline();
             }
 
-            foreach (GroupChatForm form in this.groupChatFormManager.GetAllForms())
+            foreach (var form in this.groupChatFormManager.GetAllForms())
             {
                 form.MyselfOffline();
             }
@@ -718,7 +718,7 @@ namespace GGTalk
         #region //接收方收到文件发送 请求时 的 处理
         void fileOutter_FileRequestReceived(string projectID, string senderID, string projectName, ulong totalSize, ResumedProjectItem resumedFileItem, string comment)
         {
-            NDiskParameters para = Comment4NDisk.Parse(comment);
+            var para = Comment4NDisk.Parse(comment);
             if (para != null) //表明为网盘或远程磁盘
             {
                 return;
@@ -729,13 +729,13 @@ namespace GGTalk
 
         void do_fileOutter_FileRequestReceived(string projectID, string senderID, string projectName, ulong totalSize, ResumedProjectItem resumedFileItem, string comment)
         {
-            string offlineFileSenderID = Comment4OfflineFile.ParseUserID(comment);
-            bool offlineFile = (offlineFileSenderID != null);
+            var offlineFileSenderID = Comment4OfflineFile.ParseUserID(comment);
+            var offlineFile = (offlineFileSenderID != null);
             if (offlineFile)
             {
                 senderID = offlineFileSenderID;
             }
-            ChatForm form = this.GetChatForm(senderID);
+            var form = this.GetChatForm(senderID);
             form.FileRequestReceived(projectID, offlineFile);
             form.FlashChatWindow(true);
         }
@@ -753,7 +753,7 @@ namespace GGTalk
         }
         void do_fileOutter_FileResponseReceived(TransferingProject project, bool agreeReceive)
         {
-            ChatForm form = this.GetChatForm(project.DestUserID);
+            var form = this.GetChatForm(project.DestUserID);
             form.FlashChatWindow(true);
         }
         #endregion
@@ -762,7 +762,7 @@ namespace GGTalk
         #region GetChatForm
         public ChatForm GetChatForm(string friendID)
         {
-            ChatForm form = this.chatFormManager.GetForm(friendID);
+            var form = this.chatFormManager.GetForm(friendID);
             if (form == null)
             {   
                 this.rapidPassiveEngine.P2PController.P2PConnectAsyn(friendID);//尝试P2P连接。
@@ -773,7 +773,7 @@ namespace GGTalk
                 form.Show();
                 form.TopMost = SystemSettings.Singleton.ChatFormTopMost;
 
-                UnhandleFriendMessageBox cache = this.notifyIcon.PickoutFriendMessageCache(friendID);
+                var cache = this.notifyIcon.PickoutFriendMessageCache(friendID);
                 if (cache != null)
                 {
                     form.HandleReceivedMessage(cache.MessageList);
@@ -792,7 +792,7 @@ namespace GGTalk
 
         void form_LastWordChanged(bool isGroup ,string friendOrGroup, LastWordsRecord record)
         {
-            IUnit unit = isGroup ? (IUnit)this.globalUserCache.GetGroup(friendOrGroup) : this.globalUserCache.GetUser(friendOrGroup);
+            var unit = isGroup ? (IUnit)this.globalUserCache.GetGroup(friendOrGroup) : this.globalUserCache.GetUser(friendOrGroup);
             unit.Tag = record;
             this.recentListBox1.LastWordChanged(unit);
         }
@@ -806,14 +806,14 @@ namespace GGTalk
         #region GetGroupChatForm
         public GroupChatForm GetGroupChatForm(string groupID)
         {
-            GroupChatForm form = this.groupChatFormManager.GetForm(groupID);
+            var form = this.groupChatFormManager.GetForm(groupID);
             if (form == null)
             {
                 form = new GroupChatForm(this.rapidPassiveEngine, groupID, this.globalUserCache, this);
                 form.LastWordChanged +=new CbGeneric<bool,string,LastWordsRecord>(form_LastWordChanged);
                 this.groupChatFormManager.Add(form);
                 form.Show();
-                UnhandleGroupMessageBox cache = this.notifyIcon.PickoutGroupMessageCache(groupID);
+                var cache = this.notifyIcon.PickoutGroupMessageCache(groupID);
                 if (cache != null)
                 {
                     form.HandleReceivedMessage(cache.MessageList);
@@ -852,7 +852,7 @@ namespace GGTalk
         //状态选择项
         private void Item_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem Item = (ToolStripMenuItem)sender;
+            var Item = (ToolStripMenuItem)sender;
             skinButton_State.Image = Item.Image;
             skinButton_State.Tag = Item.Tag;
             this.globalUserCache.CurrentUser.UserStatus = (UserStatus)Convert.ToInt32(skinButton_State.Tag);      
@@ -895,12 +895,12 @@ namespace GGTalk
             SystemSettings.Singleton.MainFormLocation = this.Location;
             SystemSettings.Singleton.Save();
 
-            foreach (ChatForm form in this.chatFormManager.GetAllForms())
+            foreach (var form in this.chatFormManager.GetAllForms())
             {
                 form.Close();
             }
 
-            foreach (GroupChatForm form in this.groupChatFormManager.GetAllForms())
+            foreach (var form in this.groupChatFormManager.GetAllForms())
             {
                 form.Close();
             }
@@ -916,7 +916,7 @@ namespace GGTalk
         //V2.0
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            NDiskForm form = new NDiskForm(null, null, this.rapidPassiveEngine.FileOutter, this.nDiskOutter);            
+            var form = new NDiskForm(null, null, this.rapidPassiveEngine.FileOutter, this.nDiskOutter);            
             form.Show();
         }              
                
@@ -943,20 +943,20 @@ namespace GGTalk
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            SystemSettingForm form = new SystemSettingForm();
+            var form = new SystemSettingForm();
             form.Show();
         }       
 
         private void ToJoinGroup()
         {
-            JoinGroupForm form = new JoinGroupForm(this.rapidPassiveEngine,this);
+            var form = new JoinGroupForm(this.rapidPassiveEngine,this);
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.globalUserCache.CurrentUser.JoinGroup(form.GroupID);
-                GGGroup group = this.globalUserCache.GetGroup(form.GroupID);
+                var group = this.globalUserCache.GetGroup(form.GroupID);
                 this.groupListBox.AddGroup(group);            
 
-                GroupChatForm groupChatForm = this.GetGroupChatForm(group.ID);
+                var groupChatForm = this.GetGroupChatForm(group.ID);
                 groupChatForm.AppendSysMessage("您已经成功加入群，可以开始聊天了...");
                 groupChatForm.Show();
                 groupChatForm.Focus();
@@ -970,7 +970,7 @@ namespace GGTalk
 
         private void UpdateMyInfo()
         {
-            UpdateUserInfoForm form = new UpdateUserInfoForm(this.rapidPassiveEngine, this.globalUserCache, this.globalUserCache.CurrentUser);
+            var form = new UpdateUserInfoForm(this.rapidPassiveEngine, this.globalUserCache, this.globalUserCache.CurrentUser);
             form.UserInfoChanged += new CbGeneric<GGUser>(form_UserInfoChanged);
             form.TopMost = true;
             form.Show();
@@ -984,7 +984,7 @@ namespace GGTalk
             this.labelName.Text = this.globalUserCache.CurrentUser.Name;
             this.globalUserCache.AddOrUpdateUser(this.globalUserCache.CurrentUser);
 
-            foreach (ChatForm chatForm in this.chatFormManager.GetAllForms())
+            foreach (var chatForm in this.chatFormManager.GetAllForms())
             {
                 chatForm.OnMyInfoChanged(this.globalUserCache.CurrentUser);
             }           
@@ -1013,7 +1013,7 @@ namespace GGTalk
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            SystemSettingForm form = new SystemSettingForm();
+            var form = new SystemSettingForm();
             form.Show();
         }
 
@@ -1050,15 +1050,15 @@ namespace GGTalk
                 return;
             }
 
-            CreateGroupForm form = new CreateGroupForm(this.rapidPassiveEngine);
+            var form = new CreateGroupForm(this.rapidPassiveEngine);
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {               
-                GGGroup group = form.Group;
+                var group = form.Group;
                 this.globalUserCache.CurrentUser.JoinGroup(group.ID);
                 this.globalUserCache.OnCreateGroup(group);
                 this.groupListBox.AddGroup(group);
 
-                GroupChatForm groupChatForm = this.GetGroupChatForm(group.ID);
+                var groupChatForm = this.GetGroupChatForm(group.ID);
                 groupChatForm.AppendSysMessage("您已经成功创建群...");
                 groupChatForm.Show();
                 groupChatForm.Focus();
@@ -1082,7 +1082,7 @@ namespace GGTalk
                 return;
             }
 
-            ChangePasswordForm form = new ChangePasswordForm(this.rapidPassiveEngine);
+            var form = new ChangePasswordForm(this.rapidPassiveEngine);
             form.ShowDialog();
         }
 
@@ -1120,7 +1120,7 @@ namespace GGTalk
 
         private void 查找好友ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SearchFriendForm form = new SearchFriendForm(this, this.globalUserCache.CurrentUser);
+            var form = new SearchFriendForm(this, this.globalUserCache.CurrentUser);
             form.Show();
         }
 
@@ -1137,13 +1137,13 @@ namespace GGTalk
 
         public void AddFriend(string friendID )
         {
-            AddFriendForm form = new AddFriendForm(this.rapidPassiveEngine, this, this.globalUserCache.CurrentUser ,friendID);
+            var form = new AddFriendForm(this.rapidPassiveEngine, this, this.globalUserCache.CurrentUser ,friendID);
             if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 this.globalUserCache.CurrentUser.AddFriend(form.FriendID, form.CatalogName);
-                GGUser user = this.globalUserCache.GetUser(form.FriendID);
+                var user = this.globalUserCache.GetUser(form.FriendID);
                 this.friendListBox1.AddUser(user);
-                ChatForm chatForm = this.GetChatForm(form.FriendID);
+                var chatForm = this.GetChatForm(form.FriendID);
                 chatForm.AppendSysMessage("您已经成功将对方添加为好友，可以开始对话了...");
                 chatForm.Show();
                 chatForm.Focus();
@@ -1158,13 +1158,13 @@ namespace GGTalk
         #region ITwinkleNotifySupporter
         public string GetFriendName(string friendID)
         {
-            GGUser user = this.globalUserCache.GetUser(friendID);
+            var user = this.globalUserCache.GetUser(friendID);
             return user.Name;
         }
 
         public string GetGroupName(string groupID)
         {
-            GGGroup group = this.globalUserCache.GetGroup(groupID);
+            var group = this.globalUserCache.GetGroup(groupID);
             return group.Name;
         }
 
@@ -1175,7 +1175,7 @@ namespace GGTalk
 
         public Icon GetHeadIcon(string userID)
         {
-            GGUser user = this.globalUserCache.GetUser(userID);
+            var user = this.globalUserCache.GetUser(userID);
             return user.GetHeadIcon(GlobalResourceManager.HeadImages);
         }
 
@@ -1233,7 +1233,7 @@ namespace GGTalk
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            SystemNotifySendForm form = new SystemNotifySendForm(this.rapidPassiveEngine);
+            var form = new SystemNotifySendForm(this.rapidPassiveEngine);
             form.Show();
         }    
     }

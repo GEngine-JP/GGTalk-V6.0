@@ -47,7 +47,7 @@ namespace GGTalk.Server
             this.rapidServerEngine = engine;     
             this.ShowInformation(null);                     
             this.toolStripStatusLabel_state.Text = string.Format("启动时间：{0}",DateTime.Now);
-            string notifyInfo = "";
+            var notifyInfo = "";
             if (this.rapidServerEngine.ContactsController != null)
             {
                 notifyInfo += string.Format("ContactsNotify-Thread:{0}/{1}  ", this.rapidServerEngine.ContactsController.ContactsDisconnectedNotifyEnabled, this.rapidServerEngine.ContactsController.UseContactsNotifyThread);
@@ -66,9 +66,9 @@ namespace GGTalk.Server
             this.rapidServerEngine.UserManager.UserDisplayer = this;
 
             //在界面显示之前，可能已有客户端重连上来
-            foreach (string userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
+            foreach (var userID in this.rapidServerEngine.UserManager.GetOnlineUserList())
             {
-                UserData data = this.rapidServerEngine.UserManager.GetUserData(userID);
+                var data = this.rapidServerEngine.UserManager.GetUserData(userID);
                 this.AddUser(data.UserID, data.ClientType, data.Address.ToString());
             }
 
@@ -95,8 +95,8 @@ namespace GGTalk.Server
                     int count1, count2;
                     System.Threading.ThreadPool.GetAvailableThreads(out count1, out count2);
                     this.toolStripStatusLabel_threads.Text = string.Format("线程池:{0} ,IOCP线程:{1}", count1, count2);
-                    int connCount = this.rapidServerEngine.ConnectionCount;
-                    int userCount = this.rapidServerEngine.UserManager.UserCount;
+                    var connCount = this.rapidServerEngine.ConnectionCount;
+                    var userCount = this.rapidServerEngine.UserManager.UserCount;
                     if (connCount < this.rapidServerEngine.MaxConnectionCount)
                     {
                         if (this.rapidServerEngine.MaxConnectionCount < 1000000)
@@ -165,12 +165,12 @@ namespace GGTalk.Server
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.listView1.Items.Clear();
-            List<UserInfo> list = this.onlineManager.GetAll() ;
+            var list = this.onlineManager.GetAll() ;
             list.Sort(new Comparison<UserInfo>(delegate(UserInfo a, UserInfo b) {return (int)((a.LogonTime - b.LogonTime).TotalSeconds) ;}));
-            foreach (UserInfo info in list)
+            foreach (var info in list)
             {
                 string[] subItems = { info.UserID, info.ClientType.ToString(), info.Address, info.LogonTime.ToString() };
-                ListViewItem item = new ListViewItem(subItems);
+                var item = new ListViewItem(subItems);
                 info.ListViewItem = item;
                 item.Tag = info;
                 this.listView1.Items.Add(item);
@@ -208,14 +208,14 @@ namespace GGTalk.Server
             {
                 return;
             }
-            UserInfo info = new UserInfo(userID ,clientType,userAddress);
+            var info = new UserInfo(userID ,clientType,userAddress);
             this.onlineManager.Add(userID, info);
             this.AddItem(info);
         }
 
         public void OnMessageSent(string userID, int messageType)
         {
-            UserInfo info = this.onlineManager.Get(userID);
+            var info = this.onlineManager.Get(userID);
             if (info != null)
             {
                 info.TotalDownloadCount += 1;
@@ -225,7 +225,7 @@ namespace GGTalk.Server
 
         public void OnMessageReceived(string userID, int messageType)
         {
-            UserInfo info = this.onlineManager.Get(userID);
+            var info = this.onlineManager.Get(userID);
             if (info != null)
             {
                 info.TotalUploadCount += 1;
@@ -235,7 +235,7 @@ namespace GGTalk.Server
 
         public void RemoveUser(string userID, string cause)
         {
-            UserInfo info = this.onlineManager.Get(userID);
+            var info = this.onlineManager.Get(userID);
             if (info != null)
             {
                 this.RemoveItem(info.ListViewItem);
@@ -264,7 +264,7 @@ namespace GGTalk.Server
             else
             {
                 string[] subItems = { info.UserID, info.ClientType.ToString(),info.Address, info.LogonTime.ToString()};
-                ListViewItem item = new ListViewItem(subItems);
+                var item = new ListViewItem(subItems);
                 info.ListViewItem = item;
                 item.Tag = info;
                 this.listView1.Items.Add(item);
@@ -276,13 +276,13 @@ namespace GGTalk.Server
         {
             try
             {
-                ListViewHitTestInfo info = this.listView1.HitTest(e.Location);
+                var info = this.listView1.HitTest(e.Location);
                 if (info == null || info.Item == null)
                 {
                     return;
                 }
 
-                UserInfo user = (UserInfo)info.Item.Tag;
+                var user = (UserInfo)info.Item.Tag;
 
                 MessageBox.Show(user.ToString());
             }

@@ -47,11 +47,11 @@ namespace GGTalk.Controls.Internals
             ILockBytes bytes;
             IStorage storage;
             IOleClientSite site;
-            Guid guid = Marshal.GenerateGuidForType(control.GetType());
+            var guid = Marshal.GenerateGuidForType(control.GetType());
             NativeMethods.CreateILockBytesOnHGlobal(IntPtr.Zero, true, out bytes);
             NativeMethods.StgCreateDocfileOnILockBytes(bytes, 0x1012, 0, out storage);
             IRichEditOle.GetClientSite(out site);
-            REOBJECT lpreobject = new REOBJECT();
+            var lpreobject = new REOBJECT();
             lpreobject.posistion = position;
             lpreobject.clsid = guid;
             lpreobject.pstg = storage;
@@ -82,14 +82,14 @@ namespace GGTalk.Controls.Internals
             NativeMethods.CreateILockBytesOnHGlobal(IntPtr.Zero, true, out bytes);
             NativeMethods.StgCreateDocfileOnILockBytes(bytes, 0x1012, 0, out storage);
             IRichEditOle.GetClientSite(out site);
-            FORMATETC pFormatEtc = new FORMATETC();
+            var pFormatEtc = new FORMATETC();
             pFormatEtc.cfFormat = (CLIPFORMAT)0;
             pFormatEtc.ptd = IntPtr.Zero;
             pFormatEtc.dwAspect = DVASPECT.DVASPECT_CONTENT;
             pFormatEtc.lindex = -1;
             pFormatEtc.tymed = TYMED.TYMED_NULL;
-            Guid riid = new Guid("{00000112-0000-0000-C000-000000000046}");
-            Guid rclsid = new Guid("{00000000-0000-0000-0000-000000000000}");
+            var riid = new Guid("{00000112-0000-0000-C000-000000000046}");
+            var rclsid = new Guid("{00000000-0000-0000-0000-000000000000}");
             NativeMethods.OleCreateFromFile(ref rclsid, strFilename, ref riid, 1, ref pFormatEtc, site, storage, out obj2);
             if (obj2 == null)
             {
@@ -98,11 +98,11 @@ namespace GGTalk.Controls.Internals
                 Marshal.ReleaseComObject(storage);
                 return false;
             }
-            IOleObject pUnk = (IOleObject)obj2;
-            Guid pClsid = new Guid();
+            var pUnk = (IOleObject)obj2;
+            var pClsid = new Guid();
             pUnk.GetUserClassID(ref pClsid);
             NativeMethods.OleSetContainedObject(pUnk, true);
-            REOBJECT lpreobject = new REOBJECT();
+            var lpreobject = new REOBJECT();
             lpreobject.posistion = position;
             lpreobject.clsid = pClsid;
             lpreobject.pstg = storage;
@@ -146,12 +146,12 @@ namespace GGTalk.Controls.Internals
             IOleClientSite pOleClientSite;
             IRichEditOle.GetClientSite(out pOleClientSite);
 
-            Guid guid = new Guid();
+            var guid = new Guid();
 
             oleObject.GetUserClassID(ref guid);
             NativeMethods.OleSetContainedObject(oleObject, true);
 
-            REOBJECT reoObject = new REOBJECT();
+            var reoObject = new REOBJECT();
 
             reoObject.posistion = pos;
             reoObject.clsid = guid;
@@ -174,24 +174,24 @@ namespace GGTalk.Controls.Internals
 
         public void UpdateObjects()
         {
-            int objectCount = this.IRichEditOle.GetObjectCount();
-            for (int i = 0; i < objectCount; i++)
+            var objectCount = this.IRichEditOle.GetObjectCount();
+            for (var i = 0; i < objectCount; i++)
             {
-                REOBJECT lpreobject = new REOBJECT();
+                var lpreobject = new REOBJECT();
                 IRichEditOle.GetObject(i, lpreobject, GETOBJECTOPTIONS.REO_GETOBJ_ALL_INTERFACES);
-                Point positionFromCharIndex = this.agileRichTextBox.GetPositionFromCharIndex(lpreobject.posistion);
-                Rectangle rc = new Rectangle(positionFromCharIndex.X, positionFromCharIndex.Y, 50, 50);
+                var positionFromCharIndex = this.agileRichTextBox.GetPositionFromCharIndex(lpreobject.posistion);
+                var rc = new Rectangle(positionFromCharIndex.X, positionFromCharIndex.Y, 50, 50);
                 agileRichTextBox.Invalidate(rc, false);
             }
         }
 
         public List<REOBJECT> GetAllREOBJECT()
         {
-            List<REOBJECT> list = new List<REOBJECT>();
-            int objectCount = this.IRichEditOle.GetObjectCount();
-            for (int i = 0; i < objectCount; i++)
+            var list = new List<REOBJECT>();
+            var objectCount = this.IRichEditOle.GetObjectCount();
+            for (var i = 0; i < objectCount; i++)
             {
-                REOBJECT lpreobject = new REOBJECT();
+                var lpreobject = new REOBJECT();
                 IRichEditOle.GetObject(i, lpreobject, GETOBJECTOPTIONS.REO_GETOBJ_ALL_INTERFACES);
                 list.Add(lpreobject);
             }
@@ -200,7 +200,7 @@ namespace GGTalk.Controls.Internals
 
         public void UpdateObjects(int pos)
         {
-            REOBJECT lpreobject = new REOBJECT();
+            var lpreobject = new REOBJECT();
             IRichEditOle.GetObject(
                 pos,
                 lpreobject,
@@ -210,17 +210,17 @@ namespace GGTalk.Controls.Internals
 
         public void UpdateObjects(REOBJECT reObj)
         {
-            Point positionFromCharIndex = agileRichTextBox.GetPositionFromCharIndex(reObj.posistion);
-            Size size = GetSizeFromMillimeter(reObj);
-            Rectangle rc = new Rectangle(positionFromCharIndex, size);
+            var positionFromCharIndex = agileRichTextBox.GetPositionFromCharIndex(reObj.posistion);
+            var size = GetSizeFromMillimeter(reObj);
+            var rc = new Rectangle(positionFromCharIndex, size);
             agileRichTextBox.Invalidate(rc, false);
         }
 
         private Size GetSizeFromMillimeter(REOBJECT lpreobject)
         {
-            using (Graphics graphics = Graphics.FromHwnd(agileRichTextBox.Handle))
+            using (var graphics = Graphics.FromHwnd(agileRichTextBox.Handle))
             {
-                Point[] pts = new Point[1];
+                var pts = new Point[1];
                 graphics.PageUnit = GraphicsUnit.Millimeter;
 
                 pts[0] = new Point(

@@ -41,7 +41,7 @@ namespace GGTalk
         {
             try
             {
-                bool autoStartChanged = (this.skinCheckBox_autoRun.Checked != SystemSettings.Singleton.AutoRun);
+                var autoStartChanged = (this.skinCheckBox_autoRun.Checked != SystemSettings.Singleton.AutoRun);
                 SystemSettings.Singleton.AutoRun = this.skinCheckBox_autoRun.Checked;               
                 SystemSettings.Singleton.ExitWhenCloseMainForm = !this.skinRadioButton_hide.Checked;
                 SystemSettings.Singleton.AutoLogin = this.skinCheckBox_autoLogin.Checked;
@@ -52,8 +52,8 @@ namespace GGTalk
 
                 if (autoStartChanged)
                 {
-                    string name = "GGTalk.exe";
-                    string args = string.Format("{0} {1}", name, SystemSettings.Singleton.AutoRun.ToString());
+                    var name = "GGTalk.exe";
+                    var args = string.Format("{0} {1}", name, SystemSettings.Singleton.AutoRun.ToString());
                     Process.Start(AppDomain.CurrentDomain.BaseDirectory + "AutoStart.exe", args);
                 }
 

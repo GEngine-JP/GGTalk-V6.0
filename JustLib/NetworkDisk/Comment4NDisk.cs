@@ -23,8 +23,8 @@ namespace JustLib.NetworkDisk
 
         public static string BuildComment(string directoryPath ,string netDiskID)
         {
-            NDiskParameters para = new NDiskParameters(directoryPath, netDiskID);
-            string xml = SpringFox.XmlObject(para);
+            var para = new NDiskParameters(directoryPath, netDiskID);
+            var xml = SpringFox.XmlObject(para);
             return Comment4NDisk.Prefix + xml;
         }
     }

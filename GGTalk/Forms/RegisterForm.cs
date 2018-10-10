@@ -26,10 +26,10 @@ namespace GGTalk
         {
             InitializeComponent();
 
-            int registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
+            var registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
             this.ggService = (IRemotingService)Activator.GetObject(typeof(IRemotingService), string.Format("tcp://{0}:{1}/RemotingService", ConfigurationManager.AppSettings["ServerIP"], registerPort)); ;
               
-            Random ran = new Random();
+            var ran = new Random();
             this.headImageIndex = ran.Next(0,GlobalResourceManager.HeadImages.Length);
             this.pnlImgTx.BackgroundImage = GlobalResourceManager.HeadImages[this.headImageIndex];//根据ID获取头像            
         }
@@ -52,7 +52,7 @@ namespace GGTalk
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string userID = this.skinTextBox_id.SkinTxt.Text.Trim();
+            var userID = this.skinTextBox_id.SkinTxt.Text.Trim();
             if (userID.Length == 0)
             {
                 this.skinTextBox_id.SkinTxt.Focus();
@@ -61,7 +61,7 @@ namespace GGTalk
                 return;
             }
 
-            string pwd = this.skinTextBox_pwd.SkinTxt.Text ;
+            var pwd = this.skinTextBox_pwd.SkinTxt.Text ;
             if (pwd != this.skinTextBox_pwd2.SkinTxt.Text)
             {
                 MessageBoxEx.Show("两次输入的密码不一致！");
@@ -74,14 +74,14 @@ namespace GGTalk
             try
             {
 
-                GGUser user = new GGUser(userID, SecurityHelper.MD5String2(pwd), this.skinTextBox_nickName.SkinTxt.Text,"",this.skinTextBox_signature.SkinTxt.Text, this.headImageIndex, "");
+                var user = new GGUser(userID, SecurityHelper.MD5String2(pwd), this.skinTextBox_nickName.SkinTxt.Text,"",this.skinTextBox_signature.SkinTxt.Text, this.headImageIndex, "");
                 if (this.selfPhoto)
                 {                   
                     user.HeadImageData = ESBasic.Helpers.ImageHelper.Convert(this.pnlImgTx.BackgroundImage);
                     user.HeadImageIndex = -1;
                 }
 
-                RegisterResult result = ggService.Register(user);
+                var result = ggService.Register(user);
                 if (result == RegisterResult.Existed)
                 {
                     this.skinTextBox_id.SkinTxt.SelectAll();
@@ -119,7 +119,7 @@ namespace GGTalk
         private bool selfPhoto = false;
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PhotoForm form = new PhotoForm();
+            var form = new PhotoForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 this.pnlImgTx.BackgroundImage = form.CurrentImage;
@@ -129,7 +129,7 @@ namespace GGTalk
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            HeadImageForm form = new HeadImageForm();
+            var form = new HeadImageForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 this.pnlImgTx.BackgroundImage = form.CurrentImage;

@@ -34,25 +34,25 @@ namespace GGTalk.Server
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                IDBPersister persister;
+                IDbPersister persister;
                 if (bool.Parse(ConfigurationManager.AppSettings["UseVirtualDB"]))
                 {
                     persister = new VirtualDB();
                 }
                 else
                 {
-                    DataBaseType dataBaseType = (DataBaseType)Enum.Parse(typeof(DataBaseType),ConfigurationManager.AppSettings["DBType"]) ;
+                    var dataBaseType = (DataBaseType)Enum.Parse(typeof(DataBaseType),ConfigurationManager.AppSettings["DBType"]) ;
                     if (dataBaseType == DataBaseType.SqlServer)
                     {
-                        persister = new RealDB(ConfigurationManager.AppSettings["DBName"], ConfigurationManager.AppSettings["DBIP"], ConfigurationManager.AppSettings["SaPwd"]);
+                        persister = new RealDb(ConfigurationManager.AppSettings["DBName"], ConfigurationManager.AppSettings["DBIP"], ConfigurationManager.AppSettings["SaPwd"]);
                     }
                     else //MySQL
                     {
-                        persister = new RealDB(ConfigurationManager.AppSettings["DBName"], ConfigurationManager.AppSettings["DBIP"], int.Parse(ConfigurationManager.AppSettings["DBPort"]), ConfigurationManager.AppSettings["SaPwd"]);
+                        persister = new RealDb(ConfigurationManager.AppSettings["DBName"], ConfigurationManager.AppSettings["DBIP"], int.Parse(ConfigurationManager.AppSettings["DBPort"]), ConfigurationManager.AppSettings["SaPwd"]);
                     }
                 }
 
-                GlobalCache globalCache = new GlobalCache(persister);
+                var globalCache = new GlobalCache(persister);
 
                 #region 初始化ESFramework服务端引擎
                 ESPlus.GlobalUtil.SetAuthorizedUser("FreeUser", "");
@@ -60,13 +60,13 @@ namespace GGTalk.Server
                 ESPlus.GlobalUtil.SetMaxLengthOfMessage(1024 * 1024 * 10);
               
                 //自定义的联系人管理器
-                ContactsManager contactsManager = new ContactsManager(globalCache);
+                var contactsManager = new ContactsManager(globalCache);
                 Program.RapidServerEngine.ContactsManager = contactsManager;
 
 
-                NDiskHandler nDiskHandler = new NDiskHandler(); //网盘处理器 V1.9
-                CustomizeHandler handler = new CustomizeHandler();
-                ComplexCustomizeHandler complexHandler = new ComplexCustomizeHandler(nDiskHandler, handler); 
+                var nDiskHandler = new NDiskHandler(); //网盘处理器 V1.9
+                var handler = new CustomizeHandler();
+                var complexHandler = new ComplexCustomizeHandler(nDiskHandler, handler); 
 
                 //初始化服务端引擎
                 Program.RapidServerEngine.SecurityLogEnabled = false;
@@ -76,15 +76,15 @@ namespace GGTalk.Server
                 Program.RapidServerEngine.ContactsController.BroadcastBlobListened = true; //为群聊天记录
 
                 //初始化网盘处理器 V1.9
-                NetworkDiskPathManager networkDiskPathManager = new NetworkDiskPathManager() ;
-                NetworkDisk networkDisk = new NetworkDisk(networkDiskPathManager, Program.RapidServerEngine.FileController);
+                var networkDiskPathManager = new NetworkDiskPathManager() ;
+                var networkDisk = new NetworkDisk(networkDiskPathManager, Program.RapidServerEngine.FileController);
                 nDiskHandler.Initialize(Program.RapidServerEngine.FileController, networkDisk);
 
                 //设置重登陆模式
                 Program.RapidServerEngine.UserManager.RelogonMode = RelogonMode.ReplaceOld; 
 
                 //离线消息控制器 V3.2
-                OfflineFileController offlineFileController = new OfflineFileController(Program.RapidServerEngine, globalCache);
+                var offlineFileController = new OfflineFileController(Program.RapidServerEngine, globalCache);
 
                 handler.Initialize(globalCache, Program.RapidServerEngine, offlineFileController);
                 #endregion            
@@ -92,22 +92,22 @@ namespace GGTalk.Server
                 #region 初始化OMCS服务器
                 OMCS.GlobalUtil.SetAuthorizedUser("FreeUser", "");
                 OMCS.GlobalUtil.SetMaxLengthOfUserID(20);
-                OMCSConfiguration config = new OMCSConfiguration();
+                var config = new OMCSConfiguration();
 
                 //用于验证登录用户的帐密
-                DefaultUserVerifier userVerifier = new DefaultUserVerifier();
+                var userVerifier = new DefaultUserVerifier();
                 Program.MultimediaServer = MultimediaServerFactory.CreateMultimediaServer(int.Parse(ConfigurationManager.AppSettings["OmcsPort"]), userVerifier, config,false);                          
                 
                 #endregion
 
                 #region 发布用于注册的Remoting服务
                 RemotingConfiguration.Configure("GGTalk.Server.exe.config", false);
-                RemotingService registerService = new Server.RemotingService(globalCache ,Program.RapidServerEngine);
+                var registerService = new Server.RemotingService(globalCache ,Program.RapidServerEngine);
                 RemotingServices.Marshal(registerService, "RemotingService");      
                 #endregion       
  
                 //如果不需要默认的UI显示，可以替换下面这句为自己的Form
-                MainServerForm mainForm = new MainServerForm(Program.RapidServerEngine);
+                var mainForm = new MainServerForm(Program.RapidServerEngine);
                 mainForm.Text = ConfigurationManager.AppSettings["SoftwareName"] + " 服务器";
                 Application.Run(mainForm);
             }

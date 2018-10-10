@@ -14,8 +14,8 @@ using ESBasic.Threading.Engines;
 namespace GGTalk.Controls
 {
     /// <summary>
-    /// ÎÄ¼ş´«ËÍ²é¿´Æ÷¡£ÓÃÓÚ²é¿´ÓëÄ³¸öºÃÓÑµÄËùÓĞÎÄ¼ş´«ËÍµÄ½ø¶È×´Ì¬ĞÅÏ¢¡£
-    /// ×¢Òâ£¬FileTransferingViewerµÄËùÓĞÊÂ¼ş¶¼ÊÇÔÚUIÏß³ÌÖĞ´¥·¢µÄ¡£
+    /// æ–‡ä»¶ä¼ é€æŸ¥çœ‹å™¨ã€‚ç”¨äºæŸ¥çœ‹ä¸æŸä¸ªå¥½å‹çš„æ‰€æœ‰æ–‡ä»¶ä¼ é€çš„è¿›åº¦çŠ¶æ€ä¿¡æ¯ã€‚
+    /// æ³¨æ„ï¼ŒFileTransferingViewerçš„æ‰€æœ‰äº‹ä»¶éƒ½æ˜¯åœ¨UIçº¿ç¨‹ä¸­è§¦å‘çš„ã€‚
     /// </summary>
     public partial class FileTransferingViewer : UserControl, IFileTransferingViewer ,IEngineActor
     {
@@ -23,30 +23,30 @@ namespace GGTalk.Controls
         private IFileOutter fileOutter;   
         private AgileCycleEngine agileCycleEngine;
 
-        #region event FileTransferingViewerµÄËùÓĞÊÂ¼ş¶¼ÊÇÔÚUIÏß³ÌÖĞ´¥·¢µÄ¡£
+        #region event FileTransferingViewerçš„æ‰€æœ‰äº‹ä»¶éƒ½æ˜¯åœ¨UIçº¿ç¨‹ä¸­è§¦å‘çš„ã€‚
 
         /// <summary>
-        /// µ±Ä³¸öÎÄ¼ş¿ªÊ¼Ğø´«Ê±£¬´¥·¢¸ÃÊÂ¼ş¡£²ÎÊıÎªFileName - isSending
+        /// å½“æŸä¸ªæ–‡ä»¶å¼€å§‹ç»­ä¼ æ—¶ï¼Œè§¦å‘è¯¥äº‹ä»¶ã€‚å‚æ•°ä¸ºFileName - isSending
         /// </summary>
         public event CbGeneric<string, bool> FileResumedTransStarted; 
 
         /// <summary>
-        /// µ±Ä³¸öÎÄ¼ş´«ËÍÍê±ÏÊ±£¬´¥·¢¸ÃÊÂ¼ş¡£²ÎÊıÎªFileName - isSending - comment - isFolder
+        /// å½“æŸä¸ªæ–‡ä»¶ä¼ é€å®Œæ¯•æ—¶ï¼Œè§¦å‘è¯¥äº‹ä»¶ã€‚å‚æ•°ä¸ºFileName - isSending - comment - isFolder
         /// </summary>
         public event CbGeneric<string, bool, string ,bool> FileTransCompleted;
 
         /// <summary>
-        /// µ±Ä³¸öÎÄ¼ş´«ËÍÖĞ¶ÏÊ±£¬´¥·¢¸ÃÊÂ¼ş¡£²ÎÊıÎªFileName - isSending - FileTransDisrupttedType
+        /// å½“æŸä¸ªæ–‡ä»¶ä¼ é€ä¸­æ–­æ—¶ï¼Œè§¦å‘è¯¥äº‹ä»¶ã€‚å‚æ•°ä¸ºFileName - isSending - FileTransDisrupttedType
         /// </summary>
         public event CbGeneric<string, bool, FileTransDisrupttedType> FileTransDisruptted;
 
         /// <summary>
-        /// µ±Ä³¸öÎÄ¼ş´«ËÍ¿ªÊ¼Ê±£¬´¥·¢¸ÃÊÂ¼ş¡£²ÎÊıÎªFileName - isSending
+        /// å½“æŸä¸ªæ–‡ä»¶ä¼ é€å¼€å§‹æ—¶ï¼Œè§¦å‘è¯¥äº‹ä»¶ã€‚å‚æ•°ä¸ºFileName - isSending
         /// </summary>
         public event CbGeneric<string, bool> FileTransStarted;
 
         /// <summary>
-        /// µ±ËùÓĞÎÄ¼ş¶¼´«ËÍÍê³ÉÊ±£¬´¥·¢¸ÃÊÂ¼ş¡£
+        /// å½“æ‰€æœ‰æ–‡ä»¶éƒ½ä¼ é€å®Œæˆæ—¶ï¼Œè§¦å‘è¯¥äº‹ä»¶ã€‚
         /// </summary>
         public event CbSimple AllTaskFinished;       
         #endregion       
@@ -85,9 +85,9 @@ namespace GGTalk.Controls
 
 
         /// <summary>
-        /// ³õÊ¼»¯¿Ø¼ş¡£
+        /// åˆå§‹åŒ–æ§ä»¶ã€‚
         /// </summary>         
-        /// <param name="filter">µ±Ç°µÄViewerÒªÏÔÊ¾ÄÄĞ©´«ËÍÏîÄ¿µÄ×´Ì¬ĞÅÏ¢</param>        
+        /// <param name="filter">å½“å‰çš„Viewerè¦æ˜¾ç¤ºå“ªäº›ä¼ é€é¡¹ç›®çš„çŠ¶æ€ä¿¡æ¯</param>        
         public void Initialize(IFileOutter _fileOutter, Func<TransferingProject, bool> filter)
         {            
             this.fileOutter = _fileOutter;
@@ -109,7 +109,7 @@ namespace GGTalk.Controls
 
         public List<string> GetTransferingProjectIDsInCurrentViewer()
         {
-            List<string> list = new List<string>();
+            var list = new List<string>();
             foreach (FileTransferItem item in this.flowLayoutPanel1.Controls)
             {
                list.Add(item.TransmittingProject.ProjectID) ;                
@@ -119,11 +119,11 @@ namespace GGTalk.Controls
         }
 
         /// <summary>
-        /// µ±ÊÕµ½·¢ËÍÎÄ¼şµÄÇëÇóÊ±,½ÓÊÕ·½µ÷ÓÃ´Ë·½·¨ÏÔÊ¾fileTransferItem
+        /// å½“æ”¶åˆ°å‘é€æ–‡ä»¶çš„è¯·æ±‚æ—¶,æ¥æ”¶æ–¹è°ƒç”¨æ­¤æ–¹æ³•æ˜¾ç¤ºfileTransferItem
         /// </summary>        
         public void NewFileTransferItem(string projectID, bool offlineFile, bool doneAgreed)
         {
-            TransferingProject pro = this.fileOutter.GetTransferingProject(projectID);
+            var pro = this.fileOutter.GetTransferingProject(projectID);
             if (pro == null)
             {
                 return;
@@ -141,7 +141,7 @@ namespace GGTalk.Controls
         }
 
         /// <summary>
-        ///  Ò»¶¨ÒªÔÚ¿Ø¼şÏú»ÙµÄÊ±ºò£¬È¡ÏûÔ¤¶©µÄÊÂ¼ş¡£·ñÔò£¬ÒÑ±»ÊÍ·ÅµÄ¿Ø¼şµÄ´¦Àíº¯ÊıÈÔÈ»»á±»µ÷ÓÃ£¬¶øÒı·¢"¶ÔÏóÒÑ¾­±»ÊÍ·Å"µÄÒì³£¡£
+        ///  ä¸€å®šè¦åœ¨æ§ä»¶é”€æ¯çš„æ—¶å€™ï¼Œå–æ¶ˆé¢„è®¢çš„äº‹ä»¶ã€‚å¦åˆ™ï¼Œå·²è¢«é‡Šæ”¾çš„æ§ä»¶çš„å¤„ç†å‡½æ•°ä»ç„¶ä¼šè¢«è°ƒç”¨ï¼Œè€Œå¼•å‘"å¯¹è±¡å·²ç»è¢«é‡Šæ”¾"çš„å¼‚å¸¸ã€‚
         /// </summary>        
         public void BeforeDispose()
         {
@@ -176,7 +176,7 @@ namespace GGTalk.Controls
             }
             else
             {             
-                FileTransferItem item = this.GetExistedItem(info.ProjectID);
+                var item = this.GetExistedItem(info.ProjectID);
                 if (item != null)
                 {
                     this.FileResumedTransStarted(info.ProjectName, false);
@@ -201,7 +201,7 @@ namespace GGTalk.Controls
             else
             {
                 this.AddFileTransItem(info ,false, true);
-                FileTransferItem item = this.GetExistedItem(info.ProjectID);
+                var item = this.GetExistedItem(info.ProjectID);
                 if (item != null)
                 {
                     this.FileResumedTransStarted(info.ProjectName ,true);
@@ -210,7 +210,7 @@ namespace GGTalk.Controls
         }
 
         /// <summary>
-        /// µ±Ç°ÊÇ·ñÓĞÎÄ¼şÕıÔÚ´«ËÍÖĞ¡£
+        /// å½“å‰æ˜¯å¦æœ‰æ–‡ä»¶æ­£åœ¨ä¼ é€ä¸­ã€‚
         /// </summary>   
         public bool IsFileTransfering
         {
@@ -244,7 +244,7 @@ namespace GGTalk.Controls
             else
             {
                 this.AddFileTransItem(info ,false ,true);
-                FileTransferItem item = this.GetExistedItem(info.ProjectID);
+                var item = this.GetExistedItem(info.ProjectID);
                 if (item != null)
                 {
                     item.IsTransfering = true;
@@ -267,7 +267,7 @@ namespace GGTalk.Controls
             }
             else
             {
-                FileTransferItem item = this.GetExistedItem(projectID);
+                var item = this.GetExistedItem(projectID);
                 if (item != null)
                 {
                     item.SetProgress(total, sended);
@@ -290,7 +290,7 @@ namespace GGTalk.Controls
             }
             else
             {               
-                FileTransferItem item = this.GetExistedItem(info.ProjectID);
+                var item = this.GetExistedItem(info.ProjectID);
                 if (item != null)
                 {
                     this.flowLayoutPanel1.Controls.Remove(item);
@@ -314,7 +314,7 @@ namespace GGTalk.Controls
             }
             else
             {              
-                FileTransferItem item = this.GetExistedItem(info.ProjectID);
+                var item = this.GetExistedItem(info.ProjectID);
                 if (item != null)
                 {
                     this.flowLayoutPanel1.Controls.Remove(item);
@@ -336,7 +336,7 @@ namespace GGTalk.Controls
                 }
             }
 
-            FileTransferItem fileTransItem = this.GetExistedItem(project.ProjectID);
+            var fileTransItem = this.GetExistedItem(project.ProjectID);
             if (fileTransItem != null)
             {
                 return;
@@ -413,9 +413,9 @@ namespace GGTalk.Controls
             }
             else
             {
-                foreach (object obj in this.flowLayoutPanel1.Controls)
+                foreach (var obj in this.flowLayoutPanel1.Controls)
                 {
-                    FileTransferItem item = obj as FileTransferItem;
+                    var item = obj as FileTransferItem;
                     if (item != null && item.IsTransfering)
                     {
                         item.CheckZeroSpeed();

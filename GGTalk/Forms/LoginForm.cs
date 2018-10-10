@@ -36,12 +36,12 @@ namespace GGTalk
             this.rapidPassiveEngine = engine;
             this.customizeHandler = handler;
 
-            int registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
+            var registerPort = int.Parse(ConfigurationManager.AppSettings["RemotingPort"]);
             this.remotingService = (IRemotingService)Activator.GetObject(typeof(IRemotingService), string.Format("tcp://{0}:{1}/RemotingService", ConfigurationManager.AppSettings["ServerIP"], registerPort)); ;
              
             InitializeComponent();          
 
-            Dictionary<UserStatus, Image> statusImageDictionary = new Dictionary<UserStatus, Image>();
+            var statusImageDictionary = new Dictionary<UserStatus, Image>();
             statusImageDictionary.Add(UserStatus.Online, this.imageList_state.Images[0]);
             statusImageDictionary.Add(UserStatus.Away, this.imageList_state.Images[1]);
             statusImageDictionary.Add(UserStatus.Busy, this.imageList_state.Images[2]);
@@ -83,8 +83,8 @@ namespace GGTalk
         #region buttonLogin_Click        
         private void buttonLogin_Click(object sender, EventArgs e)
         { 
-            string id = this.textBoxId.SkinTxt.Text;
-            string pwd = this.textBoxPwd.SkinTxt.Text ;
+            var id = this.textBoxId.SkinTxt.Text;
+            var pwd = this.textBoxPwd.SkinTxt.Text ;
             if (id.Length == 0) { return; }
 
             this.Cursor = Cursors.WaitCursor;
@@ -97,7 +97,7 @@ namespace GGTalk
                 { 
                     pwdMD5 = SecurityHelper.MD5String2(pwd);
                 }
-                LogonResponse response = this.rapidPassiveEngine.Initialize(id, pwdMD5, ConfigurationManager.AppSettings["ServerIP"], int.Parse(ConfigurationManager.AppSettings["ServerPort"]), this.customizeHandler);
+                var response = this.rapidPassiveEngine.Initialize(id, pwdMD5, ConfigurationManager.AppSettings["ServerIP"], int.Parse(ConfigurationManager.AppSettings["ServerPort"]), this.customizeHandler);
                 if (response.LogonResult == LogonResult.Failed)
                 {
                     MessageBoxEx.Show(response.FailureCause);
@@ -147,7 +147,7 @@ namespace GGTalk
         //状态选择项
         private void Item_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            var item = (ToolStripMenuItem)sender;
             this.skinButton_State.Image = item.Image;
             this.skinButton_State.Tag = item.Tag;
         }
@@ -156,7 +156,7 @@ namespace GGTalk
         //点击 软键盘
         private void textBoxPwd_IconClick(object sender, EventArgs e)
         {
-            PassKey pass = new PassKey(this.Left + this.textBoxPwd.Left - 25, this.Top + this.textBoxPwd.Bottom, this.textBoxPwd.SkinTxt);
+            var pass = new PassKey(this.Left + this.textBoxPwd.Left - 25, this.Top + this.textBoxPwd.Bottom, this.textBoxPwd.SkinTxt);
             pass.Show(this);
         }
 
@@ -184,8 +184,8 @@ namespace GGTalk
         private bool pwdIsMD5 = false;
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
-            DialogResult res = registerForm.ShowDialog() ;
+            var registerForm = new RegisterForm();
+            var res = registerForm.ShowDialog() ;
             if (res == System.Windows.Forms.DialogResult.OK)
             {
                 MessageBoxEx.Show("注册成功！接下来将使用此帐号自动登录！" ,"快速登录");

@@ -46,7 +46,7 @@ namespace GGTalk
             try
             {
                 this.colorDialog1.Color = this.currentColor;
-                DialogResult result = this.colorDialog1.ShowDialog();
+                var result = this.colorDialog1.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     this.currentColor = this.colorDialog1.Color;

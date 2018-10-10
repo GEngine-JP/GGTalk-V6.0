@@ -108,12 +108,12 @@ namespace GGTalk
                         this.friends = "我的好友:";
                     }
                     this.friendDicationary = new Dictionary<string, List<string>>();
-                    string[] catalogs = this.friends.Split(';');
-                    foreach (string catalog in catalogs)
+                    var catalogs = this.friends.Split(';');
+                    foreach (var catalog in catalogs)
                     {
-                        string[] ary = catalog.Split(':');
-                        string catalogName = ary[0];
-                        List<string> friends = new List<string>(ary[1].Split(','));
+                        var ary = catalog.Split(':');
+                        var catalogName = ary[0];
+                        var friends = new List<string>(ary[1].Split(','));
                         if (friends.Count == 1)
                         {
                             friends.Remove("");
@@ -130,8 +130,8 @@ namespace GGTalk
         {
             if (this.allFriendList == null)
             {
-                List<string> list = new List<string>();
-                foreach (List<string> tmp in this.FriendDicationary.Values)
+                var list = new List<string>();
+                foreach (var tmp in this.FriendDicationary.Values)
                 {
                     list.AddRange(tmp);
                 }
@@ -143,15 +143,15 @@ namespace GGTalk
 
         private string GetFriendsVal(Dictionary<string, List<string>> friendDic)
         {
-            StringBuilder sb = new StringBuilder("");
-            int count = 0;
-            foreach (KeyValuePair<string, List<string>> pair in friendDic)
+            var sb = new StringBuilder("");
+            var count = 0;
+            foreach (var pair in friendDic)
             {
                 if (count > 0)
                 {
                     sb.Append(";");
                 }
-                string ff = ESBasic.Helpers.StringHelper.ContactString(pair.Value, ",");
+                var ff = ESBasic.Helpers.StringHelper.ContactString(pair.Value, ",");
                 sb.Append(string.Format("{0}:{1}" ,pair.Key ,ff));
                 ++count;
             }
@@ -177,7 +177,7 @@ namespace GGTalk
 
         public void RemoveFriend(string friendID)
         {
-            foreach (KeyValuePair<string, List<string>> pair in this.FriendDicationary)
+            foreach (var pair in this.FriendDicationary)
             {
                 pair.Value.Remove(friendID);
             }
@@ -193,13 +193,13 @@ namespace GGTalk
                 return;
             }
 
-            List<string> merged = new List<string>();
+            var merged = new List<string>();
             if (this.FriendDicationary.ContainsKey(newName))
             {
                 merged = this.FriendDicationary[newName];
                 this.FriendDicationary.Remove(newName);
             }
-            List<string> friends = this.friendDicationary[oldName];
+            var friends = this.friendDicationary[oldName];
             friends.AddRange(merged);
             this.FriendDicationary.Remove(oldName);
             this.FriendDicationary.Add(newName, friends);
@@ -484,13 +484,13 @@ namespace GGTalk
                     return "";
                 }
 
-                LastWordsRecord record = this.tag as LastWordsRecord;
+                var record = this.tag as LastWordsRecord;
                 if (record == null)
                 {
                     return "";
                 }
 
-                string content = record.ChatBoxContent.GetTextWithPicPlaceholder("[图]");
+                var content = record.ChatBoxContent.GetTextWithPicPlaceholder("[图]");
                 return string.Format("{0}： {1}", record.IsMe ? "我" : "TA", content);
             }
         } 
@@ -723,13 +723,13 @@ namespace GGTalk
                     return "";
                 }
 
-                LastWordsRecord record = this.tag as LastWordsRecord;
+                var record = this.tag as LastWordsRecord;
                 if (record == null)
                 {
                     return "";
                 }
 
-                string content = record.ChatBoxContent.GetTextWithPicPlaceholder("[图]");
+                var content = record.ChatBoxContent.GetTextWithPicPlaceholder("[图]");
                 return string.Format("{0}： {1}", record.SpeakerName, content);
             }
         }
@@ -1077,8 +1077,8 @@ namespace GGTalk
                 return this.Text;
             }
 
-            string tmp = this.Text;
-            for (int i = this.picturePositions.Count - 1; i >= 0; i--)
+            var tmp = this.Text;
+            for (var i = this.picturePositions.Count - 1; i >= 0; i--)
             {
                 tmp = tmp.Insert((int)this.picturePositions[i], placeholder);
             }
