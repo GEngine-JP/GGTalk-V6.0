@@ -1,0 +1,4226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESBasic</name>
+    </assembly>
+    <members>
+        <member name="T:ESBasic.Widget.ThumbnailListBox">
+            <summary>
+            ThumbnailListBox 用于管理并显示所有的缩略图控件实例。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.ThumbnailListBox.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.ThumbnailListBox.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.ThumbnailListBox.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.SystemIconShell">
+            <summary>
+            SystemIconShell 用于将系统图标绑定到ListView的Item上。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.SystemIconShell.FileIconIndex(System.String)">
+            <summary>
+            FileIconIndex 根据文件路径找到对应的系统图标的索引。
+            </summary>
+            <param name="filePath">文件必须存在！</param>       
+        </member>
+        <member name="T:ESBasic.Widget.RichTimerConfigure">
+            <summary>
+            RichTimerConfigure 对ESBasic.Threading.Timers.RichTimer.TimerConfiguration进行配置的控件。
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.RichTimer.ITimerConfigure">
+            <summary>
+            ITimerConfigure UI实现此接口以提供对TimerConfiguration的设置。
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <!-- 对于成员“F:ESBasic.Widget.RichTimerConfigure.components”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:ESBasic.Widget.RichTimerConfigure.Dispose(System.Boolean)”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:ESBasic.Widget.RichTimerConfigure.InitializeComponent”忽略有格式错误的 XML 注释 -->
+        <member name="T:ESBasic.Widget.TrayForm">
+            <summary>
+            带托盘的窗口基类（叉掉将最小化到托盘）。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.TrayForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.TrayForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESBasic.Widget.TrayForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.TrayForm.NotifyMenuStrip">
+            <summary>
+            托盘所使用的ContextMenuStrip。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.TrayForm.NotifyIcon">
+            <summary>
+            当前托盘。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.EnumComboBox">
+            <summary>
+            EnumComboBox 用于将Enum绑定到ComboBox
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.EnumComboBox.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.EnumComboBox.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.EnumComboBox.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.EnumComboBox.DataSource">
+            <summary>
+            DataSource 数据源必须是一个Enum类型
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.EnumComboBox.SelectedValue">
+            <summary>
+            SelectedValue 获取或设置选中的Enum枚举值
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.GifBox">
+            <summary>
+            作者：Starts_2000
+            日期：2009-07-15
+            网站：http://www.csharpwin.com CS 程序员之窗。
+            你可以免费使用或修改以下代码，但请保留版权信息。
+            功能：一个专用于显示GIF动画图像的控件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.ICycleEngine">
+            <summary>
+            ICycleEngine 在后台线程中进行间隔循环的引擎
+            zhuweisky 2006.12.21
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ICycleEngine.Start">
+            <summary>
+            Start 启动后台引擎线程
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ICycleEngine.Stop">
+            <summary>
+            Stop 停止后台引擎线程，只有当线程安全退出后，该方法才返回
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.ICycleEngine.IsRunning">
+            <summary>
+            IsRunning 引擎是否运行中
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.ICycleEngine.DetectSpanInSecs">
+            <summary>
+            引擎进行轮询的间隔，DetectSpanInSecs=0，表示无间隙运作引擎；DetectSpanInSecs小于0则表示不使用引擎。默认值为0。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.ICycleEngine.EngineStopped">
+            <summary>
+            EngineStopped 当引擎由运行变为停止状态时，将触发此事件。如果是异常停止，则事件参数为异常对象，否则，事件参数为null。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.IAgileMultiTree`1">
+            <summary>
+            IAgileMultiTree 用于缓存（多叉）树状的组织结构。该接口的实现必须是线程安全的。
+            最主要的作用是，可以通过提取器将新添加的组织节点从其它地方加载到缓存树中。
+            前提是，组织结构中的每一节点都有自己的SequenceCode来表达其在组织中个位置。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1">
+            <summary>
+            IMultiTree 多叉树基础接口。该接口的实现必须是线程安全的。
+            zhuweisky 2005.07.28
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.Initialize(ESBasic.ObjectManagement.Trees.Multiple.MNode{`0})">
+            <summary>
+            Initialize 使用已经存在的某个树（或子树）来构造一个新树。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.Initialize(`0,System.Collections.Generic.IList{`0})">
+            <summary>
+            Initialize 通过各个节点的内部值，重新构造多叉树的层级关系。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetNodesOnDepthIndex(System.Int32)">
+            <summary>
+            GetNodesOnDepthIndex 获取某一深度的所有节点。Root的深度索引为0
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetNodesOnDepthIndex(System.String,System.Char,System.Int32)">
+            <summary>
+            GetNodesOnDepthIndex 获取所属idPath体系下并且深度为depthIndex的所有节点。Root的深度索引为0
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetNodeByPath(System.String,System.Char)">
+            <summary>
+            GetNodeByPath 根据节点的ID的路径快速搜索到对应的节点，如idPath--0.1.1.0.2.5。比GetNodeByID效率要高。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetFamilyByPath(System.String,System.Char)">
+            <summary>
+            GetFamilyByPath 获取路径上的所有节点（从根到叶的顺序，即返回列表的第一个元素为根）。如果路径上的某个节点值在树中不存在，则直接返回null。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetOffsprings(System.String)">
+            <summary>
+            GetOffsprings 获取某个节点的所有子孙节点。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.GetLeaves(System.String,System.Char)">
+            <summary>
+            GetLeaves 获取某个路径下的所有叶子节点。如果Path已经是叶子节点，则返回包含自己的列表。
+            </summary>     
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.ActionOnEachNode(ESBasic.CbGeneric{ESBasic.ObjectManagement.Trees.Multiple.MNode{`0}})">
+            <summary>
+            ActionOnEachNode 从root开始对每个节点进行一次action。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.Root">
+            <summary>
+            Root 返回多叉树的根节点。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Multiple.IMultiTree`1.Count">
+            <summary>
+            Count 多叉树的当前节点总数。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IAgileMultiTree`1.Initialize">
+            <summary>
+            Initialize 加载和初始化整个AgileTree。该方法用于取代基类的IMultiTree.Initialize方法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.IAgileMultiTree`1.EnsureNodeExist(System.String)">
+            <summary>
+            EnsureNodeExist 用于确保目标节点及其所有上级节点都存在树中，如果都存在，则直接返回目标节点。
+            否则，通过IAgileMultiTreeHelper来加载所需要的所有上级节点和目标节点，然后返回目标节点。
+            如果即使通过IAgileMultiTreeHelper也无法提取某个上级节点或目标节点，则返回null。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.Remove(`0)">
+            <summary>
+            把最后一个结点值赋给要删除的结点，然后删除最后一个结点
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.GetFatherIndx(System.Int32)">
+            <summary>
+            获取某结点的父结点在list中的index
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.IsInRightTree(System.Int32)">
+            <summary>
+            判断某结点是否在右子树中
+            </summary>
+            <param name="nodeIndx">判断的结点index，必须大于0</param>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.GetOppositeNodeIndx(System.Int32,System.Boolean)">
+            <summary>
+            获取某结点的对称结点的索引
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.GetLayerOfNode(System.Int32)">
+            <summary>
+            根据索引得到该结点所在的层，根结点为第一层。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.GetIndxOfNode(`0)">
+            <summary>
+            根据结点的值，获取该结点的索引，如果没有找到，返回-1
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.RemoveLastNode">
+            <summary>
+            删除最后一个结点
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Binary.CompleteBinaryTree`1.SmartRWLocker">
+            <summary>
+            SmartRWLocker 为支持反序列化后_smartRWLocker不为null而设计。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Pool.IObjectPool`1">
+            <summary>
+            IObjectPool 对象池。
+            zhuweisky 2008.06.13
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Pool.IObjectPool`1.MinObjectCount">
+            <summary>
+            MinObjectCount 对象池中最少同时存在的对象数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Pool.IObjectPool`1.MaxObjectCount">
+            <summary>
+            MaxObjectCount 对象池中最多同时存在的对象数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Pool.IObjectPool`1.DetectSpanInMSecs">
+            <summary>
+            DetectSpanInMSecs 当池中没有空闲的对象且数量已达到MaxObjectCount时，如果这时发生Rent调用，则检测空闲对象的时间间隔。
+            默认值为10ms。 
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Pool.IObjectPool`1.PooledObjectCreator">
+            <summary>
+            PooledObjectCreator 用于创建池中对象的创建器。默认为DefaultPooledObjectCreator
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.CircleCache`1">
+            <summary>
+            CircleCache 循环缓存。循环使用缓存中的每个对象。线程安全。
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Helpers.TypeHelper.IsSimpleType(System.Type)">
+            <summary>
+            IsSimpleType 是否为简单类型：数值、字符、字符串、日期、布尔、枚举、Type
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.TypeHelper.GetClassSimpleName(System.Type)">
+            <summary>
+            GetClassSimpleName 获取class的声明名称，如 Person
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.TypeHelper.ChangeType(System.Type,System.Object)">
+            <summary>
+            ChangeType 对System.Convert.ChangeType进行了增强，支持(0,1)到bool的转换，字符串->枚举、int->枚举、字符串->Type
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.TypeHelper.GetTypeRegularName(System.Type)">
+            <summary>
+            GetTypeRegularName 获取类型的完全名称，如"ESBasic.Filters.SourceFilter,ESBasic"
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.TypeHelper.GetTypeByRegularName(System.String)">
+            <summary>
+            GetTypeByFullString 通过类型的完全名称获取类型，regularName如"ESBasic.Filters.SourceFilter,ESBasic"
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Helpers.SerializeHelper">
+            <summary>
+            SerializeHelper 用于简化序列化和反序列化操作 。    
+            作者：朱伟 sky.zhuwei@163.com 
+            2004.05.12
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.SerializeHelper.SerializeObjectToString(System.Object)">
+            <summary>
+            SerializeObjectToString 将对象序列化为SOAP XML 格式。
+            如果要将对象转化为简洁的xml格式，请使用ESBasic.Persistence.SimpleXmlConverter类。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.SerializeHelper.SaveToFile(System.Object,System.String)">
+            <summary>
+            SaveToFile 将对象的二进制序列化后保存到文件。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.SerializeHelper.ReadFromFile(System.String)">
+            <summary>
+            ReadFromFile 从文件读取二进制反序列化为对象。
+            </summary> 
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.MethodTimeInterceptor">
+            <summary>
+            MethodTimeInterceptor 该AroundInterceptor用于监控目标方法执行的时间。
+            zhuweisky 2008.06.13
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.IAopInterceptor">
+            <summary>
+            IAOPInterceptor 对方法进行截获并加入预处理和后处理、Around处理。
+            zhuweisky 2008.05.20
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicProxy.IAopInterceptor.NewArounder">
+            <summary>
+            NewArounder 请注意返回值必不能为null。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Pool.IPooledObjectCreator`1">
+            <summary>
+            IPooledObjectCreator 池化对象创建者。用于创建被池缓存的对象。并能清除对象的状态。
+            zhuweisky 2008.06.13
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.IArounder">
+            <summary>
+            IArounder 用于对截获的目标方法进行Around处理
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicProxy.IArounder.OnException(ESBasic.Emit.DynamicProxy.InterceptedMethod,System.Exception)">
+            <summary>
+            OnException 目标方法抛出异常。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.ShortTime">
+            <summary>
+            ShortTime 用于指定小时、分钟、秒。比如上班时间、下班时间。
+            zhuweisky 2007.01.08
+            </summary>
+        </member>
+        <member name="M:ESBasic.ShortTime.IsOnTime(System.DateTime,System.Int32)">
+            <summary>
+            IsOnTime 目标时间是否与当前对象所表示的时间的差值是否在maxToleranceInSecs范围之内。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Threading.Engines.IEngineTacheUtil">
+            <summary>
+            IEngineTacheUtil 各个IEngineTache通过IEngineTacheUtil共享数据
+            上游引擎环可以向其中存放数据，下游引擎环从中取用数据
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.Heap`1">
+            <summary>
+            Heap IHeap接口的参考实现，默认为最大堆。该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.IHeap`1">
+            <summary>
+            IHeap 最大、最小堆。CQ，2008.11.26
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.IHeap`1.Pop">
+            <summary>
+            Pop 弹出根节点的值，并删除根节点。如果树为空，则
+            </summary>      
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Binary.Heap`1.SmartRWLocker">
+            <summary>
+            SmartRWLocker 为支持反序列化后_smartRWLocker不为null而设计。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.TopNOrderedContainer`1">
+            <summary>
+            TopNOrderedContainer 用于始终保持排行榜前N名的Object。该实现是线程安全的。
+            zhuweisky 2009.05.23
+            </summary>    
+            <typeparam name="TObj">被排名的对象类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.TopNOrderedContainer`1.Adjust(System.Int32)">
+            <summary>
+            Adjust 新加入的对象初始时被放置于最后一个有效位置即posIndex，需要将其调整到正确的位置。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.ObjectManagement.IOrdered`1">
+            <summary>
+            IOrdered 参与排行榜排序的对象必须实现的接口。
+            </summary>
+            <typeparam name="TOrderedObj">参与排行榜排序的对象的类型</typeparam>
+        </member>
+        <!-- 对于成员“T:ESBasic.Serialization.SpringFox”忽略有格式错误的 XML 注释 -->
+        <member name="M:ESBasic.Serialization.SpringFox.XmlObject(System.Object)">
+            <summary>
+            XmlObject 将object序列化为xml字符串
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Serialization.SpringFox.DoXmlObject(System.Object,System.Xml.XmlDocument,System.Xml.XmlNode)">
+            <summary>
+            DoXmlObject 根据obj的各个属性创建对应的Node作为curNode的子节点
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Serialization.SpringFox.ObjectXml(System.String)">
+            <summary>
+            ObjectXml 将xml字符串转换为object
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Serialization.SpringFox.ConfigObject(System.Xml.XmlNode,System.Object@)">
+            <summary>
+            ConfigObject 使用objNode的各个子节点配置target的对应的属性
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Serialization.NonXmlAttribute">
+            <summary>
+            NotXmlAttribute 如果某个Property标记为NotXmlAttribute，则将不会被序列化到xml中
+            </summary>
+        </member>
+        <!-- 对于成员“T:ESBasic.Serialization.ISimpleList”忽略有格式错误的 XML 注释 -->
+        <member name="T:ESBasic.Helpers.FileHelper">
+            <summary>
+            FileHelper 用于简化与文件相关操作。
+            作者：朱伟 sky.zhuwei@163.com 
+            2004.03.26
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.EnsureDirectoryExist(System.String)">
+            <summary>
+            确保文件路径中的每个文件夹都存在，如果不存在，则创建。
+            </summary>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GenerateFile(System.String,System.String)">
+            <summary>
+            GenerateFile 将字符串写成文件
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileContent(System.String)">
+            <summary>
+            GetFileContent 读取文本文件的内容
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.WriteBuffToFile(System.Byte[],System.Int32,System.Int32,System.String)">
+            <summary>
+            WriteBuffToFile 将二进制数据写入文件中
+            </summary>    
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.WriteBuffToFile(System.Byte[],System.String)">
+            <summary>
+            WriteBuffToFile 将二进制数据写入文件中
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.ReadFileReturnBytes(System.String)">
+            <summary>
+            ReadFileReturnBytes 从文件中读取二进制数据
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileToOpen(System.String)">
+            <summary>
+            GetFileToOpen 获取要打开的文件路径
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileToOpen(System.String,System.String,System.String)">
+            <summary>
+            GetFileToOpen 获取要打开的文件路径
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileToOpen2(System.String,System.String,System.String[])">
+            <summary>
+            GetFileToOpen 获取要打开的文件路径
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFolderToOpen(System.Boolean)">
+            <summary>
+            GetFolderToOpen 获取要打开的文件夹
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetPathToSave(System.String,System.String,System.String)">
+            <summary>
+            获取要保存的文件的路径 
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileNameNoPath(System.String)">
+            <summary>
+            GetFileNameNoPath 获取不包括路径的文件名
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileSize(System.String)">
+            <summary>
+            GetFileSize 获取目标文件的大小
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetDirectorySize(System.String)">
+            <summary>
+            获取某个文件夹的大小。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.ReadFileData(System.IO.FileStream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            ReadFileData 从文件流中读取指定大小的内容
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetFileDirectory(System.String)">
+            <summary>
+            GetFileDirectory 获取文件所在的目录路径
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.DeleteFile(System.String)">
+            <summary>
+            DeleteFile 删除文件
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.EnsureExtendName(System.String,System.String)">
+            <summary>
+            EnsureExtendName 确保扩展名正确
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.DeleteDirectory(System.String)">
+            <summary>
+            删除文件夹
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.Move(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            将某个文件夹下的多个文件和子文件夹移到另外一个目录中。
+            </summary>
+            <param name="oldParentDirectoryPath">移动之前文件和子文件夹所处的父目录路径</param>
+            <param name="filesBeMoved">被移动的文件名称的集合</param>
+            <param name="directoriesBeMoved">被移动的文件夹名称的集合</param>
+            <param name="newParentDirectoryPath">移往的目标文件夹路径</param>
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.Copy(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            拷贝多个文件和文件夹。
+            </summary>
+            <param name="sourceParentDirectoryPath">被拷贝的文件和文件夹所处的父目录路径</param>
+            <param name="filesBeCopyed">被复制的文件名称的集合</param>
+            <param name="directoriesCopyed">被复制的文件夹名称的集合</param>
+            <param name="destParentDirectoryPath">目标目录的路径</param>
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.CopyDirectoryAndFiles(System.String,System.String,System.String,System.String)">
+            <summary>
+            递归拷贝文件夹以及下面的所有文件
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetOffspringFiles(System.String)">
+            <summary>
+            获取目标目录下以及其子目录下的所有文件（采用相对路径）。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.FileHelper.GetExtendName(System.String)">
+            <summary>
+            获取文件的扩展名（全小写）。如“.docx”，“.pdf”等
+            </summary>      
+        </member>
+        <member name="T:ESBasic.ObjectManagement.LatestObjectCache`1">
+            <summary>
+            固定大小的最新N个对象缓存器。线程安全。
+            当容器满时，新加入的对象会挤掉最老的对象。
+            zhuweisky 2011.01.23
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.LatestObjectCache`1.Add(`0)">
+            <summary>
+            向缓存中添加最新的对象。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.LatestObjectCache`1.GetLatestObjects">
+            <summary>
+            按照由老到新的顺序获取所有缓存内的对象。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.LatestObjectCache`1.Capacity">
+            <summary>
+            最多容纳多少个最新对象。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.LatestObjectCache`1.IsFull">
+            <summary>
+            缓存是否已经满了？
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.LatestObjectCache`1.LastObjectAddedTime">
+            <summary>
+            最后一个对象加入的时间。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.LatestObjectCache`1.ValidObjectCount">
+            <summary>
+            缓存中对象的个数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Geometry.LineSegment">
+            <summary>
+            LineSegment 线段的对象表示。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Geometry.LineSegment.Contains(System.Drawing.Point)">
+            <summary>
+            目标点是否在线段上 (y2-y1)(x-x1) = (y-y1)(x2-x1)
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Geometry.LineSegment.GetIntersectWithVerAxis">
+            <summary>
+            GetIntersectWithVerAxis 返回与Y轴的交点，没有交点则返回float.MaxValue
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Geometry.LineSegment.GetIntersectWithHorAxis">
+            <summary>
+            GetIntersectWithVerAxis 返回与X轴的交点，没有交点则返回float.MaxValue
+            </summary>	
+        </member>
+        <member name="T:ESBasic.Loggers.IExceptionLogger">
+            <summary>
+            IExceptionLogger 用于记录异常的详细信息。
+            注：DataRabbit提供了记录到数据表的实现。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Loggers.IExceptionLogger.Log(System.Exception,System.String,System.Type[],System.String[],System.Object[])">
+            <summary>
+            记录异常。   
+            </summary>
+            <param name="ee">异常</param>
+            <param name="methodPath">抛出异常的目标方法。</param>
+            <param name="genericTypes">目标方法的类型参数。如果为非泛型方法，则传入null</param>
+            <param name="argumentNames">调用方法的各Parameters的名称。如果方法没有参数，则传入null</param>
+            <param name="argumentValues">调用方法的各Parameters的值。如果方法没有参数，则传入null</param>
+        </member>
+        <member name="T:ESBasic.Collections.SortedArray`1">
+            <summary>
+            有序的数组，SortedArray 中的元素是不允许重复的。如果添加数组中已经存在的元素，将会被忽略。
+            该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Collections.SortedArray2`1">
+            <summary>
+            有序的数组，SortedArray 中的元素是不允许重复的。如果添加数组中已经存在的元素，将会被忽略。
+            该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`1.Add(`0,System.Int32@)">
+            <summary>
+            Add 将一个元素添加到数组中。如果数组中已存在目标元素，则忽略。无论哪种情况，posIndex都会被赋予正确的值。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`1.Add(System.Collections.Generic.ICollection{`0},System.Boolean)">
+            <summary>
+            Add 如果能保证collection中的元素不会与现有的元素重复，则checkRepeat可以传入false。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`1.Remove(`0)">
+            <summary>
+            Remove 删除数组中所有值为t的元素。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`1.Shrink">
+            <summary>
+            Shrink 将内部数组收缩到最小，释放内存。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`1.GetAllReadonly">
+            <summary>
+            注意，内部使用了Lazy缓存，返回的集合不可被修改。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.IUrgentExceptionReporter">
+            <summary>
+            IUrgentExceptionReporter 紧急异常报告者。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.TimingTask">
+            <summary>
+            TimingTask 定时任务。封装了定时任务的执行频率、执行时间、和要执行的目标方法。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Timers.TimingTask.ExcuteTime">
+            <summary>
+            ExcuteTime 任务执行的具体时刻。如果TimingTaskType为PerHour，则将忽略ExcuteTime的Hour属性。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Timers.TimingTask.DayOfWeek">
+            <summary>
+            DayOfWeek 该属性只有在TimingTaskType为PerWeek时才有效，表示在周几执行。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Timers.TimingTask.Day">
+            <summary>
+            Day 该属性只有在TimingTaskType为PerMonth时才有效，表示在每月的几号执行。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.ITimingTaskExcuter">
+            <summary>
+            ITimingTaskExcuter 定时任务执行者。即当定时时刻到达时，将执行该接口的ExcuteOnTime方法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ITimingTaskExcuter.ExcuteOnTime(System.DateTime)">
+            <summary>
+            ExcuteOnTime 实现该方法时最好截获可能抛出的所有异常，如果有未截获的异常抛出，将会被忽略。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Threading.Engines.ISequentialEngine">
+            <summary>
+            ISequentialEngine 用于将各个IEngineTache组装起来形成一个引擎，并顺序执行。同时传递各个环的事件信息
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ISequentialEngine.Initialize(System.Collections.Generic.IList{ESBasic.Threading.Engines.IEngineTache},System.Boolean)">
+            <summary>
+            Initialize 初始化引擎。将调用每个引擎环的Initialize方法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ISequentialEngine.Excute">
+            <summary>
+            Excute 启动引擎
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ISequentialEngine.Pause">
+            <summary>
+            Pause 暂停引擎
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ISequentialEngine.Continue">
+            <summary>
+            Continue 继续运行引擎
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.ISequentialEngine.Stop">
+            <summary>
+            Stop 停止引擎
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.ISequentialEngine.Running">
+            <summary>
+            Running 引擎是否正在运行
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.ISequentialEngine.PartProgressPublished">
+            <summary>
+            PartProgressPublished 单个IEngineTache的执行进度变化
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.ISequentialEngine.TitleChanged">
+            <summary>
+            TitleChanged 当紧接的下游引擎环被调用时，将发布该引擎环的Title
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.ISequentialEngine.EngineDisruptted">
+            <summary>
+            EngineDisruptted 引擎任务被中断，事件参数说明中断原因
+            </summary>
+        </member>
+        <member name="M:ESBasic.Security.SecurityHelper.MD5String(System.String)">
+            <summary>
+            MD5Password 对字符串进行MD5摘要计算。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Security.SecurityHelper.MD5String2(System.String)">
+            <summary>
+            MD5Password 对字符串进行MD5摘要计算。
+            </summary>      
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.IAgileNodePicker`1">
+            <summary>
+            IAgileNodePicker 用于从其它地方（如数据库等）提取特定节点的信息
+            </summary>   
+        </member>
+        <member name="T:ESBasic.ObjectManagement.IObjectRetriever`2">
+            <summary>
+            IObjectRetriever 对象提取器。比如，智能缓存用于从其它地方获取缓存中不存在的object。    
+            </summary>  
+        </member>
+        <member name="M:ESBasic.ObjectManagement.IObjectRetriever`2.Retrieve(`0)">
+            <summary>
+            Retrieve 根据ID获取目标对象。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.IObjectRetriever`2.RetrieveAll">
+            <summary>
+            RetrieveAll 获取所有的对象。
+            </summary>      
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3">
+            <summary>
+            IGroupingObjectManager 高效地管理需要分组的对象。该接口的实现保证是线程安全的。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.Add(`2)">
+            <summary>
+            Add 如果已经存在同ID的对象，则用新对象替换旧对象。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.Clear">
+            <summary>
+            Clear 清除所有对象与分组。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.GetCountOfGroup(`0)">
+            <summary>
+            GetCountOfGroup 获取某个分组中的对象的个数。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.GetAllObjectsCopy">
+            <summary>
+            GetAllObjectsCopy 获取管理器中的所有对象列表。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.GetGroupsCopy">
+            <summary>
+            GetGroupsCopy 获取所有的分组标志列表。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IGroupingObjectManager`3.GetObjectsCopy(`0)">
+            <summary>
+            GetObjectsCopy 获取某个分组中的所有对象的列表。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Geometry.Triangle">
+            <summary>
+            Triangle 几何三角形。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Geometry.Triangle.Contains(System.Drawing.Point)">
+            <summary>
+            Contains 判断某点是否在三角形内部
+            </summary>		
+        </member>
+        <member name="P:ESBasic.Geometry.Triangle.Area">
+            <summary>
+            Area 三角形的面积
+            </summary>		
+        </member>
+        <member name="T:ESBasic.Loggers.SecurityFileLogger">
+            <summary>
+            将安全日志记录到文本文件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Loggers.ISecurityLogger">
+            <summary>
+            用于记录安全日志。比如用户的登陆/退出、进入/注销等日志。
+            注：DataRabbit提供了记录到数据表的实现。
+            zhuweisky 2011.02.21
+            </summary>
+        </member>
+        <member name="M:ESBasic.Loggers.ISecurityLogger.Log(System.String,System.String,System.String,System.String)">
+            <summary>
+            记录安全日志。
+            </summary>
+            <param name="userID">进行安全操作的用户编号</param>
+            <param name="source">来源（比如用户的IP）</param>
+            <param name="taskType">安全操作的类型</param>
+            <param name="comment">备注</param>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.EmptyInterceptor">
+            <summary>
+            不执行任何动作的Interceptor。存在的主要目的，是可以将目标对象适配到其没有实现的接口（前提，接口中的方法在目标对象中都有对应的匹配）。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Date">
+            <summary>
+            Date 表示年月日。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Date.#ctor(System.String)">
+            <summary>
+            设置年月日。格式 2011-12-01
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.BriefWorkerEngine`1">
+            <summary>
+            BriefWorkerEngine 精简的工作者引擎。它使用多线程处理一批任务，这批任务处理结束后，工作者线程会被自动释放，而该引擎实例也就可以被结束了。
+            与WorkerEngine的区别在于，WorkerEngine是在系统运行期间一直处于工作状态的。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.Threading.Engines.IEngineActor.EngineAction">
+            <summary>
+            EngineAction 执行引擎动作，返回false表示停止引擎。
+            注意，该方法不能抛出异常，否则会导致引擎停止运行（循环线程遭遇异常退出）。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager">
+            <summary>
+            IRefreshableCacheManager 用于管理多个可被刷新的缓存对象，并能定时刷新所管理的缓存。
+            zhuweisky 2007.07.07
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager.RefreshNow">
+            <summary>
+            RefreshNow 手动刷新被管理的所有缓存。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager.AddCache(ESBasic.ObjectManagement.Managers.IRefreshableCache)">
+            <summary>
+            AddCache 动态添加缓存。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager.RemoveCache(ESBasic.ObjectManagement.Managers.IRefreshableCache)">
+            <summary>
+            RemoveCache 动态移除缓存。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager.RefreshSpanInSecs">
+            <summary>
+            RefreshSpanInSecs 定时刷新缓存的时间间隔。
+            </summary>
+        </member>
+        <member name="E:ESBasic.ObjectManagement.Managers.IRefreshableCacheManager.CacheRefreshFailed">
+            <summary>
+            CacheRefreshFailed 当某个缓存刷新抛出异常时，将触发该事件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Integration.ICombined`2">
+            <summary>
+            ICombined 可以被合并的对象必须实现的接口。
+            zhuweisky 2009.05.23
+            </summary>
+            <typeparam name="TID">被合并对象的标志类型</typeparam>
+            <typeparam name="TCombinedObj">被合并对象的类型</typeparam>   
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.BasePhaseIncreaseAccesser`3">
+            <summary>
+            BasePhaseIncreaseAccesser 当一个Round是由N天构成时，可以借助BasePhaseIncreaseAccesser简化IPhaseIncreaseAccesser的实现。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.IPhaseIncreaseAccesser`4">
+            <summary>
+            IPhaseIncreaseAccesser 用于从各个源访问每一阶段的增量数据。
+            </summary>   
+            <typeparam name="TSourceToken">增量来源的标志</typeparam>
+            <typeparam name="TKey">Round的ID的类型</typeparam>
+            <typeparam name="TKey">每个增量Object的标志</typeparam>
+            <typeparam name="TObject">增量Object的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.IPhaseIncreaseAccesser`4.GetMaxKeyOfPreviousRound">
+            <summary>
+            GetMaxKeyOfPreviousRound 获取上一轮各个源中的数据的最大标志。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.IPhaseIncreaseAccesser`4.NextIsLastPhaseOfRound(System.DateTime,`1@,System.Collections.Generic.IDictionary{`0,`2}@)">
+            <summary>
+            NextIsLastPhaseOfRound 下一增量（基于now时刻）是否为当前Round的最后一个Phase。如果是，则out出每个源的最后Phase的最大标志。
+            </summary>               
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.IPhaseIncreaseAccesser`4.GetMaxKey(System.DateTime,`0)">
+            <summary>
+            GetMaxKey 获取指定源中的截止now时刻（可以等于）的最大标志。
+            </summary> 
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.IPhaseIncreaseAccesser`4.Retrieve(`0,`2,`2)">
+            <summary>
+            Retrieve 获取某一阶段的增量。maxKeyOfPrePhase 《 本阶段增量 《=  maxKeyOfThisPhase
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.BasePhaseIncreaseAccesser`3.Initialize">
+            <summary>
+            Initialize 如果派生类override该方法，则在实现时必须先调用base.Initialize()方法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.BasePhaseIncreaseAccesser`3.GetMaxKeyBefore(System.DateTime)">
+            <summary>
+            GetMaxKeyBefore 获取endTime之前的最大的Key。注意TimeColumn要小于endTime，不能等于。
+            </summary>      
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Increasing.BasePhaseIncreaseAccesser`3.TodayIsFirstDay">
+            <summary>
+            TodayIsFirstDay 是将启动时刻作为当前Round的第一天还是最后一天？
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Increasing.BasePhaseIncreaseAccesser`3.SourceTokenList">
+            <summary>
+            SourceTokenList 数据源的标志列表。至少需要有一个数据源标志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.MinMaxContainer">
+            <summary>
+            MinMaxContainer 用于保存最小最大值。
+            2009.09.25 zhuweisky
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.FixedQueue`1">
+            <summary>
+            FixedQueue 固定大小的队列，当到达Capacity时，缓存新object，则最先缓存的object会被删除掉。
+            FixedQueue是线程安全的。
+            </summary>  
+        </member>
+        <member name="T:ESBasic.Loggers.IAgileLogger">
+            <summary>
+            IAgileLogger 用于记录日志信息。log方法不会抛出异常！
+            通常可以通过ESFramework.Common.AdvancedFunction.SetProperty 方法来简化组件的日志记录器的装配。  
+            zhuweisky
+            </summary>
+        </member>
+        <member name="M:ESBasic.Loggers.IAgileLogger.LogSimple(System.Exception,System.String,ESBasic.Loggers.ErrorLevel)">
+            <summary>
+            LogSimple 不记录异常的堆栈位置
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Loggers.FileAgileLogger">
+            <summary>
+            FileAgileLogger 将日志记录到文本文件。线程安全。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Loggers.FileAgileLogger.MaxLength4ChangeFile">
+            <summary>
+            当日志文件增加到一定的大小时，将创建一个新的文件记录日志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.UiSafeInvoker">
+            <summary>
+            将方法调用转发到UI线程。捕捉异常，并记录日志。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Emit.ForEntity.DynamicObjectClassifierFactory.dynamicAssemblyManager">
+            <summary>
+            如果动态的对象分类器对象被【序列化】存储，则在反序列化加载之前，必须先调用CreateObjectClassifier()在内存中创建正确的实体分类器类型，否则，反序列化将失败。
+            DynamicAssemblyManager对象用于确保反序列化实体分类器实例时，能够被正确解析。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.DynamicObjectClassifierFactory.CreateObjectClassifier``1(System.String[])">
+            <summary>
+            CreateObjectClassifier 创建一个对象分类器实例。
+            </summary>
+            <typeparam name="TObject">需要分类器实例处理的对象类型</typeparam>              
+            <param name="properties4Classify">基于哪些列（属性）对实体对象进行分类，其长度就是嵌套的Dictionary的层数</param>
+            <returns>实现了IObjectClassifier接口的实体分类器实例。必须调用其Initialize方法以完成初始化。</returns>
+        </member>
+        <!-- 对于成员“T:ESBasic.Emit.DynamicDispatcher.DynamicDispatcherEmitter”忽略有格式错误的 XML 注释 -->
+        <member name="T:ESBasic.Emit.DynamicBridge.IEventBridge">
+            <summary>
+            IEventBridge 事件桥，用于将A对象的事件与B对象提供的处理器方法桥接起来。
+            要求：事件的参数与处理器方法的参数完全一致。
+            zhuweisky 2010.04.01
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.IEventBridge.Initialize">
+            <summary>
+            Initialize 用于完成A对象的事件与B对象处理器的关联。
+            </summary>
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.DeSerialize(System.String)">
+            <summary>
+            解析json。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.GetKeys">
+            <summary>
+            当模型是对象，返回拥有的key
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.GetValue(System.String)">
+            <summary>
+            当模型是对象，key对应是值，则返回key对应的值
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.GetModel(System.String)">
+            <summary>
+            模型是对象，key对应是对象，返回key对应的对象
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.GetCollection(System.String)">
+            <summary>
+            模型是对象，key对应是集合，返回集合
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.CommonJsonModel.GetCollection">
+            <summary>
+            模型是集合，返回自身
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ESBasic.CommonJsonModel.Key">
+            <summary>
+            当模型是值对象，返回key
+            </summary>
+        </member>
+        <member name="P:ESBasic.CommonJsonModel.Value">
+            <summary>
+            当模型是值对象，返回value
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.XDataGridView.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.XDataGridView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.XDataGridView.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Widget.XDataGridView.ItemDoubleClicked">
+            <summary>
+            当列表中的某个对象被双击时，触发该事件。参数为选中的条目所对应的对象。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Widget.XDataGridView.BeforeShowContextMenu">
+            <summary>
+            在显示快捷菜单之前，触发此事件。参数为选中的条目所对应的对象。如果参数为null，则表示将出现的快捷菜单为 XcontextMenuStrip4Blank。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.XDataGridView.XContextMenuStrip">
+            <summary>
+            当右键点击条目处时的快捷菜单。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.XDataGridView.XcontextMenuStrip4Blank">
+            <summary>
+            当右键点击空白处时的快捷菜单。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Security.ValidationCodeImageCreator">
+            <summary>
+            ValidationCodeImageCreator 用于生成随机的验证码图片
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.IBinaryTreeDrawer`1">
+            <summary>
+            IBinaryDrawer 用于在设备上绘制二叉树。
+            作者：朱伟 sky.zhuwei@163.com 
+            2005.05.11
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.SamePriorityObjectManager`1">
+            <summary>
+            SamePriorityObjectManager 同一优先级对象管理器的参考实现。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1">
+            <summary>
+            ISamePriorityObjectManager 同一优先级对象管理器，用于管理同一优先级的所有对象，这些对象将按照先来后到的顺序确定其优先顺序（“第二优先级”）。
+            该接口的实现必须保证是线程安全的。
+            zhuweisky 2007.04.16 /2008.08.13修订
+            </summary>
+            <typeparam name="T">要被管理的对象的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.AddWaiter(`0)">
+            <summary>
+            AddWaiter 添加一个等待者。如果等待者在管理器中已经存在，则直接返回。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.GetNextWaiter">
+            <summary>
+            GetNextWaiter 返回等待时间最长的waiter。
+            注意，返回时并不会从等待列表中删除waiter。如果要删除某个等待者，请调用RemoveWaiter。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.PopNextWaiter">
+            <summary>
+            PopNextWaiter 弹出等待时间最长的waiter。注意，此方法将会从等待列表中删除waiter。  
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.GetWaitersByPriority">
+            <summary>
+            GetWaitersByPriority 按照等待者加入的先后顺序返回等待者数组，数组中index越小的等待者其等待时间越长，其优先级也越高。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.RemoveWaiter(`0)">
+            <summary>
+            RemoveWaiter 从管理器中移除指定的等待者。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.Clear">
+            <summary>
+            Clear 清空管理器中的所有等待者。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.Contains(`0)">
+            <summary>
+            Contains 管理器中是否存在指定的等待者。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.Capacity">
+            <summary>
+            Capacity 先级对象管理器的最大容量。当容器中的个数达到此容量时，若再向容器中添加waiter，则将根据ActionTypeOnAddOverflow属性的值来采取对应的动作。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.DetectSpanInMSecsOnWait">
+            <summary>
+            DetectSpanInMSecsOnWait 当容器中的个数达到此容量时，若ActionTypeOnAddOverflow属性值为Wait，则相邻的两次检测时间间隔，单位毫秒。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.Count">
+            <summary>
+            当前管理器中等待者的数量。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.ISamePriorityObjectManager`1.Full">
+            <summary>
+            是否已经满了。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.XmlHelper">
+            <summary>
+            XmlHelper 用于简化XML文件和XmlNode的操作，仅仅支持两级节点。可能配合使用的ESBasic.Persistence命名空间下的类。
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.FillObjectNode(System.Xml.XmlNode,System.Object)">
+            <summary>
+            FillObjectNode 使用obj各个属性的名字和值为objNode添加子节点
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.ConfigObject(System.Xml.XmlNode,System.Object)">
+            <summary>
+            ConfigObject 使用XmlNode的Attributes信息和Child Node信息来设置target的同名属性
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.GetChildNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            GetChildNode 获取满足指定名称的第一个Child Node
+            </summary> 
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.GetChildNodes(System.Xml.XmlNode,System.String)">
+            <summary>
+            GetChildNodes 获取指定名称的Child Node的列表
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.ParseXmlNodeString(System.String)">
+            <summary>
+            ParseXmlNodeString 将OutXml字符串解析为XmlNode
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.XmlHelper.GetXmlNodeString(System.Xml.XmlNode)">
+            <summary>
+            GetXmlNodeString 获取Node的OuterXml字符串
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Helpers.WebServiceHelper">
+            <summary>
+            WebServiceHelper 静态类。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.WebServiceHelper.InvokeWebService(System.String,System.String,System.Object[])">
+            <summary>
+            InvokeWebService 动态调用web服务
+            </summary>
+            <param name="wsUrl">WebService 地址</param>
+            <param name="methodname">方法名</param>
+            <param name="args">参数，仅仅支持简单类型</param>		
+        </member>
+        <member name="M:ESBasic.Helpers.WebServiceHelper.InvokeWebService(System.String,System.String,System.String,System.Object[])">
+            <summary>
+            InvokeWebService 动态调用web服务
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.WebServiceHelper.GetWsProxyType(System.String,System.String)">
+            <summary>
+            GetWsProxyType 获取目标Web服务对应的代理类型
+            </summary>
+            <param name="wsUrl">目标Web服务的url</param>
+            <param name="classname">Web服务的class名称，如果不需要指定，则传入null</param>      
+        </member>
+        <member name="T:ESBasic.ObjectManagement.ReorderCache`1">
+            <summary>
+            用于重整对象的顺序。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Security.DesEncryption">
+            <summary>
+            DES加密算法。可以直接使用其静态方法进行3DES加/解密。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Security.DesEncryption.Encrypt(System.Byte[],System.String)">
+            <summary>
+            使用3DES加密
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Security.DesEncryption.Decrypt(System.Byte[],System.String)">
+            <summary>
+            使用3DES解密
+            </summary> 
+        </member>
+        <member name="M:ESBasic.Security.DesEncryption.EncryptString(System.String,System.String)">
+            <summary>
+            使用3DES加密字符串
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Security.DesEncryption.DecryptString(System.String,System.String)">
+            <summary>
+            使用3DES解密字符串
+            </summary> 
+        </member>
+        <member name="M:ESBasic.Security.DesEncryption.#ctor(ESBasic.Security.DesStrategy,System.String,System.String)">
+            <summary>
+            Ctor。
+            </summary>
+            <param name="strategy">加密策略</param>
+            <param name="_key">密匙</param>
+            <param name="_iniVector">如果加密方式是DesCBC模式，_iniVector表示初始向量</param>
+        </member>
+        <member name="P:ESBasic.Security.DesEncryption.Key">
+            <summary>
+            密匙
+            </summary>
+        </member>
+        <member name="P:ESBasic.Security.DesEncryption.IniVector">
+            <summary>
+            如果加密方式是DesCBC模式，iniVector表示初始向量
+            </summary>
+        </member>
+        <member name="P:ESBasic.Security.DesEncryption.DesStrategy">
+            <summary>
+            加密策略
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.InterceptedMethod">
+            <summary>
+            InterceptedMethod 封装被截获的方法的基本信息。
+            zhuweisky 2008.05.20
+            </summary>
+        </member>
+        <member name="P:ESBasic.Emit.DynamicProxy.InterceptedMethod.MethodName">
+            <summary>
+            MethodName 被截获的目标方法
+            </summary>
+        </member>
+        <member name="P:ESBasic.Emit.DynamicProxy.InterceptedMethod.Target">
+            <summary>
+            Target 被截获的方法需要在哪个对象上调用。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Emit.DynamicProxy.InterceptedMethod.ArgumentNames">
+            <summary>
+            调用被截获的方法的参数名称
+            </summary>
+        </member>
+        <member name="P:ESBasic.Emit.DynamicProxy.InterceptedMethod.ArgumentValues">
+            <summary>
+            调用被截获的方法的参数值
+            </summary>
+        </member>
+        <member name="P:ESBasic.Emit.DynamicProxy.InterceptedMethod.GenericTypes">
+            <summary>
+            如果目标方法为泛型方法，则该属性记录泛型参数的类型。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.DynamicEntityEmitter">
+            <summary>
+            DynamicEntityEmitter 根据每个字段的名称/类型，发射对应的Entity类型。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.Thumbnail">
+            <summary>
+            Thumbnail 用于显示缩略图的控件。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.Thumbnail.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.Thumbnail.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.Thumbnail.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.Thumbnail.ImageName">
+            <summary>
+            ImageName 缩略图的名称，将被显示在缩略图的下方。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.CaptureScreenForm">
+            <summary>
+            CaptureScreenForm 用于获取截屏区域。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.CaptureScreenForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.CaptureScreenForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESBasic.Widget.CaptureScreenForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Application.IHeartBeatChecker">
+            <summary>
+            IHeartBeatChecker 心跳监测器
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Application.IHeartBeatChecker.Initialize">
+            <summary>
+            Initialize 初始化并启动心跳监测器。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Application.IHeartBeatChecker.RegisterOrActivate(System.String)">
+            <summary>
+            RegisterOrActivate 注册一个新的客户端或激活它（收到心跳消息）。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Threading.Application.IHeartBeatChecker.Unregister(System.String)">
+            <summary>
+            Unregister 服务端主动取消对目标客户端的监测。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Threading.Application.IHeartBeatChecker.Clear">
+            <summary>
+            Clear 清空所有的监测。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Application.IHeartBeatChecker.SurviveSpanInSecs">
+            <summary>
+            SurviveSpanInSecs 在没有心跳到来时，可以存活的最长时间。SurviveSpanInSecs小于等于0，表示存活时间为无限长，而不需要进行心跳检查
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Application.IHeartBeatChecker.DetectSpanInSecs">
+            <summary>
+            DetectSpanInSecs 隔多长时间进行一次状态检查。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Application.IHeartBeatChecker.SomeOneTimeOuted">
+            <summary>
+            SomeOneTimeOuted  当在规定的时间内没有任何消息过来，那么将会触发该事件。
+            注意：该事件的处理函数严禁抛出任何异常。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.DoulbeEndedHeap`1">
+            <summary>
+            DoulbeEndedHeap 双端堆，跟结点为空，左子树为最小堆，右子树为最大堆
+            </summary>
+            <typeparam name="TVal"></typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.DoulbeEndedHeap`1.Insert(`0)">
+            <summary>
+            把新的结点插入到完全二叉树的最后一个结点，如果该结点在最大堆，判断最小堆所对应的结点值是否比该结点的值大，如果是，则交换数据，重新调整左右子树。
+            如果不是，则调整右子树。
+            如果该结点在左子树，判断最大堆对应的结点值是否比该值小，如果是，则交换数据，重新调整左右子树。如果不是，则调整左子树。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.DoulbeEndedHeap`1.RemoveMin">
+            <summary>
+            删除最小值，最小值为最小堆的根结点        
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.DoulbeEndedHeap`1.RemoveMax">
+            <summary>
+            删除最大值，最大值为最大堆的根结点
+            </summary>        
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.BinaryTreeDrawer`1">
+            <summary>
+            BinaryDrawer IBinaryDrawer 的默认实现。
+            作者：朱伟 sky.zhuwei@163.com 
+            2005.05.11
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Integration.Combiner">
+            <summary>
+            Combiner 对象合并器。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.Combiner.CombineOnSameID``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.IList{``1}})">
+            <summary>
+            CombineOnSameID 将多个list中的对象依据ID合并起来。
+            </summary>
+            <typeparam name="TID">被合并对象的标志类型</typeparam>
+            <typeparam name="TObj">被合并对象的类型</typeparam>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.Combiner.CombineIntoContainer``2(System.Collections.Generic.IDictionary{``0,``1}@,System.Collections.Generic.IEnumerable{``1}[])">
+            <summary>
+            IDictionary 将多个collection中的对象依据ID合并到container中去。
+            </summary>
+            <typeparam name="TID">被合并对象的标志类型</typeparam>
+            <typeparam name="TObj">被合并对象的类型</typeparam> 
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.HiberarchyAgileNodePicker`1">
+            <summary>
+            HiberarchyAgileNodePicker 为HiberarchyCache所用，通过ISmartDictionaryCache实现IAgileNodePicker接口。
+            </summary>   
+        </member>
+        <member name="T:ESBasic.Arithmetic.Sorting.HeapSorter`1">
+            <summary>
+            HeapSorter 堆排序
+            CQ，2008.12.13
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Collections.DispersiveKeyScope">
+            <summary>
+            DispersiveKeyScope 用于表示多个整数范围和一组离散的整数值
+            </summary>
+        </member>
+        <member name="T:ESBasic.Loggers.IMethodTimeLogger">
+            <summary>
+            IMethodTimeLogger 该接口用于记录方法的执行时间。
+            zhuweisky 2008.06.13
+            </summary>
+        </member>
+        <member name="M:ESBasic.Loggers.IMethodTimeLogger.Log(System.String,System.Type[],System.String[],System.Object[],System.Double)">
+            <summary>
+            记录方法执行的时间。   
+            </summary>        
+            <param name="methodPath">抛出异常的目标方法。</param>
+            <param name="genericTypes">目标方法的类型参数。如果为非泛型方法，则传入null</param>
+            <param name="argumentNames">调用方法的各Parameters的名称。如果方法没有参数，则传入null</param>
+            <param name="argumentValues">调用方法的各Parameters的值。如果方法没有参数，则传入null</param>
+            <param name="millisecondsConsumed">方法执行的时间，毫秒</param>
+        </member>
+        <member name="T:ESBasic.EnumDescription">
+            <summary>
+            EnumDescription 用于描述枚举的特性。	
+            </summary>
+        </member>
+        <member name="M:ESBasic.EnumDescription.DoGetFieldTexts(System.Type)">
+            <summary>
+            DoGetFieldTexts 得到枚举类型定义的所有枚举值的描述文本		
+            </summary>	
+        </member>
+        <member name="M:ESBasic.EnumDescription.GetEnumDescriptionText(System.Type)">
+            <summary>
+            GetEnumDescriptionText 获取枚举类型的描述文本。
+            </summary>	   
+        </member>
+        <member name="M:ESBasic.EnumDescription.GetEnumTag(System.Type)">
+            <summary>
+            GetEnumTag 获取枚举类型携带的Tag。
+            </summary>
+        </member>
+        <member name="M:ESBasic.EnumDescription.GetFieldText(System.Object)">
+            <summary>
+            GetFieldDescriptionText 获得指定枚举值的描述文本。
+            </summary>		
+        </member>
+        <member name="M:ESBasic.EnumDescription.GetFieldTag(System.Object)">
+            <summary>
+            GetFieldTag 获得指定枚举值的Tag。
+            </summary>
+            <param name="enumValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.EnumDescription.GetEnumValueByTag(System.Type,System.Object)">
+            <summary>
+            GetEnumValueByTag 根据描述Tag获取对应的枚举值
+            </summary>     
+        </member>
+        <member name="E:ESBasic.Widget.TimerLabel.SecondTick">
+            <summary>
+            当定时器启动后，每隔一秒触发一次。在UI线程中触发。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.PageControlPanel">
+            <summary>
+            分页控制器面板。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.PageControlPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.PageControlPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.PageControlPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.PageControlPanel.ReadOnly">
+            <summary>
+            是否为管理员身份。管理员的特殊权限：翻页、上传课件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.IPageController">
+            <summary>
+            分页控制器接口。将被PageControlPanel使用。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.IPageController.PageCount">
+            <summary>
+            总页数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Widget.IPageController.CurrentPageIndex">
+            <summary>
+            当前页的索引。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Widget.IPageController.PageCountChanged">
+            <summary>
+            当总页数发生变化时，触发此事件。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Widget.IPageController.CurrentPageIndexChanged">
+            <summary>
+            当当前页发生变化时，触发此事件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.TimingTaskType">
+            <summary>
+            TimingTaskType 定时任务的类型 
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.RichTimer.ITimerTaskManager">
+            <summary>
+            ITimerTaskManager 多功能定时任务管理器，管理所有的定时任务的执行
+            在Ctor中启动线程
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Timers.RichTimer.ITimerTaskManager.Initialize">
+            <summary>
+            Initialize 初始化并启动内部定时器
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.BaseEngineTache">
+            <summary>
+            BaseEngineTache 引擎环的抽象基类，具体的引擎环从BaseEngineTache继承并覆写Abstract方法即可
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.IEngineTache">
+            <summary>
+            IEngineTache 用于表示引擎中可拆卸的一部分
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IEngineTache.IsActive">
+            <summary>
+            IsActive 表示该引擎环是否正在运行中    
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Application.AsynDelayActor">
+            <summary>
+            异步延迟执行器。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.KDimension.KDTree`1">
+            <summary>
+            KDTree K维二叉树。
+            dudu 2009.10.13
+            </summary>    
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.ISorttedBinaryTree`1">
+            <summary>
+            IBinaryTree 二叉树接口 。
+            作者：朱伟 sky.zhuwei@163.com 
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.ActionTypeOnAddOverflow">
+            <summary>
+            ActionTypeOnAddOverflow 当ISamePriorityObjectManager的Count达到Capacity时，再向容器中添加waiter时所采取的措施。
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Managers.ActionTypeOnAddOverflow.Wait">
+            <summary>
+            Wait 等待一直到Count小于Capacity时，再加入。default默认值。
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Managers.ActionTypeOnAddOverflow.DiscardOldest">
+            <summary>
+            DiscardOldest 丢弃容器中最早的waiter。
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Managers.ActionTypeOnAddOverflow.DiscardLatest">
+            <summary>
+            DiscardLatest 丢弃容器中最新的waiter。
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Managers.ActionTypeOnAddOverflow.DiscardCurrent">
+            <summary>
+            DiscardCurrent 丢弃当前要添加的waiter。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IObjectManager`2">
+            <summary>
+            IObjectManager 用于管理具有唯一标志的对象，该接口实现必须保证线程安全。
+            zhuweisky 2008.05.31
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IObjectManager`2.Add(`0,`1)">
+            <summary>
+            Add 如果已经存在同ID的对象，则用新对象替换旧对象。
+            </summary>     
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IObjectManager`2.Get(`0)">
+            <summary>
+            Get 如果不存在，则返回default（TObject）。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.IObjectManager`2.GetAllReadonly">
+            <summary>
+            返回的列表不能被修改。【使用缓存】
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.ObjectManager`2.GetAllReadonly">
+            <summary>
+            返回的列表不能被修改。【使用缓存】
+            </summary>  
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.PriorityManager`1">
+            <summary>
+            PriorityManager 具有优先级的对象的管理器。该实现是线程安全的。
+            注意：在PriorityManager中，优先等级是用int表示的，是从0开始连续的一串整数，整数值越小，表明优先级越高。
+            当Initialize方法被执行后，优先等级的范围就被固定下来。比如PriorityLevelCount值设为4，则PriorityManager所支持的优先等级即为：0，1，2，3
+            </summary>
+            <typeparam name="T">被管理的对象的类型，必须从IPriorityObject继承。</typeparam>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.PriorityManager`1.Initialize(System.Int32)">
+            <summary>
+            Initialize 初始化。所有级别的管理器都使用默认配置（Capacity为int.MaxValue）。
+            </summary>
+            <param name="_priorityLevelCount">支持的优先级等级个数。比如PriorityLevelCount值设为4，则所支持的优先等级即为：0，1，2，3</param>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.PriorityManager`1.Initialize(System.Int32,ESBasic.ObjectManagement.Managers.PriorityManagerPara[])">
+            <summary>
+            Initialize 初始化。
+            </summary>
+            <param name="_priorityLevelCount">支持的优先级等级个数。比如PriorityLevelCount值设为4，则所支持的优先等级即为：0，1，2，3</param>
+            <param name="paraAry">每个优先级管理器对应的配置，该参数不能为null，且其长度必须与_priorityLevelCount相等。如果某个优先级的管理器采用默认配置，则对应的数组元素可以为null。</param>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.PriorityManager`1.GetNextWaiter">
+            <summary>
+            GetNextWaiter 返回优先级别最高且等待时间最长的waiter。
+            注意，返回时并不会从等待列表中删除waiter。如果要删除某个等待者，请调用RemoveWaiter。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.PriorityManager`1.PopNextWaiter">
+            <summary>
+            PopNextWaiter 弹出优先级别最高且等待时间最长的waiter。注意，此方法将会从等待列表中删除waiter。       
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.PriorityManager`1.PriorityLevelCount">
+            <summary>
+            PriorityLevelCount 优先级分为几个等级。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.SingleSource">
+            <summary>
+            SingleSource 当增量源只有一个时，使用SingleSource作为泛型参数。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.AnalyzeConfigString(System.String)">
+            <summary>
+            AnalyzeConfigString 各配置项采用分号分隔，使用"="连接key与value
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.ConvertChineseToSpell(System.String)">
+            <summary>
+            ConvertChineseToSpell 将汉字转化为拼音
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.SplitStringTo``1(System.String,System.Char)">
+            <summary>
+            SplitStringTo 将目标字符串分割成多个目标类型的值
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.SplitStringToStrs(System.String,System.Char)">
+            <summary>
+            将目标字符串进行分割，并对分割值进行修整
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.SplitStringToDictionary``2(System.String,System.Char,System.Char)">
+            <summary>
+            将目标字符串进行分割成字典
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.StringHelper.CombinDictionaryIntoString``2(System.Collections.Generic.Dictionary{``0,``1},System.Char,System.Char)">
+            <summary>
+            将字典合并成字符串
+            </summary>
+        </member>
+        <!-- 对于成员“T:ESBasic.Serialization.SimpleXmlConverter”忽略有格式错误的 XML 注释 -->
+        <member name="T:ESBasic.ObjectManagement.SafeList`1">
+            <summary>
+            线程安全的List。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.PropertyQuickerEmitter.CreatePropertyQuickerType(System.Type)">
+            <summary>
+            CreatePropertyQuickerType 为EntityType发射一个实现了IPropertyQuicker[TEntity]接口的类型。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.IObjectContainer`1">
+            <summary>
+            IObjectContainer 对象容器，动态的对象分类器最终将使用IObjectContainer来存储对象。
+            该接口的实现类最好支持可序列化。如此，动态对象分类器就可以支持序列化了。
+            </summary>  
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.IObjectContainerCreator`1">
+            <summary>
+            IObjectContainerCreator  动态的对象分类器借助IObjectContainerCreator来创建对象容器。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.MapItem">
+            <summary>
+            MapItem 映射项。
+            </summary>
+        </member>
+        <member name="T:ESBasic.DataBuffer">
+            <summary>
+            DataBuffer 数据缓冲区。
+            </summary>
+        </member>
+        <member name="M:ESBasic.DataBuffer.MergeDataBuffers(ESBasic.DataBuffer[])">
+            <summary>
+            MergeDataBuffers 按顺序将所有DataBuffer中的数据复制到一个新的缓冲区中。
+            </summary>     
+        </member>
+        <member name="P:ESBasic.DataBuffer.Data">
+            <summary>
+            Data 存储数据的内存。
+            </summary>
+        </member>
+        <member name="P:ESBasic.DataBuffer.Offset">
+            <summary>
+            Offset 有效数据起始处的偏移位置。
+            </summary>
+        </member>
+        <member name="P:ESBasic.DataBuffer.Length">
+            <summary>
+            Length 有效数据的长度。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Addins.IAddinManager">
+            <summary>
+            IAddinManagement 用于加载/卸载，管理各种插件。
+            作者：朱伟 sky.zhuwei@163.com 
+            </summary>
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.LoadDefault">
+            <summary>
+            LoadDefault 加载当前目录或子目录下的所有有效插件
+            </summary>
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.LoadAllAddins(System.String,System.Boolean)">
+            <summary>
+            LoadAllAddins 加载指定目录下的所有插件
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.LoadAddinAssembly(System.String)">
+            <summary>
+            LoadAddinAssembly 加载指定的插件
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.Clear">
+            <summary>
+            Clear 清空所有已经加载的插件
+            </summary>
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.DynRemoveAddin(System.Int32)">
+            <summary>
+            DynRemoveAddin 动态移除指定的插件
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.EnableAddin(System.Int32)">
+            <summary>
+            EnableAddin 启用指定的插件
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Addins.IAddinManager.DisableAddin(System.Int32)">
+            <summary>
+            EnableAddin 禁用指定的插件
+            </summary> 
+        </member>
+        <member name="P:ESBasic.Addins.IAddinManager.CopyToMemory">
+            <summary>
+            CopyToMemory 是否将插件拷贝到内存后加载
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddinManager.AddinList">
+            <summary>
+            AddinList 已加载的插件列表
+            </summary>
+        </member>
+        <member name="T:ESBasic.Addins.IAddin">
+            <summary>
+            IAddin 所有插件基本接口 
+            作者：朱伟 sky.zhuwei@163.com 
+            2005.04.12
+            2005.12.08(修改)
+            </summary>
+        </member>
+        <member name="M:ESBasic.Addins.IAddin.OnLoading">
+            <summary>
+            OnLoading 生命周期回调，当插件加载完毕被调用。可以从AddinUtil获取主应用传递的参数来初始化插件
+            </summary>
+        </member>
+        <member name="M:ESBasic.Addins.IAddin.BeforeTerminating">
+            <summary>
+            BeforeTerminating 生命周期回调，卸载插件前调用
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddin.Enabled">
+            <summary>
+            Enabled 插件是否启用
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddin.AddinKey">
+            <summary>
+            AddinKey 插件关键字，不同的插件其Key是不一样的
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddin.AddinName">
+            <summary>
+            ServiceName 插件提供的服务的名字	
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddin.Description">
+            <summary>
+            Description 插件的描述信息	
+            </summary>
+        </member>
+        <member name="P:ESBasic.Addins.IAddin.Version">
+            <summary>
+            Version 插件版本
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.ColorChooser.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.ColorChooser.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.ColorChooser.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.FaceEmotionBoard">
+            <summary>
+            FaceEmotionBoard 表情面板。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.FaceEmotionBoard.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.FaceEmotionBoard.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.FaceEmotionBoard.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Widget.FaceEmotionBoard.EmotionClicked">
+            <summary>
+            EmotionClicked 某个表情图片被点击。参数为被点击图片的索引。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.AgileRichTextBox">
+            <summary>
+            AgileRichTextBox 支持图片和动画的RichTextBox。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.AgileRichTextBox.InsertImage(System.UInt32,System.Int32)">
+            <summary>
+            InsertImage 在position位置处，插入标志为imageID图片。
+            </summary>      
+            <param name="position">插入的位置</param>
+            <param name="imageID">图片的标志，必须大于0</param>
+        </member>
+        <member name="M:ESBasic.Widget.AgileRichTextBox.InsertImage(System.Drawing.Image,System.Int32)">
+            <summary>
+            InsertImage 在position位置处，插入图片。
+            </summary>   
+            <param name="image">要插入的图片</param>
+            <param name="position">插入的位置</param>       
+        </member>
+        <member name="M:ESBasic.Widget.AgileRichTextBox.GetAllImage(System.Boolean@)">
+            <summary>
+            GetAllImage 获取Box中每一张由IImagePathGetter管理的图片的位置和标志
+            </summary>        
+            <param name="containsForeignObject">内容中是否包含不是由IImagePathGetter管理的图片对象</param>
+            <returns>key为位置，val为图片的ID</returns>
+        </member>
+        <member name="M:ESBasic.Widget.AgileRichTextBox.AppendRichText(System.String,ESBasic.Collections.SortedArray{System.Int32,System.UInt32},System.Drawing.Font,System.Drawing.Color)">
+            <summary>
+            AppendRichText 在现有内容后面追加富文本。
+            </summary>
+            <param name="textContent">文本内容</param>
+            <param name="imagePosition_imageID">图片在textContent中的位置以及图片的ID</param>
+        </member>
+        <member name="T:ESBasic.Threading.Synchronize.LockingObject">
+            <summary>
+            LockingObject SmartRWLocker的Lock方法返回的锁对象。仅仅通过using来使用该对象，如：using(this.smartLocker.Lock(AccessMode.Read)){...}
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1">
+            <summary>
+            IHiberarchyCache 增强的、寻址快速的层级结构缓存。该接口的实现必须是线程安全的。
+            内部的Tree和Dictionary的数据始终是同步的。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.Get(System.String)">
+            <summary>
+            Get 如果目标对象在缓存中不存在，则通过ObjectRetriever去提取。
+            </summary>           
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.HaveContained(System.String)">
+            <summary>
+            HaveContained 缓存中是否一经包含了目标对象。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetAllKeyListCopy">
+            <summary>
+            GetAllKeyListCopy 获取所有ID的列表的拷贝。
+            </summary>         
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetAllValListCopy">
+            <summary>
+            GetAllValListCopy 获取所有的节点值列表的拷贝。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetChildrenOf(System.String)">
+            <summary>
+            GetChildrenOf 获取parentID的所有孩子节点的节点值列表。
+            </summary>     
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetChildrenCount(System.String)">
+            <summary>
+            GetChildrenCount 获取parentID直接下级的个数。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.CreateHiberarchyTree">
+            <summary>
+            CreateHiberarchyTree 返回表示层级信息的最单纯的数据结构。
+            注意：返回的Tree实际上与内部的AgileMultiTree是引用的根节点是同一个节点。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetNodesOnDepthIndex(System.Int32)">
+            <summary>
+            GetNodesOnDepthIndex 获取某一深度的所有节点。Root的深度索引为0
+            </summary> 
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.GetNodesOnDepthIndex(System.String,System.Int32)">
+            <summary>
+            GetNodesOnDepthIndex 获取所属parentID体系下并且深度为depthIndex的所有节点。Root的深度索引为0
+            </summary>        
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.RootID">
+            <summary>
+            RootID 设置根节点的ID。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.IHiberarchyCache`1.SequenceCodeSplitter">
+            <summary>
+            SequenceCodeSplitter 节点路径（序列号）的分割符。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.TimeHelper">
+            <summary>
+            TimeHelper 与DateTime相关的工具类
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.TimeHelper.IsOnTime(System.DateTime,System.DateTime,System.Int32)">
+            <summary>
+            IsOnTime 时间val与requiredTime之间的差值是否在maxToleranceInSecs范围之内。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.TimeHelper.IsOnTime(System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            IsOnTime 对于循环调用，时间val与startTime之间的差值(>0)对cycleSpanInSecs求余数的结果是否在maxToleranceInSecs范围之内。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Arithmetic.AStar.AStarRoutePlanner">
+            <summary>
+            AStarRoutePlanner A*路径规划。每个单元格Cell的位置用Point表示
+            F = G + H 。
+            G = 从起点A，沿着产生的路径，移动到网格上指定方格的移动耗费。
+            H = 从网格上那个方格移动到终点B的预估移动耗费。使用曼哈顿方法，它计算从当前格到目的格之间水平和垂直的方格的数量总和，忽略对角线方向。
+            zhuweisky 2008.10.18
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.AStar.AStarRoutePlanner.InitializeObstacles">
+            <summary>
+            InitializeObstacles 将所有位置均标记为无障碍物。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.AStar.AStarRoutePlanner.Initialize(System.Collections.Generic.IList{System.Drawing.Point})">
+            <summary>
+            Initialize 在路径规划之前先设置障碍物位置。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Arithmetic.AStar.AStarRoutePlanner.GetNodeOnLocation(System.Drawing.Point,ESBasic.Arithmetic.AStar.RoutePlanData)">
+            <summary>
+            GetNodeOnLocation 目标位置location是否已存在于开放列表或关闭列表中
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Arithmetic.AStar.AStarRoutePlanner.GetMinCostNode(System.Collections.Generic.IList{ESBasic.Arithmetic.AStar.AStarNode})">
+            <summary>
+            GetMinCostNode 从开放列表中获取代价F最小的节点，以启动下一次递归
+            </summary>      
+        </member>
+        <member name="T:ESBasic.Loggers.MethodTimeFileLogger">
+            <summary>
+            将方法的执行时间记录到文本文件。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.ScreenHelper.CaptureScreen">
+            <summary>
+            CaptureScreen 截取全屏。
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Helpers.ScreenHelper.CaptureScreen(System.Drawing.Rectangle)">
+            <summary>
+            CaptureScreen 截取目标区域region内的屏幕。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ScreenHelper.GetSupportedScreenResolutions">
+            <summary>
+            GetSupportedDisplayModes 获取系统支持的屏幕分辨率。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ScreenHelper.GetSupportedDisplayModes">
+            <summary>
+            GetSupportedDisplayModes 获取系统支持的所有的屏幕分辨率的详细信息。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ScreenHelper.ChangeDisplayMode(ESBasic.Helpers.ScreenResolution)">
+            <summary>
+            ChangeDisplayMode 更改系统的显示设置。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Helpers.ScreenResolution">
+            <summary>
+            ScreenResolution 屏幕分辨率
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.DisplayMode">
+            <summary>
+            DisplayMode 显示模式。分辨率、刷新率等
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicDispatcher.DynamicDispatcherFactory.CreateDispatcher``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            CreateDispatcher 创建实现了TIDispatch接口的动态分发器。
+            </summary>
+            <typeparam name="TIDispatch">要分发调用的接口类型</typeparam>
+            <param name="excuters">分发器实例集合</param>
+            <returns>实现了TIDispatch接口的动态分发器</returns>
+        </member>
+        <member name="T:ESBasic.Collections.SortedArray2`2">
+            <summary>
+            SortedArray 有序的数组，其中Key是不允许重复的。如果单个添加重复的key，则将覆盖旧数据。如果是批添加出现重复，则批添加将全部失败。   
+            该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`2.AddSafely(`0,`1)">
+            <summary>
+            安全添加。如果已经存在相同的key，则直接返回。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`2.GetByKeyScope(`0,System.Boolean,`0,System.Boolean,`0[]@,`1[]@)">
+            <summary>
+            GetByKeyScope 获取minKey-maxKey范围内的键和值的有序数组。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`2.GetByKeyScope(`0,System.Boolean,`0,System.Boolean)">
+            <summary>
+            GetByKeyScope 获取minKey-maxKey范围内的值的有序数组。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`2.Shrink">
+            <summary>
+            Shrink 将内部数组收缩到最小，释放内存。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.SortedArray2`2.Get(`0)">
+            <summary>
+            如果key不存在，则返回default(TVal)。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Week">
+            <summary>
+            Week 周。表示某一个星期。
+            zhuweisky 2009.05.20
+            </summary>
+        </member>
+        <member name="M:ESBasic.Week.GetLastMondayDate(System.DateTime)">
+            <summary>
+            GetLastMondayDate 在获取离dt最近的一个周一。
+            </summary>  
+        </member>
+        <member name="T:ESBasic.Threading.Engines.AgileCycleEngine">
+            <summary>
+            AgileCycleEngine 通过组合使用的循环引擎
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.BaseCycleEngine">
+            <summary>
+            BaseCycleEngine ICycleEngine的抽象实现，循环引擎直接继承它并实现DoDetect方法即可。
+            zhuweisky 2006.12.21
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.BaseCycleEngine.DoDetect">
+            <summary>
+            DoDetect 每次循环时，引擎需要执行的核心动作。
+            (1)该方法不允许抛出异常。
+            (2)该方法中不允许调用BaseCycleEngine.Stop()方法，否则会导致死锁。
+            </summary>
+            <returns>返回值如果为false，表示退出引擎循环线程</returns>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.BaseCycleEngine.Stop">
+            <summary>
+            停止引擎。千万不要在DoDetect方法中调用该方法，会导致死锁，可以改用StopAsyn方法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.BaseCycleEngine.StopAsyn">
+            <summary>
+            异步停止引擎。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.BaseCycleEngine.DetectSpanInSecs">
+            <summary>
+            引擎进行轮询的间隔，单位：秒。只需设置DetectSpan或DetectSpanInSecs其中的一个即可。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.BaseCycleEngine.DetectSpan">
+            <summary>
+            引擎进行轮询的间隔，单位：毫秒。DetectSpan=0，表示无间隙运作引擎；DetectSpan小于0则表示不使用引擎。默认值为0。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Application.HeartBeatChecker">
+            <summary>
+            HeartBeatChecker 心跳监测器。
+            IHeartBeatChecker 参考实现。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Pool.DefaultPooledObjectCreator`1">
+            <summary>
+            DefaultPooledObjectCreator 直接使用被池化类型的默认构造函数创建对象。
+            zhuweisky 2008.06.13
+            </summary>   
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.RefreshableCacheExceptionLogBridge">
+            <summary>
+            RefreshableCacheExceptionLogBridge 使用IAgileLogger来记录IRefreshableCacheManager刷新失败的日志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Integration.ISegmentContainer`2">
+            <summary>
+            ISegmentContainer 用于存放片段ISegment的容器。可以将分散的片段整合为一个有序的整体。
+            </summary>
+            <typeparam name="TSegmentID">片段标志的类型</typeparam>
+            <typeparam name="TVal">构成片段的元素的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.ISegmentContainer`2.Pick(System.Int32,System.Int32)">
+            <summary>
+            Pick 从整合后的整体中提取有序块。
+            </summary>
+            <param name="startIndex">目标块在整合后的整体中的起始位置</param>
+            <param name="pickCount">提取元素的个数</param>
+            <returns>有序的列表（从小到大或从大到小，与PickFromSmallToBig属性一致）</returns> 
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.ISegmentContainer`2.GetAllSegments">
+            <summary>
+            GetAllSegments 获取容器内的所有片段。
+            </summary>        
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Integration.ISegmentContainer`2.PickFromSmallToBig">
+            <summary>
+            PickFromSmallToBig 当从整合后的整体中提取有序块时采用的顺序。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.BaseSegmentContainer`2.Pick(System.Int32,System.Int32)">
+            <summary>
+            Pick 从整合后的整体中提取有序块。
+            </summary>
+            <param name="startIndex">目标块在整合后的整体中的起始位置</param>
+            <param name="pickCount">提取元素的个数</param>
+            <returns>有序的列表（从小到大或从大到小，与PickFromSmallToBig一致）</returns> 
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.IncreaseAutoRetriever`4">
+            <summary>
+            IncreaseAutoRetriever 增量数据自动获取器。每隔一段时间就从各个来源（TSourceToken）获取一次增量（TObject），并触发事件将增量发布出去。
+            (1)一个Round由多个连续的Phase构成。当获取某Round的最后一个Phase增量时，触发的事件中的isLastPhaseOfRound参数为true。
+            (2)假设增量标志是逐渐递增的。
+            zhuweisky 2009.02.24
+            </summary>
+            <typeparam name="TSourceToken">增量来源的标志</typeparam>
+            <typeparam name="TKey">每个增量Object的标志</typeparam>
+            <typeparam name="TObject">增量Object的类型</typeparam>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.IIncreaseAutoRetriever`4">
+            <summary>
+            IIncreaseAutoRetriever 增量数据自动获取器。每隔一段时间就从各个来源（TSourceToken）获取一次增量（TObject），并触发事件将增量发布出去。
+            (1)一个Round由多个连续的Phase构成。当获取某Round的最后一个Phase增量时，触发的事件中的isLastPhaseOfRound参数为true。
+            (2)假设增量标志是逐渐递增的。
+            zhuweisky 2009.02.24
+            </summary>
+            <typeparam name="TSourceToken">增量来源的标志</typeparam>
+            <typeparam name="TKey">每个增量Object的标志</typeparam>
+            <typeparam name="TObject">增量Object的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.IIncreaseAutoRetriever`4.ManualRefresh">
+            <summary>
+            ManualRefresh 手动刷新获取增量。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Increasing.IIncreaseAutoRetriever`4.AutoRetrieveSpanInSecs">
+            <summary>
+            AutoRetrieveSpanInSecs 设置多长时间为一增量阶段。
+            </summary>
+        </member>
+        <member name="E:ESBasic.ObjectManagement.Increasing.IIncreaseAutoRetriever`4.ExceptionOccurred">
+            <summary>
+            ExceptionOccurred 当提取增量数据出现异常或IncreasementRetrieved事件处理器抛出异常时，将触发此事件，并且引擎将停止运行。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.BeforehandCreator`1">
+            <summary>
+            BeforehandCreator 提前创建器。
+            zhuweisky 2010.05.04
+            </summary>
+            <typeparam name="T">要创建的对象类型</typeparam>
+        </member>
+        <member name="T:ESBasic.Loggers.ILogger">
+            <summary>
+            ILogger 用于日志记录的基础接口，线程安全的
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Forms.FormManager`2">
+            <summary>
+            FormManager 用于管理同一类型的多个Form实例。FormManager是线程安全的。
+            zhuweisky 2010.08.07
+            </summary>
+            <typeparam name="TFormID">每个Form实例的唯一标识的类型</typeparam>
+            <typeparam name="TForm">Form实例的类型</typeparam>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Forms.IManagedForm`1">
+            <summary>
+            IManagedForm 被管理的Form实例的类型必须从IManagedForm继承。
+            </summary>
+            <typeparam name="TFormID">每个Form实例的唯一标识的类型</typeparam>
+        </member>
+        <member name="T:ESBasic.Arithmetic.BinarySearcher`1">
+            <summary>
+            BinarySearcher 折半查找
+            CQ，2008.12.13
+            </summary>
+            <typeparam name="TVal"></typeparam>
+        </member>
+        <member name="M:ESBasic.Arithmetic.BinarySearcher`1.Search(System.Collections.Generic.IList{`0},`0)">
+            <summary>
+            Search 返回的是目标值所在的索引，如果不存在则返回-1
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Arithmetic.FpsCounter">
+            <summary>
+            FpsCounter 用于计算帧率。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.Find``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            Find 从集合中选取符合条件的元素
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.FindFirstSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            FindFirstSpecification 返回符合条件的第一个元素
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},``0@)">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.ContainsSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0})">
+            <summary>
+            ContainsSpecification 集合中是否包含满足predicate条件的元素。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.ActionOnSpecification``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Predicate{``0})">
+            <summary>
+            ActionOnSpecification 对集合中满足predicate条件的元素执行action。如果没有条件，predicate传入null。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.ActionOnEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            ActionOnEach  对集合中的每个元素执行action。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.BinarySearch``1(System.Collections.Generic.IList{``0},``0,System.Int32@)">
+            <summary>
+            BinarySearch 从已排序的列表中，采用二分查找找到目标在列表中的位置。
+            如果刚好有个元素与目标相等，则返回true，且minIndex会被赋予该元素的位置；否则，返回false，且minIndex会被赋予比目标小且最接近目标的元素的位置
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.GetIntersection``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            GetIntersection 高效地求两个List元素的交集。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Collections.CollectionHelper.GetUnion``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            GetUnion 高效地求两个List元素的并集。
+            </summary> 
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.EfficientAopProxyEmitter">
+            <summary>
+            EfficientAopProxyEmitter 生成的动态代理类型将继承TInterface接口，并且动态类型有一个类型为originType构造参数。     
+            与AopProxyEmitter相比，主要是EfficientAopProxyEmitter生成的动态代理是直接调用被截获的方法的，而AopProxyEmitter生成的动态代理是通过反射调用被截获的方法的。
+            注意：
+            (1)动态类型针对TInterface接口的所有实现将转发给从Ctor传入的originType实例完成。originType必须是public修饰的。
+            (2)TInterface只支持非泛型接口，但接口中可以包括泛型方法。
+            (3)支持方法的ref/out参数。   
+            zhuweisky 最后一次整理：2007.08.02
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicProxy.EfficientAopProxyEmitter.GetDynamicTypeName(System.Type,System.Type)">
+            <summary>
+            获取要动态生成的类型的名称。注意，子类一定要使用本方法来得到动态类型的名称。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Collections.SortedArray`2">
+            <summary>
+            SortedArray 有序的数组，其中Key是不允许重复的。如果单个添加重复的key，则将覆盖旧数据。如果是批添加出现重复，则批添加将全部失败。
+            该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.ExListView.CreateButtons">
+            <summary>
+            Method for generation ToolStrip Buttons on GroupBy ToolStrip
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.ColorChooseForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.ColorChooseForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESBasic.Widget.ColorChooseForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.RetryEngine`1">
+            <summary>
+            任务重试引擎，直至任务执行完成。如果某任务执行失败（方法调用抛出任何异常），将在延迟一段时间后重试，如此循环，直到成功为止。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.RetryEngine`1.Initialize(ESBasic.Func{`0,System.Boolean})">
+            <summary>
+            初始化引擎。
+            </summary>
+            <param name="targetAction">执行任务的函数。函数执行返回false或者抛出异常，说明任务执行失败，目标任务将被重试</param>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.RetryEngine`1.TaskFailed">
+            <summary>
+            当某个任务执行（或重试）失败时，触发该事件。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Engines.RetryEngine`1.TaskSucceed">
+            <summary>
+            当某个任务执行（或重试）成功时，触发该事件。参数：Task - 加入时间 - 重试次数
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.RetryEngine`1.TaskToActionCount">
+            <summary>
+            尚未被第一次执行的任务数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.RetryEngine`1.TaskToRetryCount">
+            <summary>
+            等待重试的任务数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.RetryEngine`1.RetryingCount">
+            <summary>
+            正在重试的任务数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.IHotCache`2">
+            <summary>
+            IHotCache 用于缓存那些活跃的对象，并定时删除不活跃的对象。该接口的实现必须是线程安全的。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.IHotCache`2.Get(`0)">
+            <summary>
+            Get 如果缓存中存在目标则直接返回，否则通过ObjectRetriever提取对象并缓存。
+            </summary>      
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.IHotCache`2.DetectSpanInSecs">
+            <summary>
+            DetectSpanInSecs 多长时间检测一次对象是否活跃，单位：秒。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.IHotCache`2.MaxMuteSpanInMinutes">
+            <summary>
+            MaxMuteSpanInMinutes 对象最大的沉默时间（分钟）。如果一个对象在MaxMuteSpanInMinutes时间间隔内都不被访问，则将被从缓存中清除。
+            如果该属性的值被设置为小于或等于0，则表示永远不会从缓存中清除。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.IHotCache`2.MaxCachedCount">
+            <summary>
+            MaxCachedCount 最多缓存的对象个数。当超过此个数时，不再缓存新的对象。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.HotCache`2.Count">
+            <summary>
+            Count 容器中缓存对象的个数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.HotCache`2.NonexistentCount">
+            <summary>
+            NonexistentCount Get方法返回为null的次数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.IHiberarchyVal">
+            <summary>
+            IHiberarchyVal 可以存放在HiberarchyCache的对象必须实现该接口。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.IMTreeVal">
+            <summary>
+            IMTreeVal 如果一个对象需要包含于多叉树的节点中，则该对象必须实现IMTreeVal接口。
+            zhuweisky 2005.07.28
+            </summary>	
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Multiple.IMTreeVal.DepthIndex">
+            <summary>
+            DepthIndex 当前节点在多叉树中的深度索引。Root的深度索引为0。
+            若不想使用深度索引，请返回-1或负数。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.GetMacAddress">
+            <summary>
+            GetMacAddress 获取网卡mac地址
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.GetPhysicalMemorySize">
+            <summary>
+            获取物理内存大小
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.GetCpuInfo">
+            <summary>
+            获取CPU信息
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.GetPerformanceUsage(System.Single@,System.Single@)">
+            <summary>
+            GetPerformanceUsage 获取性能参数。
+            </summary>
+            <param name="cpuUsage">CPU利用率。</param>
+            <param name="memoryUsage">物理内存利用率</param>
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.GetDiskFreeSpace(System.String)">
+            <summary>
+            获取磁盘的可用空间大小。
+            </summary>
+            <param name="diskName">磁盘的名称。如"C:\"</param>
+            <returns>磁盘的剩余控件</returns>      
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.IsNetworkConnected">
+            <summary>
+            可以及时反应网络连通情况，但是需要服务System Event Notification支持（系统默认自动启动该服务）
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.MachineHelper.IsNetworkConnected2">
+            <summary>
+            对网络状况不能及时反应
+            </summary>        
+        </member>
+        <member name="F:ESBasic.Helpers.CpuInfo.Name">
+            <summary>
+            CPU名称。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Helpers.CpuInfo.ClockSpeed">
+            <summary>
+            主频。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Helpers.CpuInfo.CoreCount">
+            <summary>
+            核心数目
+            </summary>
+        </member>
+        <member name="T:ESBasic.DataStructure.IPriorityManager">
+            <summary>
+            IPriorityManager 依据时间来管理所有waiter的优先级。线程安全。
+            zhuweisky 2007.04.16 
+            </summary>
+        </member>
+        <member name="M:ESBasic.DataStructure.IPriorityManager.GetNextWaiter">
+            <summary>
+            GetNextWaiter 返回等待时间最长的waiter。
+            注意，返回时并不会从等待列表中删除waiter。如果要删除某个等待者，请调用RemoveWaiter。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Geometry.CompassDirections">
+            <summary>
+            CompassDirections 代表8个方向。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Geometry.CompassDirectionsHelper.GetAntiCompassDirections(ESBasic.Geometry.CompassDirections)">
+            <summary>
+            GetAntiCompassDirections 获取当前方向相反的方向。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Arithmetic.FuzzyMatchHelper">
+            <summary>
+            字串模糊匹配算法。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Arithmetic.AStar.RoutePlanData">
+            <summary>
+            RoutePlanData 用于封装一次路径规划过程中的规划信息。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.RoutePlanData.CellMap">
+            <summary>
+            CellMap 地图的矩形大小。经过单元格标准处理。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.RoutePlanData.ClosedList">
+            <summary>
+            ClosedList 关闭列表，即存放已经遍历处理过的节点。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.RoutePlanData.OpenedList">
+            <summary>
+            OpenedList 开放列表，即存放已经开发但是还未处理的节点。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.RoutePlanData.Destination">
+            <summary>
+            Destination 目的节点的位置。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Arithmetic.AStar.AStarNode">
+            <summary>
+            AStarNode 用于保存规划到当前节点时的各个Cost值以及父节点。
+            zhuweisky 2008.10.18
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.AStar.AStarNode.ResetPreviousNode(ESBasic.Arithmetic.AStar.AStarNode,System.Int32)">
+            <summary>
+            ResetPreviousNode 当从起点到达本节点有更优的路径时，调用该方法采用更优的路径。
+            </summary>        
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.AStarNode.Location">
+            <summary>
+            Location 节点所在的位置，其X值代表ColumnIndex，Y值代表LineIndex
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.AStarNode.PreviousNode">
+            <summary>
+            PreviousNode 父节点，即是由哪个节点导航到当前节点的。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.AStarNode.CostF">
+            <summary>
+            CostF 从起点导航经过本节点然后再到目的节点的估算总代价。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.AStarNode.CostG">
+            <summary>
+            CostG 从起点导航到本节点的代价。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Arithmetic.AStar.AStarNode.CostH">
+            <summary>
+            CostH 使用启发式方法估算的从本节点到目的节点的代价。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.DraggerHelper">
+            <summary>
+            可以通过拖动来改变控件的位置和大小。【来自博客园的LoveJenny】
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.DraggerHelperCore.EnumMousePointPosition">
+            <summary>
+            光标状态
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicBridge.DynamicEventBridgeEmitter">
+            <summary>
+            DynamicEventBridgeEmitter 用于发射实现了IEventBridge接口的事件桥类型。
+            发射得到的动态类型的构造参数将接收两个类型的参数：typeOfEventPublisher，typeOfEventHandler
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeEmitter.EmitEventBridgeType(System.Type,System.Type,System.String)">
+            <summary>
+            EmitEventBridgeType 发射实现了IEventBridge接口的事件桥类型
+            </summary>
+            <param name="typeOfEventPublisher">发布事件的类型</param>
+            <param name="typeOfEventHandler">包含了事件处理器方法的类型</param>
+            <param name="eventHandlerNamePrefix">处理器方法的名称的前缀（即该前缀加上事件名称就得到处理器方法的名称）</param>
+            <returns>实现了IEventBridge接口的事件桥类型，其构造参数为：typeOfEventPublisher，typeOfEventHandler</returns>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeEmitter.EmitEventBridgeType(System.Type,System.Type,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            EmitEventBridgeType 发射实现了IEventBridge接口的事件桥类型
+            </summary>
+            <param name="typeOfEventPublisher">发布事件的类型</param>
+            <param name="typeOfEventHandler">包含了事件处理器方法的类型</param>
+            <param name="eventAndHanlerMapping">事件名称与处理器方法名称的映射</param>
+            <returns>实现了IEventBridge接口的事件桥类型，其构造参数为：typeOfEventPublisher，typeOfEventHandler</returns>
+        </member>
+        <member name="T:ESBasic.ShortTimeScope">
+            <summary>
+            ShortTimeScope 时间范围。
+            zhuweisky 2007.01.08
+            </summary>
+        </member>
+        <member name="M:ESBasic.ShortTimeScope.Contains(ESBasic.ShortTime)">
+            <summary>
+            Contains 目标时刻是否在时间范围内
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Threading.Timers.TimingTaskManager">
+            <summary>
+            TimingTaskManager 用于管理所有的定时任务，并在时间到达时，异步执行任务。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.MultiTree`1">
+            <summary>
+            IMultiTree 的参考实现。该实现是线程安全的。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.MultiTree`1.Initialize(ESBasic.ObjectManagement.Trees.Multiple.MNode{`0})">
+            <summary>
+            Initialize 使用已经存在的某个树（或子树）来构造一个新树。
+            </summary>      
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.Multiple.MultiTree`1.SmartRWLocker">
+            <summary>
+            SmartRWLocker 为支持反序列化后_smartRWLocker不为null而设计。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.EnumHelper">
+            <summary>
+            EnumHelper 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.EnumHelper.ConvertEnumToFieldDescriptionList(System.Type)">
+            <summary>
+            ConvertEnumToFieldDescriptionList 将Enum的所有枚举值放到IList中，以绑定到如ComoboBox等控件
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Helpers.EnumHelper.ConvertEnumToFieldTextList(System.Type)">
+            <summary>
+            ConvertEnumToFieldTextList 获取Enum的所有Field的文本表示。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.EnumHelper.ParseEnumValue(System.Type,System.String)">
+            <summary>
+            ParseEnumValue 与ConvertEnumToList结合使用，将ComoboBox等控件中选中的string转换为枚举值
+            </summary>       
+        </member>
+        <member name="T:ESBasic.ObjectManagement.SafeQueue`1">
+            <summary>
+            线程安全的Queue。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Geometry.RotationAngles">
+            <summary>
+            RotationAngles 旋转的角度。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Geometry.RotationAngles.GetAngleOfDirection(ESBasic.Geometry.CompassDirections)">
+            <summary>
+            GetAngleOfDirection 获取当前方向与CompassDirections.North的夹角。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Arithmetic.Sorting.InsertionSorter`1">
+            <summary>
+            InsertionSorter 插入排序
+            CQ，2008.12.13
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.EmitHelper">
+            <summary>
+            EmitHelper zhuweisky 2007.0725
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.GetParametersType(System.Reflection.MethodInfo)">
+            <summary>
+            GetParametersType 获取方法的参数类型
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.LoadArg(System.Reflection.Emit.ILGenerator,System.Int32)">
+            <summary>
+            LoadArg 加载方法的参数
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.ConvertTopArgType(System.Reflection.Emit.ILGenerator,System.Type,System.Type)">
+            <summary>
+            ConvertTopArgType 发射类型转换的代码，将堆栈顶部的参数转换为目标类型。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.GetGenericParameterNames(System.Reflection.MethodInfo)">
+            <summary>
+            GetGenericParameterNames 获取目标方法的泛型参数的名称。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.DefineDerivedMethodSignature(System.Reflection.Emit.TypeBuilder,System.Reflection.MethodInfo)">
+            <summary>
+            DefineDerivedMethodSignature 定义动态类中方法的签名，支持泛型方法。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.Ldind(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Ldind 间接加载（即从地址加载[type类型]的对象）。不支持decimal类型
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.Stind(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            Stind 间接存储（即存储[type类型]的对象地址）。将间接存储。不支持decimal类型
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Emit.EmitHelper.LoadType(System.Reflection.Emit.ILGenerator,System.Type)">
+            <summary>
+            LoadType 加载一个Type对象到堆栈。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Helpers.EventSafeTrigger">
+            <summary>
+            只有当事件的声明是以CbGeneric以及其泛型类型为委托类型时，才可以使用EventSafeTrigger来安全触发事件。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Demisemiquaver">
+            <summary>
+            Demisemiquaver 三十二进制。字符编码中不包括字符"0"/"I"/"O"/"U"
+            </summary>
+        </member>
+        <member name="M:ESBasic.Demisemiquaver.Convert(System.Int64)">
+            <summary>
+            Convert 将一个数转换为32进制的字符串。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Threading.Timers.CallbackTimer`1">
+            <summary>
+            CallbackTimer 回调任务定时器。
+            注意：回调任务会异步在ThreadPool的WorkerThread上执行。即使目标任务抛出异常也不会影响CallbackTimer的继续运行。
+            </summary>   
+        </member>
+        <member name="T:ESBasic.Threading.Timers.ICallbackTimer`1">
+            <summary>
+            ICallbackTimer 回调定时器。
+            注意：回调任务会异步在ThreadPool的WorkerThread上执行。即使目标任务抛出异常也不会影响INotifyTimer的继续运行。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ICallbackTimer`1.AddCallback(System.Int32,ESBasic.CbGeneric{`0},`0)">
+            <summary>
+            AddCallback 添加一个回调任务。目标任务会在spanInSecs后运行。仅仅运行一次。
+            </summary>
+            <param name="spanInSecs">多少秒后执行任务</param>
+            <param name="_callback">目标方法的委托</param>
+            <param name="_callbackPara">调用目标方法的参数</param>
+            <returns>新的任务编号</returns>     
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ICallbackTimer`1.RemoveCallback(System.Int32)">
+            <summary>
+            RemoveCallback 删除目标回调任务。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ICallbackTimer`1.RemoveCallbackAndAddNew(System.Int32,System.Int32,ESBasic.CbGeneric{`0},`0)">
+            <summary>
+            RemoveCallbackAndAddNew 删除目标回调任务，并添加一个新的回调任务。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ICallbackTimer`1.GetLeftSeconds(System.Int32)">
+            <summary>
+            GetLeftSeconds 离目标任务被回调执行还有多长时间（s）。返回0，表示任务不存在或者任务已经被执行。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Threading.Timers.ICallbackTimer`1.Clear">
+            <summary>
+            Clear 清除所有回调任务。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.CallbackTask`1">
+            <summary>
+            CallbackTask 用于封装一个定时回调任务。
+            </summary>    
+        </member>
+        <member name="P:ESBasic.Threading.Timers.CallbackTask`1.Callback">
+            <summary>
+            Callback 回调执行时，不允许抛出任何异常
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Synchronize.SmartRWLocker">
+            <summary>
+            SmartRWLocker 简化了ReaderWriterLock的使用。通过using来使用Lock方法返回的对象，如：using(this.smartLocker.Lock(AccessMode.Read)){...}
+            zhuweisky 2008.11.25
+            </summary>   
+        </member>
+        <member name="T:ESBasic.Threading.Synchronize.AccessMode">
+            <summary>
+            AccessMode 访问锁定资源的方式。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Threading.Synchronize.AccessMode.UpAndDowngrade4Write">
+            <summary>
+            前提条件：已经获取Read锁。
+            再采用此模式，可以先升级到Write，访问资源，再降级回Read。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.IWorkerEngine`1">
+            <summary>
+            IWorkerEngine 工作者引擎。用于在后台使用多线程不间断、连续地处理任务。
+            一群工作者线程轮流从工作队列中取出工作进行处理，模仿完成端口的机制。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.Threading.Engines.IWorkerEngine`1.GetWaittingWorks">
+            <summary>
+            获取队列中正在排队的任务。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Threading.Engines.IWorkerEngine`1.AddWork(`0)">
+            <summary>
+            添加任务。
+            </summary>       
+        </member>
+        <member name="E:ESBasic.Threading.Engines.IWorkerEngine`1.ExceptionOccured">
+            <summary>
+            当执行work抛出异常时，触发此事件。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.IdleSpanInMSecs">
+            <summary>
+            当没有工作要处理时，工作者线程休息的时间间隔。默认为10ms
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.WorkerThreadCount">
+            <summary>
+            工作者线程的数量。默认值为1。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.IdleThreadCount">
+            <summary>
+            此刻空闲的线程数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.WorkProcesser">
+            <summary>
+            用于处理任务的处理器。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.WorkCount">
+            <summary>
+            当前任务队列中的任务数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.IWorkerEngine`1.MaxWaitWorkCount">
+            <summary>
+            历史中最大的处于等待状态的任务数量。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.KDimension.KDSearchScope">
+            <summary>
+            KDSearchScope 用于表示某维的查询范围或Like查询
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Trees.KDimension.KDSearchScope.MatchString">
+            <summary>
+            MatchString 用于Like或NotLike的匹配字串。当KDSearchType为Default时，将忽略该字段。
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Trees.KDimension.KDSearchType.Default">
+            <summary>
+            Default 按范围搜索
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1">
+            <summary>
+            MinMaxHeap 最小最大堆，由最小层、最大层、最小层、最大层交替出现，根结点（第一层）为最小层，根结点也是最小结点，所有最小层，小的值在上层。
+            第二层为最大层，其中较大的一个子结点为最大值。所有最大层也是大的值在上层。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1.Insert(`0)">
+            <summary>
+            把新的结点插入到完全二叉树的最后一个结点，然后保证满足最小最大堆的条件，调整堆。
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1.RemoveMin">
+            <summary>
+            把最后一个结点的值赋给跟结点，然后调整堆，保证堆是最小最大堆
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1.RemoveMax">
+            <summary>
+            把最后一个结点的值赋给跟结点中较大的子结点，然后删除最后的一个结点，保证堆是最大最小堆
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1.VerifyRootSmallThanChildren(ESBasic.ObjectManagement.Trees.Binary.Node{`0})">
+            <summary>
+            确保根结点比子结点小
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Binary.MinMaxHeap`1.VerifyRootBiggerThanChildren(ESBasic.ObjectManagement.Trees.Binary.Node{`0})">
+             <summary>
+            确保根结点比子结点大
+             </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Trees.Binary.HeapType.Max">
+            <summary>
+            最大堆
+            </summary>
+        </member>
+        <member name="F:ESBasic.ObjectManagement.Trees.Binary.HeapType.Min">
+            <summary>
+            最小堆
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Integration.ISegment`2">
+            <summary>
+            ISegment 片段，一个片段有有序的多个元素TVal构成。
+            </summary>   
+            <typeparam name="TSegmentID">片段标志的类型</typeparam>
+            <typeparam name="TVal">构成片段的元素的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Integration.ISegment`2.GetContent">
+            <summary>
+            GetContent 获取片段中的所有元素，从小到大排列。
+            </summary>        
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Integration.ISegment`2.ID">
+            <summary>
+            ID 每个片段的唯一标志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.Management.IRoundCache`1">
+            <summary>
+            IRoundCache 某一Round的完整的数据缓存。用于被序列化存储。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Serialization.AgileConfiguration">
+            <summary>
+            AgileConfiguration 用于文件配置与object之间的映射。
+            实际的配置项所在的类型只要继承AgileConfiguration，即可拥有与XML配置文件之间的自动序列化和反序列化的能力。
+            zhuweisky 2007.02.28
+            </summary>
+        </member>
+        <member name="M:ESBasic.Serialization.AgileConfiguration.Load(System.String)">
+            <summary>
+            Load 将XML配置转换为Object
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Serialization.AgileConfiguration.Save(System.String)">
+            <summary>
+            Save 将配置保存到xml文件
+            </summary>   
+        </member>
+        <member name="T:ESBasic.Arithmetic.Sorting.MergeSorter`1">
+            <summary>
+            MergeSorter 归并排序
+            CQ，2008.12.13
+            </summary>    
+        </member>
+        <member name="M:ESBasic.Arithmetic.Sorting.MergeSorter`1.Merge(System.Collections.Generic.IList{`0},System.Int32,System.Int32,System.Int32,System.Collections.Generic.IList{`0},System.Boolean)">
+            <summary>
+            归并两个已经排序的子序列为一个有序的序列
+            </summary>
+            <param name="list">原始序列</param>
+            <param name="startIndx">归并起始index</param>
+            <param name="splitIndx">第一段结束的index</param>
+            <param name="endIndx">第二段结束的index</param>
+            <param name="sortedList">排序后的序列</param>
+            <param name="isASC">是否升序</param>
+        </member>
+        <member name="M:ESBasic.Collections.DictionaryHelper.ConvertToDictionary``2(System.Collections.Generic.IEnumerable{``1},ESBasic.Func{``1,``0},System.Predicate{``1})">
+            <summary>
+            ConvertToDictionary 将集合中符合条件的对象添加到新的字典中。通过func获取object对应的Key
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.DictionaryHelper.ConvertToDictionary``2(System.Collections.Generic.IEnumerable{``1},ESBasic.Func{``1,``0})">
+            <summary>
+            ConvertToDictionary 将集合中符合条件的对象添加到新的字典中。通过func获取object对应的Key
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Collections.DictionaryHelper.RemoveOneByValue``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            RemoveOneByValue 从字典中删除第一个值与val相等的记录
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Collections.DictionaryHelper.GetOneByValue``2(System.Collections.Generic.IDictionary{``0,``1},``1)">
+            <summary>
+            GetOneByValue 从字典中找出第一个值与val相等的记录的key
+            </summary>      
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.ExceptionInterceptor">
+            <summary>
+            ExceptionInterceptor 用于截获并记录异常详细信息。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.IObjectClassifier`1">
+            <summary>
+            IObjectClassifier 能根据对象的属性值对其进行分类的分类器。
+            (1)发射的动态对象分类器内部采用N层嵌套字典实现。
+            (2)发射的动态对象分类器内部最终采用IObjectContainer来存储分类后的对象。
+            (3)发射的动态对象分类器可以被序列化。
+            </summary>
+            <typeparam name="TObject">对象分类器能处理的对象类型</typeparam>
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IObjectClassifier`1.Initialize(ESBasic.Emit.ForEntity.IObjectContainerCreator{`0})">
+            <summary>
+            初始化。请特别注意：需要在分类器创建成功或反序列化完成后调用。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IObjectClassifier`1.Add(`0)">
+            <summary>
+            Add 将对象依据其分类属性值放到正确的容器中。注意，对象的用于分类的属性值不得为null。      
+            </summary>     
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IObjectClassifier`1.GetContainers(System.Object[])">
+            <summary>
+            GetContainers 根据一组分类的属性值进行匹配以获取对应的容器。
+            如果参数中某个属性值为null，表示可以匹配所有对象。如果所有的参数都不为null，则返回的列表中最多包含一个容器。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IObjectClassifier`1.GetDistinctValues(System.String)">
+            <summary>
+            GetDistinctValues 获取分类器内部所有对象的某个分类属性的所有区分值。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IObjectClassifier`1.GetAllContainers">
+            <summary>
+            GetAllContainers 获取分类器内部所有的对象容器。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.Emit.ForEntity.IObjectClassifier`1.Properties4Classify">
+            <summary>
+            Properties4Classify 依据哪些属性的值进行分类。其长度等于嵌套字典的层数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.RichTimer.TimerConfiguration">
+            <summary>
+            TimerConfiguration 定时详细设置
+            TimerConfiguration可以不依赖ESBasic.RichTimer空间中的其他组件而被单独轻量地使用。使用TimerConfigure来进行UI配置。
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Timers.RichTimer.TimerConfiguration.TargetTimeForJustOnce">
+            <summary>
+            TargetTimeForJustOnce 仅仅为RichTimerType.JustOnce类型时，该设置才有效
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.MNode`1">
+            <summary>
+            MNode IMultiTree中的节点类型
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2">
+            <summary>
+            ISmartDictionaryCache 智能缓存。首先在当前缓存中查找目标对象，如果不存在，则采用ObjectRetriever提取，并缓存。
+            该接口的实现必须是线程安全的。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.Initialize">
+            <summary>
+            初始化，调用IObjectRetriever.RetrieveAll加载。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.Get(`0)">
+            <summary>
+            Get 如果缓存中不存在id对应的object，则采用ObjectRetriever提取一次，如果仍然提取不到则返回null。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.Clear">
+            <summary>
+            清空缓存。
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.HaveContained(`0)">
+            <summary>
+            HaveContained 当前容器是否已经存在目标对象。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.Enabled">
+            <summary>
+            是否启用缓存。如果为false，则Get方法将直接通过调用IObjectRetriever.Retrieve返回。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Cache.ISmartDictionaryCache`2.Count">
+            <summary>
+            当前缓存中的对象个数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.UniqueObjectList`1">
+            <summary>
+            UniqueObjectList 保证list中的每个object都是唯一的，不会重复。该接口的实现保证是线程安全的。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Geometry.GeometryHelper.GetAdjacentPoint(System.Drawing.Point,ESBasic.Geometry.CompassDirections)">
+            <summary>
+            GetAdjacentPoint 获取某个方向上的相邻点
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Geometry.GeometryHelper.GetDistanceSquare(System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            GetDistanceSquare 获取两个点之间距离的平方。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Geometry.GeometryHelper.GetDirectionBetween(System.Drawing.Point,System.Drawing.Point,System.Int32)">
+            <summary>
+            GetDirectionBetween 获取从起点到终点的方向
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Geometry.GeometryHelper.IsInRegion(System.Single,System.Single,System.Single)">
+            <summary>
+            IsInRegion 判断某个数是否在指定区域内
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Geometry.GeometryHelper.IsTriangle(System.Collections.Generic.IList{System.Drawing.Point})">
+            <summary>
+            IsTriangle 判断集合中的头三个点Point是否可以构成一个三角形
+            </summary>		
+        </member>
+        <member name="T:ESBasic.Arithmetic.Sorting.QuickSorter`1">
+            <summary>
+            QuickSorter 快速排序
+            CQ，2008.12.13
+            </summary>
+        </member>
+        <member name="T:ESBasic.Arithmetic.GenericKMP">
+            <summary>
+            泛型KMP算法。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.GenericKMP.Next``1(``0[])">
+            <summary>
+            Next函数。之所以将Next函数暴露为public，是为了在外部可以缓存回溯函数，以供多次使用。 
+            </summary>
+            <param name="pattern">模式串</param>
+            <returns>回溯函数</returns>
+        </member>
+        <member name="M:ESBasic.Arithmetic.GenericKMP.ExecuteKMP``1(``0[],``0[])">
+            <summary>
+            KMP计算
+            </summary>
+            <param name="source">主串</param>       
+            <param name="pattern">模式串</param>
+            <returns>匹配的第一个元素的索引。-1表示没有匹配</returns>
+        </member>
+        <member name="M:ESBasic.Arithmetic.GenericKMP.ExecuteKMP``1(``0[],System.Int32,System.Int32,``0[])">
+            <summary>
+            KMP计算
+            </summary>
+            <param name="source">主串</param>
+            <param name="sourceOffset">主串起始偏移</param>
+            <param name="sourceCount">被查找的主串的元素个数</param>
+            <param name="pattern">模式串</param>
+            <returns>匹配的第一个元素的索引。-1表示没有匹配</returns>
+        </member>
+        <member name="M:ESBasic.Arithmetic.GenericKMP.ExecuteKMP``1(``0[],``0[],System.Int32[])">
+            <summary>
+            KMP计算
+            </summary>
+            <param name="source">主串</param>       
+            <param name="pattern">模式串</param>
+            <param name="next">回溯函数</param>
+            <returns>匹配的第一个元素的索引。-1表示没有匹配</returns>
+        </member>
+        <member name="M:ESBasic.Arithmetic.GenericKMP.ExecuteKMP``1(``0[],System.Int32,System.Int32,``0[],System.Int32[])">
+            <summary>
+            KMP计算
+            </summary>
+            <param name="source">主串</param>
+            <param name="sourceOffset">主串起始偏移</param>
+            <param name="sourceCount">被查找的主串的元素个数</param>
+            <param name="pattern">模式串</param>
+            <param name="next">回溯函数</param>
+            <returns>匹配的第一个元素的索引。-1表示没有匹配</returns>
+        </member>
+        <member name="T:ESBasic.Arithmetic.CrossJoinContainer`1">
+            <summary>
+            CrossJoinContainer 交叉连接(笛卡尔积)容器。   
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.CrossJoinContainer`1.Join(System.Collections.Generic.List{`0})">
+            <summary>
+            Join 将内部elementList中的每个元素与参数list中的每个元素作交叉连接，再将交叉连接的结果替换内部的elementList。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Arithmetic.ICrossJoinable`1">
+            <summary>
+            ICrossJoinable 可进行交叉连接(笛卡尔积)的对象必须实现的接口。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Collections.CollectionConverter">
+            <summary>
+            CollectionConverter 用于转换集合内的元素或集合类型。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertAll``2(System.Collections.Generic.IEnumerable{``0},ESBasic.Func{``0,``1})">
+            <summary>
+            ConvertAll 将source中的每个元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertSpecification``2(System.Collections.Generic.IEnumerable{``0},ESBasic.Func{``0,``1},System.Predicate{``0})">
+            <summary>
+            ConvertSpecification 将source中的符合predicate条件元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertFirstSpecification``2(System.Collections.Generic.IEnumerable{``0},ESBasic.Func{``0,``1},System.Predicate{``0})">
+            <summary>
+            ConvertSpecification 将source中的符合predicate条件的第一个元素转换为TResult类型
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertListUpper``2(System.Collections.Generic.IList{``1})">
+            <summary>
+            ConvertListUpper 将子类对象集合转换为基类对象集合
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertListDown``2(System.Collections.Generic.IList{``0})">
+            <summary>
+            ConvertListDown 将基类对象集合强制转换为子类对象集合
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertArrayToList``1(``0[])">
+            <summary>
+            ConverArrayToList 将数组转换为List
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Collections.CollectionConverter.ConvertListToArray``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            ConverListToArray 将List转换为数组
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.ConvertToGrey(System.Drawing.Image)">
+            <summary>
+            将图像转化为灰度图像。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.Convert(System.Byte[])">
+            <summary>
+            从字节数组中加载图片。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.CopyImageDeeply(System.Drawing.Image)">
+            <summary>
+            深度复制图片。
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.Convert(System.Drawing.Image)">
+            <summary>
+            将图像使用JPEG格式存储。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.ReviseRGB24Data(System.Byte[],System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            截取RGB24图像的一部分（从左上角开始）。
+            </summary>
+            <param name="origin">原始位图的核心数据</param>
+            <param name="originSize">位图大小</param>
+            <param name="newSize">要截取的大小</param>
+            <returns>被截的部分图像的RGB24数据</returns>
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.GetPart(System.Drawing.Image,System.Drawing.Rectangle)">
+            <summary>
+            抠取原图的一部分形成一个新的位图。
+            </summary>
+            <param name="origin">原始图像</param>
+            <param name="rect">要抠取的区域</param>        
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.RoundSizeByNumber(System.Drawing.Bitmap,System.Int32)">
+            <summary>
+            将图像的长和宽裁剪为N的整数倍。
+            </summary>
+            <param name="origin">原始图像</param>   
+            <param name="number">整数倍的基数</param>   
+        </member>
+        <member name="M:ESBasic.Helpers.ImageHelper.Zoom(System.Drawing.Image,System.Single)">
+            <summary>
+            缩放图片。
+            </summary>       
+        </member>
+        <!-- 对于成员“M:ESBasic.Helpers.ImageHelper.Rotate(System.Drawing.Image,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <member name="T:ESBasic.ObjectManagement.Trees.Multiple.AgileMultiTree`1">
+            <summary>
+            AgileMultiTree IAgileMultiTree接口的参考实现，保证是线程安全的。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Trees.Multiple.AgileMultiTree`1.AppendOffSprings(System.String,System.String[])">
+            <summary>
+            SynAppendOffSprings 追加节点必须进行同步处理。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Trees.Binary.SorttedBinaryTree`1">
+            <summary>
+            SorttedBinaryTree ISorttedBinaryTree的默认实现。Remove方法由CQ实现。
+            作者：朱伟 sky.zhuwei@163.com 
+            2004.12.26
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.Management.IRoundCachePersister`2">
+            <summary>
+            IRoundCachePersister 用于持久化或加载RoundCache。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.Management.IRoundCachePersister`2.Persist(`1)">
+            <summary>
+            Persist 注意，该方法不得抛出异常。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Circle`1">
+            <summary>
+            Circle 圈结构。非线程安全。
+            </summary>
+            <typeparam name="T">圈的每个节点存储的对象的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.Helpers.ApplicationHelper.StartApplication(System.String)">
+            <summary>
+            StartApplication 启动一个应用程序/进程
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.ApplicationHelper.IsAppInstanceExist(System.String)">
+            <summary>
+            IsAppInstanceExist 目标应用程序是否已经启动。通常用于判断单实例应用。将占用锁。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.ApplicationHelper.ReleaseAppInstance(System.String)">
+            <summary>
+            释放由IsAppInstanceExist占用的锁。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ApplicationHelper.OpenUrl(System.String)">
+            <summary>
+            OpenUrl 在浏览器中打开wsUrl链接
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Serialization.FieldNotNullAttribute">
+            <summary>
+            FieldNotNullAttribute 修饰那些不允许为null的Filed，可以在运行时通过FieldChecker对这些Field进行检查。
+            只对引用类型的Field有效。
+            zhuweisky 2007.03.13
+            </summary>
+        </member>
+        <member name="T:ESBasic.Serialization.FieldChecker">
+            <summary>
+            FieldChecker 对FieldNotNull标签进行检查
+            </summary>
+        </member>
+        <member name="M:ESBasic.Serialization.FieldChecker.CheckFiledNotNull(System.Collections.Generic.IList{System.Object})">
+            <summary>
+            CheckFiledNotNull 检查targets中所有class标志[FieldNotNullAttribute]的对象的标志为[FieldNotNullAttribute]的成员的值不为null。
+            </summary>       
+            <returns>Key：object ；Vlaue：值为null的Filed的列表</returns>
+        </member>
+        <member name="T:ESBasic.Geometry.Polygon">
+            <summary>
+            Polygon 多边形的对象表示。
+            zhuweisky 2005.09.06
+            </summary>
+        </member>
+        <member name="M:ESBasic.Geometry.Polygon.GetVertex(System.Int32)">
+            <summary>
+            GetVertex 获取指定索引的顶点
+            </summary>	
+        </member>
+        <member name="M:ESBasic.Geometry.Polygon.GetEdge(System.Int32)">
+            <summary>
+            GetEdge 获取指定索引的边
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Geometry.Polygon.Contains(System.Drawing.Point)">
+            <summary>
+            Contains 指定点是否位于多边形内部
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeFactory.CreateEventBridge(System.Object,System.Object,System.String)">
+            <summary>
+            CreateEventBridge 创建实现了IEventBridge接口的实例。注意返回实例后，要调用其Initialize方法完成初始化。
+            </summary>
+            <param name="eventPublisher">发布事件的对象</param>
+            <param name="eventHandler">包含了事件处理器方法的对象</param>
+            <param name="eventHandlerNamePrefix">处理器方法的名称的前缀（即该前缀加上事件名称就得到处理器方法的名称）</param>
+            <returns>实现了IEventBridge接口的实例。</returns>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeFactory.CreateEventBridge``2(``0,``1,System.String)">
+            <summary>
+            CreateEventBridge 创建实现了IEventBridge接口的实例。注意返回实例后，要调用其Initialize方法完成初始化。
+            </summary>
+            <typeparam name="TPublisher">发布事件的类型（通常为接口），暴露了要匹配的事件</typeparam>
+            <typeparam name="THandler">包含了事件处理方法的接口类型</typeparam>
+            <param name="eventPublisher">发布事件的对象</param>
+            <param name="eventHandler">包含了事件处理器方法的对象</param>
+            <param name="eventHandlerNamePrefix">处理器方法的名称的前缀（即该前缀加上事件名称就得到处理器方法的名称）</param>
+            <returns>实现了IEventBridge接口的实例。</returns>       
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeFactory.CreateEventBridge(System.Object,System.Object,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            CreateEventBridge 创建实现了IEventBridge接口的实例。注意返回实例后，要调用其Initialize方法完成初始化。
+            </summary>
+            <param name="eventPublisher">发布事件的对象</param>
+            <param name="eventHandler">包含了事件处理器方法的对象</param>
+            <param name="eventAndHanlerMapping">事件名称与处理器方法名称的映射</param>
+            <returns>实现了IEventBridge接口的实例。</returns>
+        </member>
+        <member name="M:ESBasic.Emit.DynamicBridge.DynamicEventBridgeFactory.CreateEventBridge``2(``0,``1,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            CreateEventBridge 创建实现了IEventBridge接口的实例。注意返回实例后，要调用其Initialize方法完成初始化。
+            </summary>
+            <typeparam name="TPublisher">发布事件的类型（通常为接口），暴露了要匹配的事件</typeparam>
+            <typeparam name="THandler">包含了事件处理方法的接口类型</typeparam>
+            <param name="eventPublisher">发布事件的对象</param>
+            <param name="eventHandler">包含了事件处理器方法的对象</param>
+            <param name="eventAndHanlerMapping">事件名称与处理器方法名称的映射</param>
+            <returns>实现了IEventBridge接口的实例。</returns>
+        </member>
+        <member name="T:ESBasic.ByteConverter">
+            <summary>
+            ByteConverter 实现基础数据类型与byte[]之间的相互转换。另包括char, bool, DateTime, Enum，不支持string、数组等。另外注意：  
+            (1)使用一个byte来表示bool。
+            (2)使用long来表示DateTime。
+            (3)使用double来表示decimal。
+            (4)使用int来表示枚举类型。    
+            </summary>
+        </member>
+        <member name="T:ESBasic.Widget.IImagePathGetter">
+            <summary>
+            IImagePathGetter 可以根据图片的ID获取图片的路径。为了适应AgileRichTextBox，确保imageID > 0。
+            </summary>
+        </member>
+        <member name="F:ESBasic.Widget.AgileProgressBar.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Widget.AgileProgressBar.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESBasic.Widget.AgileProgressBar.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.RichTimer.TimerTask">
+            <summary>
+            TimerTask 定时任务配置，在时间满足时将异步调用会调方法，目标方法应截获所有异常。
+            zhuweisky 2006.06
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.WorkerEngine`1.AddWork(`0)">
+            <summary>
+            AddWork 添加任务。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Threading.Engines.WorkerEngine`1.GetWaittingWorks">
+            <summary>
+            获取队列中正在排队的任务。
+            </summary>        
+        </member>
+        <member name="E:ESBasic.Threading.Engines.WorkerEngine`1.ExceptionOccured">
+            <summary>
+            当执行work抛出异常时，触发此事件。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.MaxWaitWorkCount">
+            <summary>
+            MaxWaitWorkCount 历史中最大的处于等待状态的任务数量。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.WorkProcesser">
+            <summary>
+            WorkProcesser 用于处理任务的处理器。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.WorkerThreadCount">
+            <summary>
+            工作者线程的数量。默认值为1。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.WorkCount">
+            <summary>
+            WorkCount 当前任务队列中的任务数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.IdleSpanInMSecs">
+            <summary>
+            IdleSpanInMSecs 当没有工作要处理时，工作者线程休息的时间间隔。默认为10ms
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Engines.WorkerEngine`1.IdleThreadCount">
+            <summary>
+            此刻空闲的线程数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.RefreshableCacheManager">
+            <summary>
+            RefreshableCacheManager 用于管理多个可被刷新的缓存对象，并能定时刷新所管理的缓存。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.Management.IRoundIncreasingCache`3">
+            <summary>
+            IRoundIncreasingCache 用于存储当前Round数据的增量缓存
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.Management.IRoundIncreasingCache`3.CreateRoundCache">
+            <summary>
+            CreateRoundCache 当需要序列化存储当前Cache时，先转化为轻量的TRoundCache对象，然后再进行存储。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.BidirectionalMapping`2">
+            <summary>
+            BidirectionalMapping 双向映射。即Key和Value都是唯一的，在这种情况下使用BidirectionalMapping可提升依据Value查找Key的速度。
+            该实现是线程安全的。2008.08.20
+            </summary>    
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.BidirectionalMapping`2.Add(`0,`1)">
+            <summary>
+            Add 添加映射对。如果已经有相同的key/value存在，则会覆盖。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.BidirectionalMapping`2.GetAllT1ListCopy">
+            <summary>
+            GetAllT1ListCopy 返回T1类型元素列表的拷贝。
+            </summary>  
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.BidirectionalMapping`2.GetAllT2ListCopy">
+            <summary>
+            GetAllT2ListCopy 返回T2类型元素列表的拷贝。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1">
+            <summary>
+            MultiDirectionalMapping 多向映射。用于管理类似好友群落的多向关系。
+            该实现是线程安全的。2010.06.01
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1.Add(`0,`0)">
+            <summary>
+            Add 添加映射对。如果已经有相同的映射对存在，则会覆盖。
+            </summary>    
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1.Remove(`0,`0)">
+            <summary>
+            Remove 删除映射对。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1.Remove(`0)">
+            <summary>
+            Remove 删除所有与t相关的映射对。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1.Map(`0,`0)">
+            <summary>
+            Map 容器中是否存在映射对
+            </summary>     
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Cache.MultiDirectionalMapping`1.GetMappingList(`0)">
+            <summary>
+            GetMappingList 获取所有与t相关的映射对象的集合。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Arithmetic.ProbabilityDecider">
+            <summary>
+            概率决策器。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Arithmetic.ProbabilityDecider.Try">
+            <summary>
+            本次是否命中概率。
+            </summary>        
+        </member>
+        <member name="T:ESBasic.Helpers.EventHelper">
+            <summary>
+            EventHelper 只有当事件的声明是以CbGeneric以及其泛型类型为委托类型时，才可以使用EventHelper来安全触发事件。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.DoWindowsEvents">
+            <summary>
+            DoWindowsEvents 在UI线程中调用该方法将使UI线程处理windows事件。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.GetStartupDirectoryPath">
+            <summary>
+            GetStartupDirectoryPath 获取当前应用程序所在的目录
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.MouseEvent(ESBasic.Helpers.MouseEventFlag,System.Int32,System.Int32,System.UInt32,System.UIntPtr)">
+            <summary>
+            MouseEvent 模拟鼠标点击
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.SetCursorPos(System.Int32,System.Int32)">
+            <summary>
+            SetCursorPos 设置光标的绝对位置
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.GetSystemIconByFileType(System.String,System.Boolean)">
+            <summary>
+            根据扩展名获取系统图标。
+            </summary> 
+            <param name="fileType">文件类型，使用扩展名表示，如".txt"</param>      
+        </member>
+        <!-- 对于成员“M:ESBasic.Helpers.WindowsHelper.RunWhenStart_usingReg(System.Boolean,System.String,System.String)”忽略有格式错误的 XML 注释 -->
+        <member name="M:ESBasic.Helpers.WindowsHelper.SetForegroundWindow(System.Windows.Forms.Form)">
+            <summary>
+            设置目标窗体为活动窗体。将其TopLevel在最前。
+            </summary>     
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.FlashWindow(System.Windows.Forms.Form)">
+            <summary>
+            闪动窗口
+            </summary>
+            <param name="form">要闪动的窗口</param>
+        </member>
+        <member name="M:ESBasic.Helpers.WindowsHelper.GetCurrentCursor">
+            <summary>
+            获取当前的鼠标光标（图像）。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ESBasic.Helpers.MouseEventFlag">
+            <summary>
+            MouseEventFlag 模拟鼠标点击的相关标志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.KeybdEventFlag">
+            <summary>
+            KeybdEventFlag 模拟键盘点击的相关标志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Addins.AddinUtil">
+            <summary>
+            AddinUtil static class 。
+            用于宿主应用程序向插件传递必要的参数信息
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Timers.RichTimer.RichTimerType">
+            <summary>
+            RichTimerType 定时器类型 
+            </summary>
+        </member>
+        <member name="F:ESBasic.Threading.Timers.RichTimer.RichTimerType.EverySpan">
+            <summary>
+            EverySpan 在TimerConfiguration将Hour、Minute、Second属性看作Span的设置
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Engines.IWorkProcesser`1">
+            <summary>
+            IWorkProcesser 任务处理器。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Threading.Application.ICircleTaskSwitcher`1">
+            <summary>
+            ICircleTaskSwitcher 循环任务切换器。
+            将一天24小时分为多个时段，在不同的时段，会有不同的任务。当到达任务切换点时，切换器会触发切换事件。
+            zhuweisky 2008.12.29
+            </summary>
+        </member>
+        <member name="P:ESBasic.Threading.Application.ICircleTaskSwitcher`1.TaskDictionary">
+            <summary>
+            TaskDictionary key为任务的起始点(hour)，value为对应的任务。
+            </summary>
+        </member>
+        <member name="E:ESBasic.Threading.Application.ICircleTaskSwitcher`1.TaskSwitched">
+            <summary>
+            TaskSwitched 当任务发生切换时，触发此事件，事件参数为刚得到控制权的任务。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IGroupingObject`2">
+            <summary>
+            IGroupingObject 能够被分组管理的对象必须实现的接口。
+            </summary>   
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IPriorityObject">
+            <summary>
+            IPriorityObject 具有优先级的对象的接口。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Increasing.Management.RoundCacheManager`6">
+            <summary>
+            RoundCacheManager 用于管理历史的RoundCache和当前增量的IRoundIncreasingCache。该类是线程安全的。
+            当一个Round结束后，RoundCacheManager会将对应的RoundCache转移到历史并将其持久化。
+            关于异常处理：
+            (1)本模型的驱动源在于IIncreaseAutoRetriever的循环引擎，如果其抛出异常将会停止运行，同时本RoundCacheManager也就丧失了驱动力，将再无任何增量进入。
+            (2)调用AddRoundCache、RemoveRoundCache方法时也要捕获异常，因为持久化可能出错。
+            </summary>
+            <typeparam name="TSourceToken">如果有多处数据源，则TSourceToken用于标识每个数据源</typeparam>
+            <typeparam name="TRoundID">每一个Round的标志，比如用天作为Round，则TRoundID可以是int (TheDate)。（</typeparam>
+            <typeparam name="TRoundCache">某一Round的完整的数据缓存。可用于序列化存储。</typeparam>
+            <typeparam name="TRoundIncreasingCache">用于存储当前Round数据的增量缓存</typeparam>
+            <typeparam name="TKey">每个增量的唯一标志的类型，假设增量标志的值是逐渐递增的。</typeparam>
+            <typeparam name="TObject">代表增量的类型</typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.Management.RoundCacheManager`6.AddRoundCache(`2,System.Boolean)">
+            <summary>
+            AddRoundCache 也有可能是重新计算某个Round的历史缓存后再重新加入
+            </summary>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Increasing.Management.RoundCacheManager`6.GetHistoryRoundIDList">
+            <summary>
+            GetHistoryRoundIDList 获取缓存的RoundID列表，不包括当前正在增量的RoundID
+            </summary>        
+        </member>
+        <member name="E:ESBasic.ObjectManagement.Increasing.Management.RoundCacheManager`6.NewRoundStarted">
+            <summary>
+            NewRoundStarted 新的一个Round开始。事件参数为新Round的ID。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Increasing.Management.RoundCacheManager`6.MaxHistoryCountInMemory">
+            <summary>
+            MaxHistoryCountInMemory 保存在内存中的最大的History个数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Loggers.FileLogger">
+            <summary>
+            FileLogger 将日志记录到文本文件。FileLogger是线程安全的。
+            </summary>
+        </member>
+        <member name="P:ESBasic.Loggers.FileLogger.MaxLength4ChangeFile">
+            <summary>
+            当日志文件增加到一定的大小时，将创建一个新的文件记录日志。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Helpers.ReflectionHelper">
+            <summary>
+            ReflectionHelper 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.GetType(System.String)">
+            <summary>
+            GetType  通过完全限定的类型名来加载对应的类型。typeAndAssName如"ESBasic.Filters.SourceFilter,ESBasic"。
+            如果为系统简单类型，则可以不带程序集名称。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.GetType(System.String,System.String)">
+            <summary>
+            GetType 加载assemblyName程序集中的名为typeFullName的类型。assemblyName不用带扩展名，如果目标类型在当前程序集中，assemblyName传入null	
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.LoadDerivedInstance``1(System.Reflection.Assembly)">
+            <summary>
+            LoadDerivedInstance 将程序集中所有继承自TBase的类型实例化
+            </summary>
+            <typeparam name="TBase">基础类型（或接口类型）</typeparam>
+            <param name="asm">目标程序集</param>
+            <returns>TBase实例列表</returns>
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.LoadDerivedType(System.Type,System.String,System.Boolean,ESBasic.Helpers.ReflectionHelper.TypeLoadConfig)">
+            <summary>
+            LoadDerivedType 加载directorySearched目录下所有程序集中的所有派生自baseType的类型
+            </summary>
+            <typeparam name="baseType">基类（或接口）类型</typeparam>
+            <param name="directorySearched">搜索的目录</param>
+            <param name="searchChildFolder">是否搜索子目录中的程序集</param>
+            <param name="config">高级配置，可以传入null采用默认配置</param>        
+            <returns>所有从BaseType派生的类型列表</returns>
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.SetProperty(System.Collections.Generic.IList{System.Object},System.String,System.Object)">
+            <summary>
+            SetProperty 如果list中的object具有指定的propertyName属性，则设置该属性的值为proValue
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.SetProperty(System.Object,System.String,System.Object,System.Boolean)">
+            <summary>
+            SetProperty 如果object具有指定的propertyName属性，则设置该属性的值为proValue
+            </summary>		
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.GetProperty(System.Object,System.String)">
+            <summary>
+            GetProperty 根据指定的属性名获取目标对象该属性的值
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.GetFieldValue(System.Object,System.String)">
+            <summary>
+            GetFieldValue 取得目标对象的指定field的值，field可以是private
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.SetFieldValue(System.Object,System.String,System.Object)">
+            <summary>
+            SetFieldValue 设置目标对象的指定field的值，field可以是private
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.CopyProperty(System.Object,System.Object)">
+            <summary>
+            CopyProperty 将source中的属性的值赋给target上同名的属性
+            使用CopyProperty可以方便的实现拷贝构造函数
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.CopyProperty(System.Object,System.Object,System.Collections.Generic.IList{ESBasic.MapItem})">
+            <summary>
+            CopyProperty 将source中的属性的值赋给target上想匹配的属性，匹配关系通过propertyMapItemList确定
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.GetAllMethods(System.Type[])">
+            <summary>
+            GetAllMethods 获取接口的所有方法信息，包括继承的
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.SearchGenericMethodInType(System.Type,System.String,System.Type[])">
+            <summary>
+            SearchGenericMethodInType 搜索指定类型定义的泛型方法，不包括继承的。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.ReflectionHelper.SearchMethod(System.Type,System.String,System.Type[])">
+            <summary>
+            SearchMethod 包括被继承的所有方法，也包括泛型方法。
+            </summary>       
+        </member>
+        <member name="P:ESBasic.Helpers.ReflectionHelper.TypeLoadConfig.CopyToMemory">
+            <summary>
+            CopyToMem 是否将程序集拷贝到内存后加载
+            </summary>
+        </member>
+        <member name="P:ESBasic.Helpers.ReflectionHelper.TypeLoadConfig.LoadAbstractType">
+            <summary>
+            LoadAbstractType 是否加载抽象类型
+            </summary>
+        </member>
+        <member name="P:ESBasic.Helpers.ReflectionHelper.TypeLoadConfig.TargetFilePostfix">
+            <summary>
+            TargetFilePostfix 搜索的目标程序集的后缀名
+            </summary>
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.CompressBitmapToJpg(System.Drawing.Bitmap)">
+            <summary>
+            CompressBitmapToJpg 将位图压缩为JPG格式
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.CopyData(System.Byte[],System.Byte[],System.Int32)">
+            <summary>
+            CopyData 拷贝二进制数据
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.GetSizeString(System.UInt64)">
+            <summary>
+            将文件大小表示为简洁的形式。比如：16K，或 21.8M 等
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.GetSizeString(System.UInt64,System.Byte)">
+            <summary>
+            将文件大小表示为简洁的形式。比如：16K，或 21.8M 等
+            </summary>        
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.ComputeMultipleInteger(System.Int32,System.Int32)">
+            <summary>
+            计算整数倍。（返回的是最接近于（小于）原始值、并且是baseNum整数倍的值）
+            </summary>
+            <param name="source">原始整数</param>
+            <param name="baseNum">基数</param>
+            <returns>返回的是小于且最接近于原始值的baseNum的整数倍的值</returns>
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.GetHexadecimalStr(System.Byte[])">
+            <summary>
+            获取数据的十六进制的文本表示
+            </summary>  
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.GetHexadecimalStr(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            获取数据的十六进制的文本表示
+            </summary>      
+        </member>
+        <member name="M:ESBasic.Helpers.PublicHelper.GetBytesFromHexadecimalStr(System.String,System.String)">
+            <summary>
+            GetHexadecimalStr方法的逆操作。将用于表示16进制值的字符串（如 47 BB 13 75 79 70 10）转换为真正的byte数组。
+            </summary>
+            <param name="str">表示16进制值的字符串（如 47 BB 13 75 79 70 10）</param>
+            <param name="seperator">两个值之间的分隔符。比如“ ”。如果没有分隔符，传入null</param>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.Managers.SafeDictionary`2.GetAllReadonly">
+            <summary>
+            返回的列表不能被修改。【使用缓存】
+            </summary>  
+        </member>
+        <member name="T:ESBasic.ObjectManagement.CircleQueue`1">
+            <summary>
+            内部使用Circle的固定大小的Queue，当装满后，再加入对象，则将最老的那个对象替换掉。该类的实现是线程安全的。
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:ESBasic.ObjectManagement.CircleQueue`1.Enqueue(`0)">
+            <summary>
+            当装满后，再加入对象，则将最老的那个对象覆盖掉。
+            </summary>        
+        </member>
+        <member name="M:ESBasic.ObjectManagement.CircleQueue`1.Peek">
+            <summary>
+            查看队列首部的元素，但是不从队列中移除。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.CircleQueue`1.PeekAt(System.Int32)">
+            <summary>
+            查看指定位置的元素，但是不从队列中移除。
+            </summary>       
+        </member>
+        <member name="M:ESBasic.ObjectManagement.CircleQueue`1.ChangeSize(System.Int32)">
+            <summary>
+            更改大小。如果当前队列中元素个数大于新的尺寸，则丢弃部分老的元素。
+            </summary>        
+        </member>
+        <member name="P:ESBasic.ObjectManagement.CircleQueue`1.MaxCount">
+            <summary>
+            历史中最大的元素个数。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.CircleQueue`1.Size">
+            <summary>
+            最大容量。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.CircleQueue`1.Count">
+            <summary>
+            队列中的元素个数。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.DynamicProxy.DynamicProxyFactory">
+            <summary>
+            DynamicProxyFactory 用于创建各种类型动态代理的工厂。线程安全。
+            发射的所有动态代理类型都继承了MarshalByRefObject。
+            zhuweisky 2008.03.01
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.AgileCreator">
+            <summary>
+            AgileCreator 在需要大量的动态创建实例的时候，使用AgileCreator取代基于反射的对象创建以提高创建效率。
+            调用AgileCreator.New()方法创建对象。
+            zhuweisky 2007.01.26
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.AgileCreator.GetCreator(System.Type,System.Object[])">
+            <summary>
+            GetCreator 动态产生一个派生自AgileCreator的类，并生成其实例
+            </summary>       
+        </member>
+        <member name="M:ESBasic.Emit.AgileCreator.CreateObject(System.Object[])">
+            <summary>
+            CreateObject AgileCreator的派生类（通过GetCreator动态创建）将实现该方法，方法的实现中直接采用高效的new操作符来创建对象。
+            </summary>    
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.IPropertyQuicker`1">
+            <summary>
+            IPropertyQuicker 用于避免反射而直接读取或设定entity对象的属性值。
+            </summary>   
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.IPropertyQuicker`1.SetPropertyValue(`0,System.String,System.Object)">
+            <summary>
+             SetPropertyValue 如果TEntity是值类型，则此方法将无法改变entity对应的属性值。
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Emit.Management.DynamicAssemblyManager">
+            <summary>
+            DynamicAssemblyManager 用于管理所有Emit的动态程序集。并且处理AppDomain.AssemblyResolve事件，确保动态程序集被正常解析。
+            </summary>
+        </member>
+        <member name="T:ESBasic.DateTimeScope">
+            <summary>
+            DateTimeScope 时间范围。
+            zhuweisky
+            </summary>
+        </member>
+        <member name="T:ESBasic.DateScope">
+            <summary>
+            DateScope 日期范围
+            zhuweisky 2007.03.15
+            </summary>
+        </member>
+        <member name="M:ESBasic.DateScope.Contains(ESBasic.Date)">
+            <summary>
+            Contains 目标时刻是否在时间范围内
+            </summary>       
+        </member>
+        <member name="T:ESBasic.Addins.AddinManager">
+            <summary>
+            NetAddinManagement 用于管理所有的插件，是IAddinManagement的默认实现。
+            作者：朱伟 sky.zhuwei@163.com 
+            2005.12.15 修改
+            </summary>
+        </member>
+        <member name="T:ESBasic.Threading.Application.CircleTaskSwitcher`1">
+            <summary>
+            CircleTaskSwitcher 循环任务切换器。将一天24小时分为多个时段，在不同的时段，会有不同的任务。当到达任务切换点时，切换器会触发切换事件。
+            </summary>
+            <typeparam name="TaskType">任务的类型</typeparam> 
+        </member>
+        <member name="P:ESBasic.Threading.Application.CircleTaskSwitcher`1.TaskDictionary">
+            <summary>
+            TaskDictionary key为任务的起始点hour，value为对应的任务。
+            </summary>
+        </member>
+        <member name="T:ESBasic.ObjectManagement.Managers.IRefreshableCache">
+            <summary>
+            IRefreshableCache 能够进行刷新的缓存，被IRefreshableCacheManager统一管理。
+            zhuweisky 2007.07.07
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.IRefreshableCache.RefreshSpanInSecs">
+            <summary>
+            RefreshSpanInSecs 定时刷新的时间间隔（秒）。如果设置为0，则表示与IRefreshableCacheManager的刷新时间统一。
+            </summary>
+        </member>
+        <member name="P:ESBasic.ObjectManagement.Managers.IRefreshableCache.LastRefreshTime">
+            <summary>
+            LastRefreshTime 最后一次刷新时间。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Collections.KeyScope">
+            <summary>
+            KeyScope 用于表示一个整数范围。
+            </summary>	
+        </member>
+        <member name="P:ESBasic.Collections.KeyScope.ScopeString">
+            <summary>
+            ScopeString 以英文逗号分隔，如"10,1000"
+            </summary>
+        </member>
+        <member name="T:ESBasic.Arithmetic.AStar.ICostGetter">
+            <summary>
+            ICostGetter 获取从当前节点向某个方向移动时的代价。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Arithmetic.AStar.SimpleCostGetter">
+            <summary>
+            SimpleCostGetter ICostGetter接口的简化实现。直线代价为10， 斜线为14。
+            </summary>
+        </member>
+        <member name="T:ESBasic.Emit.ForEntity.DynamicObjectClassifierEmitter">
+            <summary>
+            DynamicObjectClassifierEmitter 用于发射实现了IObjectClassifier接口的对象分类器类型。
+            发射的动态对象分类器内部采用N层嵌套字典实现。
+            </summary>
+        </member>
+        <member name="M:ESBasic.Emit.ForEntity.DynamicObjectClassifierEmitter.AdjustMappingValues(System.Object[],System.Collections.IList[])">
+            <summary>
+            AdjustMappingValues 当属性匹配值为null时，可以将其替换为所有的区分值，并与其它属性匹配值做笛卡尔交集，得到多组匹配条件。
+            辅助以简化Emit实现。
+            </summary>       
+        </member>
+    </members>
+</doc>

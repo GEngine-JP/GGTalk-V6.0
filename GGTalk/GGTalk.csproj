@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F8A866D-EB38-4CD1-AC4F-27420ED21669}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GGTalk</RootNamespace>
+    <AssemblyName>GGTalk</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin, Version=12.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DataRabbit">
+      <HintPath>..\Dlls\DataRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="ESFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\ESFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="OMCS, Version=3.6.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\OMCS.dll</HintPath>
+    </Reference>
+    <Reference Include="Oraycn.MFile">
+      <HintPath>..\Dlls\Oraycn.MFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.88.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ChannelQualityDisplayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ChannelQualityDisplayer.Designer.cs">
+      <DependentUpon>ChannelQualityDisplayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChatBox\ChatBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\GifBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChatBox\Internals\CHARRANGE.cs" />
+    <Compile Include="Controls\ChatBox\Internals\CLIPFORMAT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\COMRECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\DVASPECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\FORMATETC.cs" />
+    <Compile Include="Controls\ChatBox\Internals\GETCLIPBOARDDATAFLAGS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\GETOBJECTOPTIONS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IAdviseSink.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IDataObject.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumFORMATETC.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumOLEVERB.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumSTATDATA.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumSTATSTG.cs" />
+    <Compile Include="Controls\ChatBox\Internals\ILockBytes.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleClientSite.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleContainer.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleObject.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IRichEditOle.cs" />
+    <Compile Include="Controls\ChatBox\Internals\ISequentialStream.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IStorge.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IStream.cs" />
+    <Compile Include="Controls\ChatBox\Internals\NativeMethods.cs" />
+    <Compile Include="Controls\ChatBox\Internals\REOBJECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\REOOBJECTFLAGS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\RichEditOle.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STATDATA.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STGM.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STGMEDIUM.cs" />
+    <Compile Include="Controls\ChatBox\Internals\tagLOGPALETTE.cs" />
+    <Compile Include="Controls\ChatBox\Internals\tagOLEVERB.cs" />
+    <Compile Include="Controls\ChatBox\Internals\TYMED.cs" />
+    <Compile Include="Controls\DecibelDisplayer\DecibelDisplayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DecibelDisplayer\DecibelDisplayer.Designer.cs">
+      <DependentUpon>DecibelDisplayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DecibelDisplayer\FourierTransformer.cs" />
+    <Compile Include="Controls\EmotionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\EmotionForm.Designer.cs">
+      <DependentUpon>EmotionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileTransferingViewer\FileTransferingViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FileTransferingViewer\FileTransferingViewer.Designer.cs">
+      <DependentUpon>FileTransferingViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileTransferingViewer\FileTransferItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FileTransferingViewer\FileTransferItem.Designer.cs">
+      <DependentUpon>FileTransferItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileTransferingViewer\IFileTransferingViewer.cs" />
+    <Compile Include="Controls\MultiAudioChat\MultiAudioChatContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MultiAudioChat\MultiAudioChatContainer.Designer.cs">
+      <DependentUpon>MultiAudioChatContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultiAudioChat\SpeakerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MultiAudioChat\SpeakerPanel.Designer.cs">
+      <DependentUpon>SpeakerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NDiskBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NDiskBrowser.Designer.cs">
+      <DependentUpon>NDiskBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\CaptureImageToolColorTable.cs" />
+    <Compile Include="Controls\ScreenCapturer\ColorLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\ColorSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\ColorSelector.Designer.cs">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\ControlPaintEx.cs" />
+    <Compile Include="Controls\ScreenCapturer\DrawStyle.cs" />
+    <Compile Include="Controls\ScreenCapturer\DrawTextData.cs" />
+    <Compile Include="Controls\ScreenCapturer\DrawToolsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\DrawToolsControl.designer.cs">
+      <DependentUpon>DrawToolsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\DrawToolsDockStyle.cs" />
+    <Compile Include="Controls\ScreenCapturer\GraphicsPathHelper.cs" />
+    <Compile Include="Controls\ScreenCapturer\NativeMethods.cs" />
+    <Compile Include="Controls\ScreenCapturer\OperateManager.cs" />
+    <Compile Include="Controls\ScreenCapturer\OperateObject.cs" />
+    <Compile Include="Controls\ScreenCapturer\OperateType.cs" />
+    <Compile Include="Controls\ScreenCapturer\RegionHelper.cs" />
+    <Compile Include="Controls\ScreenCapturer\RoundStyle.cs" />
+    <Compile Include="Controls\ScreenCapturer\ScreenCapturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\ScreenCapturer.Designer.cs">
+      <DependentUpon>ScreenCapturer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScreenCapturer\SizeGrip.cs" />
+    <Compile Include="Controls\ScreenCapturer\ToolStripRendererEx.cs" />
+    <Compile Include="Des3Encryption.cs" />
+    <Compile Include="Forms\AutoDocker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\AutoDocker.Designer.cs">
+      <DependentUpon>AutoDocker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeviceSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeviceSelectForm.Designer.cs">
+      <DependentUpon>DeviceSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddFriendForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddFriendForm.Designer.cs">
+      <DependentUpon>AddFriendForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditCatelogNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditCatelogNameForm.Designer.cs">
+      <DependentUpon>EditCatelogNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChatRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChatRecordForm.Designer.cs">
+      <DependentUpon>ChatRecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TwinkleNotifyIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\TwinkleNotifyIcon.Designer.cs">
+      <DependentUpon>TwinkleNotifyIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SystemNotifySendForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SystemNotifySendForm.Designer.cs">
+      <DependentUpon>SystemNotifySendForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SystemNotifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SystemNotifyForm.Designer.cs">
+      <DependentUpon>SystemNotifyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalUserCache.cs" />
+    <Compile Include="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdateUserInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateUserInfoForm.Designer.cs">
+      <DependentUpon>UpdateUserInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserInformationForm.Designer.cs">
+      <DependentUpon>UserInformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JoinGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JoinGroupForm.Designer.cs">
+      <DependentUpon>JoinGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalResourceManager.cs" />
+    <Compile Include="Forms\PhotoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PhotoForm.Designer.cs">
+      <DependentUpon>PhotoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JustHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VideoRequestPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\VideoRequestPanel.Designer.cs">
+      <DependentUpon>VideoRequestPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFormPartial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PaintForm.Designer.cs">
+      <DependentUpon>PaintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\VideoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VideoForm.Designer.cs">
+      <DependentUpon>VideoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NDiskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NDiskForm.Designer.cs">
+      <DependentUpon>NDiskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DiskRequestPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DiskRequestPanel.Designer.cs">
+      <DependentUpon>DiskRequestPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpRequestPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpRequestPanel.Designer.cs">
+      <DependentUpon>RemoteHelpRequestPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpForm.Designer.cs">
+      <DependentUpon>RemoteHelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpHandlePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\RemoteHelpHandlePanel.Designer.cs">
+      <DependentUpon>RemoteHelpHandlePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GroupChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GroupChatForm.Designer.cs">
+      <DependentUpon>GroupChatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SystemSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SystemSettingForm.Designer.cs">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreateGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateGroupForm.Designer.cs">
+      <DependentUpon>CreateGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchFriendForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchFriendForm.Designer.cs">
+      <DependentUpon>SearchFriendForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HeadImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HeadImageForm.Designer.cs">
+      <DependentUpon>HeadImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AudioHandlePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\AudioHandlePanel.Designer.cs">
+      <DependentUpon>AudioHandlePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSettings.cs" />
+    <Compile Include="UnitViews\GroupListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\GroupListBox.Designer.cs">
+      <DependentUpon>GroupListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\RecentListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\RecentListBox.Designer.cs">
+      <DependentUpon>RecentListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\UserListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\UserListBox.Designer.cs">
+      <DependentUpon>UserListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserLocalPersistence.cs" />
+    <Compile Include="VideoChatRecorder.cs" />
+    <EmbeddedResource Include="Controls\ChannelQualityDisplayer.resx">
+      <DependentUpon>ChannelQualityDisplayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChatBox\ChatBox.resx">
+      <DependentUpon>ChatBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChatBox\GifBox.resx">
+      <DependentUpon>GifBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChatBox\ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DecibelDisplayer\DecibelDisplayer.resx">
+      <DependentUpon>DecibelDisplayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EmotionForm.resx">
+      <DependentUpon>EmotionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FileTransferingViewer\FileTransferingViewer.resx">
+      <DependentUpon>FileTransferingViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FileTransferingViewer\FileTransferItem.resx">
+      <DependentUpon>FileTransferItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MultiAudioChat\MultiAudioChatContainer.resx">
+      <DependentUpon>MultiAudioChatContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MultiAudioChat\SpeakerPanel.resx">
+      <DependentUpon>SpeakerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NDiskBrowser.resx">
+      <DependentUpon>NDiskBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScreenCapturer\ColorSelector.resx">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScreenCapturer\DrawToolsControl.resx">
+      <DependentUpon>DrawToolsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ScreenCapturer\ScreenCapturer.resx">
+      <DependentUpon>ScreenCapturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeviceSelectForm.resx">
+      <DependentUpon>DeviceSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddFriendForm.resx">
+      <DependentUpon>AddFriendForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditCatelogNameForm.resx">
+      <DependentUpon>EditCatelogNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChatRecordForm.resx">
+      <DependentUpon>ChatRecordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TwinkleNotifyIcon.resx">
+      <DependentUpon>TwinkleNotifyIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateUserInfoForm.resx">
+      <DependentUpon>UpdateUserInfoForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserInformationForm.resx">
+      <DependentUpon>UserInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JoinGroupForm.resx">
+      <DependentUpon>JoinGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PhotoForm.resx">
+      <DependentUpon>PhotoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VideoRequestPanel.resx">
+      <DependentUpon>VideoRequestPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SystemNotifySendForm.resx">
+      <DependentUpon>SystemNotifySendForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SystemNotifyForm.resx">
+      <DependentUpon>SystemNotifyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PaintForm.resx">
+      <DependentUpon>PaintForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VideoForm.resx">
+      <DependentUpon>VideoForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NDiskForm.resx">
+      <DependentUpon>NDiskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiskRequestPanel.resx">
+      <DependentUpon>DiskRequestPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RemoteHelpRequestPanel.resx">
+      <DependentUpon>RemoteHelpRequestPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RemoteHelpForm.resx">
+      <DependentUpon>RemoteHelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RemoteHelpHandlePanel.resx">
+      <DependentUpon>RemoteHelpHandlePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GroupChatForm.resx">
+      <DependentUpon>GroupChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SystemSettingForm.resx">
+      <DependentUpon>SystemSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreateGroupForm.resx">
+      <DependentUpon>CreateGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchFriendForm.resx">
+      <DependentUpon>SearchFriendForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HeadImageForm.resx">
+      <DependentUpon>HeadImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AudioHandlePanel.resx">
+      <DependentUpon>AudioHandlePanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\GroupListBox.resx">
+      <DependentUpon>GroupListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\RecentListBox.resx">
+      <DependentUpon>RecentListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\UserListBox.resx">
+      <DependentUpon>UserListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GGTalk.Core\GGTalk.Core.csproj">
+      <Project>{631E0627-09F3-4EED-8F37-A71D51B6C39E}</Project>
+      <Name>GGTalk.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JustLib\JustLib.csproj">
+      <Project>{D39E8188-1274-459D-93B4-453A6F30CADF}</Project>
+      <Name>JustLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.ico" />
+    <None Include="Resources\refresh3.png" />
+    <None Include="Resources\paste3.png" />
+    <None Include="Resources\Go3.bmp" />
+    <None Include="Resources\up11.png" />
+    <None Include="Resources\Text.ico" />
+    <None Include="Resources\Save.ico" />
+    <None Include="Resources\refresh2.png" />
+    <None Include="Resources\Redo.png" />
+    <None Include="Resources\Rectangular.ico" />
+    <None Include="Resources\paste2.png" />
+    <None Include="Resources\Line.ico" />
+    <None Include="Resources\Go2.bmp" />
+    <None Include="Resources\folder_new2.png" />
+    <None Include="Resources\Exit.ico" />
+    <None Include="Resources\Ellipse.ico" />
+    <None Include="Resources\edit-undo1.png" />
+    <None Include="Resources\edit-redo1.png" />
+    <None Include="Resources\down11.png" />
+    <None Include="Resources\20120818113914742_easyicon_cn_162.png" />
+    <None Include="Resources\cut11.png" />
+    <None Include="Resources\copy11.png" />
+    <None Include="Resources\AV_Accept2.png" />
+    <None Include="Resources\Arrow.ico" />
+    <None Include="Resources\app_icon_4011.png" />
+    <None Include="Resources\Accept.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

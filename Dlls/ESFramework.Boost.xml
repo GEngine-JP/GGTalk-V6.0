@@ -1,0 +1,1690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESFramework.Boost</name>
+    </assembly>
+    <members>
+        <member name="T:ESFramework.Boost.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Accept">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.allbtn_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.allbtn_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.app_icon_40">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Arrow">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.AV_Accept">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.AV_Accept1">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.AV_Refuse">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.AV_VDC_Bkg">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_close_disable">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_close_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_close_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_max_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_max_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_max_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_mini_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_mini_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_mini_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_restore_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_restore_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.btn_restore_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.busy">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Conversation1">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.copy">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.cut">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.cut_red">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.delete">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.editRedo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.editUndo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Ellipse">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Exit">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.folder_new">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Go">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.HDVideoHangs">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Hor">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Line">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.mic2">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.paste">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Rectangular">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Redo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.refresh">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.RemoteHelp">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Save">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Text">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.up">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.Ver">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Properties.Resources.VideoWaitToAnswer">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.AutoDocker.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ScreenCapturer.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ScreenCapturer.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ScreenCapturer.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.FileTransferItem">
+            <summary>
+            用于显示单个文件传送的进度状态。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.FileTransferItem.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferItem.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferItem.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferItem.FileCanceled">
+            <summary>
+            FileCanceled 当点击“取消”按钮时，将触发此事件。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferItem.FileReceived">
+            <summary>
+            当 点击 “接收”按钮 时，触发
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferItem.FileRejected">
+            <summary>
+            当点击“拒绝”按钮时，触发
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter">
+            <summary>
+            用于客户端发送与组操作相关的信息和广播信息。    
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.Broadcast(System.String,System.Int32,System.Byte[],ESFramework.ActionTypeOnChannelIsBusy)">
+            <summary>
+            发送广播消息。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.JoinGroup(System.String)">
+            <summary>
+            加入组。
+            </summary>  
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.QuitGroup(System.String)">
+            <summary>
+            退出组。
+            </summary>  
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.GetGroupMembers(System.String)">
+            <summary>
+            获取组成员列表。如果本地有缓存，有直接从本地缓存提取。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.GetGroupMembersFromServer(System.String)">
+            <summary>
+            从服务器获取组成员列表。即使本地有缓存，也查询服务器。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.Broadcast(System.String,System.Int32,System.Byte[],ESFramework.ActionTypeOnChannelIsBusy,ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode)">
+            <summary>
+            在组内广播信息。
+            </summary>
+            <param name="groupID">接收广播信息的组ID</param>
+            <param name="broadcastType">广播信息的类型</param>
+            <param name="broadcastContent">信息的内容</param>
+            <param name="broadcastChannelMode">选择通道模型。</param>
+            <param name="action">当通道繁忙时采取的操作。</param>        
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.BroadcastBlob(System.String,System.Int32,System.Byte[],System.Int32,ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode)">
+            <summary>
+            在组内广播大数据块信息。直到数据发送完毕，该方法才会返回。如果担心长时间阻塞调用线程，可考虑异步调用本方法。
+            </summary>
+            <param name="groupID">接收广播信息的组ID</param>
+            <param name="broadcastType">广播信息的类型</param>
+            <param name="blobContent">大数据块的内容</param>
+            <param name="broadcastChannelMode">选择通道模型。</param>
+            <param name="fragmentSize">分片传递时，片段的大小</param>  
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.SomeoneJoinGroup">
+            <summary>
+            当新成员加入组时，触发该事件。参数：GroupID - MemberID
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.SomeoneQuitGroup">
+            <summary>
+            当成员退出组时，触发该事件。参数：GroupID - MemberID
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.GroupmateOffline">
+            <summary>
+            当用户掉线，从所有动态组中退出时，触发该事件。参数：MemberID
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.BroadcastReceived">
+            <summary>
+            当接收到某个组内的广播消息（包括大数据块信息）时，触发此事件。参数：broadcasterID - groupID - broadcastType - broadcastContent。
+            如果broadcasterID为null，表示是服务端发送的广播。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Passive.IDynamicGroupOutter.TryP2PWhenGroupmateConnected">
+            <summary>
+            当组友上线时，是否自动进行P2P连接。默认值为true。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode">
+            <summary>
+            广播通道选择模型。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode.P2PChannelFirst">
+            <summary>
+            如果和某个用户之间的P2P通道存在，则到该用户的广播经过P2P通道传送；否则，经过服务器中转。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode.AllTransferByServer">
+            <summary>
+            全部经过服务器中转，不使用任何P2P通道。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.DynamicGroup.Passive.BroadcastChannelMode.AllByP2PChannel">
+            <summary>
+            仅仅使用P2P通道。如果与某个用户之间的P2P通道不存在，则不发送广播到该用户。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ChatBoxElementType.ForeignImage">
+            <summary>
+            插入的图片。（如果小于100000，则为系统内置的表情图片，其值为表情图片的index）
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ChatBoxElementType.FileLink">
+            <summary>
+            插入的为一个指向文件夹的链接
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ChatBoxElementType.LinkText">
+            <summary>
+            文本链接
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.ChatBox">
+            <summary>
+            支持图片和动画的RichTextBox。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ChatBox.InsertDefaultEmotion(System.UInt32,System.Int32)">
+            <summary>
+            在position位置处，插入系统内置表情。
+            </summary>      
+            <param name="position">插入的位置</param>
+            <param name="emotionID">表情图片在内置列表中的index</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ChatBox.InsertImage(System.Drawing.Image,System.Int32)">
+            <summary>
+            在position位置处，插入图片。
+            </summary>   
+            <param name="image">要插入的图片</param>
+            <param name="position">插入的位置</param>       
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ChatBox.AppendRichText(System.String,System.Drawing.Font,System.Drawing.Color)">
+            <summary>
+            在现有内容后面追加富文本。
+            </summary>      
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ChatBox.GetContent">
+            <summary>
+            获取Box中的所有内容。
+            </summary>        
+            <param name="containsForeignObject">内容中是否包含不是由IImagePathGetter管理的图片对象</param>
+            <returns>key为位置，val为图片的ID</returns>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.ChatBox.FileOrFolderDragDrop">
+            <summary>
+            当文件（夹）拖放到控件内时，触发此事件。参数：文件路径的集合。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.ChatBox.ContextMenuMode">
+            <summary>
+            快捷菜单的模式。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.ChatBox.PopoutImageWhenDoubleClick">
+            <summary>
+            双击图片时，是否弹出图片。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.ChatBoxContent">
+            <summary>
+            封装完整的一个聊天消息，消息中可以包含表情和图片。    
+            注意：Text属性的值表示纯文本信息，而图片都变成了文本中的对应位置的占位符（空格）。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.ChatBoxContent.Text">
+            <summary>
+            纯文本信息，图片都变成了一个占位符（空格）。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.ChatBoxContent.NonTextItemDictionary">
+            <summary>
+            非内置的表情图片。key - 在ChatBox中的位置。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.ChatBoxContent.NonTextItemPositions">
+            <summary>
+            所有图片的位置。从小到大排列。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.NonTextItem.LinkText">
+            <summary>
+            当ChatBoxElementType为LinkText时使用。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.NonTextItem.InnerEmotionIndex">
+            <summary>
+            当ChatBoxElementType为InnerEmotion时使用。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.NonTextItem.ForeignImage">
+            <summary>
+            当ChatBoxElementType为ForeignImage时使用。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.NonTextItem.FilePath">
+            <summary>
+            当ChatBoxElementType为FileLink时使用。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.BlobReceiver">
+            <summary>
+            用于接收Blob的片段，并将其拼接为一个完整的Blob。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Blob.BlobID">
+            <summary>
+            大数据块唯一编号。从1开始逐个递增。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Blob.SourceID">
+            <summary>
+            信息的发送者。可以为UserID或者NetServer.SystemUserID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Blob.DestID">
+            <summary>
+            信息的接收者。可以为UserID或者NetServer.SystemUserID或GroupID（广播消息）。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.Internals.GraphicsPathHelper.CreatePath(System.Drawing.Rectangle,System.Int32,ESFramework.Boost.Controls.Internals.RoundStyle,System.Boolean)">
+            <summary>
+            建立带有圆角样式的路径。
+            </summary>
+            <param name="rect">用来建立路径的矩形。</param>
+            <param name="_radius">圆角的大小。</param>
+            <param name="style">圆角的样式。</param>
+            <param name="correction">是否把矩形长宽减 1,以便画出边框。</param>
+            <returns>建立的路径。</returns>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Server.NetworkDisk">
+            <summary>
+            网络硬盘，为用户提供在线的网络硬盘服务。可通过INetworkDiskPathManager来将不同用户的目录分散到不同的文件服务器上。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Forms.RemoteDiskForm">
+            <summary>
+            远程磁盘 窗口。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Forms.RemoteDiskForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Forms.RemoteDiskForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESFramework.Boost.Forms.RemoteDiskForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.EmotionForm">
+            <summary>
+            表情选择窗体。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.EmotionForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.EmotionForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.EmotionForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.EmotionForm.EmotionClicked">
+            <summary>
+            EmotionClicked 某个表情图片被点击。参数: 被点击图片的索引 - Image。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ColorSelector.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ColorSelector.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ColorSelector.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Server.INDiskPathManager">
+            <summary>
+            网络硬盘的目录路径管理。可以按照计划的策略将不同用户的虚拟硬盘分散到不同的文件服务器上；也可以采用分布式文件存储系统，如FastDFS。
+            各方法的 netDiskID 参数 ： 如果为null或“”，则表示访问的是个人网盘；否则，表示访问的是一个群组的共享网盘，此时netDiskID即是groupID。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Server.INDiskPathManager.GetNetworkDiskRootPath(System.String,System.String)">
+            <summary>
+            获取某网盘对应的文件夹所在父目录的路径。返回null表示没有网络硬盘服务。  
+            </summary>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Server.INDiskPathManager.GetNetworkDiskIniDirName(System.String,System.String)">
+            <summary>
+            获取某网盘的根目录的名称。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Server.INDiskPathManager.GetNetworkDiskTotalSize(System.String,System.String)">
+            <summary>
+            获取指定网络硬盘的总大小。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Server.INDiskPathManager.GetNetworkDiskSizeUsed(System.String,System.String)">
+            <summary>
+            获取指定网络硬盘已经使用的大小。
+            </summary>        
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Server.NetworkDiskPathManager">
+            <summary>
+            提供INDiskPathManager接口的基础实现（简化版）。以某个文件目录作为整个网络硬盘的总目录。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Server.NetworkDiskPathManager.RootPath4PersonalDisk">
+            <summary>
+            提供个人网络硬盘的根目录，可以为网络路径，如 \\192.168.0.11\FTP\
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Server.NetworkDiskPathManager.RootPath4GroupDisk">
+            <summary>
+            提供群组共享的网络硬盘的根目录，可以为网络路径，如 \\192.168.0.11\FTP\
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Server.NetworkDiskPathManager.TotalSizeOfOneUser">
+            <summary>
+            每个用户的空间大小
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.SharedDirectory">
+            <summary>
+            共享的目录内容。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.SharedDirectory.GetSharedDirectory(System.String)">
+            <summary>
+            获取某个目录下的所有文件以及所有子目录。
+            </summary>
+            <param name="dirPath">父目录路径，如果为null，表示获取根目录（如“我的电脑”）下的磁盘或目录</param>              
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.SharedDirectory.GetChildPath(System.String)">
+            <summary>
+            GetChildPath 获取当前目录下的某目录或文件的路径。
+            </summary>       
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.SharedDirectory.Valid">
+            <summary>
+            Valid 表示获取目录信息是否成功。如果不成功，则Exception属性指出了失败的原因。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.SharedDirectory.Exception">
+            <summary>
+            Exception 当获取目录信息失败时，该属性指出了失败的原因。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.FileDetail">
+            <summary>
+            文件的详细信息。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.FileDetail.CreateTime">
+            <summary>
+            文件的创建时间
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.DirectoryDetail">
+            <summary>
+            目录的详细信息。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.DirectoryDetail.CreateTime">
+            <summary>
+            目录的创建时间
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.DiskDrive">
+            <summary>
+            磁盘/光驱等设备的详细信息。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ImageForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ImageForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ImageForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Server.ComplexGroupManager">
+            <summary>
+            将多个组管理器组合成一个。（返回第一个非空集合。）
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupController">
+            <summary>
+            组控制器。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupController.Broadcast(System.String,System.Int32,System.Byte[],ESFramework.ActionTypeOnChannelIsBusy)">
+            <summary>
+            在组内广播信息。
+            </summary>        
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupController.BroadcastReceived">
+            <summary>
+            当服务端接收到要转发的广播消息（包括大数据块信息）时，触发此事件。参数：broadcasterID - groupID - broadcastType - broadcastContent
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupController.GroupNotifyEnabled">
+            <summary>
+            加入/退出组、上下线等事件是否通知组友。默认值为true。
+            注意，如果关闭该选项，客户端则不能保持实时的组的状态，将导致广播信息发送出现错误（IGroupOutter.Broadcast方法）。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupController.UseGroupNotifyThread">
+            <summary>
+            组友上下线通知是否使用单独的线程。默认值为false。
+            如果要开启组友通知线程，必须先开启组友通知（即必须先将GroupNotifyEnabled设置为true）。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Server.DynamicGroupManager">
+            <summary>
+            动态组管理器。
+            （1）所有的组员都是在线的。只要组员掉线，则将其从组中移除。
+            （2）如果要加入的目标组不存在，则自动创建目标组，并加入。
+            （3）当某个组中不存在任何成员时（比如都退出），则销毁组。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.JoinGroup(System.String,System.String)">
+            <summary>
+            将用户加入目标组。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.QuitGroup(System.String,System.String)">
+            <summary>
+            将用户从目标组中移除。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.Offline(System.String)">
+            <summary>
+            将用户从所有组中移除。
+            </summary>        
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.SomeoneJoinGroup">
+            <summary>
+            当新成员加入组时，触发该事件。参数：GroupID - MemberID
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.SomeoneQuitGroup">
+            <summary>
+            当成员退出组时，触发该事件。参数：GroupID - MemberID
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.DynamicGroup.Server.IDynamicGroupManager.GroupmateOffline">
+            <summary>
+            当用户掉线，从所有组中退出时，触发该事件。参数：userID - groupmate。将不再触发SomeoneQuitGroup事件。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.DynamicGroup.Server.DynamicGroupManager.GetGroupMembers(System.String)">
+            <summary>
+            返回的集合不可修改。
+            </summary>        
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser">
+            <summary>
+            用于访问网盘或远程磁盘的浏览器控件接口。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.Initialize(System.String,ESPlus.Application.FileTransfering.Passive.IFileOutter,ESFramework.Boost.NetworkDisk.Passive.INDiskOutter)">
+            <summary>
+            初始化。
+            </summary>
+            <param name="_ownerID">如果为null，表示访问服务器上的某个目录（网盘）。否则，表示访问在线的目标用户的硬盘。</param>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.CancelAllTransfering">
+            <summary>
+            取消所有正在传送的项目。通常是在窗口被关闭时调用。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.NetDiskID">
+            <summary>
+            网盘的标志。（对于远程磁盘而言，即OwnerID为某个用户的ID时，该属性无效）。
+            如果是群组共享的文件夹，则可以将其设置为对应的群组的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.AllowUploadFolder">
+            <summary>
+            是否允许上传文件夹
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.LockRootDirectory">
+            <summary>
+            锁定为只访问根目录（不允许操作子文件夹）。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.CurrentDirectoryPath">
+            <summary>
+            当前所在目录的路径。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.Connected">
+            <summary>
+            OwnerIsOnline 远程机器是否在线。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.INDiskBrowser.IsFileTransfering">
+            <summary>
+            是否有文件正在传送中。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.CopyContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.CreateDirectoryContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.DeleteContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.DownloadContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.MoveContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.OperationResultConatract">
+            <summary>
+            针对Delete/Move/Copy的操作回复。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.OperationResult">
+            <summary>
+            针对Delete/Move/Copy操作的回复。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.OperationResult.ErrorMessage">
+            <summary>
+            如果Succeed为false，则该属性说明失败的原因。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.RenameContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.RenameContract.ParentDirectoryPath">
+            <summary>
+            ParentDirectoryPath 要重命名的文件或文件夹在哪个目录下。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.ReqDirectoryContract">
+            <summary>
+            获取某个目录的信息。
+            </summary>	
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.ReqDirectoryContract.NetDiskID">
+            <summary>
+            要访问的网络磁盘的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.ReqDirectoryContract.DirectoryPath">
+            <summary>
+            DirectoryPath 如果值为null，表示获取所有的磁盘驱动器列表。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.ResDirectoryContract">
+            <summary>
+            回复某个目录信息。
+            </summary>	
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.NetworkDiskState">
+            <summary>
+            用户使用的网络硬盘的状态。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NetworkDiskState.TotalSize">
+            <summary>
+            TotalSize 网络硬盘总大小。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NetworkDiskState.SizeUsed">
+            <summary>
+            SizeUsed 已经使用的网络硬盘大小。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Server.P2PChannelManager">
+            <summary>
+            记录当前AS上的用户已建立的P2P连接。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Passive.DynamicGroupOutter">
+            <summary>
+            IGroupOutter 的实现。
+            (1)所有组成员都是在线的。
+            (2)尽可能使用P2P通道发送广播信息。
+            (3)在从服务器获取组成员时，尝试与在线的组成员创建P2P连接。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Passive.DynamicGroupOutter.TryP2PWhenGroupmateConnected">
+            <summary>
+            当组友上线时，是否自动进行P2P连接。默认值为true。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.RemoteDiskHandlePanel">
+            <summary>
+            远程磁盘 主人控制面板
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.RemoteDiskHandlePanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.RemoteDiskHandlePanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.RemoteDiskHandlePanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.RemoteDiskHandlePanel.RemoteDiskTerminated">
+            <summary>
+            中止远程磁盘
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.ReliableUdpSessionStateViewer">
+            <summary>
+            用于监控当前客户端建立的所有UDP Session的状态。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.ReliableUdpSessionStateViewer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ReliableUdpSessionStateViewer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.ReliableUdpSessionStateViewer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Comment4NDisk">
+            <summary>
+            在网盘的环境中解析BeginSendFile方法的comment参数。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.EnumDescriptor">
+            <summary>
+            枚举描述器。用于将枚举值转换为对应的中文表达。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.EnumDescriptor.GetDescription(ESPlus.FileTransceiver.FileTransDisrupttedType,System.Boolean,System.String)">
+            <summary>
+            获取FileTransDisrupttedType枚举值对应的中文描述。
+            </summary>  
+        </member>
+        <member name="T:ESFramework.Boost.ChatPanel">
+            <summary>
+            聊天面板。适用于单聊和群聊。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.ChatPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.ChatPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.ChatPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.MultiDevice.MultiDeviceHelper">
+            <summary>
+            允许同一个用户多设备同时登录的帮助类。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.MultiDevice.MultiDeviceHelper.LoginIDPrefixMapping">
+            <summary>
+            在多设备的情况下，不同类型的设备登录时，在登录的UserID前加上对应的前缀得到LoginID，以表明自己的设备类型。
+            如果不加任何前缀，则表示自己是DotNET。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.MultiDevice.MultiDeviceHelper.ConstructLoginID(System.String,ESFramework.ClientType)">
+            <summary>
+            根据真正的UserID构造LoginID。
+            </summary>
+            <param name="userID">真正的UserID</param>
+            <param name="clientType">设备类型</param>
+            <returns>LoginID</returns>
+        </member>
+        <member name="M:ESFramework.Boost.MultiDevice.MultiDeviceHelper.ParseLoginID(System.String,ESFramework.ClientType@)">
+            <summary>
+            解析带前缀的LoginID，获得真正的UserID和设备类型。
+            </summary>
+            <param name="loginID">登录用的UserID，即带前缀的UserID</param>
+            <param name="clientType">设备类型</param>
+            <returns>真正的UserID</returns>
+        </member>
+        <member name="M:ESFramework.Boost.MultiDevice.MultiDeviceHelper.GetLoginIDList(System.String)">
+            <summary>
+            根据真正的UserID构造不同类型设备对应的LoginID的列表。
+            </summary>
+            <param name="userID">真正的UserID</param>
+            <returns>LoginID列表</returns>
+        </member>
+        <member name="M:ESFramework.Boost.MultiDevice.MultiDeviceHelper.GetUserID(System.String)">
+            <summary>
+            根据带前缀的LoginID，获取真正的UserID。
+            </summary>
+            <param name="loginID">带前缀的LoginID</param>
+            <returns>真正的UserID</returns>
+        </member>
+        <member name="M:ESFramework.Boost.MultiDevice.MultiDeviceHelper.GetClientType(System.String)">
+            <summary>
+            根据带前缀的LoginID，获取登录设备的类型。
+            </summary>
+            <param name="loginID">带前缀的LoginID</param>
+            <returns>设备类型</returns>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Passive.NDiskOutter">
+            <summary>
+            INDiskOutter接口的实现。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter">
+            <summary>
+            统合了好友远程磁盘以及虚拟网络硬盘的访问。当ownerID为null，表示访问自己在服务器上的网盘。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.GetSharedDirectory(System.String,System.String,System.String)">
+            <summary>
+            GetSharedDirectory 获取ownerID机器上的路径为dirPath的目录信息。
+            </summary>
+            <param name="ownerID">目标机器的主人ID。当ownerID为NetServer.SystemUserID，表示访问自己的网络硬盘。</param>
+            <param name="ownerID">网络磁盘的唯一标志。</param>
+            <param name="dirPath">父目录路径，如果为null，表示获取根目录（如“我的电脑”）下的磁盘或目录</param>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.GetNetworkDiskState(System.String)">
+            <summary>
+            获取自己的网络硬盘的状态。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.Move(System.String,System.String,System.String,System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String)">
+            <summary>
+            移动多个文件或文件夹。当远程目录完成操作时，该方法才返回。
+            </summary>        
+            <param name="ownerID">网络磁盘的唯一标志。</param>
+            <param name="oldParentDirectoryPath">被移动的物件所在目录的路径,以"\"结尾</param>     
+            <param name="filesBeMoved">被移动的文件名称的集合</param>
+            <param name="directoriesBeMoved">被移动的文件夹名称的集合</param>
+            <param name="newParentDirectoryPath">目标文件夹的路径,以"\"结尾</param>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.Copy(System.String,System.String,System.String,System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String)">
+            <summary>
+            复制多个文件（夹）。当远程目录完成操作时，该方法才返回。
+            </summary>        
+            <param name="ownerID">网络磁盘的唯一标志。</param>
+            <param name="sourceParentDirectoryPath">被复制的父目录路径,以"\"结尾</param>        
+            <param name="filesBeCopyed">被复制的文件名称的集合</param>
+            <param name="directoriesCopyed">被复制的文件夹名称的集合</param>
+            <param name="destParentDirectoryPath">复制品放到哪个目录下,以"\"结尾</param>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.Upload(System.String,System.String,System.String,System.String)">
+            <summary>
+            UploadFile 上传文件（夹），借助于IFileOutter发送文件（夹）。如果要上传的文件（夹）不存在或被占用，则将抛出对应的异常。
+            </summary>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.INDiskOutter.Download(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            请求下载文件（夹）。
+            </summary>
+            <param name="ownerID">目标机器的主人ID。当ownerID为null，表示访问自己的网络硬盘。</param>
+            <param name="ownerID">网络磁盘的唯一标志。</param>
+            <param name="sourceRemotePath">被下载文件（夹）的路径</param>
+            <param name="saveLocalPath">保存本地文件（夹）的路径</param>
+            <param name="isFile">下载的是文件还是文件夹</param>
+            <returns>如果因目标文件（夹）不存在或者被占用而不能下载，会由返回的对象的ErrorMessage表明</returns>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.GroupInfoTypes">
+            <summary>
+            GroupMessageTypeRoom 与组操作相关的所有消息类型定义。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.Join">
+            <summary>
+            请求加入组。对应协议为string,utf-8,groupID。回复协议为int,JoinGroupResult
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.QuitGroup">
+            <summary>
+            请求退出组。对应协议为string,utf-8,groupID。没有回复。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.SomeoneJoinGroupNotify">
+            <summary>
+            对组内通知新成员加入组。Server=>Client。对应协议为GroupNotifyContract
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.SomeoneQuitGroupNotify">
+            <summary>
+            对组内通知某成员退出组。Server=>Client。对应协议为GroupNotifyContract
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.GroupmateOfflineNotify">
+            <summary>
+            对组内通知某成员掉线（S->C）。对应协议为UserContract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.BroadcastBlob">
+            <summary>
+            广播大数据块信息。协议为BlobFragmentContract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.BroadcastBlobByServer">
+            <summary>
+            广播大数据块信息。协议为BlobFragmentContract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.P2PChannelOpen">
+            <summary>
+            当客户端P2P通道创建成功时，通知服务器。C->S。消息体为P2PChannelReportContract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.GroupInfoTypes.P2PChannelClose">
+            <summary>
+            当客户端P2P通道关闭时，通知服务器。C->S。消息体为P2PChannelReportContract。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.BlobFragmentContract">
+            <summary>
+            大数据块的某个片段。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.BlobFragmentContract.BlobID">
+            <summary>
+            大数据块唯一编号。从1开始计数，逐个递增。对于那些只有一个Fragment的Blob，可以将BlobID设置为-1，以减少编号的使用。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.BlobFragmentContract.FragmentIndex">
+            <summary>
+            片段的索引。从0开始计数。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.BlobFragmentContract.Fragment">
+            <summary>
+            片段内容。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.BlobFragmentContract.IsLast">
+            <summary>
+            是否为最后一个片段。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Basic.NetworkMonitor">
+            <summary>
+            网络状态监控器。当本地网络连接状态发生变化时，将触发NetworkStateChanged事件来通知外部。
+            ???? 在某些电脑上与视频组件有冲突。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Basic.NetworkMonitor.Initialize(System.Int32,System.Boolean)">
+            <summary>
+            初始化检测器。
+            </summary>
+            <param name="detectSpan">每隔几秒检测一次网络状态。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Basic.NetworkMonitor.IsNetworkConnected">
+            <summary>
+            可以及时反应网络连通情况，但是需要服务System Event Notification支持（系统默认自动启动该服务）
+            </summary>       
+        </member>
+        <member name="M:ESFramework.Boost.Basic.NetworkMonitor.IsNetworkConnected2">
+            <summary>
+            对网络状况不能及时反应
+            </summary>        
+        </member>
+        <member name="E:ESFramework.Boost.Basic.NetworkMonitor.NetworkStateChanged">
+            <summary>
+            当网络状态发生变化时，触发该事件。事件参数：当前网络是否连接上？
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.Internals.RoundStyle">
+            <summary>
+            建立圆角路径的样式。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.None">
+            <summary>
+            四个角都不是圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.All">
+            <summary>
+            四个角都为圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.Left">
+            <summary>
+            左边两个角为圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.Right">
+            <summary>
+            右边两个角为圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.Top">
+            <summary>
+            上边两个角为圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.Internals.RoundStyle.Bottom">
+            <summary>
+            下边两个角为圆角。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.DrawToolsControl.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.DrawToolsControl.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.DrawToolsControl.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.NDiskInfoTypes">
+            <summary>
+            所有与网盘相关的消息类型的空间。默认取值 -100 ~ 0
+            </summary>	
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.ReqDirectory">
+            <summary>
+            请求目录信息。请求协议为ReqDirectoryContract，回复为ResDirectoryContract
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.CreateDirectory">
+            <summary>
+            创建目录。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.Delete">
+            <summary>
+            删除文件或文件夹。请求协议DeleteContract，回复协议OperationResultConatract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.Rename">
+            <summary>
+            为文件或文件夹重命名。请求协议RenameContract，回复协议OperationResultConatract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.ReqNetworkDiskState">
+            <summary>
+            获取网络硬盘的状态，请求协议为null，回复协议为ResNetworkDiskStateContract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.Move">
+            <summary>
+            移动多个文件或文件夹。请求协议为MoveContract，回复协议OperationResultConatract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.Copy">
+            <summary>
+            复制多个文件或文件夹。请求协议为CopyContract，回复协议OperationResultConatract。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.NDiskInfoTypes.Download">
+            <summary>
+            请求下载文件（夹）。请求协议为DownloadContract，回复协议OperationResultConatract。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.FileTransferingViewer">
+            <summary>
+            文件传送查看器。用于查看与某个好友的所有文件传送的进度状态信息。
+            注意，FileTransferingViewer的所有事件都是在UI线程中触发的。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.IFileTransferingViewer">
+            <summary>
+            文件传送查看器。用于查看与某个好友的所有文件传送的进度状态信息。
+            注意，FileTransferingViewer的所有事件都是在UI线程中触发的。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.IFileTransferingViewer.NewFileTransferItem(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            当收到发送文件的请求时,接收方调用此方法显示fileTransferItem。
+            </summary>
+            <param name="projectID">传送项目的ID</param>
+            <param name="offlineFile">是否为离线文件</param>
+            <param name="doneAccepted">如果当前是接收方，是否已经同意接收了？（不显示“接收”、“拒绝”按钮？）</param>   
+        </member>
+        <member name="M:ESFramework.Boost.Controls.IFileTransferingViewer.GetTransferingProjectIDsInCurrentViewer">
+            <summary>
+            获取所有正在传送的项目的ID集合。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.Controls.IFileTransferingViewer.BeforeDispose">
+            <summary>
+            在该控件释放之前（比如在其宿主窗体的FormClosing事件中），一定要调用此方法！
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.IFileTransferingViewer.FileResumedTransStarted">
+            <summary>
+            当某个文件开始续传时，触发该事件。参数为FileName - isSending
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.IFileTransferingViewer.FileTransCompleted">
+            <summary>
+            当某个文件传送完毕时，触发该事件。参数为FileName - isSending - comment - isFolder
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.IFileTransferingViewer.FileTransDisruptted">
+            <summary>
+            当某个文件传送中断时，触发该事件。参数为FileName - isSending - FileTransDisrupttedType
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.IFileTransferingViewer.FileTransStarted">
+            <summary>
+            当某个文件传送开始时，触发该事件。参数为FileName - isSending
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.IFileTransferingViewer.AllTaskFinished">
+            <summary>
+            当所有文件都传送完成时，触发该事件。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.IFileTransferingViewer.IsFileTransfering">
+            <summary>
+            当前是否有文件正在传送中。
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferingViewer.Initialize(ESPlus.Application.FileTransfering.Passive.IFileOutter,ESBasic.Func{ESPlus.FileTransceiver.TransferingProject,System.Boolean})">
+            <summary>
+            初始化控件。
+            </summary>         
+            <param name="filter">当前的Viewer要显示哪些传送项目的状态信息</param>        
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferingViewer.NewFileTransferItem(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            当收到发送文件的请求时,接收方调用此方法显示fileTransferItem
+            </summary>        
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferingViewer.BeforeDispose">
+            <summary>
+             一定要在控件销毁的时候，取消预订的事件。否则，已被释放的控件的处理函数仍然会被调用，而引发"对象已经被释放"的异常。
+            </summary>        
+        </member>
+        <member name="F:ESFramework.Boost.Controls.FileTransferingViewer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferingViewer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.FileTransferingViewer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.FileResumedTransStarted">
+            <summary>
+            当某个文件开始续传时，触发该事件。参数为FileName - isSending
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.FileTransCompleted">
+            <summary>
+            当某个文件传送完毕时，触发该事件。参数为FileName - isSending - comment - isFolder
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.FileTransCompleted2">
+            <summary>
+            当某个文件传送完毕时，触发该事件。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.FileTransDisruptted">
+            <summary>
+            当某个文件传送中断时，触发该事件。参数为FileName - isSending - FileTransDisrupttedType
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.FileTransStarted">
+            <summary>
+            当某个文件传送开始时，触发该事件。参数为FileName - isSending
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.FileTransferingViewer.AllTaskFinished">
+            <summary>
+            当所有文件都传送完成时，触发该事件。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.Controls.FileTransferingViewer.IsFileTransfering">
+            <summary>
+            当前是否有文件正在传送中。
+            </summary>   
+        </member>
+        <member name="T:ESFramework.Boost.Controls.MainServerForm">
+            <summary>
+            内置的TCP服务器主窗体。可显示在线用户相关数据、连接数、线程数等信息。
+            仅仅用于开发调试阶段或Demo演示。MainServerForm会实时刷新每个在线用户的实时状态，其对CPU资源的消耗是不可忽视的，所以在正式上线的系统中，请不要使用MainServerForm。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.MainServerForm.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.MainServerForm.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.MainServerForm.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Server.DynamicGroupHandler">
+            <summary>
+            与ESPlatform结合：
+            (1)由事件（比如加入组）发生的宿主服务器（即导致事件发生的用户所在的服务器）负责通知群内成员或群友。
+            (2)如果事件是由平台或服务端触发，同理，则由目标用户所在的服务器负责通知。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Server.DynamicGroupHandler.UseGroupNotifyThread">
+            <summary>
+            组友上下线通知是否使用单独的线程。默认值为false。
+            如果要开启组友通知线程，必须先开启组友通知（即必须先将GroupNotifyEnabled设置为true）。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Passive.NDiskPassiveHandler">
+            <summary>
+            网盘（也支持远程磁盘）客户端处理器。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser">
+            <summary>
+            用于浏览远程的文件目录，并提供下载/上传/删除文件的功能。
+            构建在ESFramework.Boost.NetworkDisk基础上。
+            如果是网络硬盘（即访问服务器提供的网盘），则只有一个磁盘，名称为"UserID\\"。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.currentDirPath">
+            <summary>
+            如果为null，表示获取根目录（如“我的电脑”）下的磁盘或目录
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.Initialize(System.String,ESPlus.Application.FileTransfering.Passive.IFileOutter,ESFramework.Boost.NetworkDisk.Passive.INDiskOutter)">
+            <summary>
+            初始化。
+            </summary>
+            <param name="_ownerID">如果为null，表示访问服务器上的某个目录（网盘）。否则，表示访问在线的目标用户的硬盘。</param>       
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.Reset">
+            <summary>
+            调用该方法可恢复到未做任何连接的初始状态。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.ExistSameNameItem(System.String,System.String)">
+            <summary>
+            目标目录下是否存在同名的项目。
+            </summary>       
+        </member>
+        <member name="F:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.Initialized">
+            <summary>
+            是否完成了初始化？
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.LockRootDirectory">
+            <summary>
+            锁定为只访问根目录（不允许操作子文件夹）。（在初始化之前设置）
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.Connected">
+            <summary>
+            当前用户与Onwer是否处于连接状态。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.IsNetworkDisk">
+            <summary>
+            IsNetworkDisk 是否正在访问网络硬盘。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.AllowUploadFolder">
+            <summary>
+            是否允许上传文件夹
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.NDiskBrowser.NetDiskID">
+            <summary>
+            网盘的标志。（对于远程磁盘而言，即OwnerID为某个用户的ID时，该属性无效）。
+            如果是群组共享的文件夹，则可以将其设置为对应的群组的ID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.CutOrCopyAction.ParentPathOfCuttedOrCopyed">
+            <summary>
+            被剪切或复制物品的父目录的的路径
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.NetworkDisk.Passive.CutOrCopyAction.ItemNameOfCuttedOrCopyed">
+            <summary>
+            被复制或剪切的文件夹或文件的名称
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.Information">
+            <summary>
+            一个完整的自定义信息。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Information.SourceID">
+            <summary>
+            信息的发送者。可以为UserID或者NetServer.SystemUserID。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Information.DestID">
+            <summary>
+            信息的接收者。可以为UserID或者NetServer.SystemUserID或GroupID（广播消息）。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Information.InformationType">
+            <summary>
+            自定义信息类型
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.Information.Content">
+            <summary>
+            信息的内容
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.Controls.RemoteDiskRequestPanel">
+            <summary>
+            远程磁盘 请求面板。
+            </summary>
+        </member>
+        <member name="F:ESFramework.Boost.Controls.RemoteDiskRequestPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.RemoteDiskRequestPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:ESFramework.Boost.Controls.RemoteDiskRequestPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:ESFramework.Boost.Controls.RemoteDiskRequestPanel.RemoteRequestAnswerd">
+            <summary>
+            回复远程磁盘请求
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.NetworkDisk.Server.NDiskHandler">
+            <summary>
+            网盘（也支持远程磁盘）服务端处理器。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.DynamicGroup.BroadcastContract.InformationType">
+            <summary>
+            当MessageType为CustomizeInfoMessageTypeRoom.Response时，忽略该属性。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.DynamicGroup.GroupNotifyContract">
+            <summary>
+            服务器给客户端的通知。
+            </summary>	
+        </member>
+        <member name="T:ESFramework.Boost.IChatPanelHelper">
+            <summary>
+            聊天面板帮助类。
+            </summary>
+        </member>
+        <member name="T:ESFramework.Boost.IPaintForm">
+            <summary>
+            手写板基础接口。
+            </summary>
+        </member>
+        <member name="P:ESFramework.Boost.IPaintForm.CurrentImage">
+            <summary>
+            完成手写后，得到的图片。
+            </summary>
+        </member>
+    </members>
+</doc>

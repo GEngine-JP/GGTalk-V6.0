@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D39E8188-1274-459D-93B4-453A6F30CADF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JustLib</RootNamespace>
+    <AssemblyName>JustLib</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\JustLib.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>..\Dlls\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DataRabbit">
+      <HintPath>..\Dlls\DataRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="ESBasic">
+      <HintPath>..\Dlls\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="ESFramework">
+      <HintPath>..\Dlls\ESFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="OMCS">
+      <HintPath>..\Dlls\OMCS.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity.cs" />
+    <Compile Include="NetworkDisk\Base\NetworkDiskState.cs" />
+    <Compile Include="NetworkDisk\Base\OperationResult.cs" />
+    <Compile Include="NetworkDisk\Base\SharedDirectory.cs" />
+    <Compile Include="NetworkDisk\Comment4NDisk.cs" />
+    <Compile Include="NetworkDisk\Contracts.cs" />
+    <Compile Include="NetworkDisk\NDiskInfoTypes.cs" />
+    <Compile Include="NetworkDisk\Passive\INDiskBrowser.cs" />
+    <Compile Include="NetworkDisk\Passive\INDiskOutter.cs" />
+    <Compile Include="NetworkDisk\Passive\NDiskOutter.cs" />
+    <Compile Include="NetworkDisk\Passive\NDiskPassiveHandler.cs" />
+    <Compile Include="NetworkDisk\Server\INDiskPathManager.cs" />
+    <Compile Include="NetworkDisk\Server\NDiskHandler.cs" />
+    <Compile Include="NetworkDisk\Server\NetworkDisk.cs" />
+    <Compile Include="Records\IChatRecordPersister.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

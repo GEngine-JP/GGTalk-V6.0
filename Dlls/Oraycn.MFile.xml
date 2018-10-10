@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oraycn.MFile</name>
+    </assembly>
+    <members>
+        <member name="M:Oraycn.MFile.AuthorizeVerifier.VerifyAuthorizedUser(System.String,System.String)">
+            <summary>
+            验证授权用户帐号密码。在正式使用MFile组件之前调用。通过验证后，MFile组件将由试用版转变为正式版。
+            </summary>        
+        </member>
+        <member name="F:Oraycn.MFile.AuthorizationVerifyMode.UserID">
+            <summary>
+            用于按实例授权。
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.AuthorizationVerifyMode.PublicTokenKey">
+            <summary>
+            用于买断的情况。
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.SilenceVideoFileMaker">
+            <summary>
+            将视频帧数据（raw data）按指定的格式进行编码并生成视频文件（不包含音频数据）。
+            采用独立的后台线程将视频帧写入文件。
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.BaseMaker">
+            <summary>
+            媒体文件生成器的基类。
+            </summary>
+        </member>
+        <member name="M:Oraycn.MFile.BaseMaker.Close(System.Boolean)">
+            <summary>
+            关闭视频文件。
+            </summary>
+            <param name="waitFinished">如果还有帧等待写入文件，是否等待它们全部写入文件。</param>
+        </member>
+        <member name="P:Oraycn.MFile.BaseMaker.ProcessedVideoFrameCount">
+            <summary>
+            已经完成处理（经过编码压缩并写入文件）的视频帧的个数。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.BaseMaker.ToBeProcessedVideoFrameCount">
+            <summary>
+            队列中等待处理的视频帧的个数。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.BaseMaker.VideoQueueSize">
+            <summary>
+            用于缓存待处理的视频帧的队列的大小。默认值：10000。（在初始化之前设置，初始化之后不可修改。）
+            </summary>
+        </member>
+        <member name="E:Oraycn.MFile.BaseMaker.WriteErrorOccured">
+            <summary>
+            当后台写线程发生错误时，触发此事件，并结束写线程。事件参数为错误信息。
+            </summary>
+        </member>
+        <member name="M:Oraycn.MFile.SilenceVideoFileMaker.Initialize(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>   
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>   
+        </member>
+        <member name="M:Oraycn.MFile.SilenceVideoFileMaker.Initialize(System.String,Oraycn.MFile.VideoCodecType,System.Int32,System.Int32,System.Int32,Oraycn.MFile.VideoQuality)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>       
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>     
+            <param name="videoQuality">录制生成视频的清晰度</param>  
+        </member>
+        <member name="M:Oraycn.MFile.SilenceVideoFileMaker.AddVideoFrame(System.Drawing.Bitmap)">
+            <summary>
+            添加视频帧。
+            </summary>
+            <param name="frame">视频帧</param>              
+        </member>
+        <member name="M:Oraycn.MFile.SilenceVideoFileMaker.AddVideoFrame(System.Drawing.Bitmap,System.TimeSpan)">
+            <summary>
+            添加视频帧。
+            </summary>
+            <param name="frame">视频帧</param>
+            <param name="timeStamp">离开始时的时间长度</param>        
+        </member>
+        <member name="P:Oraycn.MFile.SilenceVideoFileMaker.AutoDisposeVideoFrame">
+            <summary>
+            当通过AddVideoFrame方法传入视频帧Bitmap被写入文件后，自动释放该视频帧？默认值为true。
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.VideoFileGenerator">
+            <summary>
+            用于生成视频文件。视频采用H264编码，音频采用AAC编码。
+            采用独立的后台线程将音/视频帧写入文件。
+            </summary>
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileGenerator.Initialize(Oraycn.MFile.OMFileMode,System.String,Oraycn.MFile.VideoCodecType,System.Int32,System.Int32,System.Int32,Oraycn.MFile.VideoQuality,Oraycn.MFile.AudioCodecType,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            初始化视频文件。
+            注意：音频录制时，需要传入的数据是PCM数据，录制生成的是按audioCodec指定编码的数据，但是编码并不会改变采样的bit数、声道数、采样率、比特率。
+            </summary>
+            <param name="filePath">文件路径</param>
+            <param name="videoCodec">视频编码格式</param>
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>
+            <param name="audioCodec">音频编码格式</param>
+            <param name="videoQuality">录制生成视频的清晰度</param>
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>
+            <param name="autoSyncToAudio">如果是实时录制，则传入true，以音频为基准进行同步。</param>
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileGenerator.AddVideoFrame(System.Drawing.Bitmap)">
+            <summary>
+            添加视频帧。如果autoSyncToAudio开启，则自动同步到音频。
+            </summary>        
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileGenerator.AddVideoFrame(System.Drawing.Bitmap,System.TimeSpan)">
+            <summary>
+            添加视频帧。
+            </summary>
+            <param name="frame">视频帧</param>
+            <param name="timeStamp">离开始时的时间长度</param>        
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileGenerator.AddAudioFrame(System.Byte[])">
+            <summary>
+            添加音频帧。
+            </summary>        
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileGenerator.Close(System.Boolean)">
+            <summary>
+            关闭视频文件。
+            </summary>
+            <param name="waitFinished">如果还有帧等待写入文件，是否等待它们全部写入文件。</param>
+        </member>
+        <member name="P:Oraycn.MFile.VideoFileGenerator.ProcessedVideoFrameCount">
+            <summary>
+            已经完成处理（经过编码压缩并写入文件）的视频帧的个数。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.VideoFileGenerator.ToBeProcessedVideoFrameCount">
+            <summary>
+            队列中等待处理的视频帧的个数。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.VideoFileGenerator.AutoDisposeVideoFrame">
+            <summary>
+            当通过AddVideoFrame方法传入视频帧Bitmap被写入文件后，自动释放该视频帧？默认值为true。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.VideoFileGenerator.VideoQueueSize">
+            <summary>
+            用于缓存待处理的视频帧的队列的大小。默认值：10000。（在初始化之前设置，初始化之后不可修改。）
+            </summary>
+        </member>
+        <member name="E:Oraycn.MFile.VideoFileGenerator.WriteErrorOccured">
+            <summary>
+            当后台写线程发生错误时，触发此事件，并结束写线程。事件参数为错误信息。
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.AudioFileMaker">
+            <summary>
+            将音频数据（raw data）按指定的格式进行编码并生成音频文件。
+            采用独立的后台线程将音频帧写入文件。
+            </summary>
+        </member>
+        <member name="M:Oraycn.MFile.AudioFileMaker.Initialize(System.String,Oraycn.MFile.AudioCodecType,System.Int32,System.Int32)">
+            <summary>
+            初始化音频文件。
+            </summary>
+            <param name="filePath">文件路径</param>        
+            <param name="audioCodec">音频编码格式</param>
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>
+        </member>
+        <member name="M:Oraycn.MFile.AudioFileMaker.Initialize(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化MP3音频文件。
+            </summary>
+            <param name="filePath">文件路径</param> 
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>
+        </member>
+        <member name="M:Oraycn.MFile.AudioFileMaker.AddAudioFrame(System.Byte[])">
+            <summary>
+            添加音频帧。
+            </summary>        
+        </member>
+        <member name="T:Oraycn.MFile.VideoQuality">
+            <summary>
+            视频质量、清晰度。
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.VideoQuality.Highest">
+            <summary>
+            最高。
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.VideoQuality.High">
+            <summary>
+            高
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.VideoQuality.Middle">
+            <summary>
+            中
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.VideoQuality.Low">
+            <summary>
+            低
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.VideoQuality.Lowest">
+            <summary>
+            最低
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.VideoCodecType">
+            <summary>
+            视频编码格式
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.AudioCodecType">
+            <summary>
+            音频编码格式
+            </summary>
+        </member>
+        <member name="F:Oraycn.MFile.OMFileMode.JustVideo">
+            JustVideo -> 0
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_WriteAudioFrame(System.IntPtr,System.Byte[],System.Int32)">
+            <summary>
+            写入音频帧。
+            </summary>
+            <param name="handle">OMFile句柄</param>
+            <param name="data">音频数据</param>
+            <param name="len">数据长度</param>
+            <returns>写入是否成功</returns>
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_WriteVideoFrame(System.IntPtr,System.Byte[],System.Int32,System.Boolean,System.Double)">
+            <summary>
+            写入视频帧
+            </summary>
+            <param name="handle">OMFile句柄</param>
+            <param name="data">视频帧Bitmap数据（不包含位图头信息）</param>
+            <param name="stride">位图扫描宽度</param>
+            <param name="is_Format8bppIndexed">格式是否为Format8bppIndexed</param>
+            <param name="timestampInSecs">指定当前帧离开始位置的时间长度（秒）。如果小于0，则表示按帧频自动计算。</param>
+            <returns>写入是否成功</returns>
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_WriteVideoFrame2(System.IntPtr,System.IntPtr,System.Int32,System.Boolean,System.Double)">
+            <summary>
+            写入视频帧
+            </summary>
+            <param name="handle">OMFile句柄</param>
+            <param name="pData">视频帧Bitmap数据指针</param>
+            <param name="stride">位图扫描宽度</param>
+            <param name="is_Format8bppIndexed">格式是否为Format8bppIndexed</param>
+            <param name="timestampInSecs">指定当前帧离开始位置的时间长度（秒）。如果小于0，则表示按帧频自动计算。</param>
+            <returns>写入是否成功</returns>
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_GetAudioPTS(System.IntPtr)">
+            <summary>
+            获取已写入音频的总时长（秒）。
+            </summary>
+            <param name="handle">OMFile句柄</param>        
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_GetVideoPTS(System.IntPtr)">
+            <summary>
+            获取已写入视频的总时长（秒）。
+            </summary>
+            <param name="handle">OMFile句柄</param>  
+        </member>
+        <member name="M:Oraycn.MFile.OMFileClass.OMFile_Close(System.IntPtr)">
+            <summary>
+            关闭视频文件。执行后，handle将被置为NULL。
+            </summary>
+            <param name="handle">OMFile句柄</param>
+        </member>
+        <member name="T:Oraycn.MFile.VideoFileMaker">
+            <summary>
+            将视音频数据（raw data）、频帧数据（raw data）按指定的格式进行编码并生成视频文件。
+            采用独立的后台线程将音频/视频帧写入文件。
+            </summary>
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.Initialize(System.String,System.Int32,System.Int32,System.Int32,Oraycn.MFile.VideoQuality,System.Int32,System.Int32)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>        
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>
+            <param name="videoQuality">录制生成视频的清晰度</param>        
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>  
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.Initialize(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>        
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>         
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.Initialize(System.String,System.Int32,System.Int32,System.Int32,Oraycn.MFile.VideoQuality,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>        
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>
+            <param name="videoQuality">录制生成视频的清晰度</param>  
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>      
+            <param name="autoSyncToAudio">是否以音频为基准进行同步。比如实时录制，则可以考虑传入true。</param>
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.Initialize(System.String,Oraycn.MFile.VideoCodecType,System.Int32,System.Int32,System.Int32,Oraycn.MFile.VideoQuality,Oraycn.MFile.AudioCodecType,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            初始化视频文件。
+            </summary>
+            <param name="filePath">文件路径</param>        
+            <param name="videoWidth">视频宽度</param>
+            <param name="videoHeight">视频高度</param>
+            <param name="videoFrameRate">帧频</param>
+            <param name="videoQuality">录制生成视频的清晰度</param>        
+            <param name="audioSampleRate">音频采样率。【注：采样位数必须为16位】</param>
+            <param name="audioChannelCount">声道数</param>      
+            <param name="autoSyncToAudio">是否以音频为基准进行同步。比如实时录制，则可以考虑传入true。</param>
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.AddVideoFrame(System.Drawing.Bitmap)">
+            <summary>
+            添加视频帧。如果autoSyncToAudio开启，则自动同步到音频。
+            </summary>        
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.AddVideoFrame(System.Drawing.Bitmap,System.TimeSpan)">
+            <summary>
+            添加视频帧。
+            </summary>
+            <param name="frame">视频帧</param>
+            <param name="timeStamp">离开始时的时间长度</param>        
+        </member>
+        <member name="M:Oraycn.MFile.VideoFileMaker.AddAudioFrame(System.Byte[])">
+            <summary>
+            添加音频帧。
+            </summary>        
+        </member>
+        <member name="P:Oraycn.MFile.VideoFileMaker.AutoDisposeVideoFrame">
+            <summary>
+            当通过AddVideoFrame方法传入视频帧Bitmap被写入文件后，自动释放该视频帧？默认值为true。
+            </summary>
+        </member>
+        <member name="T:Oraycn.MFile.CircleQueue`1">
+            <summary>
+            内部使用Circle的固定大小的Queue，当装满后，再加入对象，则将最老的那个对象替换掉。该类的实现是线程安全的。
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Oraycn.MFile.CircleQueue`1.Enqueue(`0)">
+            <summary>
+            当装满后，再加入对象，则将最老的那个对象覆盖掉。
+            </summary>        
+        </member>
+        <member name="M:Oraycn.MFile.CircleQueue`1.Peek">
+            <summary>
+            查看队列首部的元素，但是不从队列中移除。
+            </summary>       
+        </member>
+        <member name="M:Oraycn.MFile.CircleQueue`1.ChangeSize(System.Int32)">
+            <summary>
+            更改大小。如果当前队列中元素个数大于新的尺寸，则丢弃部分老的元素。
+            </summary>        
+        </member>
+        <member name="P:Oraycn.MFile.CircleQueue`1.MaxCount">
+            <summary>
+            历史中最大的元素个数。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.CircleQueue`1.Size">
+            <summary>
+            最大容量。
+            </summary>
+        </member>
+        <member name="P:Oraycn.MFile.CircleQueue`1.Count">
+            <summary>
+            队列中的元素个数。
+            </summary>
+        </member>
+    </members>
+</doc>

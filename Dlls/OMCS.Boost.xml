@@ -1,0 +1,907 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OMCS.Boost</name>
+    </assembly>
+    <members>
+        <member name="T:OMCS.Boost.Controls.VideoChatRequestPanel">
+            <summary>
+            请求视频聊天时出现的控制面板。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.VideoChatRequestPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.VideoChatRequestPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.VideoChatRequestPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Controls.VideoChatRequestPanel.VideoRequestAnswerd">
+            <summary>
+            回复视频请求
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Forms.IVideoChatForm">
+            <summary>
+            与好友视频聊天窗口的接口。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoGroupPanel.Initialize(OMCS.Passive.IMultimediaManager,OMCS.Passive.MultiChat.IChatGroup,System.Collections.Generic.List{OMCS.Boost.MultiChat.SubGroup})">
+            <summary>
+            初始化群聊的子组控件。
+            </summary>
+            <param name="mgr">OMCS多媒体管理器。</param>
+            <param name="group">OMCS聊天组。</param>
+            <param name="list">子组列表</param>     
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoGroupPanel.DisableAllSpeak">
+            <summary>
+            将列表中的所有用户禁言。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.VideoGroupPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoGroupPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoGroupPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.FourierTransformer">
+            <summary>
+            傅立叶变换。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.CameraComboBox">
+            <summary>
+            选择摄像头的下拉列表。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.CameraComboBox.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.CameraComboBox.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.CameraComboBox.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Forms.OmcsServerForm">
+            <summary>
+            OMCS 服务端主窗体。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.OmcsServerForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.OmcsServerForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OMCS.Boost.Forms.OmcsServerForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.EnumDescriptor">
+            <summary>
+            枚举描述器。用于将枚举值转换为对应的中文表达。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.EnumDescriptor.GetDescription(OMCS.Passive.ConnectResult)">
+            <summary>
+            获取ConnectResult枚举值对应的中文描述。
+            </summary>        
+        </member>
+        <member name="M:OMCS.Boost.EnumDescriptor.GetDescription(OMCS.Passive.ConnectorDisconnectedType)">
+            <summary>
+            获取ConnectorDisconnectedType枚举值对应的中文描述。
+            </summary>   
+        </member>
+        <member name="T:OMCS.Boost.Controls.ChannelQualityDisplayer">
+            <summary>
+            通道质量（信号强度）显示器。
+            根据JitterBuffer的缓冲区尺寸转换为信号强度。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.ChannelQualityDisplayer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.ChannelQualityDisplayer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.ChannelQualityDisplayer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Controls.ChannelQualityDisplayer.ColorSignal">
+            <summary>
+            有信号部分的指示条的颜色。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Controls.ChannelQualityDisplayer.ColorNoSignal">
+            <summary>
+            无信号部分的指示条颜色。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Controls.ChannelQualityDisplayer.ColorBadSignal">
+            <summary>
+            信号差时，有信号部分的指示条的颜色。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.RemoteDeskRequestPanel">
+            <summary>
+            远程桌面/远程协助 请求面板。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.RemoteDeskRequestPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.RemoteDeskRequestPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.RemoteDeskRequestPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Controls.RemoteDeskRequestPanel.RemoteRequestAnswerd">
+            <summary>
+            回复远程协助请求
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.AutoScaleContainer">
+            <summary>
+            等比缩放容器：将对该容器内的控件进行等比缩放，并居中显示。
+            （1）容器中只能有一个被等比缩放的控件。
+            （2）再调用Initialize方法之前，请先将要被缩放的控件拖放到该容器中。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.AutoScaleContainer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.AutoScaleContainer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.AutoScaleContainer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.AutoScaleContainer.Initialize(System.Windows.Forms.Control,System.Drawing.Size)">
+            <summary>
+            初始化等比缩放容器。
+            </summary>
+            <param name="targetCtrl">被缩放的控件。</param>
+            <param name="_standardSize">用于等比缩放进行参考的标准尺寸</param>
+        </member>
+        <member name="P:OMCS.Boost.Controls.AutoScaleContainer.FillContainerAlways">
+            <summary>
+            是否始终填满当前Container。如果为true，表示不再进行等比缩放，而始终填满当前Container。默认值：false。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultimediaManagerHelper">
+            <summary>
+            OMCS多媒体管理器协助者。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultimediaManagerHelper.WaitUtilAvailable(OMCS.Passive.IMultimediaManager,System.Int32)">
+            <summary>
+            方法一直阻塞到多媒体管理器变成可用。
+            </summary>
+            <param name="manager">要监控的多媒体管理器实例</param>
+            <param name="timeoutSpanInSecs">等待的最大时间，单位：秒。如果小于等于0，表示无限。</param>
+            <returns>true表示多媒体管理器已经可用，false表示超时。</returns>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.SpeakerAudioPanel">
+            <summary>
+            语音聊天控件。由MultiAudioChatContainer使用。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.ISpeakerPanel">
+            <summary>
+            多人会话场景中的发言人接口。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.SpeakerAudioPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerAudioPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerAudioPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.MultiAudioChatContainer">
+            <summary>
+            多人语音聊天控件容器。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.MultiAudioChatContainer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.MultiAudioChatContainer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.MultiAudioChatContainer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.MultiChat.MultiAudioChatContainer.InviteFriendClick">
+            <summary>
+            当点击邀请好友的Button时，触发此事件。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.DoubleBufferPanel">
+            <summary>
+            启用了双缓冲的Panel，防止视频闪烁。
+            如果使用DynamicCameraConnector，则可使用该DoubleBufferPanel控件来绘制视频。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.DoubleBufferPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.DoubleBufferPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.DoubleBufferPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.AudioChatHandlePanel">
+            <summary>
+            语音聊天时的控制面板
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.AudioChatHandlePanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.AudioChatHandlePanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.AudioChatHandlePanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Controls.AudioChatHandlePanel.AudioTerminated">
+            <summary>
+            挂断语音
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Controls.AudioChatHandlePanel.AudioRequestAnswerd">
+            <summary>
+            回复语音请求
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Forms.VideoChatForm">
+            <summary>
+            视频聊天窗口。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.VideoChatForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.VideoChatForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OMCS.Boost.Forms.VideoChatForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.VideoChatForm.CommonQualityVideo">
+            <summary>
+            普通视频采集分辨率。（长宽之和）
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.VideoChatForm.HighQualityVideo">
+            <summary>
+            高清视频采集分辨率。（长宽之和）
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.VideoChatForm.OnAgree">
+            <summary>
+            对方同意视频会话
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.VideoChatForm.OnHungUpVideo">
+            <summary>
+            对方挂断视频
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Forms.VideoChatForm.HungUpVideo">
+            <summary>
+            当自己挂断视频或与对方设备的连接中断时，触发此事件。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Accept">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.allbtn_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.allbtn_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.app_icon_40">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Arrow">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.AV_Accept">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.AV_Refuse">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.AV_VDC_Bkg">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_close_disable">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_close_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_close_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_max_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_max_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_max_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_mini_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_mini_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_mini_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_restore_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_restore_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.btn_restore_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.copy">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.cut">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.delete">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.editRedo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.editUndo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Ellipse">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Exit">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.folder_new">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Go">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Group1">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.HDVideoHangs">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Hor">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Line">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.mic2">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.paste">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Rectangular">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Redo">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.refresh">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.RemoteHelp">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Save">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Text">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.up">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.Ver">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.Properties.Resources.VideoWaitToAnswer">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.FullScreenVideoForm">
+            <summary>
+            某个成员的全屏视频窗口。
+            双击窗口，可以恢复到正常尺寸。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.FullScreenVideoForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.FullScreenVideoForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.FullScreenVideoForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.RemoteDeskHandlePanel">
+            <summary>
+            远程桌面/远程协助 主人控制面板
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.RemoteDeskHandlePanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.RemoteDeskHandlePanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.RemoteDeskHandlePanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.Controls.RemoteDeskHandlePanel.RemoteHelpTerminated">
+            <summary>
+            中止远程协助
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.SpeakerVideoPanel">
+            <summary>
+            视频聊天控件。由MultiVideoChatContainer使用。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.SpeakerVideoPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.Initialize(OMCS.Passive.MultiChat.IChatUnit,System.Boolean)">
+            <summary>
+            初始化成员视频显示控件。
+            </summary>       
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.ShowCameraState">
+            <summary>
+            综合显示摄像头的状态。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.ShowMicState">
+            <summary>
+            综合显示麦克风的状态。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.SpeakerVideoPanel.toolStripButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            展开或收起视频面板。
+            </summary>       
+        </member>
+        <member name="E:OMCS.Boost.MultiChat.SpeakerVideoPanel.VideoDoubleClicked">
+            <summary>
+            该事件用于支持双击小视频窗口，全屏显示该成员的图像。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.MultiChat.SpeakerVideoPanel.SpeakControlEnabled">
+            <summary>
+            是否开启用于控制发言的CheckBox。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Controls.DecibelDisplayer">
+            <summary>
+            声音强度分贝显示器。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Controls.DecibelDisplayer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Controls.DecibelDisplayer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Controls.DecibelDisplayer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.VideoSubGroupPanel">
+            <summary>
+            用于OMCS聊天组中的一个子集（子组）的音/视频显示控件。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoSubGroupPanel.Initialize(OMCS.Passive.IMultimediaManager,OMCS.Passive.MultiChat.IChatGroup,OMCS.Boost.MultiChat.SubGroup)">
+            <summary>
+            初始化群聊的子组控件。
+            </summary>
+            <param name="mgr">OMCS多媒体管理器。</param>
+            <param name="group">OMCS聊天组。</param>
+            <param name="subGroupName">子组名称</param>
+            <param name="subGroupUserDic">子组中的所有成员列表</param>
+            <param name="_justAudio">仅仅使用音频？</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoSubGroupPanel.DisableAllSpeak">
+            <summary>
+            将列表中的所有用户禁言。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.VideoSubGroupPanel.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoSubGroupPanel.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.VideoSubGroupPanel.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.SubGroup">
+            <summary>
+            OMCS聊天组中的一个子集（子组）。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.MultiChat.SubGroup.Name">
+            <summary>
+            子组的名称。
+            </summary>
+        </member>
+        <member name="P:OMCS.Boost.MultiChat.SubGroup.MemberList">
+            <summary>
+            子组的成员列表。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Forms.RemoteDeskForm">
+            <summary>
+            远程桌面/远程协助 窗口。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.RemoteDeskForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.RemoteDeskForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OMCS.Boost.Forms.RemoteDeskForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.RemoteHelpStyle">
+            <summary>
+            远程协助的类型：全屏？部分屏幕？
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.HungUpCauseType">
+            <summary>
+            挂掉视频聊天的原因。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.MultiChat.MultiVideoChatContainer">
+            <summary>
+            多人视频聊天控件容器。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.MultiChat.MultiVideoChatContainer.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.MultiVideoChatContainer.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.MultiChat.MultiVideoChatContainer.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.MultiChat.MultiVideoChatContainer.VideoDoubleClicked">
+            <summary>
+            该事件用于支持双击小视频窗口，全屏显示该成员的图像。
+            </summary>
+        </member>
+        <member name="E:OMCS.Boost.MultiChat.MultiVideoChatContainer.InviteFriendClick">
+            <summary>
+            当点击邀请好友的Button时，触发此事件。
+            </summary>
+        </member>
+        <member name="T:OMCS.Boost.Forms.DeviceSelectForm">
+            <summary>
+            用于选择摄像头、麦克风、扬声器设备的选择窗口。
+            </summary>
+        </member>
+        <member name="F:OMCS.Boost.Forms.DeviceSelectForm.components">
+            <summary>
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:OMCS.Boost.Forms.DeviceSelectForm.Dispose(System.Boolean)">
+            <summary>
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:OMCS.Boost.Forms.DeviceSelectForm.InitializeComponent">
+            <summary>
+            设计器支持所需的方法 - 不要
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+    </members>
+</doc>
